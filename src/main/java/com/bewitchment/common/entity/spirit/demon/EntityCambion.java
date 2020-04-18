@@ -127,12 +127,6 @@ public class EntityCambion extends ModEntityAnimal {
 	}
 	
 	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
-	}
-	
-	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		data = super.onInitialSpawn(difficulty, data);
 		int i = this.getRandomCambionType();
@@ -175,6 +169,12 @@ public class EntityCambion extends ModEntityAnimal {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (!world.isRemote & isChild()) setDead();
+	}
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 	
 	private int getRandomCambionType() {

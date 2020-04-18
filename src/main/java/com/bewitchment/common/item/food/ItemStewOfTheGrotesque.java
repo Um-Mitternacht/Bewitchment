@@ -32,6 +32,11 @@ public class ItemStewOfTheGrotesque extends ItemFood {
 	}
 	
 	@Override
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+		return new ItemStack(Items.BOWL);
+	}
+	
+	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 750, 3));
@@ -49,10 +54,5 @@ public class ItemStewOfTheGrotesque extends ItemFood {
 				ExtendedWorld.pledgePlayerToDemon(world, player, boss);
 			}
 		}
-	}
-	
-	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-		return new ItemStack(Items.BOWL);
 	}
 }

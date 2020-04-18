@@ -1,9 +1,7 @@
 package com.bewitchment.common.item.food;
 
 import com.bewitchment.Util;
-import com.bewitchment.api.BewitchmentAPI;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;

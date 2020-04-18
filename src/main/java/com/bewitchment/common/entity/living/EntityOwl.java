@@ -50,11 +50,6 @@ public class EntityOwl extends ModEntityTameable {
 	}
 	
 	@Override
-	public boolean getCanSpawnHere() {
-		return !world.isDaytime() && super.getCanSpawnHere();
-	}
-	
-	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.OWL_HOOT;
 	}
@@ -142,6 +137,11 @@ public class EntityOwl extends ModEntityTameable {
 			this.dropItem(Items.FEATHER, 1);
 			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		}
+	}
+	
+	@Override
+	public boolean getCanSpawnHere() {
+		return !world.isDaytime() && super.getCanSpawnHere();
 	}
 	
 	@Override

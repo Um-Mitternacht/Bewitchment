@@ -399,13 +399,11 @@ public class ModelWerewolf extends ModelBiped {
 		arm.rotateAngleZ = (float) Math.sin(swingProgress * Math.PI * val) + (2 / 7f * val);
 	}
 	
-	public void postRenderArm(float scale, EnumHandSide side)
-	{
+	public void postRenderArm(float scale, EnumHandSide side) {
 		this.getArmForSide(side).postRender(scale);
 	}
 	
-	protected ModelRenderer getArmForSide(EnumHandSide side)
-	{
+	protected ModelRenderer getArmForSide(EnumHandSide side) {
 		return side == EnumHandSide.LEFT ? this.lArm01 : this.rArm01;
 	}
 	

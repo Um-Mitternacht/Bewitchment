@@ -30,10 +30,13 @@ public class ModBlockWall extends BlockWall {
 		Util.registerBlock(this, name, base, oreDictionaryNames);
 	}
 	
-	@Nonnull
+	public IBlockState pickDefaultState() {
+		return blockState.getBaseState().withProperty(UP, false).withProperty(NORTH, false).withProperty(SOUTH, false).withProperty(WEST, false).withProperty(EAST, false).withProperty(VARIANT, EnumType.NORMAL);
+	}
+	
 	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return super.getActualState(state, world, pos).withProperty(VARIANT, EnumType.NORMAL);
+	public void getSubBlocks(CreativeTabs tabs, @Nonnull NonNullList<ItemStack> list) {
+		list.add(new ItemStack(this));
 	}
 	
 	@Override
@@ -41,25 +44,9 @@ public class ModBlockWall extends BlockWall {
 		return getMetaFromState(state);
 	}
 	
-	@Nonnull
 	@Override
-	public BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, VARIANT, UP, NORTH, SOUTH, WEST, EAST);
-	}
-	
-	public IBlockState pickDefaultState() {
-		return blockState.getBaseState()
-				.withProperty(UP, false)
-				.withProperty(NORTH, false)
-				.withProperty(SOUTH, false)
-				.withProperty(WEST, false)
-				.withProperty(EAST, false)
-				.withProperty(VARIANT, EnumType.NORMAL);
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return 0;
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
 	}
 	
 	@Nonnull
@@ -69,13 +56,20 @@ public class ModBlockWall extends BlockWall {
 	}
 	
 	@Override
-	public boolean canPlaceTorchOnTop(IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos) {
-		return true;
+	public int getMetaFromState(IBlockState state) {
+		return 0;
 	}
 	
+	@Nonnull
 	@Override
-	public void getSubBlocks(CreativeTabs tabs, @Nonnull NonNullList<ItemStack> list) {
-		list.add(new ItemStack(this));
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return super.getActualState(state, world, pos).withProperty(VARIANT, EnumType.NORMAL);
+	}
+	
+	@Nonnull
+	@Override
+	public BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, VARIANT, UP, NORTH, SOUTH, WEST, EAST);
 	}
 	
 	@Override
@@ -85,7 +79,7 @@ public class ModBlockWall extends BlockWall {
 	}
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
+	public boolean canPlaceTorchOnTop(IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos) {
+		return true;
 	}
 }

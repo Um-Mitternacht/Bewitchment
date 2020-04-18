@@ -92,6 +92,12 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
+	}
+	
+	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.CLEAVER_IDLE;
 	}
@@ -149,12 +155,6 @@ public class EntityCleaver extends ModEntityMob {
 		}
 		
 		return flag;
-	}
-	
-	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
 	}
 	
 	@Override
