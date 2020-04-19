@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityAnimal;
+import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
@@ -31,7 +32,9 @@ import javax.annotation.Nullable;
 /**
  * Created by Joseph on 3/30/2020.
  */
-public class EntityCambion extends ModEntityAnimal {
+
+//Todo: Fool iron golems into not attacking them unless the cambion attacks first.
+public class EntityCambion extends ModEntityMob {
 	private static final DataParameter<Integer> CAMBION_TYPE = EntityDataManager.<Integer>createKey(EntityCambion.class, DataSerializers.VARINT);
 	public int attackTimer = 0;
 	
@@ -55,7 +58,6 @@ public class EntityCambion extends ModEntityAnimal {
 	}
 	
 	//Todo: Redo everything.
-	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		boolean flag = super.attackEntityAsMob(entityIn);
 		
@@ -90,7 +92,6 @@ public class EntityCambion extends ModEntityAnimal {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
@@ -146,6 +147,11 @@ public class EntityCambion extends ModEntityAnimal {
 		setCanPickUpLoot(this.rand.nextFloat() < 0.55F * difficulty.getClampedAdditionalDifficulty());
 		setEnchantmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
 	}
 	
 	@Override
