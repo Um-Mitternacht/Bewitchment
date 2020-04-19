@@ -317,15 +317,15 @@ public class ModelCambionSlim extends ModelBiped {
 	}
 	
 	@Override
-	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float bipedHeadPitch, float scaleFactor, Entity entity) {
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
-		this.bipedHead.rotateAngleY = netbipedHeadYaw * 0.017453292F;
+		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
 		
 		if (flag) {
 			this.bipedHead.rotateAngleX = -((float) Math.PI / 4F);
 		}
 		else {
-			this.bipedHead.rotateAngleX = bipedHeadPitch * 0.017453292F;
+			this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
 		}
 		
 		this.bipedBody.rotateAngleY = 0.0F;
