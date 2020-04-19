@@ -57,7 +57,7 @@ public class EntityCambion extends ModEntityAnimal {
 	//Todo: Redo everything.
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
-		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		boolean flag = super.attackEntityAsMob(entityIn);
 		
 		if (flag) {
 			this.applyEnchantments(this, entityIn);
@@ -77,6 +77,7 @@ public class EntityCambion extends ModEntityAnimal {
 	
 	@Override
 	protected void initEntityAI() {
+		super.initEntityAI();
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.35, false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
@@ -138,8 +139,8 @@ public class EntityCambion extends ModEntityAnimal {
 		
 		if (a < 2) {
 			this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.CHAINMAIL_CHESTPLATE));
-		} else if (a > 2)
-		this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
+		}
+		else if (a > 2) this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
 		
 		setEquipmentBasedOnDifficulty(difficulty);
 		setCanPickUpLoot(this.rand.nextFloat() < 0.55F * difficulty.getClampedAdditionalDifficulty());
