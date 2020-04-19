@@ -2,7 +2,6 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
-import com.bewitchment.common.entity.util.ModEntityAnimal;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -44,38 +43,10 @@ public class EntityCambion extends ModEntityMob {
 		experienceValue = 25;
 	}
 	
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-		return SoundEvents.ENTITY_EVOCATION_ILLAGER_HURT;
-	}
-	
-	protected SoundEvent getDeathSound() {
-		return SoundEvents.EVOCATION_ILLAGER_DEATH;
-	}
-	
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
 	}
-	
-	//Todo: Redo everything.
-	public boolean attackEntityAsMob(Entity entityIn) {
-		boolean flag = super.attackEntityAsMob(entityIn);
-		
-		if (flag) {
-			this.applyEnchantments(this, entityIn);
-			attackTimer = 10;
-			int i = this.rand.nextInt(100);
-			world.setEntityState(this, (byte) 4);
-			if (entityIn instanceof EntityLivingBase) {
-				if (i < 10) {
-					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 500, 0, false, false));
-				}
-			}
-		}
-		
-		return flag;
-	}
-	
 	
 	@Override
 	protected void initEntityAI() {
@@ -90,15 +61,9 @@ public class EntityCambion extends ModEntityMob {
 	}
 	
 	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
-		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(35);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6D);
-		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.2D);
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 	
 	protected SoundEvent getAmbientSound() {
@@ -121,6 +86,28 @@ public class EntityCambion extends ModEntityMob {
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(CAMBION_TYPE, Integer.valueOf(0));
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("CambionType", this.getCambionType());
+	}
+	
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.setCambionType(compound.getInteger("CambionType"));
 	}
 	
 	@Override
@@ -150,37 +137,48 @@ public class EntityCambion extends ModEntityMob {
 	}
 	
 	@Override
-	protected boolean isValidLightLevel() {
-		return true;
-	}
-	
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.dataManager.register(CAMBION_TYPE, Integer.valueOf(0));
-	}
-	
-	@Override
-	public void writeEntityToNBT(NBTTagCompound compound) {
-		super.writeEntityToNBT(compound);
-		compound.setInteger("CambionType", this.getCambionType());
-	}
-	
-	public void readEntityFromNBT(NBTTagCompound compound) {
-		super.readEntityFromNBT(compound);
-		this.setCambionType(compound.getInteger("CambionType"));
-	}
-	
-	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (!world.isRemote & isChild()) setDead();
 	}
 	
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEvents.ENTITY_EVOCATION_ILLAGER_HURT;
+	}
+	
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.EVOCATION_ILLAGER_DEATH;
+	}
+	
+	//Todo: Redo everything.
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = super.attackEntityAsMob(entityIn);
+		
+		if (flag) {
+			this.applyEnchantments(this, entityIn);
+			attackTimer = 10;
+			int i = this.rand.nextInt(100);
+			world.setEntityState(this, (byte) 4);
+			if (entityIn instanceof EntityLivingBase) {
+				if (i < 10) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 500, 0, false, false));
+				}
+			}
+		}
+		
+		return flag;
+	}
+	
 	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(35);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6D);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.2D);
 	}
 	
 	private int getRandomCambionType() {
