@@ -119,13 +119,13 @@ public class EntityCambion extends ModEntityAnimal {
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
-		this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
 	}
 	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		data = super.onInitialSpawn(difficulty, data);
 		int i = this.getRandomCambionType();
+		int a = rand.nextInt(4);
 		
 		if (data instanceof EntityCambion.CambionTypeData) {
 			i = ((EntityCambion.CambionTypeData) data).typeData;
@@ -135,6 +135,11 @@ public class EntityCambion extends ModEntityAnimal {
 		}
 		
 		this.setCambionType(i);
+		
+		if (a < 2) {
+			this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.CHAINMAIL_CHESTPLATE));
+		} else if (a > 2)
+		this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
 		
 		setEquipmentBasedOnDifficulty(difficulty);
 		setCanPickUpLoot(this.rand.nextFloat() < 0.55F * difficulty.getClampedAdditionalDifficulty());
