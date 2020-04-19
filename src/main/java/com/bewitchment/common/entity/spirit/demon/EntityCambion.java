@@ -126,11 +126,9 @@ public class EntityCambion extends ModEntityAnimal {
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		data = super.onInitialSpawn(difficulty, data);
 		int i = this.getRandomCambionType();
-		boolean flag = false;
 		
 		if (data instanceof EntityCambion.CambionTypeData) {
 			i = ((EntityCambion.CambionTypeData) data).typeData;
-			flag = true;
 		}
 		else {
 			data = new EntityCambion.CambionTypeData(i);
