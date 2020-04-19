@@ -446,8 +446,7 @@ public class ModelCambion extends ModelBiped {
 		super.postRenderArm(scale, side);
 	}
 	
-	protected ModelRenderer getArmForSide(EnumHandSide side)
-	{
+	protected ModelRenderer getArmForSide(EnumHandSide side) {
 		return side == EnumHandSide.LEFT ? this.bipedLeftArm : this.bipedRightArm;
 	}
 	
