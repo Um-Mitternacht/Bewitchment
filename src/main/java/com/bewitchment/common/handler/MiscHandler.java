@@ -13,6 +13,7 @@ import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.spirit.demon.AbstractGreaterDemon;
+import com.bewitchment.common.entity.spirit.demon.EntityCambion;
 import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.spirit.demon.EntityLeonard;
 import com.bewitchment.common.entity.util.IPledgeable;
@@ -26,6 +27,8 @@ import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
@@ -133,6 +136,9 @@ public class MiscHandler {
 			}
 			if (event.getEntityLiving() instanceof EntityTameable && event.getTarget() instanceof EntityDruden) {
 				((EntityTameable) event.getEntityLiving()).setAttackTarget(null);
+			}
+			if (event.getEntityLiving() instanceof EntityGolem && event.getTarget() instanceof EntityCambion) {
+				((EntityLiving) event.getEntityLiving()).setAttackTarget(null);
 			}
 			if (event.getEntityLiving() instanceof IPledgeable && event.getTarget() instanceof EntityPlayer && ExtendedWorld.playerPledgedToDemon(event.getEntityLiving().world, (EntityPlayer) event.getTarget(), ((IPledgeable) event.getEntityLiving()).getPledgeName())) {
 				((EntityMob) event.getEntityLiving()).setAttackTarget(null);
