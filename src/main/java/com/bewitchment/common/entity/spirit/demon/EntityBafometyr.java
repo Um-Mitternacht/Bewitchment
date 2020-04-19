@@ -17,6 +17,7 @@ public class EntityBafometyr extends ModEntityMob {
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
 		experienceValue = 25;
+		setSize(0.8f, 2.0f);
 	}
 	
 	@Override
