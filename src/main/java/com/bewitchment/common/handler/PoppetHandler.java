@@ -2,6 +2,7 @@ package com.bewitchment.common.handler;
 
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.event.VoodooEvent;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
@@ -28,6 +29,7 @@ public class PoppetHandler {
 	public void deathProtection(LivingDeathEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_deathprotection)) {
 				event.setCanceled(true);
 				player.setHealth(4f);
@@ -41,6 +43,7 @@ public class PoppetHandler {
 	public void binding(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_binding)) {
 				EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
 				source.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 2));
@@ -55,6 +58,7 @@ public class PoppetHandler {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
 			ItemStack held = source.getHeldItemMainhand();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (!held.isEmpty() && Util.attemptDamagePoppet(player, ModObjects.poppet_clumsy)) {
 				InventoryHelper.spawnItemStack(source.getEntityWorld(), source.posX, source.posY, source.posZ, held);
 				source.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
@@ -67,6 +71,7 @@ public class PoppetHandler {
 	public void wasting(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_wasting)) {
 				EntityLiving source = (EntityLiving) event.getSource().getTrueSource();
 				source.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 200, 1));
@@ -79,6 +84,7 @@ public class PoppetHandler {
 	public void earthProtection(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.FALL) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_earthprotection)) {
 				event.setAmount(event.getAmount() / 4);
 			}
@@ -89,6 +95,7 @@ public class PoppetHandler {
 	public void fireProtection(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && (event.getSource() == DamageSource.ON_FIRE || event.getSource() == DamageSource.IN_FIRE)) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_flameprotection)) {
 				event.setAmount(event.getAmount() * 0.6f);
 			}
@@ -99,6 +106,7 @@ public class PoppetHandler {
 	public void hungerProtection(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.STARVE) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_hungerprotection)) {
 				event.setAmount(0);
 				player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 100, 1));
@@ -110,6 +118,7 @@ public class PoppetHandler {
 	public void waterProtection(LivingDamageEvent event) {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource() == DamageSource.DROWN) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_waterprotection)) {
 				event.setAmount(0);
 				event.setCanceled(true);
@@ -123,6 +132,7 @@ public class PoppetHandler {
 		if (!event.getEntityLiving().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getSource().getTrueSource() instanceof EntityLiving) {
 			EntityLiving attacker = (EntityLiving) event.getSource().getTrueSource();
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 			if (Util.attemptDamagePoppet(player, ModObjects.poppet_spiritbane) && BewitchmentAPI.isSpirit(attacker)) {
 				event.setAmount(event.getAmount() * 0.6f);
 				event.getEntity().playSound(SoundEvents.ENTITY_ENDERDRAGON_GROWL, 2, 1);
@@ -162,9 +172,11 @@ public class PoppetHandler {
 	
 	@SubscribeEvent
 	public void toolProtection(PlayerDestroyItemEvent event) {
+		EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 		if (!event.getEntityPlayer().world.isRemote && event.getOriginal().getItem() != ModObjects.poppet_tool && Util.attemptDamagePoppet(event.getEntityPlayer(), ModObjects.poppet_tool)) {
 			event.getEntityPlayer().setHeldItem(event.getHand(), event.getOriginal());
 			event.getEntityPlayer().playSound(SoundEvents.ENTITY_ILLAGER_CAST_SPELL, 5, 1);
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).poppets++;
 		}
 	}
 	
