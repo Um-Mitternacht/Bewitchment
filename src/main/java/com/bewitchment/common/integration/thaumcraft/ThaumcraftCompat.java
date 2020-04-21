@@ -164,8 +164,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 		event.register.registerObjectTag(new ItemStack(ModObjects.witches_oven), new AspectList().add(Aspect.FIRE, 25).add(Aspect.METAL, 30).add(Aspect.CRAFT, 30));
 		event.register.registerObjectTag(new ItemStack(ModObjects.spinning_wheel), new AspectList().add(Aspect.PLANT, 30).add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.crystal_ball), new AspectList().add(Aspect.CRYSTAL, 25).add(Aspect.MAGIC, 25).add(Aspect.DESIRE, 25));
-		event.register.registerObjectTag(new ItemStack(ModObjects.tarot_table), new AspectList().add(Aspect.EARTH, 25).add(Aspect.MIND, 25).add(Aspect.MAGIC, 25));
-		event.register.registerObjectTag(new ItemStack(ModObjects.tarot_cards), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.CRAFT, 10).add(Aspect.MIND, 10));
 		//Altar Blocks
 		event.register.registerObjectTag(new ItemStack(ModObjects.goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.VOID, 15));
 		event.register.registerObjectTag(new ItemStack(ModObjects.filled_goblet), new AspectList().add(Aspect.METAL, 15).add(Aspect.MAGIC, 15).add(Aspect.ALCHEMY, 15));
