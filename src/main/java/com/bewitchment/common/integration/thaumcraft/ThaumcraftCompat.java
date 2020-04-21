@@ -12,6 +12,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.potion.PotionEffect;
@@ -21,9 +22,11 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.crafting.IConditionFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -50,6 +53,16 @@ public class ThaumcraftCompat implements IConditionFactory {
 	public static final EnumGolemTrait SPIRITUAL_WARD = EnumHelper.addEnum(EnumGolemTrait.class, "SPIRITUAL_WARD", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	public static final EnumGolemTrait UNCANNY = EnumHelper.addEnum(EnumGolemTrait.class, "UNCANNY", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_uncanny.png"));
 	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
+	
+	@SubscribeEvent(priority = EventPriority.LOW)
+	public static void registerItemsLater(RegistryEvent.Register<Item> event) {
+		try {
+			Class.forName("thaumcraft.common.golems.GolemProperties");
+		}
+		catch (Exception ex) {
+			// do something
+		}
+	}
 	
 	public static void init() {
 		ThaumcraftApi.registerResearchLocation(new ResourceLocation(Bewitchment.MODID, "tc/research/bewitchment"));
