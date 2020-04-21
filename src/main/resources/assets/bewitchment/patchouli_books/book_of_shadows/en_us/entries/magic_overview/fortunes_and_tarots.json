@@ -1,5 +1,5 @@
 {
-  "name": "Fortunes and Tarots",
+  "name": "Fortunes and Scrying",
   "category": "magical_overview",
   "icon": "bewitchment:crystal_ball",
   "pages": [
@@ -19,100 +19,6 @@
 	{
 	  "type": "bewitchment:ritual",
 	  "recipe": "bewitchment:crystal_ball"
-	},
-	{
-	  "type": "text",
-	  "title": "Tarots",
-	  "text": "Originally simple playing cards, yet many have discovered the magical powers these cards possess in revealing secrets and predicting the future"
-	},
-	{
-	  "type": "bewitchment:ritual",
-	  "recipe": "bewitchment:tarot_table"
-	},
-	{
-	  "type": "bewitchment:ritual",
-	  "recipe": "bewitchment:tarot_cards"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/00player.png"
-	  ],
-	  "border": true,
-	  "title": "Player",
-	  "text": "The player is a witch"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/04guardian.png"
-	  ],
-	  "border": true,
-	  "title": "Guardian",
-	  "text": "The player has killed a boss, and how many unique bosses killed"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/05illusioner.png"
-	  ],
-	  "border": true,
-	  "title": "Illusioner",
-	  "text": "The player has a potion active, and the highest level"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/07mounts.png"
-	  ],
-	  "border": true,
-	  "title": "Mounts",
-	  "text": "The player has pets that aren't familiars, and the amount of pets"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/10diamonds.png"
-	  ],
-	  "border": true,
-	  "title": "Diamonds",
-	  "text": "The player has a fortune active, reversed if the fortune is negative"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/15wither.png"
-	  ],
-	  "border": true,
-	  "title": "Wither",
-	  "text": "The player has a contract with a spirit, and how many contracts"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/16ender_dragon.png"
-	  ],
-	  "border": true,
-	  "title": "Ender Dragon",
-	  "text": "The player has killed at least 100 mobs, and the amount of mobs killed / 100"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/19sun.png"
-	  ],
-	  "border": true,
-	  "title": "Sun",
-	  "text": "The player is blessed, or cursed if reversed"
-	},
-	{
-	  "type": "image",
-	  "images": [
-		"bewitchment:textures/gui/patchouli/tarot/20stronghold.png"
-	  ],
-	  "border": true,
-	  "title": "Stronghold",
-	  "text": "The player has cast a ritual, and the amount cast"
 	}
   ]
 }

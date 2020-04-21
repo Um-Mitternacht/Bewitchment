@@ -30,7 +30,7 @@ public class ClientHandler {
 	@SubscribeEvent
 	public void onTooltipAdd(ItemTooltipEvent event) {
 		Item item = event.getItemStack().getItem();
-		if (item.getRegistryName().getNamespace().equals(Bewitchment.MODID) && !(item instanceof ItemJuniperKey) && !(item instanceof ItemTarotCards) && !(item instanceof ItemGrimoireMagia) && !(item instanceof ItemTaglock) && !(item instanceof ItemWaystone) && !(item instanceof ItemContract)) {
+		if (item.getRegistryName().getNamespace().equals(Bewitchment.MODID) && !(item instanceof ItemJuniperKey) && !(item instanceof ItemGrimoireMagia) && !(item instanceof ItemTaglock) && !(item instanceof ItemWaystone) && !(item instanceof ItemContract)) {
 			String tip = "tooltip." + item.getTranslationKey().substring(5);
 			if (!I18n.format(tip).equals(tip)) event.getToolTip().add(1, I18n.format(tip));
 		}
