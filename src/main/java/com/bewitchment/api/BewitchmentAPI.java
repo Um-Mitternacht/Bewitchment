@@ -3,8 +3,6 @@ package com.bewitchment.api;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.AltarUpgrade;
-import com.bewitchment.common.handler.PoppetHandler;
-import com.bewitchment.common.item.poppet.ItemPoppet;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
