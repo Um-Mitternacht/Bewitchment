@@ -57,6 +57,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setInteger("mobsKilled", instance.mobsKilled);
 		tag.setInteger("ritualDisabledTime", instance.ritualDisabledTime);
 		tag.setInteger("pets", instance.pets);
+		tag.setInteger("poppets", instance.poppets);
 		return tag;
 	}
 	
