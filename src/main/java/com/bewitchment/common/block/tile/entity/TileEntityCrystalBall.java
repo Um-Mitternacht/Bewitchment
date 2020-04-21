@@ -61,7 +61,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	private void sendTarotMsg(EntityPlayer player, UUID uuid) {
 		EntityPlayer tagPlayer = Util.findPlayer(uuid);
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
-		switch (tagPlayer.getRNG().nextInt(12)) {
+		switch (tagPlayer.getRNG().nextInt(7)) {
 			case 0:
 				// Chance for no reveal
 				player.sendStatusMessage(new TextComponentTranslation("tarot.no_tarot", tagPlayer.getDisplayName()), true);
