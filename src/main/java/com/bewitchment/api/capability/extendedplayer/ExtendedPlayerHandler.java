@@ -6,6 +6,7 @@ import com.bewitchment.api.registry.Contract;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.common.item.ItemContract;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.IEntityOwnable;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,6 +16,7 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.AnimalTameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
@@ -120,6 +122,13 @@ public class ExtendedPlayerHandler {
 				player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled++;
 				ExtendedPlayer.syncToClient(player);
 			}
+			if (event.getEntityLiving() instanceof IEntityOwnable) {
+				NBTTagCompound nbt = event.getEntityLiving().serializeNBT();
+				if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
+					// Doesn't work when owner is offline
+					// Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
+				}
+			}
 		}
 	}
 	
@@ -168,6 +177,14 @@ public class ExtendedPlayerHandler {
 					}
 				}
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onMobTamed(AnimalTameEvent event) {
+		if (!event.getEntityLiving().world.isRemote && event.getTamer() instanceof EntityPlayer) {
+			EntityPlayer player = event.getTamer();
+			player.getCapability(ExtendedPlayer.CAPABILITY, null).pets++;
 		}
 	}
 	

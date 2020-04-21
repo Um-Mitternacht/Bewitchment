@@ -3,6 +3,8 @@ package com.bewitchment.api;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.common.handler.PoppetHandler;
+import com.bewitchment.common.item.poppet.ItemPoppet;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
@@ -56,6 +58,22 @@ public class BewitchmentAPI {
 	 */
 	public static boolean isWitch(EntityLivingBase entity) {
 		return !isWitchHunter(entity) && (entity instanceof EntityWitch || (entity instanceof EntityPlayer && Bewitchment.proxy.doesPlayerHaveAdvancement((EntityPlayer) entity, new ResourceLocation(Bewitchment.MODID, "crafted_altar"))));
+	}
+	
+	/**
+	 * @param entity the EntityPlayer to check
+	 * @return false always, has pet check WIP
+	 */
+	public static boolean hasPets(EntityPlayer entity) {
+		return (entity.getCapability(ExtendedPlayer.CAPABILITY, null)).pets > 0;
+	}
+	
+	/**
+	 * @param entity the entity to check
+	 * @return false always, poppets are not currently in the mod
+	 */
+	public static boolean hasPoppets(EntityPlayer entity) {
+		return false;
 	}
 	
 	/**

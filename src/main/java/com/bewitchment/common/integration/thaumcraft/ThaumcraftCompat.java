@@ -60,7 +60,7 @@ public class ThaumcraftCompat implements IConditionFactory {
 			Class.forName("thaumcraft.common.golems.GolemProperties");
 		}
 		catch (Exception ex) {
-			// do something
+			System.out.println("GolemProperties appears to be missing. Please report this issue to the dev of BW, for someone has done something they shouldn't!");
 		}
 	}
 	
