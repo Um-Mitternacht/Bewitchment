@@ -3,7 +3,6 @@ package com.bewitchment.common.handler;
 import com.bewitchment.client.gui.*;
 import com.bewitchment.common.block.tile.container.*;
 import com.bewitchment.common.block.tile.entity.*;
-import com.bewitchment.common.item.ItemTarotCards;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;

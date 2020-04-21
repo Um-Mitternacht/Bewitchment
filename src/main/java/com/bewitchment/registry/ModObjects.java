@@ -268,8 +268,6 @@ public class ModObjects {
 	public static final Block distillery = registerTileEntity(new BlockDistillery(), TileEntityDistillery.class);
 	public static final Block spinning_wheel = registerTileEntity(new BlockSpinningWheel(), TileEntitySpinningWheel.class);
 	public static final Block crystal_ball = registerTileEntity(new BlockCrystalBall(), TileEntityCrystalBall.class);
-	public static final Block tarot_table = registerTileEntity(new BlockTarotTable(), TileEntityTarotTable.class);
-	public static final Item tarot_cards = new ItemTarotCards();
 	public static final Block frostfire = registerTileEntity(new BlockFrostfire(), TileEntityFrostfire.class);
 	public static final Block hellfire = new BlockHellfire();
 	public static final Block brazier = registerTileEntity(new BlockBrazier(), TileEntityBrazier.class);

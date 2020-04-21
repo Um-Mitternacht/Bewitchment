@@ -6,7 +6,6 @@ import com.bewitchment.common.block.BlockWitchesCauldron;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.item.ItemContract;
 import com.bewitchment.common.item.ItemTaglock;
-import com.bewitchment.common.item.ItemTarotCards;
 import com.bewitchment.common.item.ItemWaystone;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.common.item.tool.ItemJuniperKey;
