@@ -57,6 +57,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 		return true;
 	}
 	
+	//Todo: CLEANUP THIS A BIT
 	private void sendTarotMsg(EntityPlayer player, UUID uuid) {
 		EntityPlayer tagPlayer = Util.findPlayer(uuid);
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
