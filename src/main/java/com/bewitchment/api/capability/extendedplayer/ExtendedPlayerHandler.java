@@ -29,7 +29,6 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.List;
-import java.util.UUID;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class ExtendedPlayerHandler {
@@ -127,7 +126,7 @@ public class ExtendedPlayerHandler {
 				NBTTagCompound nbt = event.getEntityLiving().serializeNBT();
 				if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
 					// Doesn't work when owner is offline
-					Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
+					// Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
 				}
 			}
 		}
