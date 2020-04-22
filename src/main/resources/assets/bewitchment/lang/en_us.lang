@@ -715,6 +715,9 @@ tarot.mobkills=%1$s slayed %2$s monster(s).
 tarot.has_boss=%s laughed in the face of danger.
 tarot.no_boss=%s hasn't conquered any great creatures, yet.
 
+tarot.demon_pledged=%s has pledged their soul for eternity to a demon.
+tarot.not_pledged=%s has no affiliation in the black arts.
+
 baphomet.getcontract=You have received %s for 7 days.
 baphomet.lowlevel=Your level is too low
 baphomet.notpledged=You are not pledged to Baphomet!

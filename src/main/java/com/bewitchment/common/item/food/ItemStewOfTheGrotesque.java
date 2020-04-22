@@ -9,9 +9,7 @@ import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -29,11 +27,6 @@ public class ItemStewOfTheGrotesque extends ItemFood {
 		super(8, 1.25f, false);
 		Util.registerItem(this, "stew_of_the_grotesque");
 		setAlwaysEdible();
-	}
-	
-	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-		return new ItemStack(Items.BOWL);
 	}
 	
 	@Override

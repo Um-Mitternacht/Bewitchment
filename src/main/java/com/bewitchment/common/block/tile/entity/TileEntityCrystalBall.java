@@ -3,6 +3,7 @@ package com.bewitchment.common.block.tile.entity;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
@@ -60,7 +61,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	private void sendTarotMsg(EntityPlayer player, UUID uuid) {
 		EntityPlayer tagPlayer = Util.findPlayer(uuid);
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
-		switch (tagPlayer.getRNG().nextInt(7)) {
+		switch (tagPlayer.getRNG().nextInt(8)) {
 			case 0:
 				// Chance for no reveal
 				player.sendStatusMessage(new TextComponentTranslation("tarot.no_tarot", tagPlayer.getDisplayName()), true);
@@ -87,12 +88,12 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 			//TODO: Make this work
 			case 3:
 				// Check if player has protection
-				if (BewitchmentAPI.hasPoppets(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
-				}
-				else {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
-				}
+				//	if (BewitchmentAPI.hasPoppets(tagPlayer)) {
+				//		player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
+				//	}
+				//	else {
+				//		player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
+				//	}
 				break;
 			case 4:
 				// Check if player has non-passive effects on
@@ -112,6 +113,17 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				}
 				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.no_boss", tagPlayer.getDisplayName()), true);
+				}
+				break;
+			case 7:
+				if (ExtendedWorld.playerPledgedToDemon(world, player, "leonard")) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.demon_pledged", tagPlayer.getDisplayName()), true);
+				}
+				else if (ExtendedWorld.playerPledgedToDemon(world, player, "baphomet")) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.demon_pledged", tagPlayer.getDisplayName()), true);
+				}
+				else {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.not_pledged", tagPlayer.getDisplayName()), true);
 				}
 		}
 	}

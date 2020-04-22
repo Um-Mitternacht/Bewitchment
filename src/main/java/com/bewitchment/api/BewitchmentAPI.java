@@ -70,9 +70,6 @@ public class BewitchmentAPI {
 	 * @param entity the entity to check
 	 * @return false always, poppets are not currently in the mod
 	 */
-	public static boolean hasPoppets(EntityPlayer entity) {
-		return (entity.getCapability(ExtendedPlayer.CAPABILITY, null)).poppets > 0;
-	}
 	
 	/**
 	 * @param entity the entity to check

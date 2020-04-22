@@ -33,7 +33,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 	public Fortune fortune;
 	public Map<String, Integer> curses = new HashMap<>(); //curse id-days left
 	public boolean canRitual = true;
-	public int ritualDisabledTime, fortuneTime, ritualsCast, mobsKilled, pets, poppets;
+	public int ritualDisabledTime, fortuneTime, ritualsCast, mobsKilled, pets;
 	
 	public static void syncToClient(EntityPlayer player) {
 		if (!player.world.isRemote) Bewitchment.network.sendTo(new SyncExtendedPlayer(player.getCapability(CAPABILITY, null).serializeNBT()), ((EntityPlayerMP) player));
@@ -57,7 +57,6 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		tag.setInteger("mobsKilled", instance.mobsKilled);
 		tag.setInteger("ritualDisabledTime", instance.ritualDisabledTime);
 		tag.setInteger("pets", instance.pets);
-		tag.setInteger("poppets", instance.poppets);
 		return tag;
 	}
 	
@@ -77,7 +76,6 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
 		instance.mobsKilled = tag.getInteger("mobsKilled");
 		instance.ritualDisabledTime = tag.getInteger("ritualDisabledTime");
 		instance.pets = tag.getInteger("pets");
-		instance.poppets = tag.getInteger("poppets");
 	}
 	
 	@Override
