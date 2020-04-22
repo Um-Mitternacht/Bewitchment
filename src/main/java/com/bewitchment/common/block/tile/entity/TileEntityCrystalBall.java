@@ -3,6 +3,7 @@ package com.bewitchment.common.block.tile.entity;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Fortune;
@@ -87,15 +88,6 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				break;
 			//TODO: Make this work
 			case 3:
-				// Check if player has protection
-				//	if (BewitchmentAPI.hasPoppets(tagPlayer)) {
-				//		player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
-				//	}
-				//	else {
-				//		player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
-				//	}
-				break;
-			case 4:
 				// Check if player has non-passive effects on
 				if (BewitchmentAPI.hasEffects(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.has_effect", tagPlayer.getDisplayName()), true);
@@ -103,11 +95,11 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.no_effect", tagPlayer.getDisplayName()), true);
 				}
-			case 5:
+			case 4:
 				// Display how many mobs the player has killed.
 				player.sendStatusMessage(new TextComponentTranslation("tarot.mobkills", tagPlayer.getDisplayName(), cap.mobsKilled), true);
 				break;
-			case 6:
+			case 5:
 				if (BewitchmentAPI.defeatedBoss(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.has_boss", tagPlayer.getDisplayName()), true);
 				}
@@ -115,7 +107,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.no_boss", tagPlayer.getDisplayName()), true);
 				}
 				break;
-			case 7:
+			case 6:
 				if (ExtendedWorld.playerPledgedToDemon(world, player, "leonard")) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.demon_pledged", tagPlayer.getDisplayName()), true);
 				}
@@ -125,6 +117,14 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_pledged", tagPlayer.getDisplayName()), true);
 				}
+			case 7:
+				if (!cap.getCurses().isEmpty()) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_cursed", tagPlayer.getDisplayName()), true);
+				}
+				else if (cap.getCurses().isEmpty()) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_not_cursed", tagPlayer.getDisplayName()), true);
+				}
+				break;
 		}
 	}
 }
