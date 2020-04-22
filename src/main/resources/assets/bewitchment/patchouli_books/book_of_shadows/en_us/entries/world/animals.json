@@ -69,7 +69,7 @@
 	{
 	  "type": "entity",
 	  "entity": "bewitchment:werewolf",
-	  "scale": 0.75
+	  "scale": 1.0
 	}	
   ]
 }
