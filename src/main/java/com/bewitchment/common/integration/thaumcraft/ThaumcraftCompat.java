@@ -55,7 +55,7 @@ public class ThaumcraftCompat implements IConditionFactory {
 	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	
 	@SubscribeEvent(priority = EventPriority.LOW)
-	public static void registerItemsLater(RegistryEvent.Register<Item> event) {
+	public void registerItemsLater(RegistryEvent.Register<Item> event) {
 		try {
 			Class.forName("thaumcraft.common.golems.GolemProperties");
 		}
