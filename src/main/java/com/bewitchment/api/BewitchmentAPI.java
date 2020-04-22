@@ -68,11 +68,6 @@ public class BewitchmentAPI {
 	
 	/**
 	 * @param entity the entity to check
-	 * @return false always, poppets are not currently in the mod
-	 */
-	
-	/**
-	 * @param entity the entity to check
 	 * @return false always, vampires are not currently in the mod
 	 */
 	public static boolean isVampire(EntityLivingBase entity) {
