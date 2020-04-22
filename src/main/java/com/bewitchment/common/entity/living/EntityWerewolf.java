@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 public class EntityWerewolf extends ModEntityMob {
 	private static final DataParameter<Integer> WEREWOLF_TYPE = EntityDataManager.<Integer>createKey(EntityWerewolf.class, DataSerializers.VARINT);
 	
-	protected EntityWerewolf(World world) {
+	public EntityWerewolf(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/werewolf"));
 		setSize(1.200f, 3.2f);
 		experienceValue = 35;
