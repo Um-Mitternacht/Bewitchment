@@ -5,6 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.entity.spirit.demon.EntityCambion;
 import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.common.entity.spirit.demon.EntityShadowPerson;
 import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
@@ -44,7 +45,7 @@ public class RitualSpiritualRift extends Ritual {
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(11) + 2; i++) {
 				EntityLiving entity;
-				int rand = world.rand.nextInt(11);
+				int rand = world.rand.nextInt(12);
 				if (rand == 0) entity = new EntityVex(world);
 				else if (rand == 1) entity = new EntityBlackDog(world);
 				else if (rand == 2) entity = new EntityGhost(world);
@@ -55,6 +56,7 @@ public class RitualSpiritualRift extends Ritual {
 				else if (rand == 7) entity = new EntityShadowPerson(world);
 				else if (rand == 8) entity = new EntityEnderman(world);
 				else if (rand == 9) entity = new EntityEndermite(world);
+				else if (rand == 10) entity = new EntityCambion(world);
 				else entity = new EntityZombie(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
