@@ -62,7 +62,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY, dependencies = Bewitchment.DEPENDENCIES)
 public class Bewitchment {
 	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.22.0-testbuild16", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
-	public static final String DEPENDENCIES = "after:dynamictrees@[1.12.2-0.9.1e,)";
+	public static final String DEPENDENCIES = "after:dynamictrees@[1.12.2-0.9.1e,);after:thaumcraft@[6.1.BETA26,)";
 	public static final Logger logger = LogManager.getLogger(NAME);
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
 		@Override
@@ -101,6 +101,7 @@ public class Bewitchment {
 		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
 		MinecraftForge.EVENT_BUS.register(new CurseHandler());
 		MinecraftForge.EVENT_BUS.register(new Compat());
+		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new ThaumcraftCompat());
 		if (Loader.isModLoaded("dynamictrees")) MinecraftForge.EVENT_BUS.register(new DynamicTreesCompat());
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 		
@@ -123,7 +124,6 @@ public class Bewitchment {
 		Compat.init();
 		
 		int id = -1;
-		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new ThaumcraftCompat());
 		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
