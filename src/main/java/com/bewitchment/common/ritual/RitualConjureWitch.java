@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
@@ -20,10 +21,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class RitualConjureWitch extends Ritual {
 	public RitualConjureWitch() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_witch"), Arrays.asList(Util.get(ModObjects.athame), Util.get("ingotSilver"), Util.get(ModObjects.pentacle), Util.get(Items.POISONOUS_POTATO)), null, null, 15, 750, 50, BlockGlyph.NORMAL, BlockGlyph.ENDER, BlockGlyph.NORMAL);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_witch"), Arrays.asList(Util.get(ModObjects.athame), Util.get("ingotSilver"), Util.get(ModObjects.pentacle), Util.get(Items.POISONOUS_POTATO)), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 750, 50, BlockGlyph.NORMAL, BlockGlyph.ENDER, BlockGlyph.NORMAL);
 	}
 	
 	@Override

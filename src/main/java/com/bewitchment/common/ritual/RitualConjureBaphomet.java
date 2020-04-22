@@ -11,6 +11,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -18,10 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class RitualConjureBaphomet extends Ritual {
 	public RitualConjureBaphomet() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_baphomet"), Arrays.asList(Util.get(ModObjects.athame), Util.get(ModObjects.demon_heart), Util.get(ModObjects.pentacle), Util.get(ModObjects.bottled_hellfire), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.liquid_witchcraft), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.sanguine_cloth)), s -> s instanceof EntitySheep, null, 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_baphomet"), Arrays.asList(Util.get(ModObjects.athame), Util.get(ModObjects.demon_heart), Util.get(ModObjects.pentacle), Util.get(ModObjects.bottled_hellfire), Util.get(ModObjects.flying_ointment), Util.get(ModObjects.liquid_witchcraft), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.sanguine_cloth)), s -> s instanceof EntitySheep, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override

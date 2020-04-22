@@ -22,10 +22,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class RitualHellmouth extends Ritual {
 	public RitualHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("netherrack"), Util.get(Blocks.MAGMA), Util.get("cropHellebore"), Util.get(ModObjects.snake_venom), Util.get(new ItemStack(Items.COAL, 1, 1))), null, null, 15, 1250, 45, BlockGlyph.NETHER, BlockGlyph.NETHER, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("netherrack"), Util.get(Blocks.MAGMA), Util.get("cropHellebore"), Util.get(ModObjects.snake_venom), Util.get(new ItemStack(Items.COAL, 1, 1))), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1250, 45, BlockGlyph.NETHER, BlockGlyph.NETHER, -1);
 	}
 	
 	@Override

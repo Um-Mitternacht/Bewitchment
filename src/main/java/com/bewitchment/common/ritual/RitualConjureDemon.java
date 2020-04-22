@@ -13,6 +13,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -20,10 +21,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class RitualConjureDemon extends Ritual {
 	public RitualConjureDemon() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_demon"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.ROTTEN_FLESH), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.bottle_of_blood), Util.get("gemDiamond"), Util.get("ingotGold")), s -> s instanceof EntityVillager || s instanceof EntityPlayer, null, 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_demon"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.ROTTEN_FLESH), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.bottle_of_blood), Util.get("gemDiamond"), Util.get("ingotGold")), s -> s instanceof EntityVillager || s instanceof EntityPlayer, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override

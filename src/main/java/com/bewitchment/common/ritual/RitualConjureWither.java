@@ -20,10 +20,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class RitualConjureWither extends Ritual {
 	public RitualConjureWither() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_wither"), Arrays.asList(Util.get(ModObjects.athame), Util.get(new ItemStack(Items.SKULL, 1, 1)), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get(ModObjects.ectoplasm)), null, null, 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_wither"), Arrays.asList(Util.get(ModObjects.athame), Util.get(new ItemStack(Items.SKULL, 1, 1)), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get(ModObjects.ectoplasm)), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override

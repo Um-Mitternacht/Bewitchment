@@ -11,6 +11,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -18,10 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class RitualConjureImp extends Ritual {
 	public RitualConjureImp() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_imp"), Arrays.asList(Util.get(ModObjects.athame), Util.get("ingotGold"), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn)), s -> s instanceof EntityChicken, null, 15, 825, 66, BlockGlyph.NETHER, BlockGlyph.ANY, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_imp"), Arrays.asList(Util.get(ModObjects.athame), Util.get("ingotGold"), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn)), s -> s instanceof EntityChicken, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 825, 66, BlockGlyph.NETHER, BlockGlyph.ANY, BlockGlyph.NETHER);
 	}
 	
 	@Override

@@ -14,6 +14,7 @@ import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -21,10 +22,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class RitualGreaterHellmouth extends Ritual {
 	public RitualGreaterHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.bottle_of_blood), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, null, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.bottle_of_blood), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override
