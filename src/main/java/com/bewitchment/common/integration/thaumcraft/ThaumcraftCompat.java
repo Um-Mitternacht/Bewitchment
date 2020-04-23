@@ -54,16 +54,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 	public static final EnumGolemTrait UNCANNY = EnumHelper.addEnum(EnumGolemTrait.class, "UNCANNY", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_uncanny.png"));
 	public static final EnumGolemTrait BLESSED = EnumHelper.addEnum(EnumGolemTrait.class, "BLESSED", new Class[]{ResourceLocation.class}, new ResourceLocation(Bewitchment.MODID, "textures/thaumcraft/golems/tag_blessed.png"));
 	
-	@SubscribeEvent(priority = EventPriority.LOW)
-	public void registerItemsLater(RegistryEvent.Register<Item> event) {
-		try {
-			Class.forName("thaumcraft.common.golems.GolemProperties");
-		}
-		catch (Exception ex) {
-			System.out.println("GolemProperties appears to be missing. Please report this issue to the dev of BW, for someone has done something they shouldn't!");
-		}
-	}
-	
 	public static void init() {
 		ThaumcraftApi.registerResearchLocation(new ResourceLocation(Bewitchment.MODID, "tc/research/bewitchment"));
 		ScanningManager.addScannableThing(new ScanOreDictionary("f_MATCOLDIRON", new String[]{"ingotColdIron", "blockColdIron", "nuggetColdIron", "plateColdIron", "dustColdIron"}));
@@ -74,7 +64,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 		GolemMaterial.register(new GolemMaterial("SILVER", new String[]{"MATSTUDSILVER"}, new ResourceLocation("bewitchment", "textures/entity/silvergolem.png"), 10922156, 14, 3, 2, new ItemStack(ModObjects.silver_plate), new ItemStack(ItemsTC.mechanismSimple), new EnumGolemTrait[]{EnumGolemTrait.LIGHT, BLESSED}));
 		
 	}
-	
 	
 	private static Aspect getOrCreateAspect(String tag, int color, Aspect[] components, ResourceLocation image) {
 		Aspect a = Aspect.getAspect(tag);
@@ -92,6 +81,16 @@ public class ThaumcraftCompat implements IConditionFactory {
 	
 	public static boolean isDragonsBloodGolem(EntityLivingBase golem) {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
+	}
+	
+	@SubscribeEvent(priority = EventPriority.LOW)
+	public void registerItemsLater(RegistryEvent.Register<Item> event) {
+		try {
+			Class.forName("thaumcraft.common.golems.GolemProperties");
+		}
+		catch (Exception ex) {
+			System.out.println("GolemProperties appears to be missing. Please report this issue to the dev of BW, for someone has done something they shouldn't!");
+		}
 	}
 	
 	//Todo: Apply slowness to all mobs attacked by this + make mobs flee it's presence.
