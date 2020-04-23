@@ -841,6 +841,8 @@ advancements.bewitchment.fda.title=Not FDA Approved
 advancements.bewitchment.fda.description=Craft flying ointment
 advancements.bewitchment.broom.title=Take Flight
 advancements.bewitchment.broom.description=Craft any broom
+advancements.bewitchment.gaze.title=Gaze no more in the bitter glass
+advancements.bewitchment.gaze.description=Craft a crystall ball
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s

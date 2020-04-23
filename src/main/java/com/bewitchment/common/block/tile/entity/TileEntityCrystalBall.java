@@ -8,8 +8,13 @@ import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
+import com.bewitchment.common.handler.PoppetHandler;
 import com.bewitchment.common.item.ItemTaglock;
+import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -62,7 +67,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	private void sendTarotMsg(EntityPlayer player, UUID uuid) {
 		EntityPlayer tagPlayer = Util.findPlayer(uuid);
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
-		switch (tagPlayer.getRNG().nextInt(8)) {
+		switch (tagPlayer.getRNG().nextInt(9)) {
 			case 0:
 				// Chance for no reveal
 				player.sendStatusMessage(new TextComponentTranslation("tarot.no_tarot", tagPlayer.getDisplayName()), true);
@@ -124,6 +129,14 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				}
 				else if (cap.getCurses().isEmpty()) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_not_cursed", tagPlayer.getDisplayName()), true);
+				}
+				break;
+			case 8:
+				 if (tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
+				}
+				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
 				}
 				break;
 		}
