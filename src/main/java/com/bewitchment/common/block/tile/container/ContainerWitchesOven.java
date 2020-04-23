@@ -3,6 +3,7 @@ package com.bewitchment.common.block.tile.container;
 import com.bewitchment.common.block.tile.container.util.ModContainer;
 import com.bewitchment.common.block.tile.container.util.ModSlot;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
+
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.util.EnumFacing;
@@ -21,11 +22,11 @@ public class ContainerWitchesOven extends ModContainer {
 		IItemHandler up = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 		IItemHandler down = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 		int ui = 0, di = 0;
-		addSlotToContainer(new ModSlot(up, ui++, 44, 55));
-		addSlotToContainer(new ModSlot(up, ui++, 80, 55));
-		addSlotToContainer(new ModSlot(up, ui++, 44, 19));
-		addSlotToContainer(new ModSlot(down, di++, 116, 19));
-		addSlotToContainer(new ModSlot(down, di++, 116, 55));
+		addSlotToContainer(new ModSlot(up, ui++, 44, 55)); //fuel
+		addSlotToContainer(new ModSlot(up, ui++, 80, 55)); //jars
+		addSlotToContainer(new ModSlot(up, ui++, 44, 19)); //input
+		addSlotToContainer(new ModSlot(down, di++, 116, 19)); //output
+		addSlotToContainer(new ModSlot(down, di++, 116, 55)); //fume output
 		addPlayerSlots(inventory);
 	}
 	
