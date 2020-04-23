@@ -132,10 +132,19 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				if (tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
 				}
+				else if (tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("odinRing")))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
+				}
 				else if (tagPlayer.inventory.hasItemStack(new ItemStack(Items.TOTEM_OF_UNDYING))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
 				}
 				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
+				}
+				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("odinRing")))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
+				}
+				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Items.TOTEM_OF_UNDYING))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
 				}
 				break;
