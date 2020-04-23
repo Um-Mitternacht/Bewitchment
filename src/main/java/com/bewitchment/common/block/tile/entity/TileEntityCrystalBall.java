@@ -117,6 +117,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_pledged", tagPlayer.getDisplayName()), true);
 				}
+				break;
 			case 7:
 				if (!cap.getCurses().isEmpty()) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_cursed", tagPlayer.getDisplayName()), true);
