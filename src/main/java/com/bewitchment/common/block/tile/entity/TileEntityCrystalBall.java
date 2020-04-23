@@ -9,6 +9,7 @@ import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.common.block.tile.entity.util.TileEntityAltarStorage;
 import com.bewitchment.common.item.ItemTaglock;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -129,6 +130,9 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				break;
 			case 8:
 				if (tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
+				}
+				else if (tagPlayer.inventory.hasItemStack(new ItemStack(Items.TOTEM_OF_UNDYING))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
 				}
 				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
