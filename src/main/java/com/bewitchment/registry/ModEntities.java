@@ -50,6 +50,8 @@ public class ModEntities {
 	public static final EntityEntry demoness = createEntityEntry(EntityDemoness.class, "demoness", 0x555555, 0xed2939);
 	public static final EntityEntry imp = createEntityEntry(EntityImp.class, "imp", 0x555555, 0xed2939);
 	
+	public static final EntityEntry bafometyr = createEntityEntry(EntityBafometyr.class, "bafometyr", 0x000000, 0x000000);
+	
 	public static final EntityEntry shadow_person = createEntityEntry(EntityShadowPerson.class, "shadow_person", 0x000000, 0x000000);
 	
 	public static final EntityEntry cambion = createEntityEntry(EntityCambion.class, "cambion", 0xC41E3A, 0x483C32);

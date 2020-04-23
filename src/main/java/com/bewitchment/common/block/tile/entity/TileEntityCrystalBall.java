@@ -128,6 +128,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_not_cursed", tagPlayer.getDisplayName()), true);
 				}
 				break;
+				//TODO: Look in bauble inventories too
 			case 8:
 				if (tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
@@ -138,6 +139,9 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				else if (tagPlayer.inventory.hasItemStack(new ItemStack(Items.TOTEM_OF_UNDYING))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
 				}
+				if (tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("totem_" + "")))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);
+				}
 				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
 				}
@@ -145,6 +149,9 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
 				}
 				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Items.TOTEM_OF_UNDYING))) {
+					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
+				}
+				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("totem_" + "")))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
 				}
 				break;

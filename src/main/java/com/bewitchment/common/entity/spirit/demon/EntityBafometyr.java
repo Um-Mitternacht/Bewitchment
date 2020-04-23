@@ -1,7 +1,9 @@
 package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -23,5 +25,10 @@ public class EntityBafometyr extends ModEntityMob {
 	@Override
 	protected boolean isValidLightLevel() {
 		return true;
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 }
