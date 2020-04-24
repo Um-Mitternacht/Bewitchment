@@ -8,6 +8,7 @@ import com.bewitchment.common.item.ItemContract;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityOwnable;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,6 +30,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.List;
+import java.util.UUID;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class ExtendedPlayerHandler {
@@ -122,11 +124,15 @@ public class ExtendedPlayerHandler {
 				player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled++;
 				ExtendedPlayer.syncToClient(player);
 			}
+			if (event.getEntityLiving() instanceof EntityPlayer || event.getEntityLiving() instanceof EntityVillager) {
+				player.getCapability(ExtendedPlayer.CAPABILITY, null).peopleKilled++;
+				ExtendedPlayer.syncToClient(player);
+			}
 			if (event.getEntityLiving() instanceof IEntityOwnable) {
 				NBTTagCompound nbt = event.getEntityLiving().serializeNBT();
 				if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
 					// Doesn't work when owner is offline
-					// Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
+					 Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
 				}
 			}
 		}
