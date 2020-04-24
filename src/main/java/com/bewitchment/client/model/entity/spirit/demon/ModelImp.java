@@ -373,6 +373,8 @@ public class ModelImp extends ModelBiped {
 		
 		tail00.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
 		this.tail01.rotateAngleZ = (float) Math.cos(ageInTicks * (mul + 0.06F) + add) / div + 0F;
+		this.leftWing00.rotateAngleZ = (float) Math.cos(ageInTicks * (mul + 0.06F) + add) / div + 0F;
+		this.rightWing00.rotateAngleZ = -(float) Math.cos(ageInTicks * (mul + 0.06F) + add) / div + 0F;
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	

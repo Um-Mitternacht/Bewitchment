@@ -316,6 +316,8 @@ public class ModelDemon extends ModelBiped {
 		
 		tail01.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
 		this.tail01.rotateAngleZ = (float) Math.cos(ageInTicks * (mul + 0.06F) + add) / div + 0F;
+		this.lWing01.rotateAngleZ = (float) Math.cos(ageInTicks * (mul + 0.06F) + add) / div + 0F;
+		this.rWing01.rotateAngleZ = -(float) Math.cos(ageInTicks * (mul + 0.06F) + add) / div + 0F;
 		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	
