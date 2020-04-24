@@ -253,6 +253,7 @@ item.bewitchment.cleaver_sword.name=Cleaver Blade
 
 item.bewitchment.garlic_grilled.name=Grilled Garlic
 item.bewitchment.elderberry_jelly.name=Elderberry Jelly
+item.bewitchment.juniper_tea.name=Juniper Tea
 
 tooltip.bewitchment.silver_armor_description.name=Protects against undead
 tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
