@@ -52,6 +52,7 @@ public class BlockHellfire extends BlockFire {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public EnumPushReaction getPushReaction(IBlockState state) {
 		return EnumPushReaction.DESTROY;

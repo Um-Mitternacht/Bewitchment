@@ -2,6 +2,7 @@ package com.bewitchment.common.block.plants;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -50,6 +51,11 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 			if (te.isBound()) world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX(), pos.getY() + 0.5, pos.getZ(), 0, 0, 0);
 		}
 		super.randomDisplayTick(state, world, pos, rand);
+	}
+	
+	public Block.EnumOffsetType getOffsetType()
+	{
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override
