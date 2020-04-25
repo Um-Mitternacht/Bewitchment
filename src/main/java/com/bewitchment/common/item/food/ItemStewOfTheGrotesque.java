@@ -10,6 +10,7 @@ import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -32,6 +33,7 @@ public class ItemStewOfTheGrotesque extends ItemFood {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
+		player.addItemStackToInventory(new ItemStack(Items.BOWL));
 		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 750, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 750, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 750, 3));
