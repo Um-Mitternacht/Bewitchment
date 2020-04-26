@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.util.ModBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
@@ -23,6 +24,11 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	protected BlockCandleBase(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level) {
 		super(name, mat, sound, hardness, resistance, tool, level);
 		setLightOpacity(0);
+	}
+	
+	public Block.EnumOffsetType getOffsetType()
+	{
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override

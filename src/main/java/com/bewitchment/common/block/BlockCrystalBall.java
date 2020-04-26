@@ -2,6 +2,7 @@ package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.tile.entity.TileEntityCrystalBall;
 import com.bewitchment.common.block.util.ModBlockContainer;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -32,6 +33,11 @@ public class BlockCrystalBall extends ModBlockContainer {
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return BOX;
+	}
+	
+	public Block.EnumOffsetType getOffsetType()
+	{
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override

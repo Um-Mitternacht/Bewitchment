@@ -1,6 +1,7 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.util.ModBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
@@ -72,6 +73,11 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+	
+	public Block.EnumOffsetType getOffsetType()
+	{
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override
