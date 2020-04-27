@@ -53,11 +53,6 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 		super.randomDisplayTick(state, world, pos, rand);
 	}
 	
-	public Block.EnumOffsetType getOffsetType()
-	{
-		return Block.EnumOffsetType.XZ;
-	}
-	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (worldIn.getTileEntity(pos) instanceof TileEntitySiphoningFlower) return ((TileEntitySiphoningFlower) worldIn.getTileEntity(pos)).activate(worldIn, pos, playerIn, hand, facing);
@@ -86,6 +81,10 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 			te.markDirty();
 		}
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
+	}
+	
+	public Block.EnumOffsetType getOffsetType() {
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override

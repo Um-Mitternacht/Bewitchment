@@ -59,11 +59,6 @@ public class BlockPlacedItem extends ModBlockContainer {
 		return BOX;
 	}
 	
-	public Block.EnumOffsetType getOffsetType()
-	{
-		return Block.EnumOffsetType.XZ;
-	}
-	
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) {
@@ -90,6 +85,10 @@ public class BlockPlacedItem extends ModBlockContainer {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, BlockHorizontal.FACING);
+	}
+	
+	public Block.EnumOffsetType getOffsetType() {
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override

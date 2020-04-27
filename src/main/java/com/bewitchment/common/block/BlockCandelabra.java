@@ -75,11 +75,6 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 		return BlockFaceShape.UNDEFINED;
 	}
 	
-	public Block.EnumOffsetType getOffsetType()
-	{
-		return Block.EnumOffsetType.XZ;
-	}
-	
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (!world.getBlockState(pos.down()).getBlock().canPlaceTorchOnTop(world.getBlockState(pos.down()), world, pos)) world.destroyBlock(pos, true);
@@ -104,6 +99,10 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, LIT);
+	}
+	
+	public Block.EnumOffsetType getOffsetType() {
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	public float getEnchantPowerBonus(World world, BlockPos pos) {

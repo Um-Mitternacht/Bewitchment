@@ -132,7 +132,7 @@ public class ExtendedPlayerHandler {
 				NBTTagCompound nbt = event.getEntityLiving().serializeNBT();
 				if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
 					// Doesn't work when owner is offline
-					 Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
+					Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
 				}
 			}
 		}

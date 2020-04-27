@@ -128,7 +128,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_not_cursed", tagPlayer.getDisplayName()), true);
 				}
 				break;
-				//TODO: Look in bauble inventories too
+			//TODO: Look in bauble inventories too
 			case 8:
 				if (tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("poppet_" + "")))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_protected", tagPlayer.getDisplayName()), true);

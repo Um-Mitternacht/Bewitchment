@@ -28,11 +28,6 @@ public class BlockGoblet extends ModBlock {
 		this.filled = filled;
 	}
 	
-	public Block.EnumOffsetType getOffsetType()
-	{
-		return Block.EnumOffsetType.XZ;
-	}
-	
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
@@ -71,6 +66,10 @@ public class BlockGoblet extends ModBlock {
 	@Override
 	public boolean canProvidePower(IBlockState state) {
 		return filled;
+	}
+	
+	public Block.EnumOffsetType getOffsetType() {
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override

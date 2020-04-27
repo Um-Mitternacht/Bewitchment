@@ -26,11 +26,6 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 		setLightOpacity(0);
 	}
 	
-	public Block.EnumOffsetType getOffsetType()
-	{
-		return Block.EnumOffsetType.XZ;
-	}
-	
 	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
@@ -62,6 +57,10 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, LIT);
+	}
+	
+	public Block.EnumOffsetType getOffsetType() {
+		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override

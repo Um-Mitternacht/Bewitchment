@@ -62,7 +62,7 @@ repositories {
     }
     maven {
         url = "http://minecraft.curseforge.com/api/maven/"
-    }	
+    }
 }
 
 configurations {
