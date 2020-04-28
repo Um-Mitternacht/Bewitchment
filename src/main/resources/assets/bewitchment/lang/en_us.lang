@@ -734,6 +734,7 @@ ritual.precondition.empty=Something's wrong
 ritual.precondition.no_day=This ritual cannot be cast during the day
 ritual.precondition.no_night=This ritual cannot be cast during the night
 ritual.precondition.no_rain=This ritual cannot be cast while raining
+ritual.precondition.rain=This ritual cannot be cast while it is not raining
 ritual.precondition.drawing=No valid off-hand chalk found, or no space found
 ritual.precondition.sacrifice=A valid sacrifice is require to start this ritual
 ritual.precondition.invalid_location=No target location found
@@ -775,6 +776,7 @@ ritual.bewitchment.spiritual_rift=Rite of the Spiritual Rift
 ritual.bewitchment.lesser_curse_cleansing=Rite of Lesser Curse Cleansing
 ritual.bewitchment.greater_curse_cleansing=Rite of Greater Curse Cleansing
 ritual.bewitchment.biome_shift=Rite of Shifting Seasons
+ritual.bewitchment.drought=Ritual of the Parched Sands
 
 #INFO
 itemGroup.bewitchment=Bewitchment
