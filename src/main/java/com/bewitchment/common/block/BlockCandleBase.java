@@ -1,7 +1,6 @@
 package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.util.ModBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
@@ -57,10 +56,6 @@ public abstract class BlockCandleBase extends ModBlock implements IInfusionStabi
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, LIT);
-	}
-	
-	public Block.EnumOffsetType getOffsetType() {
-		return Block.EnumOffsetType.XZ;
 	}
 	
 	@Override

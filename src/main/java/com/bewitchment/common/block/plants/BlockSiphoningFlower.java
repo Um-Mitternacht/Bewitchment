@@ -20,8 +20,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -71,6 +73,13 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 			}
 		}
 		super.onEntityCollision(world, pos, state, entity);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+	{
+		return super.getBoundingBox(state, source, pos).offset(state.getOffset(source, pos));
 	}
 	
 	@Override
