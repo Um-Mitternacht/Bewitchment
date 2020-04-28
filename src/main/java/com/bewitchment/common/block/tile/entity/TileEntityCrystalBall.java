@@ -156,7 +156,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				}
 				break;
 			case 9:
-				// Display how many villagers or other players the player has killed.
+				// Display how many villagers or other players the player in question has killed.
 				player.sendStatusMessage(new TextComponentTranslation("tarot.bloodshed", tagPlayer.getDisplayName(), cap.peopleKilled), true);
 				break;
 		}

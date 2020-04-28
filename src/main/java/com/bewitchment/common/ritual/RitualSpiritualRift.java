@@ -43,7 +43,7 @@ public class RitualSpiritualRift extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
-			for (int i = 0; i < world.rand.nextInt(11) + 2; i++) {
+			for (int i = 0; i < world.rand.nextInt(12) + 2; i++) {
 				EntityLiving entity;
 				int rand = world.rand.nextInt(12);
 				if (rand == 0) entity = new EntityVex(world);

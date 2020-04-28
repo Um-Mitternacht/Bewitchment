@@ -5,6 +5,8 @@ import com.bewitchment.Util;
 import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.common.entity.spirit.demon.EntityBafometyr;
+import com.bewitchment.common.entity.spirit.demon.EntityCleaver;
 import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -43,9 +45,14 @@ public class RitualGreaterHellmouth extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
-			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
+			for (int i = 0; i < world.rand.nextInt(5) + 1; i++) {
 				EntityLiving entity;
-				entity = world.rand.nextBoolean() ? new EntityHellhound(world) : world.rand.nextBoolean() ? new EntityWitherSkeleton(world) : new EntityGhast(world);
+				int rand = world.rand.nextInt(5);
+				if (rand == 0) entity = new EntityWitherSkeleton(world);
+				else if (rand == 1) entity = new EntityHellhound(world);
+				else if (rand == 2) entity = new EntityBafometyr(world);
+				else if (rand == 3) entity = new EntityCleaver(world);
+				else entity = new EntityGhast(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
 				for (int j = 0; j < 16; j++) {
