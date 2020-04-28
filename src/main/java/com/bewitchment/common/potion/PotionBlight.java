@@ -52,8 +52,8 @@ public class PotionBlight extends ModPotion {
 			if (!ForgeEventFactory.onPlayerBlockPlace(thrower, new BlockSnapshot(world, pos0, world.getBlockState(pos0)), EnumFacing.fromAngle(thrower.rotationYaw), thrower.getActiveHand()).isCanceled()) {
 				if (world.rand.nextInt(3) == 0) {
 					Block block = world.getBlockState(pos0).getBlock();
-					if (block instanceof BlockGrass || block instanceof BlockDirt || block instanceof BlockMycelium) {
-						world.setBlockState(pos0, Blocks.DIRT.getDefaultState());
+					if (block instanceof BlockGrass || block instanceof BlockDirt || block instanceof BlockMycelium || block instanceof BlockFarmland) {
+						world.setBlockState(pos0, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
 						flag = true;
 					}
 					else if (block instanceof BlockLeaves || block instanceof IGrowable) {

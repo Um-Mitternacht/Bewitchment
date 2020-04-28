@@ -73,6 +73,10 @@ public class PotionIceworld extends ModPotion {
 						world.setBlockState(pos0, ModObjects.perpetual_ice_fence.getDefaultState());
 						flag = true;
 					}
+					else if (block instanceof BlockWall) {
+						world.setBlockState(pos0, ModObjects.embittered_brick_wall.getDefaultState());
+						flag = true;
+					}
 					else if (block instanceof BlockLeaves) {
 						world.setBlockState(pos0, ModObjects.perpetual_ice.getDefaultState());
 						flag = true;

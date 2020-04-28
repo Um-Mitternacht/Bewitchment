@@ -98,6 +98,10 @@ public class PotionCitrinitas extends ModPotion {
 						world.setBlockState(pos0, ModObjects.despair_brick_stairs.getDefaultState());
 						flag = true;
 					}
+					else if (block == Blocks.COBBLESTONE_WALL) {
+						world.setBlockState(pos0, ModObjects.despair_brick_wall.getDefaultState());
+						flag = true;
+					}
 					else if (block == Blocks.STONE_SLAB2) {
 						world.setBlockState(pos0, Blocks.STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.SAND).withProperty(BlockSlab.HALF, world.getBlockState(pos0).getValue(BlockSlab.HALF)));
 						flag = true;

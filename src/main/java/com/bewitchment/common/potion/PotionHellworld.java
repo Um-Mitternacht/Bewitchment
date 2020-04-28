@@ -83,6 +83,26 @@ public class PotionHellworld extends ModPotion {
 						world.setBlockState(pos0, Blocks.BONE_BLOCK.getDefaultState());
 						flag = true;
 					}
+					else if (block == ModObjects.despair_bricks) {
+						world.setBlockState(pos0, ModObjects.ochre_despair_bricks.getDefaultState());
+						flag = true;
+					}
+					else if (block == ModObjects.despair_brick_stairs) {
+						world.setBlockState(pos0, ModObjects.ochre_despair_brick_stairs.getDefaultState());
+						flag = true;
+					}
+					else if (block == ModObjects.despair_brick_wall) {
+						world.setBlockState(pos0, ModObjects.ochre_despair_brick_wall.getDefaultState());
+						flag = true;
+					}
+					else if (block == Blocks.COBBLESTONE_WALL) {
+						world.setBlockState(pos0, ModObjects.scorned_brick_wall.getDefaultState());
+						flag = true;
+					}
+					else if (block == ModObjects.embittered_brick_fence) {
+						world.setBlockState(pos0, ModObjects.scorned_brick_fence.getDefaultState());
+						flag = true;
+					}
 					else if (block instanceof BlockLeaves) {
 						world.setBlockState(pos0, Blocks.NETHER_WART_BLOCK.getDefaultState());
 						flag = true;
