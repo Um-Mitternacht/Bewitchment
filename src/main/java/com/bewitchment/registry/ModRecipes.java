@@ -573,6 +573,7 @@ public class ModRecipes {
 		ritualRecipes.add(new RitualHighMoon());
 		ritualRecipes.add(new RitualSandsOfTime());
 		ritualRecipes.add(new RitualDeluge());
+		ritualRecipes.add(new RitualDrought());
 		ritualRecipes.add(new RitualTeleport());
 		ritualRecipes.add(new RitualPerception());
 		ritualRecipes.add(new RitualHungryFlames());

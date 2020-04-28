@@ -46,6 +46,15 @@
 	{
 	  "type": "bewitchment:ritual",
 	  "recipe": "bewitchment:deluge"
-	}
+	},
+	{
+	  "type": "text",
+	  "title": "Drought",
+	  "text": "Stops any rain"
+	},
+	{
+	  "type": "bewitchment:ritual",
+	  "recipe": "bewitchment:drought"
+	}	
   ]
 }
