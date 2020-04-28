@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirit.ghost;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.common.block.BlockCandelabra;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,6 +38,9 @@ public class EntityGhost extends ModEntityMob {
 	private boolean isSaltNearTarget(World world, BlockPos pos) {
 		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -16, -4), pos.add(4, 16, 4))) {
 			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier) return true;
+		}
+		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -16, -4), pos.add(4, 16, 4))) {
+			if (world.getBlockState(current).getBlock() instanceof BlockCandelabra) return true;
 		}
 		return false;
 	}
