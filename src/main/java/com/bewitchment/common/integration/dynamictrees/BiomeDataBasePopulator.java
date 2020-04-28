@@ -39,11 +39,11 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 		//BiomePropertySelectors.RandomSpeciesSelector bothSelector = oliveWeight != 0 && ironWeight != 0 ? (new BiomePropertySelectors.RandomSpeciesSelector()).add(1000 - (oliveWeight + ironWeight)).add(olive, oliveWeight).add(ironwood, ironWeight) : null;
 		
 		Biome.REGISTRY.forEach(b -> {
-			boolean cypressSplice = cypressSelector != null && (BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY)));
-			boolean elderSplice = elderSelector != null && BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType(b, BiomeDictionary.Type.COLD);
-			boolean juniperSplice = juniperSelector != null && (BiomeDictionary.hasType(b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL));
+			boolean cypressSplice = cypressSelector != null && (BiomeDictionary.hasType((Biome) b, BiomeDictionary.Type.FOREST) && (BiomeDictionary.hasType((Biome) b, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType((Biome) b, BiomeDictionary.Type.SPOOKY)));
+			boolean elderSplice = elderSelector != null && BiomeDictionary.hasType((Biome) b, BiomeDictionary.Type.FOREST) && !BiomeDictionary.hasType((Biome) b, BiomeDictionary.Type.COLD);
+			boolean juniperSplice = juniperSelector != null && (BiomeDictionary.hasType((Biome) b, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType((Biome) b, BiomeDictionary.Type.MAGICAL));
 			if (cypressSplice || elderSplice || juniperSplice) {
-				dbase.setSpeciesSelector(b, cypressSplice ? cypressSelector : elderSplice ? elderSelector : juniperSelector, BiomeDataBase.Operation.SPLICE_BEFORE);
+				dbase.setSpeciesSelector((Biome) b, cypressSplice ? cypressSelector : elderSplice ? elderSelector : juniperSelector, BiomeDataBase.Operation.SPLICE_BEFORE);
 			}
 		});
 	}

@@ -5,6 +5,7 @@ import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.common.block.BlockWitchesOven;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.registry.ModObjects;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -32,9 +33,17 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	public int burnTime, fuelBurnTime, progress;
 	private OvenRecipe recipe;
 	private final ItemStackHandler inventory_up = new ItemStackHandler(3) {
+		
 		@Override
-		public boolean isItemValid(int index, ItemStack stack) {
-			return index == 0 ? TileEntityFurnace.isItemFuel(stack) : index != 1 || stack.getItem() == ModObjects.empty_jar;
+		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+			return this.isItemValid(slot, stack) ? super.insertItem(slot, stack, simulate) : stack;
+		}
+		
+		@Override
+		public boolean isItemValid(int slot, ItemStack stack) {
+			return ((slot == 0 ? TileEntityFurnace.isItemFuel(stack) : slot == 2) 
+					|| (slot == 1 ? stack.getItem() == ModObjects.empty_jar : slot == 2))  && 
+					(getStackInSlot(slot).isEmpty() || Util.canMerge(stack, getStackInSlot(slot)));
 		}
 		
 		@Override
