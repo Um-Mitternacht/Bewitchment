@@ -57,6 +57,26 @@ public class PotionSporeCloud extends ModPotion {
 						world.setBlockState(pos0, ModObjects.mossy_scorned_bricks.getDefaultState());
 						flag = true;
 					}
+					else if (block == ModObjects.scorned_brick_fence) {
+						world.setBlockState(pos0, ModObjects.mossy_scorned_brick_fence.getDefaultState());
+						flag = true;
+					}
+					else if (block == ModObjects.scorned_brick_stairs) {
+						world.setBlockState(pos0, ModObjects.mossy_scorned_brick_stairs.getDefaultState());
+						flag = true;
+					}
+					else if (block == ModObjects.scorned_brick_wall) {
+						world.setBlockState(pos0, ModObjects.mossy_scorned_brick_wall.getDefaultState());
+						flag = true;
+					}
+					else if (block == ModObjects.scorned_bricks_slab.double_slab) {
+						world.setBlockState(pos0, ModObjects.mossy_scorned_brick_slab.double_slab.getDefaultState());
+						flag = true;
+					}
+					else if (block == ModObjects.scorned_bricks_slab) {
+						world.setBlockState(pos0, ModObjects.mossy_scorned_brick_slab.getDefaultState().withProperty(BlockSlab.HALF, world.getBlockState(pos0).getValue(BlockSlab.HALF)));
+						flag = true;
+					}
 					else if (block instanceof BlockTallGrass) {
 						world.setBlockState(pos0, Blocks.TALLGRASS.getDefaultState().withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.FERN));
 						flag = true;

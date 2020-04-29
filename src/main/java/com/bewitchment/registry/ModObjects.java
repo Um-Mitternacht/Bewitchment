@@ -136,12 +136,12 @@ public class ModObjects {
 	public static final Block nethersteel_stairs = new ModBlockStairs("nethersteel_stairs", nethersteel[0]);
 	public static final Block coquina_stairs = new ModBlockStairs("coquina_stairs", coquina[0]);
 	
-	public static final Block coquina_slab = new ModBlockSlab("coquina_slab", coquina[0]);
-	public static final Block nethersteel_slab = new ModBlockSlab("nethersteel_slab", nethersteel[0]);
-	public static final Block mossy_scorned_brick_slab = new ModBlockSlab("mossy_scorned_brick_slab", mossy_scorned_bricks);
-	public static final Block crying_scorned_brick_slab = new ModBlockSlab("crying_scorned_brick_slab", crying_scorned_bricks);
-	public static final Block despair_brick_slab = new ModBlockSlab("despair_brick_slab", despair_bricks);
-	public static final Block ochre_despair_brick_slab = new ModBlockSlab("ochre_despair_brick_slab", ochre_despair_bricks);
+	public static final ModBlockSlab coquina_slab = new ModBlockSlab("coquina_slab", coquina[0]);
+	public static final ModBlockSlab nethersteel_slab = new ModBlockSlab("nethersteel_slab", nethersteel[0]);
+	public static final ModBlockSlab mossy_scorned_brick_slab = new ModBlockSlab("mossy_scorned_brick_slab", mossy_scorned_bricks);
+	public static final ModBlockSlab crying_scorned_brick_slab = new ModBlockSlab("crying_scorned_brick_slab", crying_scorned_bricks);
+	public static final ModBlockSlab despair_brick_slab = new ModBlockSlab("despair_brick_slab", despair_bricks);
+	public static final ModBlockSlab ochre_despair_brick_slab = new ModBlockSlab("ochre_despair_brick_slab", ochre_despair_bricks);
 	
 	public static final Block coquina_wall = new ModBlockWall("coquina_wall", coquina[0]);
 	public static final Block scorned_brick_wall = new ModBlockWall("scorned_brick_wall", scorned_bricks[0]);
