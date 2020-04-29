@@ -2,6 +2,7 @@ package com.bewitchment.common.potion;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.potion.util.ModPotion;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -50,6 +51,10 @@ public class PotionSporeCloud extends ModPotion {
 					}
 					else if (block == Blocks.STONEBRICK) {
 						world.setBlockState(pos0, Blocks.STONEBRICK.getDefaultState().withProperty(BlockStoneBrick.VARIANT, BlockStoneBrick.EnumType.MOSSY));
+						flag = true;
+					}
+					else if (block == ModObjects.scorned_bricks[0]) {
+						world.setBlockState(pos0, ModObjects.mossy_scorned_bricks.getDefaultState());
 						flag = true;
 					}
 					else if (block instanceof BlockTallGrass) {
