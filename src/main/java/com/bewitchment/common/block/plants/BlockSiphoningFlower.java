@@ -75,13 +75,6 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 		super.onEntityCollision(world, pos, state, entity);
 	}
 	
-	@SuppressWarnings("deprecation")
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-	{
-		return super.getBoundingBox(state, source, pos).offset(state.getOffset(source, pos));
-	}
-	
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		if (world.getTileEntity(pos) instanceof TileEntitySiphoningFlower) {
@@ -100,5 +93,11 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(TextFormatting.RED + I18n.format("tooltip.bewitchment.siphoning_flower"));
 		super.addInformation(stack, worldIn, tooltip, flagIn);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return super.getBoundingBox(state, source, pos).offset(state.getOffset(source, pos));
 	}
 }

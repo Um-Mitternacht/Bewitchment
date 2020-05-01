@@ -298,6 +298,9 @@ tooltip.bewitchment.triskelion=Gives strength at the cost of some Magic Power.
 item.bewitchment.vampiric_amulet.name=Vampiric Amulet
 tooltip.bewitchment.vampiric_amulet=A chance to negate some damage and heal at the cost of some Magic Power.
 
+item.bewitchment.gluttons_sash.name=Gluttons Sash
+tooltip.bewitchment.gluttons_sash=Feeds you at the cost of MP
+
 item.bewitchment.bastards_grimoire.name=Bastardus Grimoira
 item.bewitchment.grimoire_magia.name=Grimoire Magia
 tooltip.bewitchment.grimoire_magia=Magic Stored: %d / %d

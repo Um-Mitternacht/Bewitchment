@@ -46,11 +46,6 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	}
 	
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
-	
-	@Override
 	public boolean isFullBlock(IBlockState state) {
 		return false;
 	}
@@ -96,11 +91,6 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState state) {
-		return false;
-	}
-	
-	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
 		if (state.getValue(LIT)) {
 			world.setBlockState(pos, getDefaultState().withProperty(LIT, false));
@@ -131,6 +121,16 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	
 	public float getEnchantPowerBonus(World world, BlockPos pos) {
 		return 1.5f;
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
 	
 	@Override

@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+	{
+	  "item": "bewitchment:scorned_bricks"
+	},
+	{
+	  "item": "bewitchment:scorned_bricks"
+	},
+	{
+	  "item": "minecraft:lapis_block"
+	},
+	{
+	  "item": "minecraft:lapis_block"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:crying_scorned_bricks",
+	"count": 4
+  }
+}

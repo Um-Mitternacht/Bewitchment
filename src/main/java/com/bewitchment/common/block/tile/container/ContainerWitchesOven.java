@@ -3,7 +3,6 @@ package com.bewitchment.common.block.tile.container;
 import com.bewitchment.common.block.tile.container.util.ModContainer;
 import com.bewitchment.common.block.tile.container.util.ModSlot;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
-
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.util.EnumFacing;

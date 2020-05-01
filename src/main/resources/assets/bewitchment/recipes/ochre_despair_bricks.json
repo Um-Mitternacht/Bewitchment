@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+	{
+	  "item": "bewitchment:despair_bricks"
+	},
+	{
+	  "item": "bewitchment:despair_bricks"
+	},
+	{
+	  "item": "minecraft:hardened_clay"
+	},
+	{
+	  "item": "minecraft:hardened_clay"
+	}
+  ],
+  "result": {
+	"item": "bewitchment:ochre_despair_bricks",
+	"count": 4
+  }
+}
