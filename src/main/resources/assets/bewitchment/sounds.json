@@ -54,6 +54,11 @@
 	  "bewitchment:cleaver_hurt_1"
 	]
   },
+  "werewolf_howl": {
+	"sounds": [
+	  "bewitchment:werewolf_howl"
+	]
+  },
   "cleaver_living": {
 	"sounds": [
 	  "bewitchment:cleaver_living_0",

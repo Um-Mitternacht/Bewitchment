@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"WBW",
+	"WBW"
+  ],
+  "key": {
+	"B": {
+	  "item": "bewitchment:despair_bricks"
+	},
+	"W": {
+	  "item": "bewitchment:despair_brick_slab",
+	  "data": 0
+	}	
+  },
+  "result": {
+	"item": "bewitchment:despair_brick_wall",
+	"count": 6
+  }
+}

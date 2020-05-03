@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
@@ -12,12 +13,14 @@ import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -94,6 +97,11 @@ public class EntityWerewolf extends ModEntityMob {
 	}
 	
 	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.WEREWOLF_HOWL;
+	}
+	
+	@Override
 	protected boolean canDespawn() {
 		return !hasCustomName();
 	}
@@ -102,6 +110,16 @@ public class EntityWerewolf extends ModEntityMob {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (!world.isRemote && world.isDaytime() && canDespawn()) setDead();
+	}
+	
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return SoundEvents.ENTITY_WOLF_GROWL;
+	}
+	
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_WOLF_DEATH;
 	}
 	
 	public boolean attackEntityAsMob(Entity entityIn) {
