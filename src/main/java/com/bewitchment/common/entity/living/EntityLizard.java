@@ -43,6 +43,11 @@ public class EntityLizard extends ModEntityAnimal {
 	}
 	
 	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
+	}
+	
+	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
 	}
