@@ -41,8 +41,4 @@ public class BlockCrystalBall extends ModBlockContainer {
 		for (int i = 0; i < 64; i++)
 			world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + 0.375 + rand.nextDouble() * 0.225, pos.getY() + 0.25 + rand.nextDouble() * 0.275, pos.getZ() + 0.375 + rand.nextDouble() * 0.225, 1 - rand.nextDouble() * 0.05, 1 - rand.nextDouble() * 0.05, 1 - rand.nextDouble() * 0.05);
 	}
-	
-	public Block.EnumOffsetType getOffsetType() {
-		return Block.EnumOffsetType.XZ;
-	}
 }
