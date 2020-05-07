@@ -56,6 +56,12 @@ public class Compat {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "a_poem_for_byzantium"), Util.get(ModObjects.infested_wheat), new PotionEffect(ModPotions.mania, (600))));
 	}
 	
+	//To be done later.
+	@Optional.Method(modid = "covetedmobs")
+	@SubscribeEvent
+	public static void registerCMBrews(RegistryEvent.Register<Brew> event) {
+	}
+	
 	@Optional.Method(modid = "mowziesmobs")
 	@SubscribeEvent
 	public void registerMowziesBrew(RegistryEvent.Register<Brew> event) {

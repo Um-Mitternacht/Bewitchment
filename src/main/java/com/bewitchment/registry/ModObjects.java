@@ -503,7 +503,7 @@ public class ModObjects {
 	//Food
 	public static final Item elderberries = Util.registerItem(new ItemFoodSeed(1, 0.5f, false).setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100), 0.1f), "elderberries");
 	public static final Item juniper_berries = Util.registerItem(new ItemFoodSeed(1, 0.5f, false), "juniper_berries");
-	public static final Item stew_of_the_grotesque = new ItemStewOfTheGrotesque();
+	public static final ItemFood stew_of_the_grotesque = new ItemStewOfTheGrotesque();
 	//Drops
 	public static final Item lizard_leg = Util.registerItem("lizard_leg");
 	public static final Item owlets_wing = Util.registerItem("owlets_wing");
@@ -536,9 +536,9 @@ public class ModObjects {
 	public static final Item contract = new ItemContract();
 	public static final Item skeleton_key = new ItemSkeletonKey();
 	
-	public static final Item garlic_grilled = new ItemGarlicGrilled();
-	public static final Item elderberry_jelly = new ItemElderberryJelly();
-	public static final Item juniper_tea = new ItemJuniperTea();
+	public static final ItemFood garlic_grilled = new ItemGarlicGrilled();
+	public static final ItemFood elderberry_jelly = new ItemElderberryJelly();
+	public static final ItemFood juniper_tea = new ItemJuniperTea();
 	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override
