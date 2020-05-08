@@ -88,6 +88,7 @@ dependencies {
     deobfProvided "curse.maven:wawla-what-are-we-looking-at:2916368"
     deobfProvided "curse.maven:just-enough-resources-jer:2728585"
     deobfProvided "curse.maven:serene-seasons:2799213"
+    deobfProvided "curse.maven:coveted-mobs:2950619"
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"
     deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2"
     deobfCompile "vazkii.patchouli:Patchouli:1.0-20.99"
