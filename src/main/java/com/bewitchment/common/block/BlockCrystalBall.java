@@ -2,7 +2,6 @@ package com.bewitchment.common.block;
 
 import com.bewitchment.common.block.tile.entity.TileEntityCrystalBall;
 import com.bewitchment.common.block.util.ModBlockContainer;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

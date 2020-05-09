@@ -43,11 +43,6 @@ public class EntityLizard extends ModEntityAnimal {
 	}
 	
 	@Override
-	protected boolean canDespawn() {
-		return !hasCustomName();
-	}
-	
-	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
 	}
@@ -56,6 +51,11 @@ public class EntityLizard extends ModEntityAnimal {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) this.heal(2);
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
 	}
 	
 	@Override

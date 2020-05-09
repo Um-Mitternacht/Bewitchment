@@ -83,11 +83,11 @@ public class BlockCandelabra extends ModBlock implements IInfusionStabiliserExt 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1.18, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.87, pos.getY() + 1.15, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1.18, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1.18, pos.getZ() + 0.5, 0, 0, 0);
-		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1.18, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1.175, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.125, pos.getY() + 1.075, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.875, pos.getY() + 1.075, pos.getZ() + 0.5, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1.075, pos.getZ() + 0.875, 0, 0, 0);
+		if (state.getValue(LIT)) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1.075, pos.getZ() + 0.125, 0, 0, 0);
 	}
 	
 	@Override
