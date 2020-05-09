@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+	"DDD",
+	"RFR",
+	" F "
+  ],
+  "key": {
+	"F": {
+	  "type": "forge:ore_dict",
+	  "ore": "ingotSilver"
+	},
+	"D": {
+	  "item": "#CANDLE_ANY"
+	},
+	"R": {
+	  "type": "forge:ore_dict",
+	  "ore": "nuggetSilver"
+	}
+  },
+  "result": {
+	"item": "bewitchment:candelabra_silver"
+  }
+}
