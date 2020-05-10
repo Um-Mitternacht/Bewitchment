@@ -198,15 +198,15 @@ public class ModConfig {
 			
 			@Config.Comment("The weight chance for lizards to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int lizardWeight = 20;
+			public int lizardWeight = 6;
 			
 			@Config.Comment("The minimum amount of lizards to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int lizardMin = 1;
+			public int lizardMin = 0;
 			
 			@Config.Comment("The maximum amount of lizards to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int lizardMax = 4;
+			public int lizardMax = 2;
 		}
 		
 		public static class Owl {
