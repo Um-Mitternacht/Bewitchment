@@ -5,7 +5,6 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.block.BlockCandelabra;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
-import net.minecraft.block.BlockSlab;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -40,7 +39,7 @@ public class EntityGhost extends ModEntityMob {
 		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -16, -4), pos.add(4, 16, 4))) {
 			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier) return true;
 		}
-		//Currently these cause crashes.
+		//Currently these cause crashes. Fix later.
 		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
 			if (world.getBlockState(current).getBlock() == ModObjects.candelabra_gold.getDefaultState().withProperty(BlockCandelabra.LIT, world.getBlockState(pos).getValue(BlockCandelabra.LIT))) return true;
 		}
