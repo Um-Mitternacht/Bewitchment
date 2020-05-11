@@ -55,19 +55,20 @@ public class Compat {
 	//Todo: Find out why this isn't working
 	@Optional.Method(modid = "miskatonicmysteries")
 	@SubscribeEvent
-	public static void registerManiaBrews(RegistryEvent.Register<Brew> event) {
+	public void registerManiaBrews(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "a_poem_for_byzantium"), Util.get(ModObjects.infested_wheat), new PotionEffect(ModPotions.mania, (600))));
 	}
 	
+	@Optional.Method(modid = "covetedmobs")
 	@SubscribeEvent
-	public static void registerCMBrews(RegistryEvent.Register<Brew> event) {
+	public void registerCMBrews(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "eye_of_newt_sight"), Util.get("eyeOfNewt"), new PotionEffect(MobEffects.NIGHT_VISION, (20 * 120))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "sting"), Util.get("blindwormsSting"), new PotionEffect(MobEffects.POISON, (20 * 20))));
 	}
 	
 	@Optional.Method(modid = "covetedmobs")
 	@SubscribeEvent
-	public static void registerCMRecipes(RegistryEvent.Register<CauldronRecipe> event) {
+	public void registerCMRecipes(RegistryEvent.Register<CauldronRecipe> event) {
 		//Alts that don't use lizard legs
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque_alt_1"), Arrays.asList(Util.get(com.bewitchment.registry.ModObjects.demonic_elixir), Util.get(com.bewitchment.registry.ModObjects.heart), Util.get(Items.MUTTON), Util.get(Items.SLIME_BALL), Util.get(com.bewitchment.registry.ModObjects.toe_of_frog), Util.get("blindwormsSting"), Util.get(com.bewitchment.registry.ModObjects.adders_fork), Util.get(com.bewitchment.registry.ModObjects.belladonna), Util.get(com.bewitchment.registry.ModObjects.hellebore)), Arrays.asList(new ItemStack(com.bewitchment.registry.ModObjects.stew_of_the_grotesque), new ItemStack(com.bewitchment.registry.ModObjects.empty_jar))));
 		event.getRegistry().register(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque_alt_2"), Arrays.asList(Util.get(com.bewitchment.registry.ModObjects.demonic_elixir), Util.get(com.bewitchment.registry.ModObjects.heart), Util.get(Items.MUTTON), Util.get(Items.SLIME_BALL), Util.get(com.bewitchment.registry.ModObjects.toe_of_frog), Util.get("eyeOfNewt"), Util.get(com.bewitchment.registry.ModObjects.adders_fork), Util.get(com.bewitchment.registry.ModObjects.belladonna), Util.get(com.bewitchment.registry.ModObjects.hellebore)), Arrays.asList(new ItemStack(com.bewitchment.registry.ModObjects.stew_of_the_grotesque), new ItemStack(com.bewitchment.registry.ModObjects.empty_jar))));
