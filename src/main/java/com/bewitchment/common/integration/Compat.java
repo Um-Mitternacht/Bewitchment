@@ -52,7 +52,6 @@ public class Compat {
 		}
 	}
 	
-	//Todo: Find out why this isn't working
 	@Optional.Method(modid = "miskatonicmysteries")
 	@SubscribeEvent
 	public void registerManiaBrews(RegistryEvent.Register<Brew> event) {
