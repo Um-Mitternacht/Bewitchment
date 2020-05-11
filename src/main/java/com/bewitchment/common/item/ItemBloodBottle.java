@@ -47,9 +47,10 @@ public class ItemBloodBottle extends Item {
 				entityplayer.addPotionEffect(new PotionEffect(Objects.requireNonNull(getPotionById(5)), 400, 0));
 				entityplayer.getFoodStats().addStats(3, 0);
 			}
-			
+
 			if (!entityplayer.isCreative()) {
-				Util.giveAndConsumeItem(entityplayer, EnumHand.MAIN_HAND, new ItemStack(Items.GLASS_BOTTLE));
+				Util.giveItem(entityplayer, new ItemStack(Items.GLASS_BOTTLE));
+				stack.shrink(1);
 			}
 		}
 		
