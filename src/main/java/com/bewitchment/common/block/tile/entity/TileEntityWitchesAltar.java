@@ -130,7 +130,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			int x = counter & 31;
 			int y = (counter >> 5) & 31;
 			int z = (counter >> 10) & 31;
-			checking.setPos(pos.getX() + x - 8, pos.getY() + y - 8, pos.getZ() + z - 8);
+			checking.setPos(pos.getX() + x - 16, pos.getY() + y - 16, pos.getZ() + z - 16);
 			registerToMap(world.getBlockState(checking));
 			if (counter == Short.MAX_VALUE - 1) {
 				boolean foundStone = false, foundCup = false, foundPentacle = false, foundSword = false, foundWand = false;
