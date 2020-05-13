@@ -77,6 +77,12 @@ public class Compat {
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_5"), new ItemStack(ModItems.GOLDEN_GOOSE_EGG, 1), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_NUGGET, 5), 0.35f));
 	}
 	
+	@Optional.Method(modid = "betteranimalsplus")
+	@SubscribeEvent
+	public void registerBAPBrew(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "trillium_brew"), Util.get(ModItems.TRILLIUM), new PotionEffect(new PotionEffect(MobEffects.HASTE, (20 * 30)))));
+	}
+	
 	@Optional.Method(modid = "covetedmobs")
 	@SubscribeEvent
 	public void registerCMRecipes(RegistryEvent.Register<CauldronRecipe> event) {
