@@ -850,6 +850,10 @@ advancements.bewitchment.broom.title=Take Flight
 advancements.bewitchment.broom.description=Craft any broom
 advancements.bewitchment.gaze.title=Gaze no more in the bitter glass
 advancements.bewitchment.gaze.description=Craft a crystall ball
+advancements.bewitchment.cold_iron.title=A Midsummer Night's Dream
+advancements.bewitchment.cold_iron.description=Craft a cold iron ingot
+advancements.bewitchment.brazier.title=Sacred Scents
+advancements.bewitchment.brazier.description=Craft a brazier
 
 commands.fortune.get=%s's fortune: %s
 commands.fortune.set=%s's fortune was set to %s
