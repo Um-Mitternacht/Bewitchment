@@ -7,11 +7,13 @@ import com.bewitchment.Util;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.registry.Brew;
 import com.bewitchment.api.registry.CauldronRecipe;
+import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
 import com.bobmowzie.mowziesmobs.server.item.ItemHandler;
 import com.bobmowzie.mowziesmobs.server.potion.PotionHandler;
 import com.miskatonicmysteries.registry.ModObjects;
 import com.miskatonicmysteries.registry.ModPotions;
+import its_meow.betteranimalsplus.init.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -63,6 +65,16 @@ public class Compat {
 	public void registerCMBrews(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "eye_of_newt_sight"), Util.get("eyeOfNewt"), new PotionEffect(MobEffects.NIGHT_VISION, (20 * 120))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "sting"), Util.get("blindwormsSting"), new PotionEffect(MobEffects.POISON, (20 * 20))));
+	}
+	
+	@Optional.Method(modid = "betteranimalsplus")
+	@SubscribeEvent
+	public void registerBAPOvenRecipes(RegistryEvent.Register<OvenRecipe> event) {
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_1"), new ItemStack(ModItems.VENISON_RAW, 1), new ItemStack(ModItems.VENISON_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_2"), new ItemStack(ModItems.PHEASANT_RAW, 1), new ItemStack(ModItems.PHEASANT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_3"), new ItemStack(ModItems.TURKEY_LEG_RAW, 1), new ItemStack(ModItems.TURKEY_LEG_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_4"), new ItemStack(ModItems.TURKEY_RAW, 1), new ItemStack(ModItems.TURKEY_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_5"), new ItemStack(ModItems.GOLDEN_GOOSE_EGG, 1), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_NUGGET, 5), 0.35f));
 	}
 	
 	@Optional.Method(modid = "covetedmobs")
