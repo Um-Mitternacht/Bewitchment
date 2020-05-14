@@ -40,7 +40,7 @@ public class ExtendedWorld extends WorldSavedData {
 		ExtendedWorld extendedWorld = get(world);
 		Set<UUID> players = new HashSet<>();
 		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName())) players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
-		players.add(player.getUniqueID());
+		players.add(player.getPersistentID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
 			((AbstractGreaterDemon) demon).bossInfo.removePlayer((EntityPlayerMP) player);
@@ -52,7 +52,7 @@ public class ExtendedWorld extends WorldSavedData {
 		ExtendedWorld extendedWorld = get(world);
 		Set<UUID> players = new HashSet<>();
 		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName())) players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
-		players.remove(player.getUniqueID());
+		players.remove(player.getPersistentID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
 			((AbstractGreaterDemon) demon).bossInfo.addPlayer((EntityPlayerMP) player);
