@@ -43,6 +43,7 @@ public class ExtendedWorld extends WorldSavedData {
 		players.add(player.getUniqueID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		extendedWorld.markDirty();
+		extendedWorld.setDirty(true);
 		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
 			((AbstractGreaterDemon) demon).bossInfo.removePlayer((EntityPlayerMP) player);
 		}
@@ -55,6 +56,7 @@ public class ExtendedWorld extends WorldSavedData {
 		players.remove(player.getPersistentID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
 		extendedWorld.markDirty();
+		extendedWorld.setDirty(true);
 		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
 			((AbstractGreaterDemon) demon).bossInfo.addPlayer((EntityPlayerMP) player);
 		}

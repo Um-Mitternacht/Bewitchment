@@ -40,15 +40,15 @@ public class EntityGhost extends ModEntityMob {
 			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier) return true;
 		}
 		//Currently these cause crashes. Fix later.
-		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
-			if (world.getBlockState(current).getBlock() == ModObjects.candelabra_gold.getDefaultState().withProperty(BlockCandelabra.LIT, world.getBlockState(pos).getValue(BlockCandelabra.LIT))) return true;
-		}
-		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
-			if (world.getBlockState(current).getBlock() == ModObjects.candelabra_silver.getDefaultState().withProperty(BlockCandelabra.LIT, world.getBlockState(pos).getValue(BlockCandelabra.LIT))) return true;
-		}
-		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
-			if (world.getBlockState(current).getBlock() == ModObjects.candelabra_iron.getDefaultState().withProperty(BlockCandelabra.LIT, world.getBlockState(pos).getValue(BlockCandelabra.LIT))) return true;
-		}
+	//	for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
+	//		if (world.getBlockState(current).getBlock() == ModObjects.candelabra_gold.getDefaultState().withProperty(BlockCandelabra.LIT, world.getBlockState(pos).getValue(BlockCandelabra.LIT))) return true;
+	//	}
+	//	for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
+	//		if (world.getBlockState(current).getBlock() == ModObjects.candelabra_silver.getDefaultState().withProperty(BlockCandelabra.LIT, world.getBlockState(pos).getValue(BlockCandelabra.LIT))) return true;
+	//	}
+	//	for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
+	//		if (world.getBlockState(current).getBlock() == ModObjects.candelabra_iron.getDefaultState().withProperty(BlockCandelabra.LIT, world.getBlockState(pos).getValue(BlockCandelabra.LIT))) return true;
+	//	}
 		return false;
 	}
 	
