@@ -42,11 +42,10 @@ public class ExtendedWorld extends WorldSavedData {
 		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName())) players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
 		players.add(player.getUniqueID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
-		extendedWorld.markDirty();
-		extendedWorld.setDirty(true);
 		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
 			((AbstractGreaterDemon) demon).bossInfo.removePlayer((EntityPlayerMP) player);
 		}
+		extendedWorld.markDirty();
 	}
 	
 	public static void depledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon) {
@@ -55,11 +54,10 @@ public class ExtendedWorld extends WorldSavedData {
 		if (extendedWorld.demonPledgedPlayers.containsKey(demon.getPledgeName())) players.addAll(extendedWorld.demonPledgedPlayers.get(demon.getPledgeName()));
 		players.remove(player.getPersistentID());
 		extendedWorld.demonPledgedPlayers.put(demon.getPledgeName(), players);
-		extendedWorld.markDirty();
-		extendedWorld.setDirty(true);
 		if (demon instanceof AbstractGreaterDemon && player instanceof EntityPlayerMP) {
 			((AbstractGreaterDemon) demon).bossInfo.addPlayer((EntityPlayerMP) player);
 		}
+		extendedWorld.markDirty();
 	}
 	
 	public static boolean playerPledgedToDemon(World world, EntityPlayer player, String demon) {
