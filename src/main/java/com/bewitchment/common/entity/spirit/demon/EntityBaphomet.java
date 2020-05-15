@@ -148,12 +148,17 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 			if (ExtendedWorld.playerPledgedToDemon(player.world, player, this.getPledgeName())) {
 				if (player.experienceLevel >= 6) {
 					player.addExperienceLevel(-6);
-					ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
-					List<Curse> contracts = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(Curse::isPositive).filter(c -> c instanceof Contract).collect(Collectors.toList());
-					Contract contract = (Contract) contracts.get(player.getRNG().nextInt(contracts.size()));
-					if (ep != null) ep.addCurse(contract, 7);
-					if (world.isRemote) world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
-					player.sendStatusMessage(new TextComponentTranslation("baphomet.getcontract", I18n.format(contract.getRegistryName().toString().replace(":", "."))), true);
+					if (!world.isRemote) {
+						ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
+						List<Curse> contracts = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(Curse::isPositive).filter(c -> c instanceof Contract).collect(Collectors.toList());
+						Contract contract = (Contract) contracts.get(player.getRNG().nextInt(contracts.size()));
+						if (ep != null) {
+							ep.addCurse(contract, 7);
+							ExtendedPlayer.syncToClient(player);
+						}
+						player.sendStatusMessage(new TextComponentTranslation("baphomet.getcontract", I18n.format(contract.getRegistryName().toString().replace(":", "."))), true);
+					}
+					world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
 					return true;
 				}
 				else player.sendStatusMessage(new TextComponentTranslation("baphomet.lowlevel"), true);

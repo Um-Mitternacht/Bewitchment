@@ -1,6 +1,7 @@
 package com.bewitchment.api.capability.extendedworld;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.message.SyncExtendedWorld;
 import com.bewitchment.common.entity.spirit.demon.AbstractGreaterDemon;
 import com.bewitchment.common.entity.util.IPledgeable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -104,5 +105,10 @@ public class ExtendedWorld extends WorldSavedData {
 		for (NBTBase player : tag.getTagList("players", Constants.NBT.TAG_STRING))
 			players.add(UUID.fromString(((NBTTagString) player).getString()));
 		map.put(demon, players);
+	}
+
+	public void syncToClient(final EntityPlayerMP player) {
+		System.out.println("Sending sync message");
+		Bewitchment.network.sendTo(new SyncExtendedWorld(this.writeToNBT(new NBTTagCompound())), player);
 	}
 }
