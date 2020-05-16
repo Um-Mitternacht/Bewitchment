@@ -67,6 +67,12 @@ public class Compat {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "sting"), Util.get("blindwormsSting"), new PotionEffect(MobEffects.POISON, (20 * 20))));
 	}
 	
+	@Optional.Method(modid = "covetedmobs")
+	@SubscribeEvent
+	public void registerCMOvenRecipes(RegistryEvent.Register<OvenRecipe> event) {
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oven_bushmeat"), new ItemStack(com.covetedmobs.registry.ModObjects.bushmeat_raw, 1), new ItemStack(com.covetedmobs.registry.ModObjects.bushmeat_cooked), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
+	}
+	
 	@Optional.Method(modid = "betteranimalsplus")
 	@SubscribeEvent
 	public void registerBAPOvenRecipes(RegistryEvent.Register<OvenRecipe> event) {
