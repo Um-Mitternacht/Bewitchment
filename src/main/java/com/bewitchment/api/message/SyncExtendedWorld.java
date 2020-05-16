@@ -9,9 +9,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-/**
- * Created by Pterolatypus on 2020-05-15.
- */
 public class SyncExtendedWorld implements IMessage {
 
     private NBTTagCompound nbt;
