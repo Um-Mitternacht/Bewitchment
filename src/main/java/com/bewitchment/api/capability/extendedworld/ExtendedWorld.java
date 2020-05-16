@@ -106,7 +106,7 @@ public class ExtendedWorld extends WorldSavedData {
 			players.add(UUID.fromString(((NBTTagString) player).getString()));
 		map.put(demon, players);
 	}
-
+	
 	public void syncToClient(final EntityPlayerMP player) {
 		Bewitchment.network.sendTo(new SyncExtendedWorld(this.writeToNBT(new NBTTagCompound())), player);
 	}

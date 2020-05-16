@@ -273,7 +273,7 @@ public class MiscHandler {
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onPlayerJoined(PlayerLoggedInEvent event) {
 		EntityPlayer player = event.player;
