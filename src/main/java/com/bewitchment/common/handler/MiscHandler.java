@@ -64,6 +64,7 @@ import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -270,6 +271,14 @@ public class MiscHandler {
 			if (event.getEntityBeingMounted().world.isRemote && event.getEntityMounting() instanceof EntityPlayerSP) {
 				Bewitchment.network.sendToServer(new DismountBroomMessage());
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerJoined(PlayerLoggedInEvent event) {
+		EntityPlayer player = event.player;
+		if (player instanceof EntityPlayerMP) {
+			ExtendedWorld.get(player.world).syncToClient((EntityPlayerMP) player);
 		}
 	}
 }

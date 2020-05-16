@@ -134,6 +134,7 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SyncDragonsBloodBroom.Handler.class, SyncDragonsBloodBroom.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
 		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.CLIENT);
+		Bewitchment.network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
 		
 		for (Item item : ForgeRegistries.ITEMS) {
 			if (Util.isRelated(true, item, "silver")) MaterialHandler.SILVER_ARMOR.add(item);
