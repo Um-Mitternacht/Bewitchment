@@ -108,7 +108,6 @@ public class ExtendedWorld extends WorldSavedData {
 	}
 
 	public void syncToClient(final EntityPlayerMP player) {
-		System.out.println("Sending sync message");
 		Bewitchment.network.sendTo(new SyncExtendedWorld(this.writeToNBT(new NBTTagCompound())), player);
 	}
 }
