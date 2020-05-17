@@ -147,16 +147,19 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		if (hand == EnumHand.MAIN_HAND) {
 			if (ExtendedWorld.playerPledgedToDemon(player.world, player, this.getPledgeName())) {
 				if (player.experienceLevel >= 6) {
-					player.addExperienceLevel(-6);
-					if (!world.isRemote) {
-						ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
-						List<Curse> contracts = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(Curse::isPositive).filter(c -> c instanceof Contract).collect(Collectors.toList());
-						Contract contract = (Contract) contracts.get(player.getRNG().nextInt(contracts.size()));
-						if (ep != null) ep.addCurse(contract, 7);
-						player.sendStatusMessage(new TextComponentTranslation("baphomet.getcontract", I18n.format(contract.getRegistryName().toString().replace(":", "."))), true);
+					ExtendedPlayer ep = player.getCapability(ExtendedPlayer.CAPABILITY, null);
+					List<Curse> contracts = GameRegistry.findRegistry(Curse.class).getValuesCollection().stream().filter(Curse::isPositive).filter(c -> c instanceof Contract).collect(Collectors.toList());
+					if (!ep.getCurses().stream().anyMatch(contracts::contains)) {
+						player.addExperienceLevel(-6);
+						if (!world.isRemote) {
+							Contract contract = (Contract) contracts.get(player.getRNG().nextInt(contracts.size()));
+							if (ep != null) ep.addCurse(contract, 7);
+							player.sendStatusMessage(new TextComponentTranslation("baphomet.gegettcontract", I18n.format(contract.getRegistryName().toString().replace(":", "."))), true);
+						}
+						world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
+						return true;
 					}
-					world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
-					return true;
+					else player.sendStatusMessage(new TextComponentTranslation("baphomet.alreadyhascontract"), true);
 				}
 				else player.sendStatusMessage(new TextComponentTranslation("baphomet.lowlevel"), true);
 			}

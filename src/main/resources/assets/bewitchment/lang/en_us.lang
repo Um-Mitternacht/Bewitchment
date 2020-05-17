@@ -729,6 +729,7 @@ tarot.is_not_cursed=%s has no magical ailments.
 baphomet.getcontract=You have received %s for 7 days.
 baphomet.lowlevel=Your level is too low
 baphomet.notpledged=You are not pledged to Baphomet!
+baphomet.alreadyhascontract=You already have an active pact
 
 #RITUAL
 ritual.null=You have not heard of such rites
