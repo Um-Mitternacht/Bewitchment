@@ -64,6 +64,7 @@ public class ModObjects {
 	public static final Item.ToolMaterial TOOL_SILVER = EnumHelper.addToolMaterial("silver", 1, 131, 12, 1.5f, 22);
 	public static final Item.ToolMaterial TOOL_COLD_IRON = EnumHelper.addToolMaterial("cold_iron", 2, 260, 6, 2, 14);
 	public static final Item.ToolMaterial TOOL_HELLISH = EnumHelper.addToolMaterial("hellish", 2, 616, 16, 3.0f, 26);
+	public static final Item.ToolMaterial TOOL_THYRSUS = EnumHelper.addToolMaterial("mat_thyrsus", 1, 72, 12, 3.0f, 20);
 	
 	//No Item
 	public static final ModBlockCrops crop_aconitum = new ModBlockCrops("crop_aconitum");

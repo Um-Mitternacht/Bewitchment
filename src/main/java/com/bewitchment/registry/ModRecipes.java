@@ -78,6 +78,10 @@ public class ModRecipes {
 		ModObjects.ARMOR_COLD_IRON.setRepairItem(new ItemStack(ModObjects.cold_iron_ingot));
 		ModObjects.ARMOR_SILVER.setRepairItem(new ItemStack(ModObjects.silver_ingot));
 		ModObjects.ARMOR_WITCHES.setRepairItem(new ItemStack(ModObjects.witches_stitching));
+		
+		ModObjects.TOOL_THYRSUS.setRepairItem(new ItemStack(Items.IRON_NUGGET));
+		ModObjects.TOOL_THYRSUS.setRepairItem(new ItemStack(Items.STICK));
+		ModObjects.TOOL_THYRSUS.setRepairItem(new ItemStack(Blocks.VINE));
 	}
 	
 	private static void craftingRecipesInit() {
