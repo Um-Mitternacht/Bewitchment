@@ -1,2612 +1,2613 @@
 {
-	"credit": "Made with Blockbench",
-	"parent": "minecraft:block/block",
-	"ambientocclusion": false,
-	"texture_size": [
-		32,
-		32
-	],
-	"textures": {
-		"particle": "bewitchment:models/thyrsus"
+  "credit": "Made with Blockbench",
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "texture_size": [
+	32,
+	32
+  ],
+  "textures": {
+	"particle": "bewitchment:models/thyrsus"
+  },
+  "elements": [
+	{
+	  "name": "coneSpine01",
+	  "from": [
+		8.3,
+		23.5,
+		7.5
+	  ],
+	  "to": [
+		10.3,
+		24.5,
+		8.5
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  9,
+		  25.5,
+		  8
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			0.5,
+			13,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			11.5,
+			0.5,
+			12,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			13.5,
+			0.5,
+			14.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			13,
+			0.5,
+			13.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			13,
+			0.5,
+			12,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			14,
+			0,
+			13,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
 	},
-	"elements": [{
-			"name": "coneSpine01",
-			"from": [
-				8.3,
-				23.5,
-				7.5
-			],
-			"to": [
-				10.3,
-				24.5,
-				8.5
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					9,
-					25.5,
-					8
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						0.5,
-						13,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						0.5,
-						12,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						0.5,
-						14.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13,
-						0.5,
-						13.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13,
-						0.5,
-						12,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						14,
-						0,
-						13,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
+	{
+	  "name": "coneSpine19",
+	  "from": [
+		-0.3,
+		25.7,
+		10.8
+	  ],
+	  "to": [
+		1.7,
+		26.7,
+		11.8
+	  ],
+	  "rotation": {
+		"angle": 45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			0.5,
+			13,
+			1
+		  ],
+		  "texture": "#particle"
 		},
-		{
-			"name": "coneSpine19",
-			"from": [
-				-0.3,
-				25.7,
-				10.8
-			],
-			"to": [
-				1.7,
-				26.7,
-				11.8
-			],
-			"rotation": {
-				"angle": 45,
-				"axis": "y",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						0.5,
-						13,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						0.5,
-						12,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						0.5,
-						14.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13,
-						0.5,
-						13.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13,
-						0.5,
-						12,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						14,
-						0,
-						13,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
+		"east": {
+		  "uv": [
+			11.5,
+			0.5,
+			12,
+			1
+		  ],
+		  "texture": "#particle"
 		},
-		{
-			"name": "coneBase",
-			"from": [
-				7,
-				23,
-				7
-			],
-			"to": [
-				9,
-				27,
-				9
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						1,
-						14,
-						2,
-						16
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						0,
-						14,
-						1,
-						16
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						3,
-						14,
-						4,
-						16
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						2,
-						14,
-						3,
-						16
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						2,
-						14,
-						1,
-						13
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						3,
-						13,
-						2,
-						14
-					],
-					"texture": "#particle"
-				}
-			}
+		"south": {
+		  "uv": [
+			13.5,
+			0.5,
+			14.5,
+			1
+		  ],
+		  "texture": "#particle"
 		},
-		{
-			"name": "coneSpine14",
-			"from": [
-				8.4,
-				24.6,
-				3.8
-			],
-			"to": [
-				10.4,
-				25.6,
-				4.8
-			],
-			"rotation": {
-				"angle": -22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						8.5,
-						0.5,
-						9.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						0.5,
-						8.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10,
-						0.5,
-						11,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						0.5,
-						10,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						0.5,
-						8.5,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10.5,
-						0,
-						9.5,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
+		"west": {
+		  "uv": [
+			13,
+			0.5,
+			13.5,
+			1
+		  ],
+		  "texture": "#particle"
 		},
-		{
-			"name": "barbSide3",
-			"from": [
-				8,
-				23,
-				9.3
-			],
-			"to": [
-				8,
-				26,
-				10.3
-			],
-			"rotation": {
-				"angle": -22.5,
-				"axis": "x",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						3.5,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						4,
-						8.5,
-						4,
-						10
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						3.5,
-						8.5,
-						4,
-						10
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						3.5,
-						8.5,
-						3.5,
-						8
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						3.5,
-						8,
-						3.5,
-						8.5
-					],
-					"texture": "#particle"
-				}
-			}
+		"up": {
+		  "uv": [
+			13,
+			0.5,
+			12,
+			0
+		  ],
+		  "texture": "#particle"
 		},
-		{
-			"name": "coneSpine07",
-			"from": [
-				-0.5,
-				23.5,
-				9
-			],
-			"to": [
-				0.5,
-				24.5,
-				11
-			],
-			"rotation": {
-				"angle": 45,
-				"axis": "y",
-				"origin": [
-					0,
-					22,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						4,
-						3.5,
-						4.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						3.5,
-						4,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						5.5,
-						3.5,
-						6,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						4.5,
-						3.5,
-						5.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						4.5,
-						3.5,
-						4,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						5,
-						2.5,
-						4.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "vines02",
-			"from": [
-				3.3,
-				15,
-				8.5
-			],
-			"to": [
-				3.3,
-				23,
-				12.5
-			],
-			"rotation": {
-				"angle": 22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					21,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						8.5,
-						12,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						10,
-						8.5,
-						12,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						14,
-						8.5,
-						14,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						12,
-						8.5,
-						14,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						12,
-						8.5,
-						12,
-						6.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						12,
-						6.5,
-						12,
-						8.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "barbSide2",
-			"from": [
-				7.2,
-				27,
-				8
-			],
-			"to": [
-				8.2,
-				30,
-				8
-			],
-			"rotation": {
-				"angle": -22.5,
-				"axis": "z",
-				"origin": [
-					6.6,
-					29,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						3,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						8.5,
-						3,
-						10
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						3.5,
-						8.5,
-						4,
-						10
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						3.5,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						3.5,
-						8.5,
-						3,
-						8.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						4,
-						8.5,
-						3.5,
-						8.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine21",
-			"from": [
-				-1.7,
-				25.7,
-				10.8
-			],
-			"to": [
-				0.3,
-				26.7,
-				11.8
-			],
-			"rotation": {
-				"angle": 45,
-				"axis": "y",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						8.5,
-						0.5,
-						9.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						0.5,
-						8.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10,
-						0.5,
-						11,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						0.5,
-						10,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						0.5,
-						8.5,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10.5,
-						0,
-						9.5,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "rod",
-			"from": [
-				7.5,
-				-2,
-				7.5
-			],
-			"to": [
-				8.5,
-				23,
-				8.5
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						0.5,
-						0.5,
-						1,
-						13
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						0,
-						0.5,
-						0.5,
-						13
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						1.5,
-						0.5,
-						2,
-						13
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						1,
-						0.5,
-						1.5,
-						13
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						1,
-						0.5,
-						0.5,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						1.5,
-						0,
-						1,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine11",
-			"from": [
-				4,
-				24.6,
-				10.4
-			],
-			"to": [
-				5,
-				25.6,
-				12.4
-			],
-			"rotation": {
-				"angle": 22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						9,
-						3.5,
-						9.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						3.5,
-						9,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10.5,
-						3.5,
-						11,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						3.5,
-						10.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						3.5,
-						9,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10,
-						2.5,
-						9.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine08",
-			"from": [
-				5.7,
-				23.5,
-				7.5
-			],
-			"to": [
-				7.7,
-				24.5,
-				8.5
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					22,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						8.5,
-						0.5,
-						9.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						0.5,
-						8.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10,
-						0.5,
-						11,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						0.5,
-						10,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						0.5,
-						8.5,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10.5,
-						0,
-						9.5,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine03",
-			"from": [
-				11.5,
-				23.5,
-				-0.5
-			],
-			"to": [
-				13.5,
-				24.5,
-				0.5
-			],
-			"rotation": {
-				"angle": -45,
-				"axis": "y",
-				"origin": [
-					0,
-					22,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						0.5,
-						13,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						0.5,
-						12,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						0.5,
-						14.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13,
-						0.5,
-						13.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13,
-						0.5,
-						12,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						14,
-						0,
-						13,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine02",
-			"from": [
-				0.3,
-				23.5,
-				10.8
-			],
-			"to": [
-				2.3,
-				24.5,
-				11.8
-			],
-			"rotation": {
-				"angle": 45,
-				"axis": "y",
-				"origin": [
-					0,
-					22,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						0.5,
-						13,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						0.5,
-						12,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						0.5,
-						14.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13,
-						0.5,
-						13.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13,
-						0.5,
-						12,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						14,
-						0,
-						13,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "vines01",
-			"from": [
-				11.3,
-				15,
-				2.5
-			],
-			"to": [
-				11.3,
-				23,
-				6.5
-			],
-			"rotation": {
-				"angle": -22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					21,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						7.5,
-						8.5,
-						7.5,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						5.5,
-						8.5,
-						7.5,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						9.5,
-						8.5,
-						9.5,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						7.5,
-						8.5,
-						9.5,
-						12.5
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						7.5,
-						8.5,
-						7.5,
-						6.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						7.5,
-						6.5,
-						7.5,
-						8.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine15",
-			"from": [
-				3.8,
-				24.6,
-				8.4
-			],
-			"to": [
-				4.8,
-				25.6,
-				10.4
-			],
-			"rotation": {
-				"angle": 22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						4,
-						3.5,
-						4.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						3.5,
-						4,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						5.5,
-						3.5,
-						6,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						4.5,
-						3.5,
-						5.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						4.5,
-						3.5,
-						4,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						5,
-						2.5,
-						4.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine22",
-			"from": [
-				9.6,
-				25.7,
-				-0.5
-			],
-			"to": [
-				11.6,
-				26.7,
-				0.5
-			],
-			"rotation": {
-				"angle": -45,
-				"axis": "y",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						8.5,
-						0.5,
-						9.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						0.5,
-						8.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10,
-						0.5,
-						11,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						0.5,
-						10,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						0.5,
-						8.5,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10.5,
-						0,
-						9.5,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine06",
-			"from": [
-				10.8,
-				23.5,
-				0.3
-			],
-			"to": [
-				11.8,
-				24.5,
-				2.3
-			],
-			"rotation": {
-				"angle": -45,
-				"axis": "y",
-				"origin": [
-					0,
-					22,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						9,
-						3.5,
-						9.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						3.5,
-						9,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10.5,
-						3.5,
-						11,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						3.5,
-						10.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						3.5,
-						9,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10,
-						2.5,
-						9.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine04",
-			"from": [
-				7.5,
-				23.5,
-				8.3
-			],
-			"to": [
-				8.5,
-				24.5,
-				10.3
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					22,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						9,
-						3.5,
-						9.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						3.5,
-						9,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10.5,
-						3.5,
-						11,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						3.5,
-						10.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						3.5,
-						9,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10,
-						2.5,
-						9.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "barb",
-			"from": [
-				7.5,
-				26.5,
-				7.5
-			],
-			"to": [
-				8.5,
-				29.5,
-				8.5
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					27,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						3.5,
-						5,
-						4,
-						6.5
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						5,
-						3.5,
-						6.5
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						4.5,
-						5,
-						5,
-						6.5
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						4,
-						5,
-						4.5,
-						6.5
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						4,
-						5,
-						3.5,
-						4.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						4.5,
-						4.5,
-						4,
-						5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "vines03",
-			"from": [
-				6,
-				15,
-				7.3
-			],
-			"to": [
-				10,
-				23,
-				7.3
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					21,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						11.5,
-						1.5,
-						13.5,
-						5.5
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						1.5,
-						11.5,
-						5.5
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						1.5,
-						15.5,
-						5.5
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13.5,
-						1.5,
-						13.5,
-						5.5
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13.5,
-						1.5,
-						11.5,
-						1.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						15.5,
-						1.5,
-						13.5,
-						1.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine09",
-			"from": [
-				10.4,
-				24.6,
-				3.8
-			],
-			"to": [
-				12.4,
-				25.6,
-				4.8
-			],
-			"rotation": {
-				"angle": -22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						0.5,
-						13,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						0.5,
-						12,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						0.5,
-						14.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13,
-						0.5,
-						13.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13,
-						0.5,
-						12,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						14,
-						0,
-						13,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine17",
-			"from": [
-				6.5,
-				25.7,
-				7.5
-			],
-			"to": [
-				9.5,
-				26.7,
-				8.5
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						3.5,
-						7.5,
-						5,
-						8
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						7.5,
-						3.5,
-						8
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						5.5,
-						7.5,
-						7,
-						8
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						5,
-						7.5,
-						5.5,
-						8
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						5,
-						7.5,
-						3.5,
-						7
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						6.5,
-						7,
-						5,
-						7.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine18",
-			"from": [
-				11,
-				25.7,
-				-0.5
-			],
-			"to": [
-				13,
-				26.7,
-				0.5
-			],
-			"rotation": {
-				"angle": -45,
-				"axis": "y",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						0.5,
-						13,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						0.5,
-						12,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						0.5,
-						14.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13,
-						0.5,
-						13.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13,
-						0.5,
-						12,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						14,
-						0,
-						13,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine13",
-			"from": [
-				2.4,
-				24.6,
-				10
-			],
-			"to": [
-				4.4,
-				25.6,
-				11
-			],
-			"rotation": {
-				"angle": 22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						8.5,
-						0.5,
-						9.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						0.5,
-						8.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10,
-						0.5,
-						11,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						0.5,
-						10,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						0.5,
-						8.5,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10.5,
-						0,
-						9.5,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine16",
-			"from": [
-				10,
-				24.6,
-				2.4
-			],
-			"to": [
-				11,
-				25.6,
-				4.4
-			],
-			"rotation": {
-				"angle": -22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						4,
-						3.5,
-						4.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						3.5,
-						4,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						5.5,
-						3.5,
-						6,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						4.5,
-						3.5,
-						5.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						4.5,
-						3.5,
-						4,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						5,
-						2.5,
-						4.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine10",
-			"from": [
-				4.4,
-				24.6,
-				10
-			],
-			"to": [
-				6.4,
-				25.6,
-				11
-			],
-			"rotation": {
-				"angle": 22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						12,
-						0.5,
-						13,
-						1
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						11.5,
-						0.5,
-						12,
-						1
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						13.5,
-						0.5,
-						14.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						13,
-						0.5,
-						13.5,
-						1
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						13,
-						0.5,
-						12,
-						0
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						14,
-						0,
-						13,
-						0.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "barbSide4",
-			"from": [
-				8,
-				27,
-				8.8
-			],
-			"to": [
-				8,
-				30,
-				9.8
-			],
-			"rotation": {
-				"angle": 22.5,
-				"axis": "x",
-				"origin": [
-					11,
-					33,
-					7.5
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						3.5,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						4,
-						8.5,
-						4,
-						10
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						3.5,
-						8.5,
-						4,
-						10
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						3.5,
-						8.5,
-						3.5,
-						8
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						3.5,
-						8,
-						3.5,
-						8.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine20",
-			"from": [
-				7.5,
-				25.7,
-				6.5
-			],
-			"to": [
-				8.5,
-				26.7,
-				9.5
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						8.5,
-						6.5,
-						9,
-						7
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						7,
-						6.5,
-						8.5,
-						7
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10.5,
-						6.5,
-						11,
-						7
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9,
-						6.5,
-						10.5,
-						7
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9,
-						6.5,
-						8.5,
-						5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						9.5,
-						5,
-						9,
-						6.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine05",
-			"from": [
-				7.5,
-				23.5,
-				5.7
-			],
-			"to": [
-				8.5,
-				24.5,
-				7.7
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "z",
-				"origin": [
-					0,
-					22,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						4,
-						3.5,
-						4.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						3.5,
-						4,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						5.5,
-						3.5,
-						6,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						4.5,
-						3.5,
-						5.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						4.5,
-						3.5,
-						4,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						5,
-						2.5,
-						4.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "coneSpine12",
-			"from": [
-				10,
-				24.6,
-				4.4
-			],
-			"to": [
-				11,
-				25.6,
-				6.4
-			],
-			"rotation": {
-				"angle": -22.5,
-				"axis": "y",
-				"origin": [
-					0,
-					23,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						9,
-						3.5,
-						9.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						8,
-						3.5,
-						9,
-						4
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						10.5,
-						3.5,
-						11,
-						4
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						9.5,
-						3.5,
-						10.5,
-						4
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						9.5,
-						3.5,
-						9,
-						2.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						10,
-						2.5,
-						9.5,
-						3.5
-					],
-					"texture": "#particle"
-				}
-			}
-		},
-		{
-			"name": "barbSide1",
-			"from": [
-				9,
-				23.1,
-				8
-			],
-			"to": [
-				10,
-				26.1,
-				8
-			],
-			"rotation": {
-				"angle": 22.5,
-				"axis": "z",
-				"origin": [
-					0,
-					24,
-					0
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						3,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"east": {
-					"uv": [
-						3,
-						8.5,
-						3,
-						10
-					],
-					"texture": "#particle"
-				},
-				"south": {
-					"uv": [
-						3.5,
-						8.5,
-						4,
-						10
-					],
-					"texture": "#particle"
-				},
-				"west": {
-					"uv": [
-						3.5,
-						8.5,
-						3.5,
-						10
-					],
-					"texture": "#particle"
-				},
-				"up": {
-					"uv": [
-						3.5,
-						8.5,
-						3,
-						8.5
-					],
-					"texture": "#particle"
-				},
-				"down": {
-					"uv": [
-						4,
-						8.5,
-						3.5,
-						8.5
-					],
-					"texture": "#particle"
-				}
-			}
+		"down": {
+		  "uv": [
+			14,
+			0,
+			13,
+			0.5
+		  ],
+		  "texture": "#particle"
 		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"translation": [
-				0,
-				-1.25,
-				0
-			],
-			"scale": [
-				0.75,
-				0.75,
-				0.75
-			]
+	  }
+	},
+	{
+	  "name": "coneBase",
+	  "from": [
+		7,
+		23,
+		7
+	  ],
+	  "to": [
+		9,
+		27,
+		9
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			1,
+			14,
+			2,
+			16
+		  ],
+		  "texture": "#particle"
 		},
-		"thirdperson_lefthand": {
-			"translation": [
-				0,
-				-1.25,
-				0
-			],
-			"scale": [
-				0.75,
-				0.75,
-				0.75
-			]
+		"east": {
+		  "uv": [
+			0,
+			14,
+			1,
+			16
+		  ],
+		  "texture": "#particle"
 		},
-		"firstperson_righthand": {
-			"translation": [
-				0,
-				-1.25,
-				0
-			],
-			"scale": [
-				0.75,
-				0.75,
-				0.75
-			]
+		"south": {
+		  "uv": [
+			3,
+			14,
+			4,
+			16
+		  ],
+		  "texture": "#particle"
 		},
-		"firstperson_lefthand": {
-			"translation": [
-				0,
-				-0.25,
-				0
-			],
-			"scale": [
-				0.65,
-				0.65,
-				0.65
-			]
+		"west": {
+		  "uv": [
+			2,
+			14,
+			3,
+			16
+		  ],
+		  "texture": "#particle"
 		},
-		"ground": {
-			"translation": [
-				0,
-				0.75,
-				0
-			],
-			"scale": [
-				0.4,
-				0.4,
-				0.4
-			]
+		"up": {
+		  "uv": [
+			2,
+			14,
+			1,
+			13
+		  ],
+		  "texture": "#particle"
 		},
-		"gui": {
-			"rotation": [
-				10,
-				-5,
-				38
-			],
-			"translation": [
-				0,
-				-0.75,
-				0
-			],
-			"scale": [
-				0.6,
-				0.6,
-				0.6
-			]
-		},
-		"head": {
-			"translation": [
-				0,
-				-1.25,
-				0
-			],
-			"scale": [
-				0.75,
-				0.75,
-				0.75
-			]
-		},
-		"fixed": {
-			"translation": [
-				0,
-				-1,
-				-2
-			],
-			"scale": [
-				0.75,
-				0.75,
-				0.75
-			]
+		"down": {
+		  "uv": [
+			3,
+			13,
+			2,
+			14
+		  ],
+		  "texture": "#particle"
 		}
+	  }
+	},
+	{
+	  "name": "coneSpine14",
+	  "from": [
+		8.4,
+		24.6,
+		3.8
+	  ],
+	  "to": [
+		10.4,
+		25.6,
+		4.8
+	  ],
+	  "rotation": {
+		"angle": -22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			8.5,
+			0.5,
+			9.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			0.5,
+			8.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10,
+			0.5,
+			11,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			0.5,
+			10,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			0.5,
+			8.5,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10.5,
+			0,
+			9.5,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "barbSide3",
+	  "from": [
+		8,
+		23,
+		9.3
+	  ],
+	  "to": [
+		8,
+		26,
+		10.3
+	  ],
+	  "rotation": {
+		"angle": -22.5,
+		"axis": "x",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			3.5,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			4,
+			8.5,
+			4,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			3.5,
+			8.5,
+			4,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			3.5,
+			8.5,
+			3.5,
+			8
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			3.5,
+			8,
+			3.5,
+			8.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine07",
+	  "from": [
+		-0.5,
+		23.5,
+		9
+	  ],
+	  "to": [
+		0.5,
+		24.5,
+		11
+	  ],
+	  "rotation": {
+		"angle": 45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  22,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			4,
+			3.5,
+			4.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			3.5,
+			4,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			5.5,
+			3.5,
+			6,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			4.5,
+			3.5,
+			5.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			4.5,
+			3.5,
+			4,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			5,
+			2.5,
+			4.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "vines02",
+	  "from": [
+		3.3,
+		15,
+		8.5
+	  ],
+	  "to": [
+		3.3,
+		23,
+		12.5
+	  ],
+	  "rotation": {
+		"angle": 22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  21,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			8.5,
+			12,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			10,
+			8.5,
+			12,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			14,
+			8.5,
+			14,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			12,
+			8.5,
+			14,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			12,
+			8.5,
+			12,
+			6.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			12,
+			6.5,
+			12,
+			8.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "barbSide2",
+	  "from": [
+		7.2,
+		27,
+		8
+	  ],
+	  "to": [
+		8.2,
+		30,
+		8
+	  ],
+	  "rotation": {
+		"angle": -22.5,
+		"axis": "z",
+		"origin": [
+		  6.6,
+		  29,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			3,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			8.5,
+			3,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			3.5,
+			8.5,
+			4,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			3.5,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			3.5,
+			8.5,
+			3,
+			8.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			4,
+			8.5,
+			3.5,
+			8.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine21",
+	  "from": [
+		-1.7,
+		25.7,
+		10.8
+	  ],
+	  "to": [
+		0.3,
+		26.7,
+		11.8
+	  ],
+	  "rotation": {
+		"angle": 45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			8.5,
+			0.5,
+			9.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			0.5,
+			8.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10,
+			0.5,
+			11,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			0.5,
+			10,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			0.5,
+			8.5,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10.5,
+			0,
+			9.5,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "rod",
+	  "from": [
+		7.5,
+		-2,
+		7.5
+	  ],
+	  "to": [
+		8.5,
+		23,
+		8.5
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			0.5,
+			0.5,
+			1,
+			13
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			0,
+			0.5,
+			0.5,
+			13
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			1.5,
+			0.5,
+			2,
+			13
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			1,
+			0.5,
+			1.5,
+			13
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			1,
+			0.5,
+			0.5,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			1.5,
+			0,
+			1,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine11",
+	  "from": [
+		4,
+		24.6,
+		10.4
+	  ],
+	  "to": [
+		5,
+		25.6,
+		12.4
+	  ],
+	  "rotation": {
+		"angle": 22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			9,
+			3.5,
+			9.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			3.5,
+			9,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10.5,
+			3.5,
+			11,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			3.5,
+			10.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			3.5,
+			9,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10,
+			2.5,
+			9.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine08",
+	  "from": [
+		5.7,
+		23.5,
+		7.5
+	  ],
+	  "to": [
+		7.7,
+		24.5,
+		8.5
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  22,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			8.5,
+			0.5,
+			9.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			0.5,
+			8.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10,
+			0.5,
+			11,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			0.5,
+			10,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			0.5,
+			8.5,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10.5,
+			0,
+			9.5,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine03",
+	  "from": [
+		11.5,
+		23.5,
+		-0.5
+	  ],
+	  "to": [
+		13.5,
+		24.5,
+		0.5
+	  ],
+	  "rotation": {
+		"angle": -45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  22,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			0.5,
+			13,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			11.5,
+			0.5,
+			12,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			13.5,
+			0.5,
+			14.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			13,
+			0.5,
+			13.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			13,
+			0.5,
+			12,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			14,
+			0,
+			13,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine02",
+	  "from": [
+		0.3,
+		23.5,
+		10.8
+	  ],
+	  "to": [
+		2.3,
+		24.5,
+		11.8
+	  ],
+	  "rotation": {
+		"angle": 45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  22,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			0.5,
+			13,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			11.5,
+			0.5,
+			12,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			13.5,
+			0.5,
+			14.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			13,
+			0.5,
+			13.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			13,
+			0.5,
+			12,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			14,
+			0,
+			13,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "vines01",
+	  "from": [
+		11.3,
+		15,
+		2.5
+	  ],
+	  "to": [
+		11.3,
+		23,
+		6.5
+	  ],
+	  "rotation": {
+		"angle": -22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  21,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			7.5,
+			8.5,
+			7.5,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			5.5,
+			8.5,
+			7.5,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			9.5,
+			8.5,
+			9.5,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			7.5,
+			8.5,
+			9.5,
+			12.5
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			7.5,
+			8.5,
+			7.5,
+			6.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			7.5,
+			6.5,
+			7.5,
+			8.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine15",
+	  "from": [
+		3.8,
+		24.6,
+		8.4
+	  ],
+	  "to": [
+		4.8,
+		25.6,
+		10.4
+	  ],
+	  "rotation": {
+		"angle": 22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			4,
+			3.5,
+			4.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			3.5,
+			4,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			5.5,
+			3.5,
+			6,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			4.5,
+			3.5,
+			5.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			4.5,
+			3.5,
+			4,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			5,
+			2.5,
+			4.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine22",
+	  "from": [
+		9.6,
+		25.7,
+		-0.5
+	  ],
+	  "to": [
+		11.6,
+		26.7,
+		0.5
+	  ],
+	  "rotation": {
+		"angle": -45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			8.5,
+			0.5,
+			9.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			0.5,
+			8.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10,
+			0.5,
+			11,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			0.5,
+			10,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			0.5,
+			8.5,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10.5,
+			0,
+			9.5,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine06",
+	  "from": [
+		10.8,
+		23.5,
+		0.3
+	  ],
+	  "to": [
+		11.8,
+		24.5,
+		2.3
+	  ],
+	  "rotation": {
+		"angle": -45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  22,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			9,
+			3.5,
+			9.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			3.5,
+			9,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10.5,
+			3.5,
+			11,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			3.5,
+			10.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			3.5,
+			9,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10,
+			2.5,
+			9.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine04",
+	  "from": [
+		7.5,
+		23.5,
+		8.3
+	  ],
+	  "to": [
+		8.5,
+		24.5,
+		10.3
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  22,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			9,
+			3.5,
+			9.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			3.5,
+			9,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10.5,
+			3.5,
+			11,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			3.5,
+			10.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			3.5,
+			9,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10,
+			2.5,
+			9.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "barb",
+	  "from": [
+		7.5,
+		26.5,
+		7.5
+	  ],
+	  "to": [
+		8.5,
+		29.5,
+		8.5
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  27,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			3.5,
+			5,
+			4,
+			6.5
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			5,
+			3.5,
+			6.5
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			4.5,
+			5,
+			5,
+			6.5
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			4,
+			5,
+			4.5,
+			6.5
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			4,
+			5,
+			3.5,
+			4.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			4.5,
+			4.5,
+			4,
+			5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "vines03",
+	  "from": [
+		6,
+		15,
+		7.3
+	  ],
+	  "to": [
+		10,
+		23,
+		7.3
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  21,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			11.5,
+			1.5,
+			13.5,
+			5.5
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			11.5,
+			1.5,
+			11.5,
+			5.5
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			13.5,
+			1.5,
+			15.5,
+			5.5
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			13.5,
+			1.5,
+			13.5,
+			5.5
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			13.5,
+			1.5,
+			11.5,
+			1.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			15.5,
+			1.5,
+			13.5,
+			1.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine09",
+	  "from": [
+		10.4,
+		24.6,
+		3.8
+	  ],
+	  "to": [
+		12.4,
+		25.6,
+		4.8
+	  ],
+	  "rotation": {
+		"angle": -22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			0.5,
+			13,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			11.5,
+			0.5,
+			12,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			13.5,
+			0.5,
+			14.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			13,
+			0.5,
+			13.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			13,
+			0.5,
+			12,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			14,
+			0,
+			13,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine17",
+	  "from": [
+		6.5,
+		25.7,
+		7.5
+	  ],
+	  "to": [
+		9.5,
+		26.7,
+		8.5
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			3.5,
+			7.5,
+			5,
+			8
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			7.5,
+			3.5,
+			8
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			5.5,
+			7.5,
+			7,
+			8
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			5,
+			7.5,
+			5.5,
+			8
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			5,
+			7.5,
+			3.5,
+			7
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			6.5,
+			7,
+			5,
+			7.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine18",
+	  "from": [
+		11,
+		25.7,
+		-0.5
+	  ],
+	  "to": [
+		13,
+		26.7,
+		0.5
+	  ],
+	  "rotation": {
+		"angle": -45,
+		"axis": "y",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			0.5,
+			13,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			11.5,
+			0.5,
+			12,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			13.5,
+			0.5,
+			14.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			13,
+			0.5,
+			13.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			13,
+			0.5,
+			12,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			14,
+			0,
+			13,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine13",
+	  "from": [
+		2.4,
+		24.6,
+		10
+	  ],
+	  "to": [
+		4.4,
+		25.6,
+		11
+	  ],
+	  "rotation": {
+		"angle": 22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			8.5,
+			0.5,
+			9.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			0.5,
+			8.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10,
+			0.5,
+			11,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			0.5,
+			10,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			0.5,
+			8.5,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10.5,
+			0,
+			9.5,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine16",
+	  "from": [
+		10,
+		24.6,
+		2.4
+	  ],
+	  "to": [
+		11,
+		25.6,
+		4.4
+	  ],
+	  "rotation": {
+		"angle": -22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			4,
+			3.5,
+			4.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			3.5,
+			4,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			5.5,
+			3.5,
+			6,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			4.5,
+			3.5,
+			5.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			4.5,
+			3.5,
+			4,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			5,
+			2.5,
+			4.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine10",
+	  "from": [
+		4.4,
+		24.6,
+		10
+	  ],
+	  "to": [
+		6.4,
+		25.6,
+		11
+	  ],
+	  "rotation": {
+		"angle": 22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			12,
+			0.5,
+			13,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			11.5,
+			0.5,
+			12,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			13.5,
+			0.5,
+			14.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			13,
+			0.5,
+			13.5,
+			1
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			13,
+			0.5,
+			12,
+			0
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			14,
+			0,
+			13,
+			0.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "barbSide4",
+	  "from": [
+		8,
+		27,
+		8.8
+	  ],
+	  "to": [
+		8,
+		30,
+		9.8
+	  ],
+	  "rotation": {
+		"angle": 22.5,
+		"axis": "x",
+		"origin": [
+		  11,
+		  33,
+		  7.5
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			3.5,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			4,
+			8.5,
+			4,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			3.5,
+			8.5,
+			4,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			3.5,
+			8.5,
+			3.5,
+			8
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			3.5,
+			8,
+			3.5,
+			8.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine20",
+	  "from": [
+		7.5,
+		25.7,
+		6.5
+	  ],
+	  "to": [
+		8.5,
+		26.7,
+		9.5
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			8.5,
+			6.5,
+			9,
+			7
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			7,
+			6.5,
+			8.5,
+			7
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10.5,
+			6.5,
+			11,
+			7
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9,
+			6.5,
+			10.5,
+			7
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9,
+			6.5,
+			8.5,
+			5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			9.5,
+			5,
+			9,
+			6.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine05",
+	  "from": [
+		7.5,
+		23.5,
+		5.7
+	  ],
+	  "to": [
+		8.5,
+		24.5,
+		7.7
+	  ],
+	  "rotation": {
+		"angle": 0,
+		"axis": "z",
+		"origin": [
+		  0,
+		  22,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			4,
+			3.5,
+			4.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			3.5,
+			4,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			5.5,
+			3.5,
+			6,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			4.5,
+			3.5,
+			5.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			4.5,
+			3.5,
+			4,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			5,
+			2.5,
+			4.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "coneSpine12",
+	  "from": [
+		10,
+		24.6,
+		4.4
+	  ],
+	  "to": [
+		11,
+		25.6,
+		6.4
+	  ],
+	  "rotation": {
+		"angle": -22.5,
+		"axis": "y",
+		"origin": [
+		  0,
+		  23,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			9,
+			3.5,
+			9.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			8,
+			3.5,
+			9,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			10.5,
+			3.5,
+			11,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			9.5,
+			3.5,
+			10.5,
+			4
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			9.5,
+			3.5,
+			9,
+			2.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			10,
+			2.5,
+			9.5,
+			3.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
+	},
+	{
+	  "name": "barbSide1",
+	  "from": [
+		9,
+		23.1,
+		8
+	  ],
+	  "to": [
+		10,
+		26.1,
+		8
+	  ],
+	  "rotation": {
+		"angle": 22.5,
+		"axis": "z",
+		"origin": [
+		  0,
+		  24,
+		  0
+		]
+	  },
+	  "faces": {
+		"north": {
+		  "uv": [
+			3,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"east": {
+		  "uv": [
+			3,
+			8.5,
+			3,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"south": {
+		  "uv": [
+			3.5,
+			8.5,
+			4,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"west": {
+		  "uv": [
+			3.5,
+			8.5,
+			3.5,
+			10
+		  ],
+		  "texture": "#particle"
+		},
+		"up": {
+		  "uv": [
+			3.5,
+			8.5,
+			3,
+			8.5
+		  ],
+		  "texture": "#particle"
+		},
+		"down": {
+		  "uv": [
+			4,
+			8.5,
+			3.5,
+			8.5
+		  ],
+		  "texture": "#particle"
+		}
+	  }
 	}
+  ],
+  "display": {
+	"thirdperson_righthand": {
+	  "translation": [
+		0,
+		-1.25,
+		0
+	  ],
+	  "scale": [
+		0.75,
+		0.75,
+		0.75
+	  ]
+	},
+	"thirdperson_lefthand": {
+	  "translation": [
+		0,
+		-1.25,
+		0
+	  ],
+	  "scale": [
+		0.75,
+		0.75,
+		0.75
+	  ]
+	},
+	"firstperson_righthand": {
+	  "translation": [
+		0,
+		-1.25,
+		0
+	  ],
+	  "scale": [
+		0.75,
+		0.75,
+		0.75
+	  ]
+	},
+	"firstperson_lefthand": {
+	  "translation": [
+		0,
+		-0.25,
+		0
+	  ],
+	  "scale": [
+		0.65,
+		0.65,
+		0.65
+	  ]
+	},
+	"ground": {
+	  "translation": [
+		0,
+		0.75,
+		0
+	  ],
+	  "scale": [
+		0.4,
+		0.4,
+		0.4
+	  ]
+	},
+	"gui": {
+	  "rotation": [
+		10,
+		-5,
+		38
+	  ],
+	  "translation": [
+		0,
+		-0.75,
+		0
+	  ],
+	  "scale": [
+		0.6,
+		0.6,
+		0.6
+	  ]
+	},
+	"head": {
+	  "translation": [
+		0,
+		-1.25,
+		0
+	  ],
+	  "scale": [
+		0.75,
+		0.75,
+		0.75
+	  ]
+	},
+	"fixed": {
+	  "translation": [
+		0,
+		-1,
+		-2
+	  ],
+	  "scale": [
+		0.75,
+		0.75,
+		0.75
+	  ]
+	}
+  }
 }

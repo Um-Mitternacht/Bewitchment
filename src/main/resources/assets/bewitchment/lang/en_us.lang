@@ -504,6 +504,7 @@ item.bewitchment.bottle_of_vampire_blood.name=Bottle of Vampire Blood
 item.bewitchment.caduceus.name=Caduceus
 item.bewitchment.leonards_wand.name=Leonard's Wand
 tooltip.leonards_wand.uses=%d uses remaining
+item.bewitchment.thyrsus.name=Thyrsus
 
 item.bewitchment.hoof.name=Hoof
 item.bewitchment.eye_of_old.name=Eye of Old

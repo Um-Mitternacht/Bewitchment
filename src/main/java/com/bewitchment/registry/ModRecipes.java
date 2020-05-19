@@ -349,6 +349,7 @@ public class ModRecipes {
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandle, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandelabra, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.225));
 		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockEndRod, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.325));
+		Util.registerAltarUpgradeItem(ModObjects.thyrsus, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.45));
 		Util.registerAltarUpgradeItem(ModObjects.leonards_wand, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.56));
 		Util.registerAltarUpgradeItem(ModObjects.caduceus, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.78));
 		Util.registerAltarUpgradeItem(Items.BLAZE_ROD, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.2));
