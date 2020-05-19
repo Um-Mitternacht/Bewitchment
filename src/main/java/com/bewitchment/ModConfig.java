@@ -1,6 +1,5 @@
 package com.bewitchment;
 
-import com.bewitchment.common.entity.spirit.demon.EntityBafometyr;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.config.Config;
