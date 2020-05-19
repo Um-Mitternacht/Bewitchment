@@ -7,12 +7,12 @@ import net.minecraft.item.ItemSword;
 /**
  * Created by Joseph on 4/16/2020.
  */
-public class ItemThrysus extends ItemSword {
+public class ItemThyrsus extends ItemSword {
 	
-	public ItemThrysus() {
+	public ItemThyrsus() {
 		super(ModObjects.TOOL_THYRSUS);
 		setMaxStackSize(1);
-		Util.registerItem(this, "thrysus");
+		Util.registerItem(this, "thyrsus");
 		setMaxDamage(72);
 	}
 }

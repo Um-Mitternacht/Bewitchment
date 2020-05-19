@@ -337,6 +337,7 @@ public class ModObjects {
 	public static final Item phasing_chalk = new ItemChalk("phasing_chalk");
 	public static final Item caduceus = new ItemCaduceus();
 	public static final Item leonards_wand = new ItemLeonardsWand();
+	public static final Item thyrsus = new ItemThyrsus();
 	
 	public static final Item silver_arrow = Util.registerItem(new ItemArrow() {
 		@Override

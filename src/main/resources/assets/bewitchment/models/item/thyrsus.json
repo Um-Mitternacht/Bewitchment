@@ -7,7 +7,7 @@
 	32
   ],
   "textures": {
-	"particle": "bewitchment:blocks/thyrsus"
+	"particle": "bewitchment:models/thyrsus"
   },
   "elements": [
 	{

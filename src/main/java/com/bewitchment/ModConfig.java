@@ -1,5 +1,6 @@
 package com.bewitchment;
 
+import com.bewitchment.common.entity.spirit.demon.EntityBafometyr;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.config.Config;
@@ -190,6 +191,7 @@ public class ModConfig {
 		public final Feuerwurm feuerwurm = new Feuerwurm();
 		public final Druden druden = new Druden();
 		public final Cleaver cleaver = new Cleaver();
+		public final Bafometyr bafometyr = new Bafometyr();
 		public final Werewolf werewolf = new Werewolf();
 		
 		public static class Lizard {
@@ -361,6 +363,23 @@ public class ModConfig {
 			@Config.Comment("The maximum amount of cleavers to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int cleaverMax = 2;
+		}
+		
+		public static class Bafometyr {
+			@Config.Comment("The list of BiomeDictionary types that the bafometyr will spawn in.")
+			public String[] bafometyrBiomes = {Type.NETHER.getName()};
+			
+			@Config.Comment("The weight chance for a bafometyr to spawn.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int bafometyrWeight = 1;
+			
+			@Config.Comment("The minimum amount of bafometyrs to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int bafometyrMin = 0;
+			
+			@Config.Comment("The maximum amount of bafometyrs to spawn at once.")
+			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
+			public int bafometyrMax = 2;
 		}
 		
 		public static class Druden {
