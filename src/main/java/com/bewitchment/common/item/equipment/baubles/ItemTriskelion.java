@@ -18,7 +18,7 @@ public class ItemTriskelion extends ModItemBauble {
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		if (player.world.getTotalWorldTime() % 200 == 0 && MagicPower.attemptDrain(null, (EntityPlayer) player, 1)) {
-			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 240, 0));
+			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 240, 0, false, false));
 		}
 	}
 }
