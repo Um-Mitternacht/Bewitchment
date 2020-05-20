@@ -1,13 +1,11 @@
 package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.AbstractIllager;
 import net.minecraft.entity.monster.EntityIronGolem;
@@ -195,6 +193,11 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.leonards_wand));
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
 	}
 	
 	@Override

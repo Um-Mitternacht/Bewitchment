@@ -35,7 +35,7 @@ public class ItemThyrsus extends ItemSword {
 		if (!target.world.isRemote && (!(target instanceof EntityPlayer) || !(attacker instanceof EntityPlayer))) {
 			int i = this.itemRand.nextInt(100);
 			if (i < 10) {
-				target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 1000, 0, false, true));
+				target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 100, 0, false, true));
 				stack.damageItem(6, attacker);
 			}
 		}
