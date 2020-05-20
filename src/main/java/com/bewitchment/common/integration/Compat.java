@@ -70,17 +70,17 @@ public class Compat {
 	@Optional.Method(modid = "covetedmobs")
 	@SubscribeEvent
 	public void registerCMOvenRecipes(RegistryEvent.Register<OvenRecipe> event) {
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oven_bushmeat"), new ItemStack(com.covetedmobs.registry.ModObjects.bushmeat_raw, 1), new ItemStack(com.covetedmobs.registry.ModObjects.bushmeat_cooked), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "oven_bushmeat"), new ItemStack(com.covetedmobs.registry.ModObjects.bushmeat_raw, 1), new ItemStack(com.covetedmobs.registry.ModObjects.bushmeat_cooked), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f, false));
 	}
 	
 	@Optional.Method(modid = "betteranimalsplus")
 	@SubscribeEvent
 	public void registerBAPOvenRecipes(RegistryEvent.Register<OvenRecipe> event) {
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_1"), new ItemStack(ModItems.VENISON_RAW, 1), new ItemStack(ModItems.VENISON_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_2"), new ItemStack(ModItems.PHEASANT_RAW, 1), new ItemStack(ModItems.PHEASANT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_3"), new ItemStack(ModItems.TURKEY_LEG_RAW, 1), new ItemStack(ModItems.TURKEY_LEG_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_4"), new ItemStack(ModItems.TURKEY_RAW, 1), new ItemStack(ModItems.TURKEY_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_5"), new ItemStack(ModItems.GOLDEN_GOOSE_EGG, 1), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_NUGGET, 5), 0.35f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_1"), new ItemStack(ModItems.VENISON_RAW, 1), new ItemStack(ModItems.VENISON_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f, false));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_2"), new ItemStack(ModItems.PHEASANT_RAW, 1), new ItemStack(ModItems.PHEASANT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f, false));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_3"), new ItemStack(ModItems.TURKEY_LEG_RAW, 1), new ItemStack(ModItems.TURKEY_LEG_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f, false));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_4"), new ItemStack(ModItems.TURKEY_RAW, 1), new ItemStack(ModItems.TURKEY_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f, false));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_5"), new ItemStack(ModItems.GOLDEN_GOOSE_EGG, 1), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_NUGGET, 5), 0.35f, false));
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_6"), new ItemStack(ModItems.EEL_MEAT_RAW, 1), new ItemStack(ModItems.EEL_MEAT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f));
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_7"), new ItemStack(ModItems.CRAB_MEAT_RAW, 1), new ItemStack(ModItems.CRAB_MEAT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f));
 	}

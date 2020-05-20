@@ -510,7 +510,7 @@ public class ModRecipes {
 			ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "juniper_seed"), new ItemStack(ModObjects.juniper_berries), new ItemStack(ModObjects.wood_ash, 1), new ItemStack(ModObjects.essence_of_vitality), 0.75f));
 		}
 		
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt0"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "cloudy_oil_alt0"), new ItemStack(Blocks.CACTUS), new ItemStack(Items.DYE, 1, 2), new ItemStack(ModObjects.cloudy_oil), 0.55f, true));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm"), new ItemStack(Items.ROTTEN_FLESH), new ItemStack(Items.LEATHER), new ItemStack(ModObjects.ectoplasm, 3), 0.65f, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "ectoplasm_alt"), new ItemStack(Items.BONE), new ItemStack(Items.DYE, 1, 15), new ItemStack(ModObjects.ectoplasm), 0.65f, false));
 		
@@ -518,17 +518,17 @@ public class ModRecipes {
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alt0"), new ItemStack(Items.SHULKER_SHELL), new ItemStack(Items.CHORUS_FRUIT_POPPED, 1, 0), new ItemStack(ModObjects.dimensional_sand, 4), 1, false));
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "dimensional_sand_alt1"), new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Items.CHORUS_FRUIT_POPPED), new ItemStack(ModObjects.dimensional_sand, 2), 0.75f, false));
 		
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook"), new ItemStack(Items.BEEF, 1), new ItemStack(Items.COOKED_BEEF), new ItemStack(ModObjects.tallow), 0.35f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_2"), new ItemStack(Items.PORKCHOP, 1), new ItemStack(Items.COOKED_PORKCHOP), new ItemStack(ModObjects.tallow), 0.35f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_3"), new ItemStack(Items.MUTTON, 1), new ItemStack(Items.COOKED_MUTTON), new ItemStack(ModObjects.tallow), 0.35f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_6"), new ItemStack(Items.CHICKEN, 1), new ItemStack(Items.COOKED_CHICKEN), new ItemStack(ModObjects.tallow), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook"), new ItemStack(Items.BEEF, 1), new ItemStack(Items.COOKED_BEEF), new ItemStack(ModObjects.tallow), 0.35f, false));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_2"), new ItemStack(Items.PORKCHOP, 1), new ItemStack(Items.COOKED_PORKCHOP), new ItemStack(ModObjects.tallow), 0.35f, false));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_3"), new ItemStack(Items.MUTTON, 1), new ItemStack(Items.COOKED_MUTTON), new ItemStack(ModObjects.tallow), 0.35f, false));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_6"), new ItemStack(Items.CHICKEN, 1), new ItemStack(Items.COOKED_CHICKEN), new ItemStack(ModObjects.tallow), 0.35f, false));
 		
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_4"), new ItemStack(Items.FISH, 1), new ItemStack(Items.COOKED_FISH), new ItemStack(ModObjects.cloudy_oil), 0.35f));
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_5"), new ItemStack(Items.FISH, 1, 1), new ItemStack(Items.COOKED_FISH, 1, 1), new ItemStack(ModObjects.cloudy_oil), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_4"), new ItemStack(Items.FISH, 1), new ItemStack(Items.COOKED_FISH), new ItemStack(ModObjects.cloudy_oil), 0.35f, true));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_5"), new ItemStack(Items.FISH, 1, 1), new ItemStack(Items.COOKED_FISH, 1, 1), new ItemStack(ModObjects.cloudy_oil), 0.35f, true));
 		
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_7"), new ItemStack(Items.RABBIT, 1), new ItemStack(Items.COOKED_RABBIT), new ItemStack(ModObjects.tallow), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_7"), new ItemStack(Items.RABBIT, 1), new ItemStack(Items.COOKED_RABBIT), new ItemStack(ModObjects.tallow), 0.35f, false));
 		
-		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_8"), new ItemStack(ModObjects.garlic, 1), new ItemStack(ModObjects.garlic_grilled), new ItemStack(ModObjects.cloudy_oil), 0.35f));
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_8"), new ItemStack(ModObjects.garlic, 1), new ItemStack(ModObjects.garlic_grilled), new ItemStack(ModObjects.cloudy_oil), 0.35f, true));
 	}
 	
 	protected static void addDistilleryRecipes() {
