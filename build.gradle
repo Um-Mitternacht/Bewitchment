@@ -152,7 +152,6 @@ dependencies {
 
     sourceSets {
         main {
-            output.resourcesDir = output.classesDir
             refMap = "mixins.bewitchment.refmap.json"
         }
     }
