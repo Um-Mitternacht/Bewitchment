@@ -60,16 +60,6 @@
 	  "type": "entity",
 	  "entity": "bewitchment:lizard",
 	  "scale": 0.5
-	},
-	{
-	  "type": "text",
-	  "title": "Werewolf",
-	  "text": "A melding of beast and man, they appear during a full moon. Some say werewolves aren't the only therianthropes, but so far, none of these have been documented."
-	},
-	{
-	  "type": "entity",
-	  "entity": "bewitchment:werewolf",
-	  "scale": 1.0
 	}
   ]
 }

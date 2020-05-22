@@ -108,8 +108,7 @@ public class VillagerTradeHandler {
 			ItemStack fire_aspect = ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(Enchantments.FIRE_ASPECT, 2));
 			career.addTrade(4, new TradeHandler.ItemsForDemon(fire_aspect, new EntityVillager.PriceInfo(1, 1)));
 			career.addTrade(5, new TradeHandler.ItemsForDemon(new ItemStack(ModObjects.skeleton_key), new EntityVillager.PriceInfo(40, 1)));
-			career.addTrade(5, new TradeHandler.RandomIdolForDemon());
-			career.addTrade(5, new TradeHandler.RandomContractForDemon());
+			career.addTrade(5, new TradeHandler.RandomIdolForDemon(), new TradeHandler.RandomContractForDemon());
 		}
 	}
 }

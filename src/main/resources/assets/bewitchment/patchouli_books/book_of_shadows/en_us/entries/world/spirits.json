@@ -40,6 +40,26 @@
 	  "type": "entity",
 	  "entity": "bewitchment:ghost",
 	  "scale": 0.7
+	},
+	{
+	  "type": "text",
+	  "title": "Werewolf",
+	  "text": "A melding of beast and man, they appear during a full moon. Some say werewolves aren't the only therianthropes, but so far, none of these have been documented."
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:werewolf",
+	  "scale": 1.0
+	},
+	{
+	  "type": "text",
+	  "title": "Cambions",
+	  "text": "Cambions are the offspring of a demon and a mortal human, left abandoned in the physical world. They try to meld in with villagers, but seem somewhat ostracized by them."
+	},
+	{
+	  "type": "entity",
+	  "entity": "bewitchment:cambion",
+	  "scale": 0.8
 	}
   ]
 }
