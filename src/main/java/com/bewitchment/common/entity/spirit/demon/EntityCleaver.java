@@ -73,7 +73,7 @@ public class EntityCleaver extends ModEntityMob {
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
-		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityPlayer || e instanceof EntityFeuerwurm || e instanceof EntityHellhound || e instanceof EntityBafometyr || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
 	}
 	
