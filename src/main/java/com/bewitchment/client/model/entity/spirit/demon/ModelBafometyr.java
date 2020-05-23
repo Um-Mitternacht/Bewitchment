@@ -1,14 +1,18 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHandSide;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * bafometyr - cybecat5555
  * Created using Tabula 7.0.1
  */
-public class ModelBafometyr extends ModelBase {
+public class ModelBafometyr extends ModelBiped {
 	public ModelRenderer body;
 	public ModelRenderer head;
 	public ModelRenderer leftArm;
@@ -248,6 +252,136 @@ public class ModelBafometyr extends ModelBase {
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.body.render(f5);
+	}
+	
+	@Override
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netheadYaw, float headPitch, float scaleFactor, Entity entity) {
+		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+		this.head.rotateAngleY = netheadYaw * 0.017453292F;
+		
+		if (flag) {
+			this.head.rotateAngleX = -((float) Math.PI / 4F);
+		}
+		else {
+			this.head.rotateAngleX = headPitch * 0.017453292F;
+		}
+		
+		this.body.rotateAngleY = 0.0F;
+		float f = 1.0F;
+		
+		if (flag) {
+			f = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
+			f = f / 0.2F;
+			f = f * f * f;
+		}
+		
+		if (f < 1.0F) {
+			f = 1.0F;
+		}
+		
+		float swingMod = 0.6F;
+		this.leftLeg01.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingMod * limbSwingAmount - -0.69F;
+		this.rightLeg01.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingMod * limbSwingAmount - -0.69F;
+		
+		
+		this.rightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+		this.leftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
+		this.rightArm.rotateAngleZ = 0.10000736613927509F;
+		this.leftArm.rotateAngleZ = -0.10000736613927509F;
+		
+		if (this.isRiding) {
+			this.rightArm.rotateAngleX += -((float) Math.PI / 5F);
+			this.leftArm.rotateAngleX += -((float) Math.PI / 5F);
+			this.rightLeg01.rotateAngleX = -1.4137167F;
+			this.rightLeg01.rotateAngleY = ((float) Math.PI / 10F);
+			this.rightLeg01.rotateAngleZ = 0.07853982F;
+			this.leftLeg01.rotateAngleX = -1.4137167F;
+			this.leftLeg01.rotateAngleY = -((float) Math.PI / 10F);
+			this.leftLeg01.rotateAngleZ = -0.07853982F;
+		}
+		
+		this.rightArm.rotateAngleY = 0.0F;
+		this.rightArm.rotateAngleZ = 0.0F;
+		
+		switch (this.leftArmPose) {
+			case EMPTY:
+				this.leftArm.rotateAngleY = 0.0F;
+				break;
+			case BLOCK:
+				this.leftArm.rotateAngleX = this.leftArm.rotateAngleX * 0.5F - 0.9424779F;
+				this.leftArm.rotateAngleY = 0.5235988F;
+				break;
+			case ITEM:
+				this.leftArm.rotateAngleX = this.leftArm.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
+				this.leftArm.rotateAngleY = 0.0F;
+		}
+		
+		switch (this.rightArmPose) {
+			case EMPTY:
+				this.rightArm.rotateAngleY = 0.0F;
+				break;
+			case BLOCK:
+				this.rightArm.rotateAngleX = this.rightArm.rotateAngleX * 0.5F - 0.9424779F;
+				this.rightArm.rotateAngleY = -0.5235988F;
+				break;
+			case ITEM:
+				this.rightArm.rotateAngleX = this.rightArm.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
+				this.rightArm.rotateAngleY = 0.0F;
+		}
+		
+		if (this.swingProgress > 0.0F) {
+			EnumHandSide enumhandside = this.getMainHand(entity);
+			ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
+			float f1 = this.swingProgress;
+			this.body.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
+			
+			if (enumhandside == EnumHandSide.LEFT) {
+				this.body.rotateAngleY *= -1.0F;
+			}
+			
+			this.rightArm.rotationPointZ = MathHelper.sin(this.body.rotateAngleY) * 5.0F;
+			this.rightArm.rotationPointX = -MathHelper.cos(this.body.rotateAngleY) * 5.0F;
+			this.leftArm.rotationPointZ = -MathHelper.sin(this.body.rotateAngleY) * 5.0F;
+			this.leftArm.rotationPointX = MathHelper.cos(this.body.rotateAngleY) * 5.0F;
+			this.rightArm.rotateAngleY += this.body.rotateAngleY;
+			this.leftArm.rotateAngleY += this.body.rotateAngleY;
+			this.leftArm.rotateAngleY += this.body.rotateAngleY;
+			f1 = 1.0F - this.swingProgress;
+			f1 = f1 * f1;
+			f1 = f1 * f1;
+			f1 = 1.0F - f1;
+			float f2 = MathHelper.sin(f1 * (float) Math.PI);
+			float f3 = MathHelper.sin(this.swingProgress * (float) Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+			modelrenderer.rotateAngleX = (float) ((double) modelrenderer.rotateAngleX - ((double) f2 * 1.2D + (double) f3));
+			modelrenderer.rotateAngleY += this.body.rotateAngleY * 2.0F;
+			modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
+		}
+		
+		
+		this.body.rotateAngleX = 0.0F;
+		this.head.rotationPointY = 0.0F;
+		
+		this.rightArm.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+		this.leftArm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+		this.rightArm.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+		this.leftArm.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+		
+		if (this.rightArmPose == ModelBiped.ArmPose.BOW_AND_ARROW) {
+			this.rightArm.rotateAngleY = -0.1F + this.head.rotateAngleY;
+			this.leftArm.rotateAngleY = 0.1F + this.head.rotateAngleY + 0.4F;
+			this.rightArm.rotateAngleX = -((float) Math.PI / 2F) + this.head.rotateAngleX;
+			this.leftArm.rotateAngleX = -((float) Math.PI / 2F) + this.head.rotateAngleX;
+		}
+		else if (this.leftArmPose == ModelBiped.ArmPose.BOW_AND_ARROW) {
+			this.rightArm.rotateAngleY = -0.1F + this.head.rotateAngleY - 0.4F;
+			this.leftArm.rotateAngleY = 0.1F + this.head.rotateAngleY;
+			this.rightArm.rotateAngleX = -((float) Math.PI / 2F) + this.head.rotateAngleX;
+			this.leftArm.rotateAngleX = -((float) Math.PI / 2F) + this.head.rotateAngleX;
+		}
+		
+		copyModelAngles(this.head, this.bipedHeadwear);
+		
+		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	
 	/**
