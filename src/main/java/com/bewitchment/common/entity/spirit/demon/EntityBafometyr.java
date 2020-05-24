@@ -25,12 +25,15 @@ import net.minecraft.world.World;
  * Created by Joseph on 4/16/2020.
  */
 public class EntityBafometyr extends ModEntityMob {
+	public int flameTimer;
+	
 	public EntityBafometyr(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/bafometyr"));
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.LAVA, 8);
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
+		this.flameTimer = 25 + this.rand.nextInt(25);
 		experienceValue = 25;
 		setSize(0.8f, 2.0f);
 	}
@@ -48,6 +51,11 @@ public class EntityBafometyr extends ModEntityMob {
 		BlockPos blockpos = new BlockPos(i, j, k);
 		Block block = this.world.getBlockState(blockpos.down()).getBlock();
 		return block == Blocks.NETHER_BRICK || block == Blocks.RED_NETHER_BRICK && super.getCanSpawnHere();
+	}
+	
+	public int getFlameTimer()
+	{
+		return flameTimer;
 	}
 	
 	//Shameless rip of Baphomet's fireball code
