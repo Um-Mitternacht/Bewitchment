@@ -26,6 +26,7 @@ import net.minecraft.world.World;
  */
 public class EntityBafometyr extends ModEntityMob {
 	public int flameTimer;
+	private static final ResourceLocation[] FLAME = {new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_2"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_3"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_4"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_5"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_6"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_7"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_8")};
 	
 	public EntityBafometyr(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/bafometyr"));
@@ -33,7 +34,7 @@ public class EntityBafometyr extends ModEntityMob {
 		setPathPriority(PathNodeType.LAVA, 8);
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
-		this.flameTimer = 25 + this.rand.nextInt(25);
+		this.flameTimer = 8;
 		experienceValue = 25;
 		setSize(0.8f, 2.0f);
 	}
@@ -62,8 +63,9 @@ public class EntityBafometyr extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		flameTimer = (flameTimer + 1) % 8;
 		if (getAttackTarget() != null) {
-			EntityLivingBase player = (EntityLivingBase) getAttackTarget();
+			EntityLivingBase player = getAttackTarget();
 			boolean launchFireball = ticksExisted % 80 > 5;
 			if (!launchFireball && getDistance(player) > 2) {
 				double d0 = getDistanceSq(player);
