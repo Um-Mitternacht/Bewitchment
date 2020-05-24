@@ -82,6 +82,16 @@ public class EntityWerewolf extends ModEntityMob {
 		return livingdata;
 	}
 	
+	protected float getSoundVolume()
+	{
+		return 5.0F;
+	}
+	
+	@Override
+	public int getTalkInterval() {
+		return 2400;
+	}
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
