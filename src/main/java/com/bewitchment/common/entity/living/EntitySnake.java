@@ -142,7 +142,7 @@ public class EntitySnake extends ModEntityTameable {
 	
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 2;
+		return 6;
 	}
 	
 	@Override
