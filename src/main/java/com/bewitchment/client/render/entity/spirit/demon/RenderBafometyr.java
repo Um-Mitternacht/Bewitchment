@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
  */
 public class RenderBafometyr extends RenderLiving<EntityBafometyr> {
 	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/entity/bafometyr.png");
+	private static final ResourceLocation[] FLAME = {new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_2"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_3"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_4"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_5"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_6"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_7"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_8")};
 	
 	public RenderBafometyr(RenderManager manager) {
 		this(manager, new ModelBafometyr());

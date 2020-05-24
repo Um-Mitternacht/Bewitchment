@@ -12,9 +12,7 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -26,7 +24,6 @@ import net.minecraft.world.World;
  */
 public class EntityBafometyr extends ModEntityMob {
 	public int flameTimer;
-	private static final ResourceLocation[] FLAME = {new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_2"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_3"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_4"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_5"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_6"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_7"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_8")};
 	
 	public EntityBafometyr(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/bafometyr"));
@@ -34,7 +31,7 @@ public class EntityBafometyr extends ModEntityMob {
 		setPathPriority(PathNodeType.LAVA, 8);
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
-		this.flameTimer = 8;
+		flameTimer = (flameTimer + 1) % 8;
 		experienceValue = 25;
 		setSize(0.8f, 2.0f);
 	}
@@ -44,18 +41,7 @@ public class EntityBafometyr extends ModEntityMob {
 		return true;
 	}
 	
-	@Override
-	public boolean getCanSpawnHere() {
-		int i = MathHelper.floor(this.posX);
-		int j = MathHelper.floor(this.getEntityBoundingBox().minY);
-		int k = MathHelper.floor(this.posZ);
-		BlockPos blockpos = new BlockPos(i, j, k);
-		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		return block == Blocks.NETHER_BRICK || block == Blocks.RED_NETHER_BRICK && super.getCanSpawnHere();
-	}
-	
-	public int getFlameTimer()
-	{
+	public int getFlameTimer() {
 		return flameTimer;
 	}
 	
@@ -63,7 +49,6 @@ public class EntityBafometyr extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		flameTimer = (flameTimer + 1) % 8;
 		if (getAttackTarget() != null) {
 			EntityLivingBase player = getAttackTarget();
 			boolean launchFireball = ticksExisted % 80 > 5;
@@ -89,6 +74,16 @@ public class EntityBafometyr extends ModEntityMob {
 			player.setFire(25);
 		}
 		return super.attackEntityAsMob(entityIn);
+	}
+	
+	@Override
+	public boolean getCanSpawnHere() {
+		int i = MathHelper.floor(this.posX);
+		int j = MathHelper.floor(this.getEntityBoundingBox().minY);
+		int k = MathHelper.floor(this.posZ);
+		BlockPos blockpos = new BlockPos(i, j, k);
+		Block block = this.world.getBlockState(blockpos.down()).getBlock();
+		return block == Blocks.NETHER_BRICK || block == Blocks.RED_NETHER_BRICK && super.getCanSpawnHere();
 	}
 	
 	@Override

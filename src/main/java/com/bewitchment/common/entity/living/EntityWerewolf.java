@@ -82,14 +82,8 @@ public class EntityWerewolf extends ModEntityMob {
 		return livingdata;
 	}
 	
-	protected float getSoundVolume()
-	{
+	protected float getSoundVolume() {
 		return 5.0F;
-	}
-	
-	@Override
-	public int getTalkInterval() {
-		return 2400;
 	}
 	
 	@Override
@@ -104,6 +98,11 @@ public class EntityWerewolf extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem || e instanceof EntitySheep || e instanceof EntityCow || e instanceof EntityChicken || e instanceof EntityLlama || e instanceof EntityPig || e instanceof EntityRabbit || e instanceof AbstractHorse));
+	}
+	
+	@Override
+	public int getTalkInterval() {
+		return 2400;
 	}
 	
 	@Override
