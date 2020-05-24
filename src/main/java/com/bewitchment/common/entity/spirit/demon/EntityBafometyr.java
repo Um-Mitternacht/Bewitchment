@@ -50,10 +50,6 @@ public class EntityBafometyr extends ModEntityMob {
 		return block == Blocks.NETHER_BRICK || block == Blocks.RED_NETHER_BRICK && super.getCanSpawnHere();
 	}
 	
-	public boolean isScorned() {
-		return this.ticksExisted % 50 > 40;
-	}
-	
 	//Shameless rip of Baphomet's fireball code
 	@Override
 	public void onLivingUpdate() {
