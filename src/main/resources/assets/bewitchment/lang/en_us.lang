@@ -1496,6 +1496,12 @@ entity.bewitchment.prefix.92=Squire
 entity.bewitchment.prefix.93=Vidame
 entity.bewitchment.prefix.94=Premier
 entity.bewitchment.prefix.95=Elder
+entity.bewitchment.prefix.96=Chief Executive
+entity.bewitchment.prefix.97=Chief Minister
+entity.bewitchment.prefix.98=Minister-President
+entity.bewitchment.prefix.99=Prime Minister
+entity.bewitchment.prefix.100=Patriarch
+entity.bewitchment.prefix.101=Matriarch
 
 # Thaumcraft compat
 tc.aspect.diabolus=Demon, Unholy, Profane
