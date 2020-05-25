@@ -31,7 +31,6 @@ public class EntityBafometyr extends ModEntityMob {
 		setPathPriority(PathNodeType.LAVA, 8);
 		setPathPriority(PathNodeType.DANGER_FIRE, 0);
 		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
-		flameTimer = (flameTimer + 1) % 8;
 		experienceValue = 25;
 		setSize(0.8f, 2.0f);
 	}
@@ -49,6 +48,7 @@ public class EntityBafometyr extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		flameTimer = (flameTimer + 1) % 8;
 		if (getAttackTarget() != null) {
 			EntityLivingBase player = getAttackTarget();
 			boolean launchFireball = ticksExisted % 80 > 5;
