@@ -49,6 +49,7 @@ public class EntityBafometyr extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		flameTimer = (flameTimer + 1) % 8;
 		if (getAttackTarget() != null) {
 			EntityLivingBase player = getAttackTarget();
 			boolean launchFireball = ticksExisted % 80 > 5;

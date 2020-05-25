@@ -3,7 +3,6 @@ package com.bewitchment.client.render.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.client.model.entity.spirit.demon.ModelBafometyr;
 import com.bewitchment.common.entity.spirit.demon.EntityBafometyr;
-import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -48,7 +47,7 @@ public class RenderBafometyr extends RenderLiving<EntityBafometyr> {
 		
 		@Override
 		public void doRenderLayer(EntityBafometyr entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float rotationYaw, float rotationPitch, float scale) {
-			renderer.bindTexture(TEX[entity.getDataManager().get(ModEntityMob.SKIN)]);
+			renderer.bindTexture(TEX[(entity.getFlameTimer())]);
 			GlStateManager.enableBlend();
 			GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
 			Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
