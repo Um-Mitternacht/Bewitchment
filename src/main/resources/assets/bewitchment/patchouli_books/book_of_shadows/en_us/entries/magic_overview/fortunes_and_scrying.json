@@ -5,7 +5,7 @@
   "pages": [
 	{
 	  "type": "text",
-	  "text": "Scrying of all sorts"
+	  "text": "Scrying is a rather potent means of gaining info on a target. The following pages detail one such known mean, as well as finding fortunes on a target, waiting for the universe to fulfill them."
 	},
 	{
 	  "type": "empty",
@@ -14,7 +14,7 @@
 	{
 	  "type": "text",
 	  "title": "Crystal Ball",
-	  "text": "Crystal balls are rather magical in general. They are most commonly used to predict the future and give out fortunes, but some claim they can be used for other things, such as remote viewing. The witches who claim to be able to do this usually can't prove it…"
+	  "text": "Crystal balls are rather magical in general. They are most commonly used to predict the future and give out fortunes, but some claim they can be used for other things, such as remote viewing. By right clicking with the taglock of a target, you are able to get some info on the individual in general, but it's up to you to interpret them."
 	},
 	{
 	  "type": "bewitchment:ritual",
