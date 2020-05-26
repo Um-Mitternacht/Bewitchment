@@ -378,6 +378,8 @@ public class ThaumcraftCompat implements IConditionFactory {
 		event.register.registerObjectTag(new ItemStack(ModObjects.leonards_wand), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.ALCHEMY, 15).add(DEMON, 15).add(Aspect.ENERGY, 15));
 		event.register.registerObjectTag(new ItemStack(ModObjects.caduceus), new AspectList().add(Aspect.MAGIC, 15).add(Aspect.FIRE, 15).add(DEMON, 15).add(Aspect.DARKNESS, 15));
 		
+		event.register.registerObjectTag(new ItemStack(ModObjects.thyrsus), new AspectList().add(SUN, 16).add(Aspect.AVERSION, 16).add(Aspect.PLANT, 16));
+		
 		//Add some of our aspects to existing items in vanilla
 		//Use this sparingly. Please run over any future additions to this part of the file with Sunconure11.
 		//If new aspects must be added to an item from vanilla, try and preserve as much of the original aspects as possible.
@@ -402,6 +404,8 @@ public class ThaumcraftCompat implements IConditionFactory {
 		ThaumcraftApi.registerEntityTag("bewitchment.druden", new AspectList().add(Aspect.PLANT, 25).add(DEMON, 25).add(Aspect.DARKNESS, 16));
 		ThaumcraftApi.registerEntityTag("bewitchment.shadow_person", new AspectList().add(Aspect.SOUL, 25).add(DEMON, 25).add(Aspect.DARKNESS, 25));
 		ThaumcraftApi.registerEntityTag("bewitchment.cleaver", new AspectList().add(Aspect.AVERSION, 25).add(DEMON, 25).add(Aspect.BEAST, 25));
+		ThaumcraftApi.registerEntityTag("bewitchment.cambion", new AspectList().add(Aspect.MIND, 25).add(DEMON, 25).add(Aspect.BEAST, 25));
+		ThaumcraftApi.registerEntityTag("bewitchment.bafometyr", new AspectList().add(Aspect.AVERSION, 25).add(DEMON, 25).add(Aspect.BEAST, 25).add(Aspect.MAGIC, 25));
 		
 		ThaumcraftApi.registerEntityTag("bewitchment.ghost", new AspectList().add(Aspect.SOUL, 25).add(Aspect.DEATH, 25).add(Aspect.MIND, 16));
 		

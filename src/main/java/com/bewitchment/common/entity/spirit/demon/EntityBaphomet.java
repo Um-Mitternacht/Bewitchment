@@ -184,8 +184,8 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 				this.addPotionEffect(new PotionEffect(MobEffects.SPEED, 300, 1));
 				return;
 			}
-			boolean lowHealth = getHealth() / getMaxHealth() < 0.3;
-			if (lowHealth && mobSpawnTicks <= 0) {
+			boolean middleHealth = getHealth() / getMaxHealth() < 0.5;
+			if (middleHealth && mobSpawnTicks <= 0) {
 				int amount = rand.nextInt(3) + 1;
 				for (int i = 0; i < amount; i++) {
 					EntityFeuerwurm temp = (EntityFeuerwurm) ModEntities.feuerwurm.newInstance(world);
@@ -210,6 +210,21 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 			}
 			else if (pullCooldown > 0) {
 				pullCooldown--;
+			}
+			boolean lowHealth = getHealth() / getMaxHealth() < 0.3;
+			if (lowHealth && mobSpawnTicks <= 0) {
+				int amount = rand.nextInt(3) + 1;
+				for (int i = 0; i < amount; i++) {
+					EntityBafometyr temp = (EntityBafometyr) ModEntities.bafometyr.newInstance(world);
+					temp.setAttackTarget(player);
+					temp.getDataManager().set(SKIN, rand.nextInt(temp.getSkinTypes()));
+					temp.setPosition(posX + rand.nextGaussian() * 0.8, posY + 0.5, posZ + rand.nextGaussian() * 0.8);
+					temp.addPotionEffect(new PotionEffect(MobEffects.SPEED, 600, 2));
+					world.spawnEntity(temp);
+					if (!world.isRemote) ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, posX, posY, posZ, 16, temp.width, temp.height + 1, temp.width, 0.1);
+				}
+				mobSpawnTicks = 180;
+				this.swingArm(EnumHand.MAIN_HAND);
 			}
 			boolean launchFireball = ticksExisted % 80 > 5;
 			if (!launchFireball && getDistance(player) > 2) {

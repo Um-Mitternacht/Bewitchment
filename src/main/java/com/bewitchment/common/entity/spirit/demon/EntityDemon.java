@@ -13,6 +13,7 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -26,6 +27,7 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -77,6 +79,22 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
 		if (ticksExisted % 20 == 0 && isInLava()) heal(6);
+		if (getAttackTarget() != null) {
+			EntityLivingBase player = getAttackTarget();
+			boolean launchFireball = ticksExisted % 80 > 5;
+			if (!launchFireball && getDistance(player) > 2) {
+				double d0 = getDistanceSq(player);
+				double d1 = player.posX - this.posX;
+				double d2 = player.getEntityBoundingBox().minY + (double) (player.height / 2.0F) - (this.posY + (double) (this.height / 2.0F));
+				double d3 = player.posZ - this.posZ;
+				float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
+				world.playEvent(null, 1018, new BlockPos((int) this.posX, (int) this.posY, (int) this.posZ), 0);
+				EntitySmallFireball entitysmallfireball = new EntitySmallFireball(world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
+				entitysmallfireball.posY = posY + (double) (height / 2.0F) + 0.5D;
+				this.swingArm(EnumHand.MAIN_HAND);
+				world.spawnEntity(entitysmallfireball);
+			}
+		}
 	}
 	
 	@Override

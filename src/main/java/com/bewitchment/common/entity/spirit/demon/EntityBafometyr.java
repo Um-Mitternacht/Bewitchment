@@ -37,11 +37,6 @@ public class EntityBafometyr extends ModEntityMob {
 		setSize(0.8f, 2.0f);
 	}
 	
-	@Override
-	protected boolean isValidLightLevel() {
-		return true;
-	}
-	
 	public int getFlameTimer() {
 		return flameTimer;
 	}
@@ -68,13 +63,6 @@ public class EntityBafometyr extends ModEntityMob {
 			}
 		}
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender()
-	{
-		return 15728880;
-	}
-	
 	
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
@@ -107,6 +95,11 @@ public class EntityBafometyr extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.3D);
 	}
 	
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender() {
+		return 15728880;
+	}
+	
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -116,7 +109,7 @@ public class EntityBafometyr extends ModEntityMob {
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityPlayer || e instanceof EntityFeuerwurm || e instanceof EntityHellhound || e instanceof EntityCleaver || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityPlayer || e instanceof EntityHellhound || e instanceof EntityCleaver || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
 	}
 	
 	public void onEntityUpdate() {
@@ -134,6 +127,16 @@ public class EntityBafometyr extends ModEntityMob {
 		else {
 			this.setAir(300);
 		}
+	}
+	
+	@Override
+	protected int getSkinTypes() {
+		return 1;
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
 	}
 	
 	@Override
