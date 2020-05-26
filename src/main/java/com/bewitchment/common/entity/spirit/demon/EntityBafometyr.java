@@ -18,6 +18,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by Joseph on 4/16/2020.
@@ -66,6 +68,13 @@ public class EntityBafometyr extends ModEntityMob {
 			}
 		}
 	}
+	
+	@SideOnly(Side.CLIENT)
+	public int getBrightnessForRender()
+	{
+		return 15728880;
+	}
+	
 	
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
