@@ -32,6 +32,11 @@ public class RitualConjureBaphomet extends Ritual {
 	}
 	
 	@Override
+	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+		return !world.isDaytime();
+	}
+	
+	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
