@@ -320,6 +320,11 @@
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:paper_skin",
 	  "text": "Decreases armor toughness"
-	}
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:rage",
+	  "text": "Angers mobs and renders them hostile to you"
+	}	
   ]
 }

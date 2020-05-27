@@ -23,6 +23,7 @@ public class PotionWolfsbane extends ModPotion {
 	@Override
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
-		if (BewitchmentAPI.isWerewolf(living) || living instanceof EntityWolf || living instanceof EntityWerewolf || living instanceof EntityHellhound) living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
+		if (BewitchmentAPI.isWerewolf(living) || living instanceof EntityWolf || living instanceof EntityWerewolf || living instanceof EntityHellhound || living.getClass().getName().endsWith("EntityCoyote") || living.getClass().getName().endsWith("EntityFeralWolf") || living.getClass().getName().endsWith("EntityFox"))
+			living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
 	}
 }
