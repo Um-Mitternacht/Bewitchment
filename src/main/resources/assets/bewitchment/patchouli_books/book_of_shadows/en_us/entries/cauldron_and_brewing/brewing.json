@@ -325,6 +325,11 @@
 	  "type": "bewitchment:brew",
 	  "recipe": "bewitchment:rage",
 	  "text": "Angers mobs and renders them hostile to you"
-	}	
+	},
+	{
+	  "type": "bewitchment:brew",
+	  "recipe": "bewitchment:friendship",
+	  "text": "Renders a mob tame to you"
+	}
   ]
 }

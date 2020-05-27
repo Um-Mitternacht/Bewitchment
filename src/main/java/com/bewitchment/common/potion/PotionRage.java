@@ -22,7 +22,6 @@ public class PotionRage extends ModPotion {
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		EntityPlayer player = (EntityPlayer) indirectSource;
-		if (living instanceof EntityLivingBase) ;
 		living.setRevengeTarget(player);
 	}
 }

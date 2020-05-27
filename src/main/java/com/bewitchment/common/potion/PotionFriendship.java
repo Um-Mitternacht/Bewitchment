@@ -3,6 +3,7 @@ package com.bewitchment.common.potion;
 import com.bewitchment.common.potion.util.ModPotion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 
 /**
@@ -10,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
  */
 public class PotionFriendship extends ModPotion {
 	public PotionFriendship() {
-		super("rage", true, 0x660000);
+		super("friendship", false, 0xF4C2C2);
 	}
 	
 	@Override
@@ -22,7 +23,6 @@ public class PotionFriendship extends ModPotion {
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		EntityPlayer player = (EntityPlayer) indirectSource;
-		if (living instanceof EntityLivingBase) ;
-		living.se(player);
+		if (living instanceof EntityTameable) ((EntityTameable) living).setTamedBy(player);
 	}
 }
