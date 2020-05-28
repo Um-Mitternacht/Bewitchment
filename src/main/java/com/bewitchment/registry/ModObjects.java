@@ -415,7 +415,11 @@ public class ModObjects {
 	public static final Block nether_brick_lilith_idol = new BlockStatue(Statues.nether_brick_lilith_idol);
 	public static final Block scorned_brick_lilith_idol = new BlockStatue(Statues.scorned_brick_lilith_idol);
 	public static final Block gold_lilith_idol = new BlockStatue(Statues.gold_lilith_idol);
-	//Moloch Idols... IF I HAD ANY
+	//Moloch Idols
+	public static final Block stone_moloch_idol = new BlockStatue(Statues.stone_moloch_idol);
+	public static final Block nether_brick_moloch_idol = new BlockStatue(Statues.nether_brick_moloch_idol);
+	public static final Block scorned_brick_moloch_idol = new BlockStatue(Statues.scorned_brick_moloch_idol);
+	public static final Block gold_moloch_idol = new BlockStatue(Statues.gold_moloch_idol);
 	
 	public static final Block filler = new BlockStatue.BlockFiller();
 	
