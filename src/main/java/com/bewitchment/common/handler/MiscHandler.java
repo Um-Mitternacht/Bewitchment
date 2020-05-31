@@ -12,10 +12,7 @@ import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
-import com.bewitchment.common.entity.spirit.demon.AbstractGreaterDemon;
-import com.bewitchment.common.entity.spirit.demon.EntityCambion;
-import com.bewitchment.common.entity.spirit.demon.EntityDruden;
-import com.bewitchment.common.entity.spirit.demon.EntityLeonard;
+import com.bewitchment.common.entity.spirit.demon.*;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.common.item.tool.ItemSkeletonKey;
@@ -28,6 +25,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -35,6 +33,7 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -49,7 +48,11 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.structure.MapGenNetherBridge;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -61,8 +64,10 @@ import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
+import net.minecraftforge.event.terraingen.InitMapGenEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 
@@ -72,6 +77,11 @@ import java.util.Objects;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
+	//Credit due to individuals who helped me toil through my BS
+	
+	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 1, 0, 1);
+	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 1, 0, 1);
+	
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
 		if (BewitchmentAPI.hasAlchemistGear(event.getUser())) {
@@ -87,6 +97,16 @@ public class MiscHandler {
 					event.setBottles(event.getBottles() + 1);
 				}
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onNetherEntitySpawnsCheck(WorldEvent.PotentialSpawns ev) {
+		WorldServer world = (WorldServer)ev.getWorld();
+		
+		if (world.provider.getDimensionType() == DimensionType.NETHER && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", ev.getPos())) {
+			ev.getList().add(cleaverSpawn);
+			ev.getList().add(bafometyrSpawn);
 		}
 	}
 	
