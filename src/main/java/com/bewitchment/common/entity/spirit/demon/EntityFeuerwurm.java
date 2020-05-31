@@ -19,6 +19,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
@@ -105,7 +106,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 	
 	@Override
 	public boolean getCanSpawnHere() {
-		return (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL || (world.provider.doesWaterVaporize() || world.provider.isNether()) && !world.containsAnyLiquid(getEntityBoundingBox()) && super.getCanSpawnHere();
 	}
 	
 	@Override
@@ -136,6 +137,11 @@ public class EntityFeuerwurm extends ModEntityMob {
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> (p.getDistanceSq(this) < 2) && (!BewitchmentAPI.hasBesmirchedGear(p))));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityAnimal || e instanceof EntityHellhound || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
 	}
 	
 	public void onEntityUpdate() {

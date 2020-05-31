@@ -336,11 +336,11 @@ public class ModConfig {
 			
 			@Config.Comment("The weight chance for feuerwurms to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int feuerwurmWeight = 6;
+			public int feuerwurmWeight = 3;
 			
 			@Config.Comment("The minimum amount of feuerwurms to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int feuerwurmMin = 1;
+			public int feuerwurmMin = 0;
 			
 			@Config.Comment("The maximum amount of feuerwurms to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -361,7 +361,7 @@ public class ModConfig {
 			
 			@Config.Comment("The maximum amount of cleavers to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int cleaverMax = 2;
+			public int cleaverMax = 1;
 		}
 		
 		public static class Bafometyr {
@@ -378,7 +378,7 @@ public class ModConfig {
 			
 			@Config.Comment("The maximum amount of bafometyrs to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int bafometyrMax = 2;
+			public int bafometyrMax = 1;
 		}
 		
 		public static class Druden {

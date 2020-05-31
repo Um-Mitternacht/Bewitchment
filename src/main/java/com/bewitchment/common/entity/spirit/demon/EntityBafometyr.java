@@ -17,6 +17,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -71,6 +72,12 @@ public class EntityBafometyr extends ModEntityMob {
 			player.setFire(25);
 		}
 		return super.attackEntityAsMob(entityIn);
+	}
+	
+	@Override
+	public boolean getCanSpawnHere()
+	{
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 	
 	@Override

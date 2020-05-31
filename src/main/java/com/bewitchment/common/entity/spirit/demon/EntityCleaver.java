@@ -28,6 +28,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -63,6 +64,12 @@ public class EntityCleaver extends ModEntityMob {
 		setEquipmentBasedOnDifficulty(difficulty);
 		setEnchantmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	@Override
+	public boolean getCanSpawnHere()
+	{
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 	
 	@Override
