@@ -1,13 +1,13 @@
 # Bewitchment
 A mod inspired by Witchery
 
-![BewitchmentV](https://img.shields.io/badge/Bewitchment%20version-0.0.20.8-purple.svg?longCache=true&style=flat)  
+![BewitchmentV](https://img.shields.io/badge/Bewitchment%20version-0.0.21.12-purple.svg?longCache=true&style=flat)  
 [![Build Status](https://travis-ci.org/Um-Mitternacht/Bewitchment.svg?branch=master)](https://travis-ci.org/Um-Mitternacht/Bewitchment)  
 ![Minecraft Version](https://img.shields.io/badge/minecraft_version-1.12.2+-red.svg?longCache=true&style=flat)
 
 ## Links
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20our%20server!-7289da.svg?longCache=true&style=for-the-badge)](https://discord.gg/YtXMC4S)
+[![Discord](https://img.shields.io/badge/Discord-Join%20our%20server!-7289da.svg?longCache=true&style=for-the-badge)](https://discord.gg/syNyGaS)
 [![Curseforge](https://img.shields.io/badge/Curseforge-Project%20page!-A54C2D.svg?longCache=true&style=for-the-badge)](https://minecraft.curseforge.com/projects/bewitchment)
 
 ## Donations
