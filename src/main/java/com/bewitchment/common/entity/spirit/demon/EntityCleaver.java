@@ -161,16 +161,6 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
-	public boolean getCanSpawnHere() {
-		int i = MathHelper.floor(this.posX);
-		int j = MathHelper.floor(this.getEntityBoundingBox().minY);
-		int k = MathHelper.floor(this.posZ);
-		BlockPos blockpos = new BlockPos(i, j, k);
-		Block block = this.world.getBlockState(blockpos.down()).getBlock();
-		return block == Blocks.NETHER_BRICK || block == Blocks.RED_NETHER_BRICK && super.getCanSpawnHere();
-	}
-	
-	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
