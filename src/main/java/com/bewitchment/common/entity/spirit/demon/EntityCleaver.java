@@ -161,6 +161,11 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
+	}
+	
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);

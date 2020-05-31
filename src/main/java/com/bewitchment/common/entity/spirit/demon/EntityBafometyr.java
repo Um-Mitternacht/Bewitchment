@@ -91,6 +91,11 @@ public class EntityBafometyr extends ModEntityMob {
 	}
 	
 	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
+	}
+	
+	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.75, false));
