@@ -82,6 +82,7 @@ public class MiscHandler {
 	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 1, 1, 1);
 	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 1, 1, 1);
 	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 3, 1, 1);
+	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 3, 1, 1);
 	
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
@@ -109,6 +110,7 @@ public class MiscHandler {
 			ev.getList().add(cleaverSpawn);
 			ev.getList().add(bafometyrSpawn);
 			ev.getList().add(wurmSpawn);
+			ev.getList().add(hellhoundSpawn);
 		}
 	}
 	
