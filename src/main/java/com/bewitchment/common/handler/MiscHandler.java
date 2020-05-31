@@ -81,6 +81,7 @@ public class MiscHandler {
 	
 	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 1, 0, 1);
 	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 1, 0, 1);
+	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 3, 0, 3);
 	
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
@@ -107,6 +108,7 @@ public class MiscHandler {
 		if (world.provider.getDimensionType() == DimensionType.NETHER && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", ev.getPos())) {
 			ev.getList().add(cleaverSpawn);
 			ev.getList().add(bafometyrSpawn);
+			ev.getList().add(wurmSpawn);
 		}
 	}
 	
