@@ -79,9 +79,9 @@ import java.util.Objects;
 public class MiscHandler {
 	//Credit due to individuals who helped me toil through my BS (mostly tslat in the MMD discord)
 	
-	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 1, 0, 1);
-	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 1, 0, 1);
-	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 3, 0, 3);
+	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 1, 1, 1);
+	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 1, 1, 1);
+	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 3, 1, 1);
 	
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
