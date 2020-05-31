@@ -77,7 +77,7 @@ import java.util.Objects;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class MiscHandler {
-	//Credit due to individuals who helped me toil through my BS
+	//Credit due to individuals who helped me toil through my BS (mostly tslat in the MMD discord)
 	
 	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 1, 0, 1);
 	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 1, 0, 1);
