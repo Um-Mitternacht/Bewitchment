@@ -79,10 +79,10 @@ import java.util.Objects;
 public class MiscHandler {
 	//Credit due to individuals who helped me toil through my BS (mostly tslat in the MMD discord)
 	
-	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 1, 1, 1);
-	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 1, 1, 1);
-	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 3, 1, 1);
-	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 3, 1, 1);
+	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 5, 0, 1);
+	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 5, 0, 1);
+	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 8, 0, 3);
+	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 8, 0, 3);
 	
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
@@ -104,13 +104,15 @@ public class MiscHandler {
 	
 	@SubscribeEvent
 	public void onNetherEntitySpawnsCheck(WorldEvent.PotentialSpawns ev) {
-		WorldServer world = (WorldServer)ev.getWorld();
+		WorldServer world = (WorldServer) ev.getWorld();
 		
-		if (world.provider.getDimensionType() == DimensionType.NETHER && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", ev.getPos())) {
-			ev.getList().add(cleaverSpawn);
-			ev.getList().add(bafometyrSpawn);
-			ev.getList().add(wurmSpawn);
-			ev.getList().add(hellhoundSpawn);
+		if (ev.getType() == EnumCreatureType.MONSTER) {
+			if (world.provider.getDimensionType() == DimensionType.NETHER && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", ev.getPos())) {
+				ev.getList().add(cleaverSpawn);
+				ev.getList().add(bafometyrSpawn);
+				ev.getList().add(wurmSpawn);
+				ev.getList().add(hellhoundSpawn);
+			}
 		}
 	}
 	
