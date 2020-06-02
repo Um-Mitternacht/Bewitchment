@@ -266,7 +266,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData data) {
-		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(102)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(502)).getFormattedText());
+		this.setCustomNameTag((rand.nextInt(3) == 0 ? new TextComponentTranslation("entity.bewitchment.prefix." + rand.nextInt(102)).getFormattedText() + " " : "") + new TextComponentTranslation("entity.bewitchment.given_name." + rand.nextInt(503)).getFormattedText());
 		return super.onInitialSpawn(difficulty, data);
 	}
 	
