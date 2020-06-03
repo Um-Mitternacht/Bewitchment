@@ -43,11 +43,6 @@ public class EntityHellhound extends ModEntityMob {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 6;
-	}
-	
-	@Override
 	public boolean isPotionApplicable(PotionEffect effect) {
 		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
 	}
@@ -150,5 +145,10 @@ public class EntityHellhound extends ModEntityMob {
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_WOLF_GROWL;
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
 	}
 }

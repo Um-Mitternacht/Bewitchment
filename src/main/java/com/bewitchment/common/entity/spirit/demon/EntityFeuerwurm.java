@@ -139,11 +139,6 @@ public class EntityFeuerwurm extends ModEntityMob {
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityAnimal || e instanceof EntityHellhound || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
 	}
 	
-	@Override
-	public int getMaxSpawnedInChunk() {
-		return 6;
-	}
-	
 	public void onEntityUpdate() {
 		int i = this.getAir();
 		super.onEntityUpdate();
@@ -159,5 +154,10 @@ public class EntityFeuerwurm extends ModEntityMob {
 		else {
 			this.setAir(300);
 		}
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
 	}
 }

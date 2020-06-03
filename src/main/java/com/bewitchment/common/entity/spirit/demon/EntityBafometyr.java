@@ -3,7 +3,7 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import net.minecraft.block.Block;
+import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -11,10 +11,11 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
-import net.minecraft.init.Blocks;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
@@ -66,6 +67,16 @@ public class EntityBafometyr extends ModEntityMob {
 	}
 	
 	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return ModSounds.BAFOMETYR_HURT;
+	}
+	
+	@Override
+	protected SoundEvent getDeathSound() {
+		return ModSounds.BAFOMETYR_DEATH;
+	}
+	
+	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityIn;
@@ -75,8 +86,7 @@ public class EntityBafometyr extends ModEntityMob {
 	}
 	
 	@Override
-	public boolean getCanSpawnHere()
-	{
+	public boolean getCanSpawnHere() {
 		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 	
@@ -95,11 +105,6 @@ public class EntityBafometyr extends ModEntityMob {
 	@SideOnly(Side.CLIENT)
 	public int getBrightnessForRender() {
 		return 15728880;
-	}
-	
-	@Override
-	public int getMaxSpawnedInChunk() {
-		return 6;
 	}
 	
 	@Override
@@ -129,6 +134,16 @@ public class EntityBafometyr extends ModEntityMob {
 		else {
 			this.setAir(300);
 		}
+	}
+	
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.BAFOMETYR_IDLE;
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
 	}
 	
 	@Override

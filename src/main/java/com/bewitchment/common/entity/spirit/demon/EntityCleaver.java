@@ -5,13 +5,11 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
-import net.minecraft.block.Block;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -25,8 +23,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -64,12 +60,6 @@ public class EntityCleaver extends ModEntityMob {
 		setEquipmentBasedOnDifficulty(difficulty);
 		setEnchantmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);
-	}
-	
-	@Override
-	public boolean getCanSpawnHere()
-	{
-		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 	
 	@Override
@@ -117,6 +107,11 @@ public class EntityCleaver extends ModEntityMob {
 		if (itemEntity.getItem().getItem() instanceof ItemSword || itemEntity.getItem().getItem() instanceof ItemArmor || itemEntity.getItem().getItem() instanceof ItemShield) {
 			super.updateEquipmentIfNeeded(itemEntity);
 		}
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
 	}
 	
 	@Override
@@ -168,8 +163,8 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
-	public int getMaxSpawnedInChunk() {
-		return 6;
+	public boolean getCanSpawnHere() {
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 	
 	@Override
