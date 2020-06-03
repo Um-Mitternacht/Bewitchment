@@ -65,5 +65,24 @@
 	  "bewitchment:cleaver_living_1",
 	  "bewitchment:cleaver_living_2"
 	]
+  },
+  "bafometyr_living": {
+	"sounds": [
+	  "bewitchment:bafometyr_living_0",
+	  "bewitchment:bafometyr_living_1",
+	  "bewitchment:bafometyr_living_2",
+	  "bewitchment:bafometyr_living_3"
+	]
+  },
+  "bafometyr_hurt": {
+	"sounds": [
+	  "bewitchment:bafometyr_hurt_0"
+	]
+  },
+  "bafometyr_death": {
+	"sounds": [
+	  "bewitchment:bafometyr_death_0",
+	  "bewitchment:bafometyr_death_1"
+	]
   }
 }
