@@ -64,10 +64,8 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 	private void sendTarotMsg(EntityPlayer player, UUID uuid) {
 		EntityPlayer tagPlayer = Util.findPlayer(uuid);
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
-		if (BewitchmentAPI.hasColdIronGear(tagPlayer))
-			player.sendStatusMessage(new TextComponentTranslation("tarot.is_shrouded", tagPlayer.getDisplayName()), true);
-		else
-		switch (tagPlayer.getRNG().nextInt(10)) {
+		if (BewitchmentAPI.hasColdIronGear(tagPlayer)) player.sendStatusMessage(new TextComponentTranslation("tarot.is_shrouded", tagPlayer.getDisplayName()), true);
+		else switch (tagPlayer.getRNG().nextInt(10)) {
 			case 0:
 				// Chance for no reveal
 				player.sendStatusMessage(new TextComponentTranslation("tarot.no_tarot", tagPlayer.getDisplayName()), true);
