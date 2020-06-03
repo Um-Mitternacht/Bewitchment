@@ -723,6 +723,7 @@ tarot.mobkills=%1$s slayed %2$s monster(s).
 tarot.has_boss=%s laughed in the face of danger.
 tarot.no_boss=%s hasn't conquered any great creatures, yet.
 tarot.bloodshed=%1$s has robbed life from %2$s individual(s).
+tarot.is_shrouded=I can't see the target...
 
 tarot.demon_pledged=%s has pledged their soul to a demon.
 tarot.not_pledged=%s has no affiliation in the black arts.

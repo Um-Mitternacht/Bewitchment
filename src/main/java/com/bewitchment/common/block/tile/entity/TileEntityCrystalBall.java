@@ -61,11 +61,12 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 		return true;
 	}
 	
-	//Todo: Work on reordering the logic for all of this to take into account cold iron's shrouding effect
-	//My only hope is that this code is so bad I'm never allowed to create another sin like this crap again
 	private void sendTarotMsg(EntityPlayer player, UUID uuid) {
 		EntityPlayer tagPlayer = Util.findPlayer(uuid);
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
+		if (BewitchmentAPI.hasColdIronGear(tagPlayer))
+			player.sendStatusMessage(new TextComponentTranslation("tarot.is_shrouded", tagPlayer.getDisplayName()), true);
+		else
 		switch (tagPlayer.getRNG().nextInt(10)) {
 			case 0:
 				// Chance for no reveal
@@ -76,11 +77,8 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				if (BewitchmentAPI.hasPets(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.has_pets", tagPlayer.getDisplayName()), true);
 				}
-				else if (!BewitchmentAPI.hasPets(tagPlayer)) {
+				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.no_pets", tagPlayer.getDisplayName()), true);
-				}
-				else if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
 				}
 				break;
 			case 2:
@@ -89,15 +87,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 					if (cap.fortune.isNegative) {
 						player.sendStatusMessage(new TextComponentTranslation("tarot.bad_fortune", tagPlayer.getDisplayName()), true);
 					}
-					else if (!cap.fortune.isNegative) {
-						player.sendStatusMessage(new TextComponentTranslation("tarot.good_fortune", tagPlayer.getDisplayName()), true);
-					}
-					if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-						player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
-					}
-				}
-				if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
+					else player.sendStatusMessage(new TextComponentTranslation("tarot.good_fortune", tagPlayer.getDisplayName()), true);
 				}
 				else player.sendStatusMessage(new TextComponentTranslation("tarot.no_fortune", tagPlayer.getDisplayName()), true);
 				break;
@@ -107,11 +97,8 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				if (BewitchmentAPI.hasEffects(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.has_effect", tagPlayer.getDisplayName()), true);
 				}
-				else if (!BewitchmentAPI.hasEffects(tagPlayer)) {
+				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.no_effect", tagPlayer.getDisplayName()), true);
-				}
-				else if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
 				}
 			case 4:
 				// Display how many mobs the player has killed.
@@ -121,11 +108,8 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				if (BewitchmentAPI.defeatedBoss(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.has_boss", tagPlayer.getDisplayName()), true);
 				}
-				else if (!BewitchmentAPI.defeatedBoss(tagPlayer)) {
+				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.no_boss", tagPlayer.getDisplayName()), true);
-				}
-				else if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
 				}
 				break;
 			case 6:
@@ -134,9 +118,6 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				}
 				else if (ExtendedWorld.playerPledgedToDemon(world, player, "baphomet")) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.demon_pledged", tagPlayer.getDisplayName()), true);
-				}
-				else if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
 				}
 				else {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_pledged", tagPlayer.getDisplayName()), true);
@@ -148,9 +129,6 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				}
 				else if (cap.getCurses().isEmpty()) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.is_not_cursed", tagPlayer.getDisplayName()), true);
-				}
-				else if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
 				}
 				break;
 			//TODO: Look in bauble inventories too
@@ -178,9 +156,6 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				}
 				else if (!tagPlayer.inventory.hasItemStack(new ItemStack(Item.getByNameOrId("totem_" + "")))) {
 					player.sendStatusMessage(new TextComponentTranslation("tarot.not_protected", tagPlayer.getDisplayName()), true);
-				}
-				else if (BewitchmentAPI.hasColdIronGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("tarot.shrouded", tagPlayer.getDisplayName()), true);
 				}
 				break;
 			case 9:
