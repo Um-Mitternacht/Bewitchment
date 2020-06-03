@@ -149,6 +149,20 @@ public class BewitchmentAPI {
 	
 	/**
 	 * @param entity the entity to check
+	 * @return true if player has full set of cold iron gear
+	 */
+	public static boolean hasColdIronGear(EntityLivingBase entity) {
+		List<ItemStack> armor = (List<ItemStack>) entity.getArmorInventoryList();
+		List<Item> armorItem = new ArrayList<>();
+		for (ItemStack is : armor) {
+			armorItem.add(is.getItem());
+		}
+		return (armorItem.contains(ModObjects.cold_iron_helmet) && armorItem.contains(ModObjects.cold_iron_chestplate) && armorItem.contains(ModObjects.cold_iron_leggings) && armorItem.contains(ModObjects.cold_iron_boots));
+	}
+	
+	
+	/**
+	 * @param entity the entity to check
 	 * @return true if player has full set of green witch gear
 	 */
 	public static boolean hasGreenWitchGear(EntityLivingBase entity) {
