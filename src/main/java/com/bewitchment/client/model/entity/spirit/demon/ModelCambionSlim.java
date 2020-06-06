@@ -1,6 +1,5 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -316,9 +315,9 @@ public class ModelCambionSlim extends ModelBiped {
 		this.bipedBody.render(f5);
 	}
 	
-	@Override
-	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+	@SuppressWarnings("incomplete-switch")
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
+		boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
 		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
 		
 		if (flag) {
@@ -329,10 +328,14 @@ public class ModelCambionSlim extends ModelBiped {
 		}
 		
 		this.bipedBody.rotateAngleY = 0.0F;
+		this.bipedRightArm.rotationPointZ = 0.0F;
+		this.bipedRightArm.rotationPointX = -5.0F;
+		this.bipedLeftArm.rotationPointZ = 0.0F;
+		this.bipedLeftArm.rotationPointX = 5.0F;
 		float f = 1.0F;
 		
 		if (flag) {
-			f = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
+			f = (float) (entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
 			f = f / 0.2F;
 			f = f * f * f;
 		}
@@ -341,19 +344,16 @@ public class ModelCambionSlim extends ModelBiped {
 			f = 1.0F;
 		}
 		
-		float swingMod = 0.6F;
-		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.3F * limbSwingAmount / f;
-		this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.3F * limbSwingAmount / f;
+		this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
+		this.bipedRightArm.rotateAngleZ = 0.0F;
+		this.bipedLeftArm.rotateAngleZ = 0.0F;
+		this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+		this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
 		this.bipedRightLeg.rotateAngleY = 0.0F;
 		this.bipedLeftLeg.rotateAngleY = 0.0F;
 		this.bipedRightLeg.rotateAngleZ = 0.0F;
 		this.bipedLeftLeg.rotateAngleZ = 0.0F;
-		
-		
-		this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
-		this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
-		this.bipedRightArm.rotateAngleZ = 0.10000736613927509F;
-		this.bipedLeftArm.rotateAngleZ = -0.10000736613927509F;
 		
 		if (this.isRiding) {
 			this.bipedRightArm.rotateAngleX += -((float) Math.PI / 5F);
@@ -396,7 +396,7 @@ public class ModelCambionSlim extends ModelBiped {
 		}
 		
 		if (this.swingProgress > 0.0F) {
-			EnumHandSide enumhandside = this.getMainHand(entity);
+			EnumHandSide enumhandside = this.getMainHand(entityIn);
 			ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
 			float f1 = this.swingProgress;
 			this.bipedBody.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
@@ -411,7 +411,7 @@ public class ModelCambionSlim extends ModelBiped {
 			this.bipedLeftArm.rotationPointX = MathHelper.cos(this.bipedBody.rotateAngleY) * 5.0F;
 			this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY;
 			this.bipedLeftArm.rotateAngleY += this.bipedBody.rotateAngleY;
-			this.bipedLeftArm.rotateAngleY += this.bipedBody.rotateAngleY;
+			this.bipedLeftArm.rotateAngleX += this.bipedBody.rotateAngleY;
 			f1 = 1.0F - this.swingProgress;
 			f1 = f1 * f1;
 			f1 = f1 * f1;
@@ -423,22 +423,37 @@ public class ModelCambionSlim extends ModelBiped {
 			modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
 		}
 		
-		
-		this.bipedBody.rotateAngleX = 0.0F;
-		this.bipedHead.rotationPointY = 0.0F;
+		if (this.isSneak) {
+			this.bipedBody.rotateAngleX = 0.5F;
+			this.bipedRightArm.rotateAngleX += 0.4F;
+			this.bipedLeftArm.rotateAngleX += 0.4F;
+			this.bipedRightLeg.rotationPointZ = 4.0F;
+			this.bipedLeftLeg.rotationPointZ = 4.0F;
+			this.bipedRightLeg.rotationPointY = 9.0F;
+			this.bipedLeftLeg.rotationPointY = 9.0F;
+			this.bipedHead.rotationPointY = 1.0F;
+		}
+		else {
+			this.bipedBody.rotateAngleX = 0.0F;
+			this.bipedRightLeg.rotationPointZ = 0.1F;
+			this.bipedLeftLeg.rotationPointZ = 0.1F;
+			this.bipedRightLeg.rotationPointY = 12.0F;
+			this.bipedLeftLeg.rotationPointY = 12.0F;
+			this.bipedHead.rotationPointY = 0.0F;
+		}
 		
 		this.bipedRightArm.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
 		this.bipedLeftArm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
 		this.bipedRightArm.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 		this.bipedLeftArm.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 		
-		if (this.rightArmPose == ArmPose.BOW_AND_ARROW) {
+		if (this.rightArmPose == ModelBiped.ArmPose.BOW_AND_ARROW) {
 			this.bipedRightArm.rotateAngleY = -0.1F + this.bipedHead.rotateAngleY;
 			this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY + 0.4F;
 			this.bipedRightArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
 			this.bipedLeftArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
 		}
-		else if (this.leftArmPose == ArmPose.BOW_AND_ARROW) {
+		else if (this.leftArmPose == ModelBiped.ArmPose.BOW_AND_ARROW) {
 			this.bipedRightArm.rotateAngleY = -0.1F + this.bipedHead.rotateAngleY - 0.4F;
 			this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY;
 			this.bipedRightArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
@@ -446,8 +461,6 @@ public class ModelCambionSlim extends ModelBiped {
 		}
 		
 		copyModelAngles(this.bipedHead, this.bipedHeadwear);
-		
-		setLivingAnimations((EntityLivingBase) entity, limbSwing, limbSwingAmount, Minecraft.getMinecraft().getRenderPartialTicks());
 	}
 	
 	@Override
