@@ -482,7 +482,6 @@ public class ModObjects {
 	public static final Item poppet_earthprotection = Util.registerItem(new ItemPoppet(false), "poppet_earthprotection");
 	public static final Item poppet_flameprotection = Util.registerItem(new ItemPoppet(false), "poppet_flameprotection");
 	public static final Item poppet_hungerprotection = Util.registerItem(new ItemPoppet(false), "poppet_hungerprotection");
-	//	public static final Item poppet_judgement = Util.registerItem(new ItemPoppet(false), "poppet_judgement");
 	public static final Item poppet_spiritbane = Util.registerItem(new ItemPoppet(false), "poppet_spiritbane");
 	public static final Item poppet_tool = Util.registerItem(new ItemPoppet(true), "poppet_tool");
 	public static final Item poppet_vampiric = Util.registerItem(new ItemPoppet(false), "poppet_vampiric");

@@ -59,11 +59,6 @@
 	},
 	{
 	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_judgement",
-	  "text": "Lowers damage from vampires and werewolves (W.I.P)"
-	},
-	{
-	  "type": "crafting",
 	  "recipe": "bewitchment:poppet_spiritbane",
 	  "text": "Reduces damage from spirits"
 	},
