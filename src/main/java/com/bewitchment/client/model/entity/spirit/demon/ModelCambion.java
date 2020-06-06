@@ -1,6 +1,5 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
