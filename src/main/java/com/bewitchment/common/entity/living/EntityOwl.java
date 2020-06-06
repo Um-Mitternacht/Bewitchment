@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.living;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -33,7 +34,7 @@ public class EntityOwl extends ModEntityTameable {
 	protected int shearTimer;
 	
 	public EntityOwl(World world) {
-		super(world, new ResourceLocation(Bewitchment.MODID, "entities/owl"), Items.RABBIT, Items.CHICKEN);
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/owl"), Items.RABBIT, Items.CHICKEN, Items.EGG, Items.RABBIT_FOOT, ModObjects.lizard_leg);
 		setSize(0.4f, 0.9f);
 		this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		moveHelper = new EntityFlyHelper(this);

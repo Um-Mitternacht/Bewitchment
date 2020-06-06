@@ -37,7 +37,7 @@ public class EntitySnake extends ModEntityTameable {
 	private int milkTimer = 0;
 	
 	public EntitySnake(World world) {
-		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"), Items.CHICKEN, Items.RABBIT);
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/snake"), Items.CHICKEN, Items.RABBIT, Items.EGG, Items.RABBIT_FOOT, ModObjects.lizard_leg);
 		setSize(1, 0.3f);
 		this.setHissTime(this.getNewHiss());
 		experienceValue = 5;
