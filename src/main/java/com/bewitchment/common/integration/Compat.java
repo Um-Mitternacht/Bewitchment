@@ -80,8 +80,8 @@ public class Compat {
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_3"), new ItemStack(ModItems.TURKEY_LEG_RAW, 1), new ItemStack(ModItems.TURKEY_LEG_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f, false));
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_4"), new ItemStack(ModItems.TURKEY_RAW, 1), new ItemStack(ModItems.TURKEY_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.tallow), 0.35f, false));
 		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_5"), new ItemStack(ModItems.GOLDEN_GOOSE_EGG, 1), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GOLD_NUGGET, 5), 0.35f, false));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_6"), new ItemStack(ModItems.EEL_MEAT_RAW, 1), new ItemStack(ModItems.EEL_MEAT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f));
-		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_7"), new ItemStack(ModItems.CRAB_MEAT_RAW, 1), new ItemStack(ModItems.CRAB_MEAT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_6"), new ItemStack(ModItems.EEL_MEAT_RAW, 1), new ItemStack(ModItems.EEL_MEAT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f, true));
+		event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bap_recipe_7"), new ItemStack(ModItems.CRAB_MEAT_RAW, 1), new ItemStack(ModItems.CRAB_MEAT_COOKED), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f, true));
 	}
 	
 	@Optional.Method(modid = "betteranimalsplus")
@@ -134,8 +134,8 @@ public class Compat {
 	@SubscribeEvent
 	public void registerQuarkOvenRecipes(RegistryEvent.Register<OvenRecipe> event) {
 		if (ModuleLoader.isFeatureEnabled(Frogs.class))
-			event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "frog_leg_recipe"), new ItemStack(frogLeg, 1, 0), new ItemStack(cookedFrogLeg, 1, 0), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f));
+			event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "frog_leg_recipe"), new ItemStack(frogLeg, 1, 0), new ItemStack(cookedFrogLeg, 1, 0), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f, true));
 		if (ModuleLoader.isFeatureEnabled(Crabs.class))
-			event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "crab_leg_recipe"), new ItemStack(crabLeg, 1, 0), new ItemStack(cookedCrabLeg, 1, 0), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f));
+			event.getRegistry().register(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "crab_leg_recipe"), new ItemStack(crabLeg, 1, 0), new ItemStack(cookedCrabLeg, 1, 0), new ItemStack(com.bewitchment.registry.ModObjects.cloudy_oil), 0.35f, true));
 	}
 }
