@@ -475,7 +475,6 @@ public class ModObjects {
 	public static final Item golden_thread = Util.registerItem("golden_thread");
 	//Poppets
 	public static final Item poppet = Util.registerItem("poppet");
-	public static final Item poppet_armor = Util.registerItem(new ItemPoppet(true), "poppet_armor");
 	public static final Item poppet_binding = Util.registerItem(new ItemPoppet(false), "poppet_binding");
 	public static final Item poppet_clumsy = Util.registerItem(new ItemPoppet(false), "poppet_clumsy");
 	public static final Item poppet_deathprotection = Util.registerItem(new ItemPoppet(true), "poppet_deathprotection");

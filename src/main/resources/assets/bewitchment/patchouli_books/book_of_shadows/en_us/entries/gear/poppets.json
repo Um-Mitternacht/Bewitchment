@@ -14,11 +14,6 @@
 	},
 	{
 	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_armor",
-	  "text": "Prevents armor items from breaking, instead the poppet breaks. (W.I.P)"
-	},
-	{
-	  "type": "crafting",
 	  "recipe": "bewitchment:poppet_tool",
 	  "text": "Like its armor variant, the poppet will break instead of your tool, preserving it for one last use."
 	},
