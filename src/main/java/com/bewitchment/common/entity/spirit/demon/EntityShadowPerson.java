@@ -3,7 +3,6 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
-import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -39,6 +38,11 @@ public class EntityShadowPerson extends ModEntityMob {
 	}
 	
 	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return SoundEvents.ENTITY_ENDERMEN_SCREAM;
+	}
+	
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
@@ -47,11 +51,6 @@ public class EntityShadowPerson extends ModEntityMob {
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.22);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(0.5);
 		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.9D);
-	}
-	
-	@Override
-	protected SoundEvent getHurtSound(DamageSource source) {
-		return SoundEvents.ENTITY_ENDERMEN_SCREAM;
 	}
 	
 	@Override

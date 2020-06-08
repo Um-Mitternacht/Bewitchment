@@ -25,7 +25,7 @@ public class BewitchmentFMLLoadingPlugin implements IFMLLoadingPlugin {
 	
 	@Override
 	public void injectData(Map<String, Object> map) {
-	
+
 	}
 	
 	@Override
