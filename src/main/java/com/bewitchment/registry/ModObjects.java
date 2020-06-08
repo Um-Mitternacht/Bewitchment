@@ -204,6 +204,9 @@ public class ModObjects {
 	public static final Block candelabra_iron = new BlockCandelabra("iron");
 	public static final Block candelabra_silver = new BlockCandelabra("silver");
 	
+	//Creative Stuff
+	public static final Block goddess_statue = new BlockGoddessStatue();
+	
 	//Trees
 	public static final Block cypress_sapling = new ModBlockSapling("cypress_sapling", new WorldGenCypressTree(false), "treeSapling");
 	public static final Block elder_sapling = new ModBlockSapling("elder_sapling", new WorldGenElderTree(false), "treeSapling");
