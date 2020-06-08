@@ -150,7 +150,7 @@ public class EntityWerewolf extends ModEntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.5);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3);
 		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(1);
 		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
