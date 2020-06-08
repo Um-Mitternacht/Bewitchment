@@ -35,7 +35,6 @@ public class RenderBafometyr extends RenderLiving<EntityBafometyr> {
 		return TEX;
 	}
 	
-	//Todo: Animate this when I'm not dealing with ungodly brain fog
 	private static class LayerFlames implements LayerRenderer<EntityBafometyr> {
 		private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_3.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_4.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_5.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_6.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/layer/bafometyr_fire_7.png")};
 		
