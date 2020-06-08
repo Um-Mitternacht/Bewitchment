@@ -35,7 +35,7 @@ public class BlockGoddessStatue extends ModBlock {
 		List<Curse> curses = ep.getCurses();
 		if (cursed) return true;
 		for (Curse curse : curses) {
-			if (playerIn.getRNG().nextDouble() < (1.0)) ep.removeCurse(curse);
+			ep.removeCurse(curse);
 		}
 		
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
