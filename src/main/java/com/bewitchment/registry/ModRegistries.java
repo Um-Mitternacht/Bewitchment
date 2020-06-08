@@ -10,10 +10,7 @@ import com.bewitchment.common.block.BlockCandleBase;
 import com.bewitchment.common.block.BlockDragonsBloodLog;
 import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.plants.util.BlockBushSpreading;
-import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
-import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
-import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
-import com.bewitchment.common.block.tile.entity.TileEntityStatue;
+import com.bewitchment.common.block.tile.entity.*;
 import com.bewitchment.common.crafting.RecipeDuplicateKey;
 import com.bewitchment.common.crafting.RecipeJuniperKeyRing;
 import com.bewitchment.common.fortune.*;
@@ -70,6 +67,7 @@ public class ModRegistries {
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		GameRegistry.registerTileEntity(TileEntityStatue.class, new ResourceLocation(Bewitchment.MODID, "statue"));
+		GameRegistry.registerTileEntity(TileEntityGoddessStatue.class, new ResourceLocation(Bewitchment.MODID, "creative"));
 		GameRegistry.registerTileEntity(TileEntityPoppetShelf.class, new ResourceLocation(Bewitchment.MODID, "poppet_shelf"));
 		GameRegistry.registerTileEntity(TileEntityDragonsBlood.class, new ResourceLocation(Bewitchment.MODID, "dragons_blood"));
 		GameRegistry.registerTileEntity(TileEntitySiphoningFlower.class, new ResourceLocation(Bewitchment.MODID, "siphoning_flower"));
