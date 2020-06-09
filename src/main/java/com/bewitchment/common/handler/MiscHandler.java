@@ -13,6 +13,8 @@ import com.bewitchment.common.block.BlockBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityBrazier;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesCauldron;
 import com.bewitchment.common.entity.spirit.demon.*;
+import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
+import com.bewitchment.common.entity.spirit.ghost.EntityGhost;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.common.item.tool.ItemSkeletonKey;
@@ -82,6 +84,10 @@ public class MiscHandler {
 	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 8, 0, 3);
 	Biome.SpawnListEntry cambionSpawn = new Biome.SpawnListEntry(EntityCambion.class, 1, 0, 2);
 	
+	Biome.SpawnListEntry shadeSpawn = new Biome.SpawnListEntry(EntityGhost.class, 4, 0, 3);
+	Biome.SpawnListEntry ghostSpawn = new Biome.SpawnListEntry(EntityShadowPerson.class, 1, 0, 2);
+	Biome.SpawnListEntry dogeSpawn = new Biome.SpawnListEntry(EntityBlackDog.class, 4, 0, 3);
+	
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
 		if (BewitchmentAPI.hasAlchemistGear(event.getUser())) {
@@ -111,6 +117,19 @@ public class MiscHandler {
 				ev.getList().add(wurmSpawn);
 				ev.getList().add(hellhoundSpawn);
 				ev.getList().add(cambionSpawn);
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onStrongholdSpawnsCheck(WorldEvent.PotentialSpawns ev) {
+		WorldServer world = (WorldServer) ev.getWorld();
+		
+		if (ev.getType() == EnumCreatureType.MONSTER) {
+			if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
+				ev.getList().add(shadeSpawn);
+				ev.getList().add(ghostSpawn);
+				ev.getList().add(dogeSpawn);
 			}
 		}
 	}
