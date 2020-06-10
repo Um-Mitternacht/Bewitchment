@@ -74,6 +74,9 @@ public class Statues {
 	public static Statue nether_brick_moloch_idol = new Statue("nether_brick_moloch_idol", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_moloch_netherbrick.png"), moloch_idol, 1);
 	public static Statue scorned_brick_moloch_idol = new Statue("scorned_brick_moloch_idol", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_moloch_scorned.png"), moloch_idol, 1);
 	
+	private static ModelBase goddess_statue = new ModelStatueGoddess();
+	public static Statue stone_goddess_statue = new Statue("goddess_statue", Blocks.STONE, new ResourceLocation(Bewitchment.MODID, "textures/blocks/statue_purifying.png"), goddess_statue, 2);
+	
 	public static class Statue {
 		private final String name;
 		private final Block base;

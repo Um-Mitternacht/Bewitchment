@@ -2,9 +2,7 @@ package com.bewitchment.common.block;
 
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Curse;
-import com.bewitchment.common.block.util.ModBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
+import com.bewitchment.client.misc.Statues;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -19,11 +17,13 @@ import java.util.List;
 /**
  * Created by Joseph on 6/8/2020.
  */
-public class BlockGoddessStatue extends ModBlock {
+public class BlockGoddessStatue extends BlockStatue {
 	private boolean cursed;
 	
-	public BlockGoddessStatue() {
-		super("goddess_statue", Material.ROCK, SoundType.STONE, 10000, 10000, "pickaxe", 10000);
+	public BlockGoddessStatue(Statues.Statue statue) {
+		super(statue);
+		this.setHardness(1000000);
+		this.setBlockUnbreakable();
 	}
 	
 	//Remind me never to do this awfulness again. This works but good god. This looks like I huffed a bunch of cocaine and proceeded to slam my face on the keyboard.
