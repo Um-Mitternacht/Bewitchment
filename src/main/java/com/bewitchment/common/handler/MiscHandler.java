@@ -135,6 +135,17 @@ public class MiscHandler {
 	}
 	
 	@SubscribeEvent
+	public void onVillageSpawnsCheck(WorldEvent.PotentialSpawns ev) {
+		WorldServer world = (WorldServer) ev.getWorld();
+		
+		if (ev.getType() == EnumCreatureType.MONSTER) {
+			if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", ev.getPos())) {
+				ev.getList().add(cambionSpawn);
+			}
+		}
+	}
+	
+	@SubscribeEvent
 	public void onMineshaftSpawnsCheck(WorldEvent.PotentialSpawns ev) {
 		WorldServer world = (WorldServer) ev.getWorld();
 		
