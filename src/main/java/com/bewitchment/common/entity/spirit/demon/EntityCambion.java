@@ -55,6 +55,7 @@ public class EntityCambion extends ModEntityMob {
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.35, false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(3, new EntityAIOpenDoor(this, true));
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
@@ -80,6 +81,11 @@ public class EntityCambion extends ModEntityMob {
 	@Override
 	protected boolean canEquipItem(ItemStack stack) {
 		return super.canEquipItem(stack);
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return false;
 	}
 	
 	@Override

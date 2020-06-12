@@ -3,10 +3,7 @@ package com.bewitchment.common.world.gen;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
-import com.bewitchment.common.world.gen.structures.WorldGenCambionHome;
-import com.bewitchment.common.world.gen.structures.WorldGenMenhir;
-import com.bewitchment.common.world.gen.structures.WorldGenStonecircle;
-import com.bewitchment.common.world.gen.structures.WorldGenWickerman;
+import com.bewitchment.common.world.gen.structures.*;
 import com.bewitchment.common.world.gen.tree.WorldGenCypressTree;
 import com.bewitchment.common.world.gen.tree.WorldGenElderTree;
 import com.bewitchment.common.world.gen.tree.WorldGenJuniperTree;
@@ -55,6 +52,7 @@ public class ModWorldGen implements IWorldGenerator {
 	private final WorldGenerator stonecircle = new WorldGenStonecircle();
 	private final WorldGenerator menhir = new WorldGenMenhir();
 	private final WorldGenerator cambionhome = new WorldGenCambionHome();
+	private final WorldGenerator cambionhomemedium = new WorldGenCambionHomeMedium();
 	
 	public ModWorldGen() {
 		MinecraftForge.addGrassSeed(new ItemStack(ModObjects.aconitum_seeds), 3);
@@ -121,7 +119,8 @@ public class ModWorldGen implements IWorldGenerator {
 			generateStructure(wickerman, world, rand, ModConfig.worldGen.structureGen.wickermanChance, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.BEACH));
 			generateStructure(stonecircle, world, rand, ModConfig.worldGen.structureGen.stonecircleChance, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST));
 			generateStructure(menhir, world, rand, ModConfig.worldGen.structureGen.menhirChance, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || b == Biomes.TAIGA || b == Biomes.COLD_TAIGA || b == Biomes.REDWOOD_TAIGA);
-			generateStructure(cambionhome, world, rand, ModConfig.worldGen.structureGen.cambionHomeChance, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(b, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SPOOKY) || BiomeDictionary.hasType(b, BiomeDictionary.Type.MAGICAL) || BiomeDictionary.hasType(b, BiomeDictionary.Type.SWAMP) || b == Biomes.TAIGA || b == Biomes.COLD_TAIGA || b == Biomes.REDWOOD_TAIGA);
+			generateStructure(cambionhome, world, rand, ModConfig.worldGen.structureGen.cambionHomeChance, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS));
+			generateStructure(cambionhomemedium, world, rand, ModConfig.worldGen.structureGen.cambionHomeMediumChance, chunkX, chunkZ, b -> BiomeDictionary.hasType(b, BiomeDictionary.Type.PLAINS));
 		}
 	}
 	

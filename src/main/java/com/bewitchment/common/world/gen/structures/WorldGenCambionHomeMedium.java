@@ -19,9 +19,9 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 
 import java.util.Random;
 
-public class WorldGenCambionHome extends WorldGenerator {
+public class WorldGenCambionHomeMedium extends WorldGenerator {
 	
-	public WorldGenCambionHome() {
+	public WorldGenCambionHomeMedium() {
 		super();
 	}
 	
@@ -31,7 +31,7 @@ public class WorldGenCambionHome extends WorldGenerator {
 		WorldServer worldServer = (WorldServer) worldIn;
 		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldServer.getStructureTemplateManager();
-		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":cambion1"));
+		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":cambionmedium1"));
 		
 		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
 			IBlockState iBlockState = worldIn.getBlockState(position);
