@@ -20,45 +20,45 @@
 			"item": "bewitchment:juniper_broom"
 		  }
 		]
-	  },
-	  "elder": {
-		"trigger": "minecraft:inventory_changed",
-		"conditions": {
-		  "items": [
-			{
-			  "item": "bewitchment:elder_broom"
-			}
-		  ]
-		},
-		"cypress": {
-		  "trigger": "minecraft:inventory_changed",
-		  "conditions": {
-			"items": [
-			  {
-				"item": "bewitchment:cypress_broom"
-			  }
-			]
-		  },
-		  "dragon_resin": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-			  "items": [
-				{
-				  "item": "bewitchment:dragons_blood_broom"
-				}
-			  ]
-			}
-		  },
-		  "requirements": [
-			[
-			  "cypress",
-			  "juniper",
-			  "dragon_resin",
-			  "elder"
-			]
-		  ]
-		}
+	  }
+	},
+	"elder": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:elder_broom"
+		  }
+		]
+	  }
+	},
+	"db": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:dragons_blood_broom"
+		  }
+		]
+	  }
+	},
+	"cypress": {
+	  "trigger": "minecraft:inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"item": "bewitchment:cypress_broom"
+		  }
+		]
 	  }
 	}
-  }
+  },
+  "requirements": [
+	[
+	  "juniper",
+	  "db",
+	  "elder",
+	  "cypress"
+	]
+  ]
 }
