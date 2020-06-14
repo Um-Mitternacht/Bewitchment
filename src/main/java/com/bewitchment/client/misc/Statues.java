@@ -68,7 +68,7 @@ public class Statues {
 	public static Statue nether_brick_baphomet_idol = new Statue("nether_brick_baphomet_idol", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_netherbrick.png"), baphomet_idol, 1);
 	public static Statue scorned_brick_baphomet_idol = new Statue("scorned_brick_baphomet_idol", ModObjects.scorned_bricks[0], new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_baphomet_scorned.png"), baphomet_idol, 1);
 	
-	private static ModelBase moloch_idol = new ModelBaphometIdol();
+	private static ModelBase moloch_idol = new ModelMolochIdol();
 	public static Statue stone_moloch_idol = new Statue("stone_moloch_idol", Blocks.STONE, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_moloch_stone.png"), moloch_idol, 1);
 	public static Statue gold_moloch_idol = new Statue("gold_moloch_idol", Blocks.GOLD_BLOCK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_moloch_gold.png"), moloch_idol, 1);
 	public static Statue nether_brick_moloch_idol = new Statue("nether_brick_moloch_idol", Blocks.NETHER_BRICK, new ResourceLocation(Bewitchment.MODID, "textures/blocks/idol/idol_moloch_netherbrick.png"), moloch_idol, 1);
