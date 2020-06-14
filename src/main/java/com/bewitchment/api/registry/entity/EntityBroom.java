@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import java.lang.reflect.Field;
 
-@SuppressWarnings({"NullableProblems"})
+@SuppressWarnings({"NullableProblems", "deprecation"})
 public abstract class EntityBroom extends Entity {
 	private static final Field jumping = ReflectionHelper.findField(EntityLivingBase.class, "isJumping", "field_70703_bu");
 	
