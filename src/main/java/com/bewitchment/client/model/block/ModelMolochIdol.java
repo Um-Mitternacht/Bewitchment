@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * idol_moloch - sunconure11
  * Created using Tabula 7.1.0
  */
-public class ModelIdolMoloch extends ModelBase {
+public class ModelMolochIdol extends ModelBase {
 	public ModelRenderer plinth;
 	public ModelRenderer pedestal;
 	public ModelRenderer lLeg0;
@@ -28,7 +28,7 @@ public class ModelIdolMoloch extends ModelBase {
 	public ModelRenderer lHorn1;
 	public ModelRenderer rHorn1;
 	
-	public ModelIdolMoloch() {
+	public ModelMolochIdol() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.snout1 = new ModelRenderer(this, 34, 43);
