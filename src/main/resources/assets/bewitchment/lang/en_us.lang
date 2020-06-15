@@ -357,6 +357,8 @@ tile.bewitchment.nether_brick_baphomet_idol.name=Nether Brick Baphomet Idol
 tile.bewitchment.scorned_brick_baphomet_idol.name=Scorned Brick Baphomet Idol
 tile.bewitchment.gold_baphomet_idol.name=Gold Baphomet Idol
 
+tile.bewitchment.gold_moloch_idol.name=Gold Moloch Idol
+
 tile.bewitchment.goddess_statue.name=Goddess Statue
 
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
