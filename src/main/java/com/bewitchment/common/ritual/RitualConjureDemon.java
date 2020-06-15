@@ -9,6 +9,10 @@ import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.entity.monster.EntityEvoker;
+import net.minecraft.entity.monster.EntitySpellcasterIllager;
+import net.minecraft.entity.monster.EntityVindicator;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -25,7 +29,7 @@ import java.util.Collections;
 
 public class RitualConjureDemon extends Ritual {
 	public RitualConjureDemon() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_demon"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.ROTTEN_FLESH), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.bottle_of_blood), Util.get("gemDiamond"), Util.get("ingotGold")), s -> s instanceof EntityVillager || s instanceof EntityPlayer, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(new ResourceLocation(Bewitchment.MODID, "conjure_demon"), Arrays.asList(Util.get(ModObjects.athame), Util.get(Items.ROTTEN_FLESH), Util.get("cropHellebore"), Util.get(ModObjects.hellhound_horn), Util.get(ModObjects.bottle_of_blood), Util.get("gemDiamond"), Util.get("ingotGold")), s -> s instanceof EntityVillager || s instanceof EntityWitch || s instanceof EntityEvoker || s instanceof EntitySpellcasterIllager || s instanceof EntityVindicator || s instanceof EntityPlayer, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 	
 	@Override
