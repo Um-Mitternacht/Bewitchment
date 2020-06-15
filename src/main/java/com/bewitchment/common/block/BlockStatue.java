@@ -29,6 +29,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public class BlockStatue extends ModBlockContainer {
 	public final Statues.Statue statue;
 	

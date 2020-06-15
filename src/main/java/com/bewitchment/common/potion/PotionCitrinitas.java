@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import java.lang.reflect.Field;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"unused", "deprecation"})
 public class PotionCitrinitas extends ModPotion {
 	private static final Field color = ReflectionHelper.findField(EnumDyeColor.class, "colorValue", "field_193351_w");
 	
