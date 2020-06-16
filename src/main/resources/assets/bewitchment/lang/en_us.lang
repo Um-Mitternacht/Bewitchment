@@ -358,6 +358,9 @@ tile.bewitchment.scorned_brick_baphomet_idol.name=Scorned Brick Baphomet Idol
 tile.bewitchment.gold_baphomet_idol.name=Gold Baphomet Idol
 
 tile.bewitchment.gold_moloch_idol.name=Gold Moloch Idol
+tile.bewitchment.scorned_brick_moloch_idol.name=Scorned Brick Moloch Idol
+tile.bewitchment.nether_brick_moloch_idol.name=Nether Brick Moloch Idol
+tile.bewitchment.stone_moloch_idol.name=Stone Moloch Idol
 
 tile.bewitchment.goddess_statue.name=Goddess Statue
 
