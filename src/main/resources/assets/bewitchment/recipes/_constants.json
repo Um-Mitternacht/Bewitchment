@@ -152,7 +152,10 @@
 	  },
 	  {
 		"item": "minecraft:mutton"
-	  }
+	  },
+	  {
+		"item": "minecraft:rabbit"
+	  }	  
 	]
   },
   {
