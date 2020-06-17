@@ -4,6 +4,7 @@ import com.bewitchment.ModConfig;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
 import com.bewitchment.common.item.tool.ItemBastardsGrimoire;
@@ -192,6 +193,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			if (state.getBlock() instanceof ITreePart) return state;
 		}
 		if (state.getBlock() instanceof BlockLog) state = state.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
+		else if (state.getBlock() instanceof BlockStatue) state = state.getBlock().getDefaultState();
 		else if (state.getBlock() instanceof BlockRotatedPillar) state = state.getBlock().getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
 		else if (state.getBlock() instanceof BlockLeaves) state = state.withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, false);
 		else if (!(state.getBlock() instanceof BlockFlower)) state = state.getBlock().getDefaultState();
@@ -204,12 +206,25 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
 	}
 	
+	protected boolean isStatue(IBlockState state) {
+		return (state.getBlock() instanceof BlockStatue);
+	}
+	
 	protected void registerToMap(IBlockState state) {
 		if (isNatural(state)) {
 			IBlockState state0 = convert(state);
 			int current = map.getOrDefault(state0, 0);
 			if (map.keySet().isEmpty() || current < 4 * map.keySet().size()) {
 				map.put(state0, ++current);
+				maxPower++;
+			}
+		}
+		if (isStatue(state)) {
+			IBlockState state0 = convert(state);
+			int current = map.getOrDefault(state0, 0);
+			//What I don't understand is why this works. According to Moriya this should cause a crash. And yet it just. Works. WTF?
+			if (map.keySet().isEmpty() || current < 4 * map.keySet().size()) {
+				map.put(state0, maxPower += 300);
 				maxPower++;
 			}
 		}
