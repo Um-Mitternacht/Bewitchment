@@ -12,6 +12,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
@@ -39,6 +40,9 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
 		if (entity instanceof EntityLivingBase) {
 			if ((BewitchmentAPI.getSilverWeakness((EntityLivingBase) entity) > 1 && !BewitchmentAPI.isWerewolf((EntityLivingBase) entity)) || BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1) addCollisionBoxToList(pos, box, boxes, WALL);
+		}
+		if (entity instanceof EntitySlime) {
+			addCollisionBoxToList(pos, box, boxes, WALL);
 		}
 	}
 	
