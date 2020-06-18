@@ -4,6 +4,7 @@ import baubles.api.BaubleType;
 import com.bewitchment.Util;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.common.item.util.ModItemBauble;
+import com.bewitchment.registry.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -23,6 +24,7 @@ public class ItemNazar extends ModItemBauble {
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase living) {
 		if (living.ticksExisted % 40 == 0 && living.isPotionActive(MobEffects.UNLUCK) && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) living.removePotionEffect(MobEffects.UNLUCK);
+		if (living.ticksExisted % 40 == 0 && living.isPotionActive(ModPotions.fear) && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) living.removePotionEffect(ModPotions.fear);
 	}
 	
 	@Override
