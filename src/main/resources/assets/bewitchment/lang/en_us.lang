@@ -254,6 +254,7 @@ item.bewitchment.cleaver_sword.name=Cleaver Blade
 item.bewitchment.garlic_grilled.name=Grilled Garlic
 item.bewitchment.elderberry_jelly.name=Elderberry Jelly
 item.bewitchment.juniper_tea.name=Juniper Tea
+item.bewitchment.garlic_bread.name=Garlic Bread
 
 tooltip.bewitchment.silver_armor_description.name=Protects against undead
 tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
@@ -705,6 +706,8 @@ fortune.bewitchment.resilience=Skin becomes iron in your time of need.
 fortune.bewitchment.courage=You will face adversity head on.
 fortune.bewitchment.thunderbolt=A bright flash of light occludes my vision.
 fortune.bewitchment.meet_cambion=One born of the flame shall visit you.
+fortune.bewitchment.meet_cleaver=A child of the calf shall visit you.
+fortune.bewitchment.meet_bafometyr=A child of the lamb shall visit you.
 #TAROT
 tarot.no_tarot=You can't quite figure out what's in the crystal ball...
 tarot.is_infused=%s is infused.
