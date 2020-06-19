@@ -546,6 +546,7 @@ public class ModObjects {
 	public static final ItemFood garlic_grilled = new ItemGarlicGrilled();
 	public static final ItemFood elderberry_jelly = new ItemElderberryJelly();
 	public static final ItemFood juniper_tea = new ItemJuniperTea();
+	public static final ItemFood garlic_bread = new ItemGarlicBread();
 	
 	public static final Item sigil_mending = Util.registerItem(new ItemSigil(600, true) {
 		@Override
@@ -560,6 +561,7 @@ public class ModObjects {
 			entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 0));
 			entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
 			entity.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200, 0));
+			entity.addPotionEffect(new PotionEffect(ModPotions.magic_weakness, 200, 0));
 		}
 	}, "sigil_ruin");
 	public static final Item sigil_binding = Util.registerItem(new ItemSigil(600, false) {
@@ -614,6 +616,7 @@ public class ModObjects {
 		public void applyEffects(EntityLivingBase entity) {
 			entity.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 0));
 			entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 1200, 0));
+			entity.addPotionEffect(new PotionEffect(ModPotions.rhino_hide, 1200, 0));
 		}
 	}, "sigil_battle");
 	public static final Item sigil_disorientation = Util.registerItem(new ItemSigil(600, false) {
