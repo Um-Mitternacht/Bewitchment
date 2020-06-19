@@ -7,6 +7,7 @@ import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
+import com.bewitchment.common.block.util.BlockIdol;
 import com.bewitchment.common.item.tool.ItemBastardsGrimoire;
 import com.bewitchment.common.item.tool.ItemGrimoireMagia;
 import com.bewitchment.registry.ModObjects;
@@ -207,7 +208,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 	
 	protected boolean isStatue(IBlockState state) {
-		return (state.getBlock() instanceof BlockStatue);
+		return (!(state.getBlock() instanceof BlockIdol)) && (state.getBlock() instanceof BlockStatue);
 	}
 	
 	protected void registerToMap(IBlockState state) {
@@ -222,7 +223,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 		if (isStatue(state)) {
 			IBlockState state0 = convert(state);
 			int current = map.getOrDefault(state0, 0);
-			//What I don't understand is why this works. According to Moriya this should cause a crash. And yet it just. Works. WTF?
+			//What I don't understand is why this works. According to Moriya this shouldn't work. And yet it just. Works. WTF?
 			if (map.keySet().isEmpty() || current < 4 * map.keySet().size()) {
 				map.put(state0, maxPower += 300);
 				maxPower++;

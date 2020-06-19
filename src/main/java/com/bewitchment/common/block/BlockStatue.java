@@ -197,11 +197,10 @@ public class BlockStatue extends ModBlockContainer {
 		return EnumPushReaction.DESTROY;
 	}
 	
-	
+	@Override
 	public float getEnchantPowerBonus(World world, BlockPos pos) {
 		return 3.5f;
 	}
-	
 	
 	@Override
 	public int quantityDropped(Random random) {

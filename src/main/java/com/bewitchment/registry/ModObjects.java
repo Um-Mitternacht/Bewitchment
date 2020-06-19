@@ -399,30 +399,30 @@ public class ModObjects {
 	public static final Block scorned_brick_moloch_statue = new BlockStatue(Statues.scorned_brick_moloch_statue);
 	public static final Block gold_moloch_statue = new BlockStatue(Statues.gold_moloch_statue);
 	//Leonard Idols
-	public static final Block stone_leonard_idol = new BlockStatue(Statues.stone_leonard_idol);
-	public static final Block nether_brick_leonard_idol = new BlockStatue(Statues.nether_brick_leonard_idol);
-	public static final Block scorned_brick_leonard_idol = new BlockStatue(Statues.scorned_brick_leonard_idol);
-	public static final Block gold_leonard_idol = new BlockStatue(Statues.gold_leonard_idol);
+	public static final Block stone_leonard_idol = new BlockIdol(Statues.stone_leonard_idol);
+	public static final Block nether_brick_leonard_idol = new BlockIdol(Statues.nether_brick_leonard_idol);
+	public static final Block scorned_brick_leonard_idol = new BlockIdol(Statues.scorned_brick_leonard_idol);
+	public static final Block gold_leonard_idol = new BlockIdol(Statues.gold_leonard_idol);
 	//Herne Idols
-	public static final Block stone_herne_idol = new BlockStatue(Statues.stone_herne_idol);
-	public static final Block nether_brick_herne_idol = new BlockStatue(Statues.nether_brick_herne_idol);
-	public static final Block scorned_brick_herne_idol = new BlockStatue(Statues.scorned_brick_herne_idol);
-	public static final Block gold_herne_idol = new BlockStatue(Statues.gold_herne_idol);
+	public static final Block stone_herne_idol = new BlockIdol(Statues.stone_herne_idol);
+	public static final Block nether_brick_herne_idol = new BlockIdol(Statues.nether_brick_herne_idol);
+	public static final Block scorned_brick_herne_idol = new BlockIdol(Statues.scorned_brick_herne_idol);
+	public static final Block gold_herne_idol = new BlockIdol(Statues.gold_herne_idol);
 	//Baphomet Idols
-	public static final Block stone_baphomet_idol = new BlockStatue(Statues.stone_baphomet_idol);
-	public static final Block nether_brick_baphomet_idol = new BlockStatue(Statues.nether_brick_baphomet_idol);
-	public static final Block scorned_brick_baphomet_idol = new BlockStatue(Statues.scorned_brick_baphomet_idol);
-	public static final Block gold_baphomet_idol = new BlockStatue(Statues.gold_baphomet_idol);
+	public static final Block stone_baphomet_idol = new BlockIdol(Statues.stone_baphomet_idol);
+	public static final Block nether_brick_baphomet_idol = new BlockIdol(Statues.nether_brick_baphomet_idol);
+	public static final Block scorned_brick_baphomet_idol = new BlockIdol(Statues.scorned_brick_baphomet_idol);
+	public static final Block gold_baphomet_idol = new BlockIdol(Statues.gold_baphomet_idol);
 	//Lilith Idols
-	public static final Block stone_lilith_idol = new BlockStatue(Statues.stone_lilith_idol);
-	public static final Block nether_brick_lilith_idol = new BlockStatue(Statues.nether_brick_lilith_idol);
-	public static final Block scorned_brick_lilith_idol = new BlockStatue(Statues.scorned_brick_lilith_idol);
-	public static final Block gold_lilith_idol = new BlockStatue(Statues.gold_lilith_idol);
+	public static final Block stone_lilith_idol = new BlockIdol(Statues.stone_lilith_idol);
+	public static final Block nether_brick_lilith_idol = new BlockIdol(Statues.nether_brick_lilith_idol);
+	public static final Block scorned_brick_lilith_idol = new BlockIdol(Statues.scorned_brick_lilith_idol);
+	public static final Block gold_lilith_idol = new BlockIdol(Statues.gold_lilith_idol);
 	//Moloch Idols
-	public static final Block stone_moloch_idol = new BlockStatue(Statues.stone_moloch_idol);
-	public static final Block nether_brick_moloch_idol = new BlockStatue(Statues.nether_brick_moloch_idol);
-	public static final Block scorned_brick_moloch_idol = new BlockStatue(Statues.scorned_brick_moloch_idol);
-	public static final Block gold_moloch_idol = new BlockStatue(Statues.gold_moloch_idol);
+	public static final Block stone_moloch_idol = new BlockIdol(Statues.stone_moloch_idol);
+	public static final Block nether_brick_moloch_idol = new BlockIdol(Statues.nether_brick_moloch_idol);
+	public static final Block scorned_brick_moloch_idol = new BlockIdol(Statues.scorned_brick_moloch_idol);
+	public static final Block gold_moloch_idol = new BlockIdol(Statues.gold_moloch_idol);
 	
 	public static final Block filler = new BlockStatue.BlockFiller();
 	
