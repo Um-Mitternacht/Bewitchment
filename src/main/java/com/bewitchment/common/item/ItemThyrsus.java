@@ -4,7 +4,9 @@ import com.bewitchment.Util;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -16,6 +18,7 @@ import net.minecraft.util.EnumHand;
  */
 public class ItemThyrsus extends ItemSword {
 	
+	//Todo: Expand repair items
 	public ItemThyrsus() {
 		super(ModObjects.TOOL_THYRSUS);
 		setMaxStackSize(1);
@@ -26,6 +29,8 @@ public class ItemThyrsus extends ItemSword {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		if (target instanceof EntityAnimal) ((EntityAnimal) target).setInLove(null);
+		stack.damageItem(6, playerIn);
+		if (target instanceof EntityTameable) ((EntityTameable) target).setTamedBy(playerIn);
 		stack.damageItem(6, playerIn);
 		return true;
 	}
