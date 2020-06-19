@@ -376,7 +376,8 @@ public class ModRegistries {
 		event.getRegistry().register(new FortuneThunderbolt());
 		event.getRegistry().register(new FortuneCourage());
 		event.getRegistry().register(new FortuneMeetCambion());
-		event.getRegistry().register(new FortuneRideHell());
+		event.getRegistry().register(new FortuneMeetCleaver());
+		event.getRegistry().register(new FortuneMeetBafometyr());
 		if (ModConfig.memes.enableCatsAndDogsFortune) event.getRegistry().register(new FortuneCatsAndDogs());
 	}
 	
