@@ -25,6 +25,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootTableList;
 
 import javax.annotation.Nullable;
 
@@ -32,7 +33,6 @@ import javax.annotation.Nullable;
  * Created by Joseph on 3/30/2020.
  */
 
-//Todo: Fool iron golems into not attacking them unless the cambion attacks first.
 public class EntityCambion extends ModEntityMob {
 	private static final DataParameter<Integer> CAMBION_TYPE = EntityDataManager.<Integer>createKey(EntityCambion.class, DataSerializers.VARINT);
 	public int attackTimer = 0;
@@ -114,6 +114,11 @@ public class EntityCambion extends ModEntityMob {
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.setCambionType(compound.getInteger("CambionType"));
+	}
+	
+	@Nullable
+	protected ResourceLocation getLootTable() {
+		return LootTableList.ENTITIES_WITCH;
 	}
 	
 	@Override

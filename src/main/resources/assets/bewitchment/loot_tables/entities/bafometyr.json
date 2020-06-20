@@ -1,0 +1,94 @@
+{
+  "pools": [
+	{
+	  "rolls": 1,
+	  "name": "bafometyr",
+	  "entries": [
+		{
+		  "type": "item",
+		  "name": "minecraft:fire_charge",
+		  "weight": 3,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 4
+			  }
+			},
+			{
+			  "function": "looting_enchant",
+			  "count": {
+				"min": 0,
+				"max": 2
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:hellhound_horn",
+		  "weight": 2,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 2
+			  }
+			},
+			{
+			  "function": "looting_enchant",
+			  "count": {
+				"min": 0,
+				"max": 2
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "bewitchment:hoof",
+		  "weight": 2,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 2
+			  }
+			},
+			{
+			  "function": "looting_enchant",
+			  "count": {
+				"min": 0,
+				"max": 2
+			  }
+			}
+		  ]
+		},
+		{
+		  "type": "item",
+		  "name": "minecraft:blaze_powder",
+		  "weight": 1,
+		  "functions": [
+			{
+			  "function": "set_count",
+			  "count": {
+				"min": 0,
+				"max": 6
+			  }
+			},
+			{
+			  "function": "looting_enchant",
+			  "count": {
+				"min": 0,
+				"max": 2
+			  }
+			}
+		  ]
+		}
+	  ]
+	}
+  ]
+}

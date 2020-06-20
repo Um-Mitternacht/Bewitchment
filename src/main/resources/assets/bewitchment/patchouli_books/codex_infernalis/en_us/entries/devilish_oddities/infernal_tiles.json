@@ -37,7 +37,7 @@
 	{
 	  "type": "crafting",
 	  "recipe": "bewitchment:despair_bricks"
-	},	
+	},
 	{
 	  "type": "text",
 	  "title": "Statue",
@@ -107,7 +107,7 @@
 	  "recipe": "bewitchment:nether_brick_moloch_statue",
 	  "recipe2": "bewitchment:scorned_brick_moloch_statue",
 	  "text": "Moloch devours all in sight."
-	},	
+	},
 	{
 	  "type": "text",
 	  "title": "idol",
@@ -177,6 +177,6 @@
 	  "recipe": "bewitchment:nether_brick_moloch_idol",
 	  "recipe2": "bewitchment:scorned_brick_moloch_idol",
 	  "text": "Moloch devours all in sight."
-	}	
+	}
   ]
 }
