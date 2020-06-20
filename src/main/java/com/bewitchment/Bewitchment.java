@@ -55,13 +55,14 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY, dependencies = Bewitchment.DEPENDENCIES)
 public class Bewitchment {
-	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.22.0", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
+	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.22.1", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
 	public static final String DEPENDENCIES = "required-after:baubles;required-after:patchouli;after:dynamictrees@[1.12.2-0.9.1e,);after:thaumcraft@[6.1.BETA26,)";
 	public static final Logger logger = LogManager.getLogger(NAME);
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
@@ -134,7 +135,9 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SyncDragonsBloodBroom.Handler.class, SyncDragonsBloodBroom.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
 		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
+		if (!Side.SERVER.isServer()) {
+			Bewitchment.network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
+		}
 		
 		for (Item item : ForgeRegistries.ITEMS) {
 			if (Util.isRelated(true, item, "silver")) MaterialHandler.SILVER_ARMOR.add(item);
