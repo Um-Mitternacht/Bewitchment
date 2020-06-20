@@ -29,7 +29,6 @@ public class ItemThyrsus extends ItemSword {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		if (target instanceof EntityAnimal) ((EntityAnimal) target).setInLove(null);
-		stack.damageItem(6, playerIn);
 		if (target instanceof EntityTameable) ((EntityTameable) target).setTamedBy(playerIn);
 		stack.damageItem(6, playerIn);
 		return true;
