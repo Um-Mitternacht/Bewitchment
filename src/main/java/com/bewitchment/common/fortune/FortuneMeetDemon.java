@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.common.entity.spirit.demon.EntityDemoness;
+import com.bewitchment.registry.ModPotions;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -26,7 +27,7 @@ public class FortuneMeetDemon extends Fortune {
 			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
 			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 1));
 			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 1));
-			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 900, 1));
+			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(ModPotions.magic_resistance, 900, 1));
 			return true;
 		}
 		return false;
