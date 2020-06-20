@@ -708,6 +708,10 @@ fortune.bewitchment.thunderbolt=A bright flash of light occludes my vision.
 fortune.bewitchment.meet_cambion=One born of the flame shall visit you.
 fortune.bewitchment.meet_cleaver=A child of the calf shall visit you.
 fortune.bewitchment.meet_bafometyr=A child of the lamb shall visit you.
+fortune.bewitchment.orphan=You shall find one of the lost soon.
+fortune.bewitchment.salamander_skin=You shall swim like a salamander.
+fortune.bewitchment.hellish_fortune=In the flames I see treasure.
+fortune.bewitchment.cornucopia=I see... an abundance of food?
 #TAROT
 tarot.no_tarot=You can't quite figure out what's in the crystal ball...
 tarot.is_infused=%s is infused.

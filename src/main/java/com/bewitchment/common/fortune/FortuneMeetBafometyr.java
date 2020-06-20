@@ -3,7 +3,6 @@ package com.bewitchment.common.fortune;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.registry.Fortune;
 import com.bewitchment.common.entity.spirit.demon.EntityBafometyr;
-import com.bewitchment.common.entity.spirit.demon.EntityCleaver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;

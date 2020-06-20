@@ -378,6 +378,10 @@ public class ModRegistries {
 		event.getRegistry().register(new FortuneMeetCambion());
 		event.getRegistry().register(new FortuneMeetCleaver());
 		event.getRegistry().register(new FortuneMeetBafometyr());
+		event.getRegistry().register(new FortuneOrphan());
+		event.getRegistry().register(new FortuneSalamanderSkin());
+		event.getRegistry().register(new FortuneHellishFortune());
+		event.getRegistry().register(new FortuneCornucopia());
 		if (ModConfig.memes.enableCatsAndDogsFortune) event.getRegistry().register(new FortuneCatsAndDogs());
 	}
 	
