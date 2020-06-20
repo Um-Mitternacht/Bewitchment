@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 public class FortuneCornucopia extends Fortune {
 	public FortuneCornucopia() {
-		super(new ResourceLocation(Bewitchment.MODID, "cornucopia"), true, (60 * 5), (60 * 15));
+		super(new ResourceLocation(Bewitchment.MODID, "cornucopia"), false, (60 * 5), (60 * 15));
 	}
 	
 	@Override
