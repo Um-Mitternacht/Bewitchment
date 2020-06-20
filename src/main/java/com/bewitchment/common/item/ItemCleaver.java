@@ -10,7 +10,6 @@ import net.minecraftforge.common.MinecraftForge;
  * Created by Joseph on 3/3/2020.
  */
 
-//Todo: Allow this to inflict random crits and knock back targets
 public class ItemCleaver extends ItemSword {
 	public ItemCleaver() {
 		super(ModObjects.TOOL_HELLISH);

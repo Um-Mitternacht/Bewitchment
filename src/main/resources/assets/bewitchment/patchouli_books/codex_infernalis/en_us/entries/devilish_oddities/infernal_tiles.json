@@ -31,8 +31,17 @@
 	},
 	{
 	  "type": "text",
+	  "title": "Despair Bricks",
+	  "text": "Sometimes seen in the wastes of the many hells, these ochre bricks are often associated with desolate wastes, where no soul receives any warmth from any light, and thus, rots for all eternity. The structures that dot these landscapes were believed to have been made by demons long-gone, and yet their recipe is as is:"
+	},
+	{
+	  "type": "crafting",
+	  "recipe": "bewitchment:despair_bricks"
+	},	
+	{
+	  "type": "text",
 	  "title": "Statue",
-	  "text": "Statues are large figures of major demons. They can be placed on altars, acting as both a Pentacle, as well as attracting the positive attention (a rare commodity) of the demon they depict."
+	  "text": "Statues are large figures of major demons. They can be placed around statues, granting a boon, and sometimes, the favor of the demon itself."
 	},
 	{
 	  "type": "crafting",
@@ -85,6 +94,89 @@
 	  "recipe": "bewitchment:nether_brick_herne_statue",
 	  "recipe2": "bewitchment:scorned_brick_herne_statue",
 	  "text": "Hunter Orion believes he can hunt all."
-	}
+	},
+	{
+	  "type": "crafting",
+	  "title": "Moloch",
+	  "recipe": "bewitchment:stone_moloch_statue",
+	  "recipe2": "bewitchment:gold_moloch_statue"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Moloch",
+	  "recipe": "bewitchment:nether_brick_moloch_statue",
+	  "recipe2": "bewitchment:scorned_brick_moloch_statue",
+	  "text": "Moloch devours all in sight."
+	},	
+	{
+	  "type": "text",
+	  "title": "idol",
+	  "text": "Idols are small effigies of a demon, often placed on altars by willing demonolators, who worship these infernal beings."
+	},
+	{
+	  "type": "crafting",
+	  "title": "Leonard",
+	  "recipe": "bewitchment:stone_leonard_idol",
+	  "recipe2": "bewitchment:gold_leonard_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Leonard",
+	  "recipe": "bewitchment:nether_brick_leonard_idol",
+	  "recipe2": "bewitchment:scorned_brick_leonard_idol",
+	  "text": "Leonard is known as being the King of the Witches."
+	},
+	{
+	  "type": "crafting",
+	  "title": "Baphomet",
+	  "recipe": "bewitchment:stone_baphomet_idol",
+	  "recipe2": "bewitchment:gold_baphomet_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Baphomet",
+	  "recipe": "bewitchment:nether_brick_baphomet_idol",
+	  "recipe2": "bewitchment:scorned_brick_baphomet_idol",
+	  "text": "Beware the Templars and their Goat idolatory."
+	},
+	{
+	  "type": "crafting",
+	  "title": "Lilith",
+	  "recipe": "bewitchment:stone_lilith_idol",
+	  "recipe2": "bewitchment:gold_lilith_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Lilith",
+	  "recipe": "bewitchment:nether_brick_lilith_idol",
+	  "recipe2": "bewitchment:scorned_brick_lilith_idol",
+	  "text": "The Mistress of The Night feeds on the blood of men."
+	},
+	{
+	  "type": "crafting",
+	  "title": "Herne",
+	  "recipe": "bewitchment:stone_herne_idol",
+	  "recipe2": "bewitchment:gold_herne_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Herne",
+	  "recipe": "bewitchment:nether_brick_herne_idol",
+	  "recipe2": "bewitchment:scorned_brick_herne_idol",
+	  "text": "Hunter Orion believes he can hunt all."
+	},
+	{
+	  "type": "crafting",
+	  "title": "Moloch",
+	  "recipe": "bewitchment:stone_moloch_idol",
+	  "recipe2": "bewitchment:gold_moloch_idol"
+	},
+	{
+	  "type": "crafting",
+	  "title": "Moloch",
+	  "recipe": "bewitchment:nether_brick_moloch_idol",
+	  "recipe2": "bewitchment:scorned_brick_moloch_idol",
+	  "text": "Moloch devours all in sight."
+	}	
   ]
 }
