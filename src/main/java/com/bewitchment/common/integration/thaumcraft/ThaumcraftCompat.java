@@ -317,6 +317,8 @@ public class ThaumcraftCompat implements IConditionFactory {
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_tea), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3).add(Aspect.WATER, 3).add(Aspect.VOID, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elderberry_jelly), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MIND, 3).add(Aspect.ALCHEMY, 3));
 		
+		event.register.registerObjectTag(new ItemStack(ModObjects.cleaver_sword), new AspectList().add(DEMON, 6).add(Aspect.AVERSION, 6).add(Aspect.FIRE, 6));
+		
 		//Fumes
 		event.register.registerObjectTag(new ItemStack(ModObjects.demonic_elixir), new AspectList().add(DEMON, 6).add(Aspect.FIRE, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.cleansing_balm), new AspectList().add(Aspect.PROTECT, 6).add(Aspect.AURA, 6));
@@ -366,9 +368,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
 		event.register.registerObjectTag(new ItemStack(ModObjects.dragons_blood_broom), new AspectList().add(Aspect.PLANT, 35).add(Aspect.MAGIC, 35).add(Aspect.FLIGHT, 30).add(MOON, 25).add(STAR, 25));
-		
-		//Sigils
-		//TODO
 		
 		//Misc
 		event.register.registerObjectTag(new ItemStack(ModObjects.vampiric_amulet), new AspectList().add(Aspect.MAGIC, 16).add(Aspect.DARKNESS, 16).add(MOON, 16));
