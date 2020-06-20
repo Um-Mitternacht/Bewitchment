@@ -13,5 +13,7 @@ public class ItemHiddenBat extends Item {
 		setMaxDamage(1);
 		setMaxStackSize(1);
 		this.isInCreativeTab(null);
+		this.getCreativeTab();
+		this.setCreativeTab(null);
 	}
 }

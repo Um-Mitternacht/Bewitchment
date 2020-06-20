@@ -196,6 +196,17 @@ public class ThaumcraftCompat implements IConditionFactory {
 		event.register.registerObjectTag(new ItemStack(ModObjects.torchwood), new AspectList().add(Aspect.PLANT, 8).add(Aspect.FIRE, 8).add(Aspect.MAGIC, 8));
 		event.register.registerObjectTag(new ItemStack(ModObjects.frostflower), new AspectList().add(Aspect.PLANT, 8).add(Aspect.COLD, 8));
 		event.register.registerObjectTag(new ItemStack(ModObjects.blue_ink_cap), new AspectList().add(Aspect.SENSES, 4).add(Aspect.DARKNESS, 4));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_allium), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_azure_bluet), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_blue_orchid), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_dandelion), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_oxeye_daisy), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_poppy), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_tulip_orange), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_tulip_pink), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_tulip_red), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
+		event.register.registerObjectTag(new ItemStack(ModObjects.flower_siphoning_tulip_white), new AspectList().add(Aspect.PLANT, 8).add(Aspect.DARKNESS, 8));
 		//Saplings
 		event.register.registerObjectTag(new ItemStack(ModObjects.cypress_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.DEATH, 3));
 		event.register.registerObjectTag(new ItemStack(ModObjects.elder_sapling), new AspectList().add(Aspect.PLANT, 15).add(Aspect.LIFE, 5).add(Aspect.MIND, 3));
@@ -302,6 +313,10 @@ public class ThaumcraftCompat implements IConditionFactory {
 		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_sentinel), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.sigil_shrieking), new AspectList().add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 6).add(Aspect.PLANT, 6));
 		
+		event.register.registerObjectTag(new ItemStack(ModObjects.garlic_grilled), new AspectList().add(Aspect.PLANT, 2).add(Aspect.SENSES, 2).add(Aspect.CRAFT, 2));
+		event.register.registerObjectTag(new ItemStack(ModObjects.juniper_tea), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3).add(Aspect.WATER, 3).add(Aspect.VOID, 3));
+		event.register.registerObjectTag(new ItemStack(ModObjects.elderberry_jelly), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MIND, 3).add(Aspect.ALCHEMY, 3));
+		
 		//Fumes
 		event.register.registerObjectTag(new ItemStack(ModObjects.demonic_elixir), new AspectList().add(DEMON, 6).add(Aspect.FIRE, 6));
 		event.register.registerObjectTag(new ItemStack(ModObjects.cleansing_balm), new AspectList().add(Aspect.PROTECT, 6).add(Aspect.AURA, 6));
@@ -360,6 +375,9 @@ public class ThaumcraftCompat implements IConditionFactory {
 		
 		event.register.registerObjectTag(new ItemStack(ModObjects.triskelion), new AspectList().add(Aspect.DESIRE, 16).add(Aspect.AVERSION, 16).add(SUN, 16));
 		event.register.registerObjectTag(new ItemStack(ModObjects.fortunes_favor), new AspectList().add(Aspect.DESIRE, 16).add(Aspect.EARTH, 16).add(Aspect.MAGIC, 16));
+		event.register.registerObjectTag(new ItemStack(ModObjects.gluttons_sash), new AspectList().add(Aspect.DESIRE, 16).add(DEMON, 16).add(Aspect.MAGIC, 16));
+		
+		event.register.registerObjectTag(new ItemStack(ModObjects.skeleton_key), new AspectList().add(Aspect.DESIRE, 16).add(DEMON, 16).add(Aspect.MAGIC, 16));
 		
 		event.register.registerObjectTag(new ItemStack(ModObjects.hecates_visage), new AspectList().add(Aspect.AURA, 16).add(Aspect.FIRE, 16).add(Aspect.MAGIC, 16));
 		
