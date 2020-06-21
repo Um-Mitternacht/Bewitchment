@@ -128,15 +128,13 @@ public class ExtendedPlayerHandler {
 				player.getCapability(ExtendedPlayer.CAPABILITY, null).peopleKilled++;
 				ExtendedPlayer.syncToClient(player);
 			}
-			if (event.getEntityLiving() instanceof IEntityOwnable) {
-				NBTTagCompound nbt = event.getEntityLiving().serializeNBT();
-				if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
-					// Doesn't work when owner is offline
-					Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
+			//if (event.getEntityLiving() instanceof IEntityOwnable) {
+			//	NBTTagCompound nbt = event.getEntityLiving().serializeNBT();
+			//	if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
+			//		// Doesn't work when owner is offline
+			//		Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
 				}
 			}
-		}
-	}
 	
 	@SubscribeEvent
 	public void onBreakBlock(BlockEvent.BreakEvent event) {

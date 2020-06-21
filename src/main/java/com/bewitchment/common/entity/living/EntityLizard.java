@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityAnimal;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +16,7 @@ public class EntityLizard extends ModEntityAnimal {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
 		setSize(1, 0.3f);
 		experienceValue = 5;
+		enumCreatureType();
 	}
 	
 	@Override
@@ -42,9 +44,13 @@ public class EntityLizard extends ModEntityAnimal {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
 	
+	public EnumCreatureType enumCreatureType() {
+		return EnumCreatureType.AMBIENT;
+	}
+	
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 6;
+		return 2;
 	}
 	
 	@Override
