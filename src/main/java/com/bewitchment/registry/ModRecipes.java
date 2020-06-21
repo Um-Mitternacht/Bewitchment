@@ -461,6 +461,7 @@ public class ModRecipes {
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "slimeball"), Collections.singletonList(Util.get(ModObjects.hoof)), Collections.singletonList(new ItemStack(Items.SLIME_BALL))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "iron_gall_ink"), Arrays.asList(Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get("nuggetIron")), Collections.singletonList(new ItemStack(ModObjects.iron_gall_ink, 3))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "catechu_brown"), Collections.singletonList(Util.get("logWood")), Collections.singletonList(new ItemStack(ModObjects.catechu_brown, 4))));
+		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "green_dye"), Collections.singletonList(Util.get(ModObjects.lizard_leg)), Collections.singletonList(new ItemStack(Items.DYE, 3, 2))));
 		
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "poison_potato"), Arrays.asList(Util.get(Items.FERMENTED_SPIDER_EYE), Util.get(Items.POTATO)), Collections.singletonList(new ItemStack(Items.POISONOUS_POTATO))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "banner_pattern_removal"), Collections.singletonList(Util.get(new ItemStack(Items.BANNER, 1, Short.MAX_VALUE))), Collections.singletonList(new ItemStack(Items.BANNER, 1, EnumDyeColor.WHITE.getDyeDamage()))));
