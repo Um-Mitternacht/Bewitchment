@@ -235,7 +235,7 @@ public class ModRegistries {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "fire_resistance"), Util.get(ModObjects.embergrass), new PotionEffect(MobEffects.FIRE_RESISTANCE, (20 * 150))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "absorption"), Util.get("treeSapling"), new PotionEffect(MobEffects.ABSORPTION, (20 * 35))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "jump_boost"), Util.get(Items.RABBIT_HIDE, ModObjects.hoof), new PotionEffect(MobEffects.JUMP_BOOST, (20 * 45))));
-		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "speed"), Util.get(Items.SUGAR, ModObjects.lizard_leg), new PotionEffect(MobEffects.SPEED, (20 * 45))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "speed"), Util.get(Items.SUGAR), new PotionEffect(MobEffects.SPEED, (20 * 45))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "slowness"), Util.get(Blocks.BROWN_MUSHROOM, "slimeball"), new PotionEffect(MobEffects.SLOWNESS, (20 * 40))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "haste"), Util.get("sugarcane"), new PotionEffect(MobEffects.HASTE, (20 * 30))));
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "mining_fatigue"), Util.get(ModObjects.lizard_leg), new PotionEffect(MobEffects.MINING_FATIGUE, (20 * 30))));
