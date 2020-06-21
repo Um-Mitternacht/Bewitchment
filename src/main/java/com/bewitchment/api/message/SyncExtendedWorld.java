@@ -33,7 +33,15 @@ public class SyncExtendedWorld implements IMessage {
 	public static class Handler implements IMessageHandler<SyncExtendedWorld, IMessage> {
 		@Override
 		public IMessage onMessage(final SyncExtendedWorld syncExtendedWorld, final MessageContext messageContext) {
-			if (messageContext.side.isClient()) Minecraft.getMinecraft().addScheduledTask(() -> ExtendedWorld.get(Minecraft.getMinecraft().world).readFromNBT(syncExtendedWorld.nbt));
+			if (messageContext.side.isClient()) {
+				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+					@Override
+					public void run() {
+						ExtendedWorld.get(Minecraft.getMinecraft().world).readFromNBT(syncExtendedWorld.nbt);
+					}
+				});
+				
+			}
 			return null;
 		}
 	}

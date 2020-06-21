@@ -10,12 +10,12 @@ public class DismountBroomMessage implements IMessage {
 	
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {
-
+	
 	}
 	
 	@Override
 	public void toBytes(ByteBuf byteBuf) {
-
+	
 	}
 	
 	public static class Handler implements IMessageHandler<DismountBroomMessage, IMessage> {
