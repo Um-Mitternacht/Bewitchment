@@ -6,7 +6,6 @@ import com.bewitchment.api.registry.Contract;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.common.item.ItemContract;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.IEntityOwnable;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +29,6 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.List;
-import java.util.UUID;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class ExtendedPlayerHandler {
@@ -133,8 +131,8 @@ public class ExtendedPlayerHandler {
 			//	if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
 			//		// Doesn't work when owner is offline
 			//		Util.findPlayer(UUID.fromString(event.getEntityLiving().serializeNBT().getString("OwnerUUID"))).getCapability(ExtendedPlayer.CAPABILITY, null).pets--;
-				}
-			}
+		}
+	}
 	
 	@SubscribeEvent
 	public void onBreakBlock(BlockEvent.BreakEvent event) {

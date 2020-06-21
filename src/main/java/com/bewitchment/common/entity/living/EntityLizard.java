@@ -44,13 +44,20 @@ public class EntityLizard extends ModEntityAnimal {
 		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
 	}
 	
-	public EnumCreatureType enumCreatureType() {
-		return EnumCreatureType.AMBIENT;
+	@Override
+	protected void despawnEntity() {
+		if (!hasCustomName()) {
+			super.despawnEntity();
+		}
 	}
 	
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 2;
+	}
+	
+	public EnumCreatureType enumCreatureType() {
+		return EnumCreatureType.AMBIENT;
 	}
 	
 	@Override
