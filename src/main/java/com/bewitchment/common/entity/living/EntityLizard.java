@@ -2,7 +2,6 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityAnimal;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
