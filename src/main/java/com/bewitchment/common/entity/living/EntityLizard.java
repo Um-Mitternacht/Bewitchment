@@ -16,7 +16,6 @@ public class EntityLizard extends ModEntityAnimal {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
 		setSize(1, 0.3f);
 		experienceValue = 5;
-		enumCreatureType();
 	}
 	
 	@Override
@@ -54,10 +53,6 @@ public class EntityLizard extends ModEntityAnimal {
 	@Override
 	public int getMaxSpawnedInChunk() {
 		return 6;
-	}
-	
-	public EnumCreatureType enumCreatureType() {
-		return EnumCreatureType.AMBIENT;
 	}
 	
 	@Override
