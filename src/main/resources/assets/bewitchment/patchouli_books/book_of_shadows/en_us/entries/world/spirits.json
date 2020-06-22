@@ -43,16 +43,6 @@
 	},
 	{
 	  "type": "text",
-	  "title": "Ghosts",
-	  "text": "Ghosts are the souls of the dead, either rising on their own to finish things they were not able to finish in life, to warn others of danger, or in some cases, intentionally conjured by a witch. They may also haunt certain ancient structures, or possibly even locations where they were killed when they were living, in order to torment those who caused their unfair death."
-	},
-	{
-	  "type": "entity",
-	  "entity": "bewitchment:ghost",
-	  "scale": 0.7
-	},
-	{
-	  "type": "text",
 	  "title": "Shadow Person",
 	  "text": "A humanoid demon vaguely resembling a shadow, they seem to haunt the halls of once abandoned strongholds, and are sometimes called into this world through certain rites. All encounters with them end with malice."
 	},
