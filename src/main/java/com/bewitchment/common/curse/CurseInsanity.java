@@ -69,6 +69,7 @@ public class CurseInsanity extends Curse {
     }
 
     static class EntityAIFakeAttack extends EntityAIBase {
+        private final boolean canPenalize = false;
         World world;
         EntityLiving attacker;
         int attackTick;
@@ -81,7 +82,6 @@ public class CurseInsanity extends Curse {
         private double targetY;
         private double targetZ;
         private int failedPathFindingPenalty = 0;
-        private final boolean canPenalize = false;
 
         EntityAIFakeAttack(EntityLiving creature, double speedIn, boolean useLongMemory) {
             this.attacker = creature;

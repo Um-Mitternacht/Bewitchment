@@ -49,9 +49,9 @@ public class BiomeChangingUtils {
 
     public static class BiomeChangerWalker {
 
-        private boolean complete = false;
         private final int biomeId;
         private final Set<Chunk> chunkSet = Sets.newHashSet();
+        private boolean complete = false;
 
         /**
          * Use this class to efficiently change biome to multiple block coords spanning across multiple chunks.

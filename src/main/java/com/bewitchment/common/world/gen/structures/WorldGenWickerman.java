@@ -2,7 +2,6 @@ package com.bewitchment.common.world.gen.structures;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.world.gen.ModWorldGen;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.passive.*;
 import net.minecraft.server.MinecraftServer;
@@ -10,7 +9,6 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.gen.feature.WorldGenerator;
