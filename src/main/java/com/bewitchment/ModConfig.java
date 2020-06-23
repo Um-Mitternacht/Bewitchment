@@ -412,7 +412,7 @@ public class ModConfig {
 			
 			@Config.Comment("The weight chance for werewolves to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int werewolfWeight = 6;
+			public int werewolfWeight = 1;
 			
 			@Config.Comment("The minimum amount of werewolves to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
