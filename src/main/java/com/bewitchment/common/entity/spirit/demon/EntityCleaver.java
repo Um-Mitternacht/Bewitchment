@@ -63,6 +63,18 @@ public class EntityCleaver extends ModEntityMob {
 	}
 	
 	@Override
+	protected void despawnEntity() {
+		if (!hasCustomName()) {
+			super.despawnEntity();
+		}
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
+	}
+	
+	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.75, false));

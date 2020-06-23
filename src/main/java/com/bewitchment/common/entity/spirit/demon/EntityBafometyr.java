@@ -77,6 +77,18 @@ public class EntityBafometyr extends ModEntityMob {
 	}
 	
 	@Override
+	protected void despawnEntity() {
+		if (!hasCustomName()) {
+			super.despawnEntity();
+		}
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
+	}
+	
+	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityIn;

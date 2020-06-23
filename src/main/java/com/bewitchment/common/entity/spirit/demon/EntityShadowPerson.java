@@ -86,6 +86,18 @@ public class EntityShadowPerson extends ModEntityMob {
 	}
 	
 	@Override
+	protected void despawnEntity() {
+		if (!hasCustomName()) {
+			super.despawnEntity();
+		}
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
+	}
+	
+	@Override
 	protected int getSkinTypes() {
 		return 4;
 	}

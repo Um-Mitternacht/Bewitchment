@@ -47,6 +47,18 @@ public class EntityDruden extends ModEntityMob {
 	}
 	
 	@Override
+	protected void despawnEntity() {
+		if (!hasCustomName()) {
+			super.despawnEntity();
+		}
+	}
+	
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
+	}
+	
+	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
