@@ -83,6 +83,18 @@ public class EntityHellhound extends ModEntityMob {
     }
 
     @Override
+    protected boolean canDespawn() {
+        return !hasCustomName();
+    }
+
+    @Override
+    protected void despawnEntity() {
+        if (!hasCustomName()) {
+            super.despawnEntity();
+        }
+    }
+
+    @Override
     public boolean attackEntityAsMob(Entity entity) {
         boolean flag = super.attackEntityAsMob(entity);
         if (flag) {

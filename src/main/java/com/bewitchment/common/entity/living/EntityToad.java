@@ -51,6 +51,18 @@ public class EntityToad extends ModEntityTameable {
     }
 
     @Override
+    protected void despawnEntity() {
+        if (!isTamed()) {
+            super.despawnEntity();
+        }
+    }
+
+    @Override
+    protected boolean canDespawn() {
+        return !isTamed();
+    }
+
+    @Override
     public boolean isBreedingItem(ItemStack stack) {
         return stack.getItem() == Items.FERMENTED_SPIDER_EYE;
     }

@@ -75,6 +75,18 @@ public class EntityOwl extends ModEntityTameable {
     }
 
     @Override
+    protected void despawnEntity() {
+        if (!isTamed()) {
+            super.despawnEntity();
+        }
+    }
+
+    @Override
+    protected boolean canDespawn() {
+        return !isTamed();
+    }
+
+    @Override
     protected void initEntityAI() {
         super.initEntityAI();
         tasks.addTask(0, new EntityAISwimming(this));

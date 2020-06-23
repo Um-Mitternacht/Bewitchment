@@ -57,6 +57,18 @@ public class EntityRaven extends ModEntityTameable {
     }
 
     @Override
+    protected void despawnEntity() {
+        if (!isTamed()) {
+            super.despawnEntity();
+        }
+    }
+
+    @Override
+    protected boolean canDespawn() {
+        return !isTamed();
+    }
+
+    @Override
     protected SoundEvent getAmbientSound() {
         return ModSounds.RAVEN_CRY;
     }

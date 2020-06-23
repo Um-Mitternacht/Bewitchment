@@ -58,6 +58,18 @@ public class EntityFeuerwurm extends ModEntityMob {
     }
 
     @Override
+    protected boolean canDespawn() {
+        return !hasCustomName();
+    }
+
+    @Override
+    protected void despawnEntity() {
+        if (!hasCustomName()) {
+            super.despawnEntity();
+        }
+    }
+
+    @Override
     public int getSkinTypes() {
         return 9;
     }

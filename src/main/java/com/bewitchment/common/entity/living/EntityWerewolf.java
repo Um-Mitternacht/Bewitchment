@@ -143,7 +143,8 @@ public class EntityWerewolf extends ModEntityMob {
 
     @Override
     public boolean getCanSpawnHere() {
-        if (!world.isDaytime()) if (world.getCurrentMoonPhaseFactor() == 1.0) return super.getCanSpawnHere();
+        if (!world.isDaytime()) if (world.getCurrentMoonPhaseFactor() == 1.0)
+            return super.getCanSpawnHere();
         return false;
     }
 
