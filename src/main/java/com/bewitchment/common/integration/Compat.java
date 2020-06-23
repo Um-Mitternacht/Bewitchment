@@ -28,6 +28,10 @@ import vazkii.quark.world.feature.*;
 
 import java.util.Arrays;
 
+import static toughasnails.api.TANPotions.cold_resistance;
+import static toughasnails.api.TANPotions.heat_resistance;
+import static toughasnails.api.item.TANItems.ice_cube;
+import static toughasnails.api.item.TANItems.magma_shard;
 import static vazkii.quark.misc.feature.ExtraPotions.dangerSight;
 import static vazkii.quark.misc.feature.ExtraPotions.enableDangerSight;
 import static vazkii.quark.world.feature.Biotite.biotite;
@@ -57,6 +61,13 @@ public class Compat {
 	@SubscribeEvent
 	public void registerManiaBrews(RegistryEvent.Register<Brew> event) {
 		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "a_poem_for_byzantium"), Util.get(ModObjects.infested_wheat), new PotionEffect(ModPotions.mania, (600))));
+	}
+	
+	@Optional.Method(modid = "toughasnails")
+	@SubscribeEvent
+	public void registerToughBrews(RegistryEvent.Register<Brew> event) {
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "cold_resistance"), Util.get(ice_cube), new PotionEffect(cold_resistance, (900))));
+		event.getRegistry().register(new Brew(new ResourceLocation(Bewitchment.MODID, "heat_resistance"), Util.get(magma_shard), new PotionEffect(heat_resistance, (900))));
 	}
 	
 	@Optional.Method(modid = "covetedmobs")
