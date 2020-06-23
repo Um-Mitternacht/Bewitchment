@@ -117,6 +117,13 @@ public class EntityWerewolf extends ModEntityMob {
 	}
 	
 	@Override
+	protected void despawnEntity() {
+		if (!hasCustomName()) {
+			super.despawnEntity();
+		}
+	}
+	
+	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
