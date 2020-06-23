@@ -12,24 +12,28 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
 public class FortuneMeetDemon extends Fortune {
-	public FortuneMeetDemon() {
-		super(new ResourceLocation(Bewitchment.MODID, "meet_demon"), true, (60), (60 * 3));
-	}
-	
-	@Override
-	public boolean apply(EntityPlayer player) {
-		BlockPos pos = new BlockPos(player.posX + player.getRNG().nextGaussian() * 4, player.posY, player.posZ + player.getRNG().nextGaussian() * 4);
-		EntityDemon demon = player.world.rand.nextBoolean() ? new EntityDemon(player.world) : new EntityDemoness(player.world);
-		if (player.world.isAirBlock(pos) && player.world.isAirBlock(pos.up()) && player.world.getBlockState(pos.down()).canEntitySpawn(demon)) {
-			demon.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-			demon.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
-			player.world.spawnEntity(demon);
-			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
-			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 1));
-			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 1));
-			if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal()) demon.addPotionEffect(new PotionEffect(ModPotions.magic_resistance, 900, 1));
-			return true;
-		}
-		return false;
-	}
+    public FortuneMeetDemon() {
+        super(new ResourceLocation(Bewitchment.MODID, "meet_demon"), true, (60), (60 * 3));
+    }
+
+    @Override
+    public boolean apply(EntityPlayer player) {
+        BlockPos pos = new BlockPos(player.posX + player.getRNG().nextGaussian() * 4, player.posY, player.posZ + player.getRNG().nextGaussian() * 4);
+        EntityDemon demon = player.world.rand.nextBoolean() ? new EntityDemon(player.world) : new EntityDemoness(player.world);
+        if (player.world.isAirBlock(pos) && player.world.isAirBlock(pos.up()) && player.world.getBlockState(pos.down()).canEntitySpawn(demon)) {
+            demon.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+            demon.onInitialSpawn(player.world.getDifficultyForLocation(pos), null);
+            player.world.spawnEntity(demon);
+            if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+                demon.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 900, 1));
+            if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+                demon.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 900, 1));
+            if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+                demon.addPotionEffect(new PotionEffect(MobEffects.SPEED, 900, 1));
+            if (player.getRNG().nextInt(10) < player.world.getDifficulty().ordinal())
+                demon.addPotionEffect(new PotionEffect(ModPotions.magic_resistance, 900, 1));
+            return true;
+        }
+        return false;
+    }
 }

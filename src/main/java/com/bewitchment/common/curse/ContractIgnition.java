@@ -16,17 +16,17 @@ import java.util.Arrays;
 
 
 public class ContractIgnition extends Contract {
-	public ContractIgnition() {
-		super(new ResourceLocation(Bewitchment.MODID, "ignition"), true, true, CurseCondition.BLOCK_DROP, null, Arrays.asList(Items.BLAZE_ROD, Items.MAGMA_CREAM));
-	}
-	
-	@Override
-	public boolean doCurse(Event event, EntityPlayer target) {
-		BlockEvent.HarvestDropsEvent event0 = (BlockEvent.HarvestDropsEvent) event;
-		Block brokenBlock = event0.getState().getBlock();
-		int meta = brokenBlock.getMetaFromState(event0.getState());
-		ItemStack result = FurnaceRecipes.instance().getSmeltingResult(new ItemStack(brokenBlock, 1, meta));
-		BlockDropHandler.replaceDrop(event0, s -> !result.isEmpty(), result, 100, 1, true);
-		return true;
-	}
+    public ContractIgnition() {
+        super(new ResourceLocation(Bewitchment.MODID, "ignition"), true, true, CurseCondition.BLOCK_DROP, null, Arrays.asList(Items.BLAZE_ROD, Items.MAGMA_CREAM));
+    }
+
+    @Override
+    public boolean doCurse(Event event, EntityPlayer target) {
+        BlockEvent.HarvestDropsEvent event0 = (BlockEvent.HarvestDropsEvent) event;
+        Block brokenBlock = event0.getState().getBlock();
+        int meta = brokenBlock.getMetaFromState(event0.getState());
+        ItemStack result = FurnaceRecipes.instance().getSmeltingResult(new ItemStack(brokenBlock, 1, meta));
+        BlockDropHandler.replaceDrop(event0, s -> !result.isEmpty(), result, 100, 1, true);
+        return true;
+    }
 }

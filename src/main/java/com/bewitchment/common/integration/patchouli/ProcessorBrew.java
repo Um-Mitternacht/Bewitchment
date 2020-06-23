@@ -10,18 +10,19 @@ import vazkii.patchouli.api.PatchouliAPI;
 
 @SuppressWarnings("unused")
 public class ProcessorBrew implements IComponentProcessor {
-	private Brew recipe;
-	
-	@Override
-	public void setup(IVariableProvider<String> provider) {
-		recipe = GameRegistry.findRegistry(Brew.class).getValue(new ResourceLocation(provider.get("recipe")));
-	}
-	
-	@Override
-	public String process(String key) {
-		if (recipe == null) return null;
-		else if (key.equals("input")) return PatchouliAPI.instance.serializeIngredient(recipe.input);
-		else if (key.equals("name")) return new TextComponentTranslation(recipe.effect.getEffectName()).getUnformattedComponentText();
-		return null;
-	}
+    private Brew recipe;
+
+    @Override
+    public void setup(IVariableProvider<String> provider) {
+        recipe = GameRegistry.findRegistry(Brew.class).getValue(new ResourceLocation(provider.get("recipe")));
+    }
+
+    @Override
+    public String process(String key) {
+        if (recipe == null) return null;
+        else if (key.equals("input")) return PatchouliAPI.instance.serializeIngredient(recipe.input);
+        else if (key.equals("name"))
+            return new TextComponentTranslation(recipe.effect.getEffectName()).getUnformattedComponentText();
+        return null;
+    }
 }

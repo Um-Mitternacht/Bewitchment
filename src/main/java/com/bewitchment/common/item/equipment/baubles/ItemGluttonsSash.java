@@ -9,14 +9,14 @@ import net.minecraft.item.ItemStack;
 
 
 public class ItemGluttonsSash extends ModItemBauble {
-	public ItemGluttonsSash() {
-		super("gluttons_sash", BaubleType.BELT);
-	}
-	
-	@Override
-	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		if (!player.world.isRemote && player instanceof EntityPlayer && ((EntityPlayer) player).getFoodStats().needFood() && player.world.getTotalWorldTime() % 20 == 0 && MagicPower.attemptDrain(null, (EntityPlayer) player, 5)) {
-			((EntityPlayer) player).getFoodStats().addStats(1, 1);
-		}
-	}
+    public ItemGluttonsSash() {
+        super("gluttons_sash", BaubleType.BELT);
+    }
+
+    @Override
+    public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+        if (!player.world.isRemote && player instanceof EntityPlayer && ((EntityPlayer) player).getFoodStats().needFood() && player.world.getTotalWorldTime() % 20 == 0 && MagicPower.attemptDrain(null, (EntityPlayer) player, 5)) {
+            ((EntityPlayer) player).getFoodStats().addStats(1, 1);
+        }
+    }
 }

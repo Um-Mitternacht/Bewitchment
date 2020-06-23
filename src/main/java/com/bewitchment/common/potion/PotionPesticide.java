@@ -17,34 +17,35 @@ import net.minecraftforge.event.ForgeEventFactory;
 
 @SuppressWarnings({"unused"})
 public class PotionPesticide extends ModPotion {
-	public PotionPesticide() {
-		super("pesticide", true, 0x007f00);
-	}
-	
-	@Override
-	public boolean isInstant() {
-		return true;
-	}
-	
-	@Override
-	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-		super.affectEntity(source, indirectSource, living, amplifier, health);
-		if (living.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
-	}
-	
-	@Override
-	public boolean onImpact(World world, BlockPos pos, int amplifier) {
-		boolean flag = false;
-		int radius = amplifier + 1;
-		for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
-			FakePlayer thrower = FakePlayerFactory.getMinecraft((WorldServer) world);
-			if (!ForgeEventFactory.onPlayerBlockPlace(thrower, new BlockSnapshot(world, pos0, world.getBlockState(pos0)), EnumFacing.fromAngle(thrower.rotationYaw), thrower.getActiveHand()).isCanceled()) {
-				if (world.getBlockState(pos0).getBlock() instanceof BlockWeb) {
-					world.setBlockToAir(pos0);
-					flag = true;
-				}
-			}
-		}
-		return flag;
-	}
+    public PotionPesticide() {
+        super("pesticide", true, 0x007f00);
+    }
+
+    @Override
+    public boolean isInstant() {
+        return true;
+    }
+
+    @Override
+    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+        super.affectEntity(source, indirectSource, living, amplifier, health);
+        if (living.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD)
+            living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
+    }
+
+    @Override
+    public boolean onImpact(World world, BlockPos pos, int amplifier) {
+        boolean flag = false;
+        int radius = amplifier + 1;
+        for (BlockPos pos0 : BlockPos.getAllInBoxMutable(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
+            FakePlayer thrower = FakePlayerFactory.getMinecraft((WorldServer) world);
+            if (!ForgeEventFactory.onPlayerBlockPlace(thrower, new BlockSnapshot(world, pos0, world.getBlockState(pos0)), EnumFacing.fromAngle(thrower.rotationYaw), thrower.getActiveHand()).isCanceled()) {
+                if (world.getBlockState(pos0).getBlock() instanceof BlockWeb) {
+                    world.setBlockToAir(pos0);
+                    flag = true;
+                }
+            }
+        }
+        return flag;
+    }
 }

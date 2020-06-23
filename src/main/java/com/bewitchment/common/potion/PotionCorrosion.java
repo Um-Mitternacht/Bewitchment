@@ -17,31 +17,31 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 
 public class PotionCorrosion extends ModPotion {
-	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/corrosion.png");
-	
-	public PotionCorrosion() {
-		super("corrosion", true, 0x0BDA51);
-		this.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR, "e8506ffe-e2b4-4f19-8669-becb8e3eb666", -2D, 0);
-	}
-	
-	@SuppressWarnings("deprecation")
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
-		mc.getTextureManager().bindTexture(icon);
-		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
-	}
-	
-	@SuppressWarnings("deprecation")
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
-		mc.getTextureManager().bindTexture(icon);
-		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
-	}
-	
-	@Override
-	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-		super.affectEntity(source, indirectSource, living, -2, health);
-	}
+    private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/corrosion.png");
+
+    public PotionCorrosion() {
+        super("corrosion", true, 0x0BDA51);
+        this.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR, "e8506ffe-e2b4-4f19-8669-becb8e3eb666", -2D, 0);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
+        mc.getTextureManager().bindTexture(icon);
+        Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
+    }
+
+    @SuppressWarnings("deprecation")
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
+        mc.getTextureManager().bindTexture(icon);
+        Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
+    }
+
+    @Override
+    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+        super.affectEntity(source, indirectSource, living, -2, health);
+    }
 }

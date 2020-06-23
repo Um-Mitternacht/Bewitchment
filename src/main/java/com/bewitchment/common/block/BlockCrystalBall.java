@@ -18,26 +18,26 @@ import java.util.Random;
 
 @SuppressWarnings({"NullableProblems", "deprecation"})
 public class BlockCrystalBall extends ModBlockContainer {
-	private static final AxisAlignedBB BOX = new AxisAlignedBB(3 / 16d, 0, 3 / 16d, 13 / 16d, 12 / 16d, 13 / 16d);
-	
-	public BlockCrystalBall() {
-		super(null, "crystal_ball", Material.GLASS, SoundType.GLASS, 1, 2, "pickaxe", -1);
-	}
-	
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityCrystalBall();
-	}
-	
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return BOX;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		for (int i = 0; i < 64; i++)
-			world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + 0.375 + rand.nextDouble() * 0.225, pos.getY() + 0.25 + rand.nextDouble() * 0.275, pos.getZ() + 0.375 + rand.nextDouble() * 0.225, 1 - rand.nextDouble() * 0.05, 1 - rand.nextDouble() * 0.05, 1 - rand.nextDouble() * 0.05);
-	}
+    private static final AxisAlignedBB BOX = new AxisAlignedBB(3 / 16d, 0, 3 / 16d, 13 / 16d, 12 / 16d, 13 / 16d);
+
+    public BlockCrystalBall() {
+        super(null, "crystal_ball", Material.GLASS, SoundType.GLASS, 1, 2, "pickaxe", -1);
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return new TileEntityCrystalBall();
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return BOX;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+        for (int i = 0; i < 64; i++)
+            world.spawnParticle(EnumParticleTypes.REDSTONE, pos.getX() + 0.375 + rand.nextDouble() * 0.225, pos.getY() + 0.25 + rand.nextDouble() * 0.275, pos.getZ() + 0.375 + rand.nextDouble() * 0.225, 1 - rand.nextDouble() * 0.05, 1 - rand.nextDouble() * 0.05, 1 - rand.nextDouble() * 0.05);
+    }
 }

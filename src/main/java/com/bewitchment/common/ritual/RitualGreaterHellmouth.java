@@ -28,56 +28,57 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class RitualGreaterHellmouth extends Ritual {
-	public RitualGreaterHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.bottle_of_blood), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
-	}
-	
-	@Override
-	public String getPreconditionMessage() {
-		return "ritual.precondition.no_rain";
-	}
-	
-	@Override
-	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		return !world.isRaining();
-	}
-	
-	@Override
-	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, altarPos, effectivePos, caster, inventory);
-		if (!world.isRemote) {
-			for (int i = 0; i < world.rand.nextInt(6) + 1; i++) {
-				EntityLiving entity;
-				int rand = world.rand.nextInt(6);
-				if (rand == 0) entity = new EntityWitherSkeleton(world);
-				else if (rand == 1) entity = new EntityHellhound(world);
-				else if (rand == 2) entity = new EntityBafometyr(world);
-				else if (rand == 3) entity = new EntityCleaver(world);
-				else if (rand == 4) entity = new EntityShadowPerson(world);
-				else entity = new EntityGhast(world);
-				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
-				boolean valid = false;
-				for (int j = 0; j < 16; j++) {
-					if (entity.attemptTeleport(effectivePos.getX() + world.rand.nextInt(12) - 6, effectivePos.getY(), effectivePos.getZ() + world.rand.nextInt(12) - 6)) {
-						entity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, world.rand.nextInt(360), 0);
-						valid = true;
-						break;
-					}
-				}
-				if (valid) {
-					for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50))) CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
-					world.spawnEntity(entity);
-				}
-			}
-		}
-	}
-	
-	@Override
-	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		for (int i = 0; i < 20; i++) {
-			double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
-			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
-			Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
-		}
-	}
+    public RitualGreaterHellmouth() {
+        super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.bottle_of_blood), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+    }
+
+    @Override
+    public String getPreconditionMessage() {
+        return "ritual.precondition.no_rain";
+    }
+
+    @Override
+    public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+        return !world.isRaining();
+    }
+
+    @Override
+    public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        super.onFinished(world, altarPos, effectivePos, caster, inventory);
+        if (!world.isRemote) {
+            for (int i = 0; i < world.rand.nextInt(6) + 1; i++) {
+                EntityLiving entity;
+                int rand = world.rand.nextInt(6);
+                if (rand == 0) entity = new EntityWitherSkeleton(world);
+                else if (rand == 1) entity = new EntityHellhound(world);
+                else if (rand == 2) entity = new EntityBafometyr(world);
+                else if (rand == 3) entity = new EntityCleaver(world);
+                else if (rand == 4) entity = new EntityShadowPerson(world);
+                else entity = new EntityGhast(world);
+                entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
+                boolean valid = false;
+                for (int j = 0; j < 16; j++) {
+                    if (entity.attemptTeleport(effectivePos.getX() + world.rand.nextInt(12) - 6, effectivePos.getY(), effectivePos.getZ() + world.rand.nextInt(12) - 6)) {
+                        entity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, world.rand.nextInt(360), 0);
+                        valid = true;
+                        break;
+                    }
+                }
+                if (valid) {
+                    for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50)))
+                        CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
+                    world.spawnEntity(entity);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        for (int i = 0; i < 20; i++) {
+            double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
+            double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
+            Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
+        }
+    }
 }
