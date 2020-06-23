@@ -70,11 +70,23 @@ public class EntityGhost extends ModEntityMob {
 	protected boolean isValidLightLevel() {
 		return true;
 	}
-	
+
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime()) setDead();
+		if (!world.isRemote && world.isDaytime() && canDespawn()) setDead();
+	}
+
+	@Override
+	protected void despawnEntity() {
+		if (!hasCustomName()) {
+			super.despawnEntity();
+		}
+	}
+
+	@Override
+	protected boolean canDespawn() {
+		return !hasCustomName();
 	}
 	
 	@Override
