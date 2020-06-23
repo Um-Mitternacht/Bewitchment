@@ -10,9 +10,7 @@ import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.passive.EntityOcelot;
-import net.minecraft.entity.passive.EntityParrot;
-import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -36,7 +34,7 @@ public class RitualCallOfTheWild extends Ritual {
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
 				EntityLiving entity;
-				int rand = world.rand.nextInt(10);
+				int rand = world.rand.nextInt(14);
 				if (rand == 0) entity = new EntityLizard(world);
 				else if (rand == 1) entity = new EntityLizard(world);
 				else if (rand == 2) entity = new EntityOwl(world);
@@ -46,6 +44,10 @@ public class RitualCallOfTheWild extends Ritual {
 				else if (rand == 6) entity = new EntityWolf(world);
 				else if (rand == 7) entity = new EntityParrot(world);
 				else if (rand == 8) entity = new EntityDruden(world);
+				else if (rand == 9) entity = new EntityWerewolf(world);
+				else if (rand == 10) entity = new EntityHorse(world);
+				else if (rand == 11) entity = new EntityLlama(world);
+				else if (rand == 12) entity = new EntityDonkey(world);
 				else entity = new EntityToad(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
