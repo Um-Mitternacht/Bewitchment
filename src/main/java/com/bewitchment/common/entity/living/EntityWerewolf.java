@@ -103,7 +103,7 @@ public class EntityWerewolf extends ModEntityMob {
 	
 	@Override
 	public int getTalkInterval() {
-		return 2400;
+		return 2000;
 	}
 	
 	@Override
