@@ -14,17 +14,17 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import java.util.Arrays;
 
 public class ContractDesiccation extends Contract {
-    public ContractDesiccation() {
-        super(new ResourceLocation(Bewitchment.MODID, "desiccation"), true, true, CurseCondition.BLOCK_BREAK, null, Arrays.asList(Items.FERMENTED_SPIDER_EYE, Items.POISONOUS_POTATO));
-    }
-
-    @Override
-    public boolean doCurse(Event event, EntityPlayer target) {
-        BlockEvent.BreakEvent event0 = (BlockEvent.BreakEvent) event;
-        if (event0.getWorld().getBlockState(event0.getPos()).getBlock() instanceof BlockCrops) {
-            target.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 2));
-            return true;
-        }
-        return false;
-    }
+	public ContractDesiccation() {
+		super(new ResourceLocation(Bewitchment.MODID, "desiccation"), true, true, CurseCondition.BLOCK_BREAK, null, Arrays.asList(Items.FERMENTED_SPIDER_EYE, Items.POISONOUS_POTATO));
+	}
+	
+	@Override
+	public boolean doCurse(Event event, EntityPlayer target) {
+		BlockEvent.BreakEvent event0 = (BlockEvent.BreakEvent) event;
+		if (event0.getWorld().getBlockState(event0.getPos()).getBlock() instanceof BlockCrops) {
+			target.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 2));
+			return true;
+		}
+		return false;
+	}
 }

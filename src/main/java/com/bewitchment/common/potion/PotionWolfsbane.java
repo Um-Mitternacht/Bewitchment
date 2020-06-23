@@ -11,19 +11,19 @@ import net.minecraft.util.DamageSource;
 
 @SuppressWarnings({"unused"})
 public class PotionWolfsbane extends ModPotion {
-    public PotionWolfsbane() {
-        super("wolfsbane", false, 0x3f00ff);
-    }
-
-    @Override
-    public boolean isInstant() {
-        return true;
-    }
-
-    @Override
-    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-        super.affectEntity(source, indirectSource, living, amplifier, health);
-        if (BewitchmentAPI.isWerewolf(living) || living instanceof EntityWolf || living instanceof EntityWerewolf || living instanceof EntityHellhound || living.getClass().getName().endsWith("EntityCoyote") || living.getClass().getName().endsWith("EntityFeralWolf") || living.getClass().getName().endsWith("EntityFox"))
-            living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
-    }
+	public PotionWolfsbane() {
+		super("wolfsbane", false, 0x3f00ff);
+	}
+	
+	@Override
+	public boolean isInstant() {
+		return true;
+	}
+	
+	@Override
+	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+		super.affectEntity(source, indirectSource, living, amplifier, health);
+		if (BewitchmentAPI.isWerewolf(living) || living instanceof EntityWolf || living instanceof EntityWerewolf || living instanceof EntityHellhound || living.getClass().getName().endsWith("EntityCoyote") || living.getClass().getName().endsWith("EntityFeralWolf") || living.getClass().getName().endsWith("EntityFox"))
+			living.attackEntityFrom(DamageSource.MAGIC, 8 * (amplifier + 1));
+	}
 }

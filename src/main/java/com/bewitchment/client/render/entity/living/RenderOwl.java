@@ -13,21 +13,21 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderOwl extends RenderLiving<EntityOwl> {
-    private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_3.png")};
-
-    public RenderOwl(RenderManager manager) {
-        super(manager, new ModelOwl(), 0.3f);
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(EntityOwl entity) {
-        return TEX[entity.getDataManager().get(ModEntityTameable.SKIN)];
-    }
-
-    @Override
-    protected void preRenderCallback(EntityOwl entity, float partialTickTime) {
-        super.preRenderCallback(entity, partialTickTime);
-        if (entity.isChild()) GlStateManager.scale(0.4, 0.4, 0.4);
-        else GlStateManager.scale(0.6, 0.6, 0.6);
-    }
+	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/owl_3.png")};
+	
+	public RenderOwl(RenderManager manager) {
+		super(manager, new ModelOwl(), 0.3f);
+	}
+	
+	@Override
+	protected ResourceLocation getEntityTexture(EntityOwl entity) {
+		return TEX[entity.getDataManager().get(ModEntityTameable.SKIN)];
+	}
+	
+	@Override
+	protected void preRenderCallback(EntityOwl entity, float partialTickTime) {
+		super.preRenderCallback(entity, partialTickTime);
+		if (entity.isChild()) GlStateManager.scale(0.4, 0.4, 0.4);
+		else GlStateManager.scale(0.6, 0.6, 0.6);
+	}
 }

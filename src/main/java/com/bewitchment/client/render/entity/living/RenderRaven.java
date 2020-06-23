@@ -13,21 +13,21 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("NullableProblems")
 @SideOnly(Side.CLIENT)
 public class RenderRaven extends RenderLiving<EntityRaven> {
-    private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/entity/raven.png");
-
-    public RenderRaven(RenderManager manager) {
-        super(manager, new ModelRaven(), 0.3f);
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(EntityRaven entity) {
-        return TEX;
-    }
-
-    @Override
-    protected void preRenderCallback(EntityRaven entity, float partialTickTime) {
-        super.preRenderCallback(entity, partialTickTime);
-        if (entity.isChild()) GlStateManager.scale(0.4, 0.4, 0.4);
-        else GlStateManager.scale(0.6, 0.6, 0.6);
-    }
+	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/entity/raven.png");
+	
+	public RenderRaven(RenderManager manager) {
+		super(manager, new ModelRaven(), 0.3f);
+	}
+	
+	@Override
+	protected ResourceLocation getEntityTexture(EntityRaven entity) {
+		return TEX;
+	}
+	
+	@Override
+	protected void preRenderCallback(EntityRaven entity, float partialTickTime) {
+		super.preRenderCallback(entity, partialTickTime);
+		if (entity.isChild()) GlStateManager.scale(0.4, 0.4, 0.4);
+		else GlStateManager.scale(0.6, 0.6, 0.6);
+	}
 }

@@ -33,149 +33,149 @@ import javax.annotation.Nullable;
  * Created by Joseph on 2/10/2020.
  */
 public class EntityCleaver extends ModEntityMob {
-    public int attackTimer = 0;
-
-    public EntityCleaver(World world) {
-        super(world, new ResourceLocation(Bewitchment.MODID, "entities/cleaver"));
-        setSize(1.0f, 2.5f);
-        isImmuneToFire = true;
-        setPathPriority(PathNodeType.LAVA, 8);
-        setPathPriority(PathNodeType.DANGER_FIRE, 0);
-        setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
-        experienceValue = 25;
-    }
-
-    @Override
-    protected int getSkinTypes() {
-        return 2;
-    }
-
-    @Override
-    protected boolean isValidLightLevel() {
-        return true;
-    }
-
-    @Override
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-        setEquipmentBasedOnDifficulty(difficulty);
-        setEnchantmentBasedOnDifficulty(difficulty);
-        return super.onInitialSpawn(difficulty, data);
-    }
-
-    @Override
-    protected void initEntityAI() {
-        tasks.addTask(0, new EntityAISwimming(this));
-        tasks.addTask(1, new EntityAIAttackMelee(this, 0.75, false));
-        tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-        tasks.addTask(3, new EntityAILookIdle(this));
-        tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
-        this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
-        targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
-        targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityPlayer || e instanceof EntityFeuerwurm || e instanceof EntityHellhound || e instanceof EntityBafometyr || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
-    }
-
-    public void onEntityUpdate() {
-        int i = this.getAir();
-        super.onEntityUpdate();
-
-        if (this.isEntityAlive() && !this.isInWater()) {
-            --i;
-            this.setAir(i);
-
-            if (this.getAir() == -20) {
-                this.setAir(300);
-            }
-        } else {
-            this.setAir(300);
-        }
-    }
-
-    @Override
-    public void handleStatusUpdate(byte id) {
-        if (id == 4) attackTimer = 10;
-        else super.handleStatusUpdate(id);
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return ModSounds.CLEAVER_IDLE;
-    }
-
-    @Override
-    protected void updateEquipmentIfNeeded(EntityItem itemEntity) {
-        if (itemEntity.getItem().getItem() instanceof ItemSword || itemEntity.getItem().getItem() instanceof ItemArmor || itemEntity.getItem().getItem() instanceof ItemShield) {
-            super.updateEquipmentIfNeeded(itemEntity);
-        }
-    }
-
-    @Override
-    public int getMaxSpawnedInChunk() {
-        return 6;
-    }
-
-    @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-        super.setEquipmentBasedOnDifficulty(difficulty);
-        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.cleaver_sword));
-        this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET));
-        this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
-    }
-
-    @Override
-    public boolean isPotionApplicable(PotionEffect effect) {
-        return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
-    }
-
-    @Override
-    public EnumCreatureAttribute getCreatureAttribute() {
-        return BewitchmentAPI.DEMON;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.CLEAVER_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return ModSounds.CLEAVER_DEATH;
-    }
-
-    public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
-
-        if (flag) {
-            this.applyEnchantments(this, entityIn);
-            attackTimer = 10;
-            int i = this.rand.nextInt(100);
-            world.setEntityState(this, (byte) 4);
-            if (entityIn instanceof EntityLivingBase) {
-                if (i < 3) {
-                    ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 3, false, false));
-                    entityIn.motionZ -= 1.5;
-                    if (entityIn instanceof EntityPlayer)
-                        ((EntityPlayerMP) entityIn).connection.sendPacket(new SPacketEntityVelocity(entityIn));
-                }
-            }
-        }
-
-        return flag;
-    }
-
-    @Override
-    public boolean getCanSpawnHere() {
-        return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
-    }
-
-    @Override
-    protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
-        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3.50);
-        getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(2.50);
-        getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.55);
-        getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-    }
+	public int attackTimer = 0;
+	
+	public EntityCleaver(World world) {
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/cleaver"));
+		setSize(1.0f, 2.5f);
+		isImmuneToFire = true;
+		setPathPriority(PathNodeType.LAVA, 8);
+		setPathPriority(PathNodeType.DANGER_FIRE, 0);
+		setPathPriority(PathNodeType.DAMAGE_FIRE, 0);
+		experienceValue = 25;
+	}
+	
+	@Override
+	protected int getSkinTypes() {
+		return 2;
+	}
+	
+	@Override
+	protected boolean isValidLightLevel() {
+		return true;
+	}
+	
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		setEquipmentBasedOnDifficulty(difficulty);
+		setEnchantmentBasedOnDifficulty(difficulty);
+		return super.onInitialSpawn(difficulty, data);
+	}
+	
+	@Override
+	protected void initEntityAI() {
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, new EntityAIAttackMelee(this, 0.75, false));
+		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
+		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityPlayer || e instanceof EntityFeuerwurm || e instanceof EntityHellhound || e instanceof EntityBafometyr || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
+	}
+	
+	public void onEntityUpdate() {
+		int i = this.getAir();
+		super.onEntityUpdate();
+		
+		if (this.isEntityAlive() && !this.isInWater()) {
+			--i;
+			this.setAir(i);
+			
+			if (this.getAir() == -20) {
+				this.setAir(300);
+			}
+		}
+		else {
+			this.setAir(300);
+		}
+	}
+	
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
+	}
+	
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.CLEAVER_IDLE;
+	}
+	
+	@Override
+	protected void updateEquipmentIfNeeded(EntityItem itemEntity) {
+		if (itemEntity.getItem().getItem() instanceof ItemSword || itemEntity.getItem().getItem() instanceof ItemArmor || itemEntity.getItem().getItem() instanceof ItemShield) {
+			super.updateEquipmentIfNeeded(itemEntity);
+		}
+	}
+	
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
+	}
+	
+	@Override
+	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+		super.setEquipmentBasedOnDifficulty(difficulty);
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.cleaver_sword));
+		this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET));
+		this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
+	}
+	
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.POISON && effect.getPotion() != MobEffects.WITHER && super.isPotionApplicable(effect);
+	}
+	
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return BewitchmentAPI.DEMON;
+	}
+	
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return ModSounds.CLEAVER_HURT;
+	}
+	
+	@Override
+	protected SoundEvent getDeathSound() {
+		return ModSounds.CLEAVER_DEATH;
+	}
+	
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		
+		if (flag) {
+			this.applyEnchantments(this, entityIn);
+			attackTimer = 10;
+			int i = this.rand.nextInt(100);
+			world.setEntityState(this, (byte) 4);
+			if (entityIn instanceof EntityLivingBase) {
+				if (i < 3) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 3, false, false));
+					entityIn.motionZ -= 1.5;
+					if (entityIn instanceof EntityPlayer) ((EntityPlayerMP) entityIn).connection.sendPacket(new SPacketEntityVelocity(entityIn));
+				}
+			}
+		}
+		
+		return flag;
+	}
+	
+	@Override
+	public boolean getCanSpawnHere() {
+		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
+	}
+	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3.50);
+		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(2.50);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.55);
+		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
+	}
 }

@@ -27,77 +27,74 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"NullableProblems", "deprecation"})
 public class BlockJuniperChest extends ModBlockContainer {
-    private static final AxisAlignedBB BOX = new AxisAlignedBB(0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375);
-
-    public BlockJuniperChest() {
-        super(null, "juniper_chest", Blocks.CHEST, -1);
-        setResistance(Integer.MAX_VALUE);
-    }
-
-    @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
-        return new TileEntityJuniperChest();
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
-    }
-
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-        if (!player.isSneaking() || player.getHeldItem(hand).isEmpty()) {
-            if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) {
-                if (ItemJuniperKey.checkAccess(world, pos, player, true))
-                    player.openGui(Bewitchment.instance, GuiHandler.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
-            }
-            return true;
-        }
-        return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
-    }
-
-    @Override
-    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        super.onBlockPlacedBy(world, pos, state, placer, stack);
-        if (placer instanceof EntityPlayer)
-            Util.giveItem((EntityPlayer) placer, ((ItemJuniperKey) ModObjects.juniper_key).setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
-    }
-
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public boolean hasCustomBreakingProgress(IBlockState state) {
-        return true;
-    }
-
-    @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return BOX;
-    }
-
-    @Override
-    public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
-        if (ItemJuniperKey.checkAccess(world, pos, player, false))
-            return super.getPlayerRelativeBlockHardness(state, player, world, pos);
-        return -1;
-    }
-
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, BlockHorizontal.FACING);
-    }
-
-    @Override
-    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
-        return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
-    }
+	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375);
+	
+	public BlockJuniperChest() {
+		super(null, "juniper_chest", Blocks.CHEST, -1);
+		setResistance(Integer.MAX_VALUE);
+	}
+	
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityJuniperChest();
+	}
+	
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
+		if (!player.isSneaking() || player.getHeldItem(hand).isEmpty()) {
+			if (!world.getBlockState(pos.up()).doesSideBlockChestOpening(world, pos.up(), EnumFacing.DOWN)) {
+				if (ItemJuniperKey.checkAccess(world, pos, player, true)) player.openGui(Bewitchment.instance, GuiHandler.ModGui.JUNIPER_CHEST.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
+			}
+			return true;
+		}
+		return super.onBlockActivated(world, pos, state, player, hand, face, hitX, hitY, hitZ);
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
+		if (placer instanceof EntityPlayer) Util.giveItem((EntityPlayer) placer, ((ItemJuniperKey) ModObjects.juniper_key).setTags(world, pos, new ItemStack(ModObjects.juniper_key)));
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta]);
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasCustomBreakingProgress(IBlockState state) {
+		return true;
+	}
+	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return BOX;
+	}
+	
+	@Override
+	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
+		if (ItemJuniperKey.checkAccess(world, pos, player, false)) return super.getPlayerRelativeBlockHardness(state, player, world, pos);
+		return -1;
+	}
+	
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, BlockHorizontal.FACING);
+	}
+	
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw).getOpposite());
+	}
 }

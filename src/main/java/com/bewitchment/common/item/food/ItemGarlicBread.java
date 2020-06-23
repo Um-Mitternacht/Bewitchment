@@ -9,14 +9,14 @@ import net.minecraft.world.World;
 
 @SuppressWarnings("NullableProblems")
 public class ItemGarlicBread extends ItemFood {
-    public ItemGarlicBread() {
-        super(7, 0.8f, false);
-        Util.registerItem(this, "garlic_bread");
-    }
-
-    @Override
-    protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-        super.onFoodEaten(stack, world, player);
-        if (BewitchmentAPI.isVampire(player)) player.setFire(40);
-    }
+	public ItemGarlicBread() {
+		super(7, 0.8f, false);
+		Util.registerItem(this, "garlic_bread");
+	}
+	
+	@Override
+	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+		super.onFoodEaten(stack, world, player);
+		if (BewitchmentAPI.isVampire(player)) player.setFire(40);
+	}
 }

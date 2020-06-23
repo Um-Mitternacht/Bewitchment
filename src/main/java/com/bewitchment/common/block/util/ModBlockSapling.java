@@ -16,22 +16,21 @@ import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class ModBlockSapling extends BlockSapling {
-    private final WorldGenModTree generator;
-
-    public ModBlockSapling(String name, WorldGenModTree generator, String... oreDictionaryNames) {
-        super();
-        Util.registerBlock(this, name, Blocks.SAPLING, oreDictionaryNames);
-        this.generator = generator;
-    }
-
-    @Override
-    public void generateTree(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
-        if (TerrainGen.saplingGrowTree(world, rand, pos) && generator != null && generator.canSaplingGrow(world, pos))
-            generator.generate(world, rand, pos);
-    }
-
-    @Override
-    public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> list) {
-        list.add(new ItemStack(this));
-    }
+	private final WorldGenModTree generator;
+	
+	public ModBlockSapling(String name, WorldGenModTree generator, String... oreDictionaryNames) {
+		super();
+		Util.registerBlock(this, name, Blocks.SAPLING, oreDictionaryNames);
+		this.generator = generator;
+	}
+	
+	@Override
+	public void generateTree(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
+		if (TerrainGen.saplingGrowTree(world, rand, pos) && generator != null && generator.canSaplingGrow(world, pos)) generator.generate(world, rand, pos);
+	}
+	
+	@Override
+	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> list) {
+		list.add(new ItemStack(this));
+	}
 }

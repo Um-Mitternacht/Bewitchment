@@ -17,31 +17,31 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 
 public class PotionRhinoHide extends ModPotion {
-    private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/rhino_hide.png");
-
-    public PotionRhinoHide() {
-        super("rhino_hide", false, 0xBEBEBE);
-        this.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS, "1845f14c-5411-4380-8be7-85e81317523a", 1D, 0);
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
-        mc.getTextureManager().bindTexture(icon);
-        Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
-    }
-
-    @SuppressWarnings("deprecation")
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
-        mc.getTextureManager().bindTexture(icon);
-        Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
-    }
-
-    @Override
-    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-        super.affectEntity(source, indirectSource, living, 1, health);
-    }
+	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/rhino_hide.png");
+	
+	public PotionRhinoHide() {
+		super("rhino_hide", false, 0xBEBEBE);
+		this.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS, "1845f14c-5411-4380-8be7-85e81317523a", 1D, 0);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
+		mc.getTextureManager().bindTexture(icon);
+		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
+		mc.getTextureManager().bindTexture(icon);
+		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
+	}
+	
+	@Override
+	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+		super.affectEntity(source, indirectSource, living, 1, health);
+	}
 }

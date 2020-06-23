@@ -13,19 +13,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class ModBlockFence extends BlockFence {
-    public ModBlockFence(String name, Block base, String... oreDictionaryNames) {
-        super(base.getDefaultState().getMaterial(), base.getDefaultState().getMaterial().getMaterialMapColor());
-        Util.registerBlock(this, name, base, oreDictionaryNames);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getRenderLayer() {
-        return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-    }
-
-    @Override
-    public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-        return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
-    }
+	public ModBlockFence(String name, Block base, String... oreDictionaryNames) {
+		super(base.getDefaultState().getMaterial(), base.getDefaultState().getMaterial().getMaterialMapColor());
+		Util.registerBlock(this, name, base, oreDictionaryNames);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return (!Util.isTransparent(state) || world.getBlockState(pos.offset(face)).getBlock() != this) && super.shouldSideBeRendered(state, world, pos, face);
+	}
 }

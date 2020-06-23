@@ -12,18 +12,18 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 
 public class ContractDevouringRage extends Contract {
-    public ContractDevouringRage() {
-        super(new ResourceLocation(Bewitchment.MODID, "devouring_rage"), true, true, CurseCondition.KILL, e -> e instanceof EntityAnimal, null);
-    }
-
-    @Override
-    public boolean doCurse(Event event, EntityPlayer target) {
-        LivingDeathEvent event0 = (LivingDeathEvent) event;
-        if (event0.getEntityLiving() instanceof EntityAnimal) {
-            target.heal(3f);
-            target.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 20, 9));
-            return true;
-        }
-        return false;
-    }
+	public ContractDevouringRage() {
+		super(new ResourceLocation(Bewitchment.MODID, "devouring_rage"), true, true, CurseCondition.KILL, e -> e instanceof EntityAnimal, null);
+	}
+	
+	@Override
+	public boolean doCurse(Event event, EntityPlayer target) {
+		LivingDeathEvent event0 = (LivingDeathEvent) event;
+		if (event0.getEntityLiving() instanceof EntityAnimal) {
+			target.heal(3f);
+			target.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 20, 9));
+			return true;
+		}
+		return false;
+	}
 }

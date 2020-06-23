@@ -14,36 +14,36 @@ import javax.annotation.Nonnull;
 
 @SuppressWarnings("NullableProblems")
 public class ModBlockCrops extends BlockCrops {
-    private Item seed, crop;
-
-    public ModBlockCrops(String name) {
-        super();
-        Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "", 0);
-    }
-
-    @Override
-    @Nonnull
-    public Item getSeed() {
-        return seed;
-    }
-
-    @Override
-    @Nonnull
-    public Item getCrop() {
-        return crop;
-    }
-
-    @Override
-    public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-        if (!this.canBlockStay(world, to, state)) {
-            this.dropBlockAsItem(world, to, state, 0);
-            world.removeTileEntity(to);
-            world.setBlockToAir(to);
-        }
-    }
-
-    public void setItems(Item seed, Item crop) {
-        this.seed = seed;
-        this.crop = crop;
-    }
+	private Item seed, crop;
+	
+	public ModBlockCrops(String name) {
+		super();
+		Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "", 0);
+	}
+	
+	@Override
+	@Nonnull
+	public Item getSeed() {
+		return seed;
+	}
+	
+	@Override
+	@Nonnull
+	public Item getCrop() {
+		return crop;
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		if (!this.canBlockStay(world, to, state)) {
+			this.dropBlockAsItem(world, to, state, 0);
+			world.removeTileEntity(to);
+			world.setBlockToAir(to);
+		}
+	}
+	
+	public void setItems(Item seed, Item crop) {
+		this.seed = seed;
+		this.crop = crop;
+	}
 }

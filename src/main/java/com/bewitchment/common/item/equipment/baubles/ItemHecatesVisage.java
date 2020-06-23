@@ -7,12 +7,12 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 
 public class ItemHecatesVisage extends ModItemBauble {
-    public ItemHecatesVisage() {
-        super("hecates_visage", BaubleType.HEAD);
-    }
-
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-        player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1.0f, 1.0f);
-    }
+	public ItemHecatesVisage() {
+		super("hecates_visage", BaubleType.HEAD);
+	}
+	
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1.0f, 1.0f);
+	}
 }

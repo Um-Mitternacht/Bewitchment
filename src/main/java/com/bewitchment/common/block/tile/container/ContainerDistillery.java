@@ -12,34 +12,34 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class ContainerDistillery extends ModContainer {
-    private final TileEntityDistillery tile;
-    public int burnTime, progress;
-
-    public ContainerDistillery(InventoryPlayer inventory, TileEntityDistillery tile) {
-        this.tile = tile;
-        IItemHandler up = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
-        IItemHandler down = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
-        int ui = 0, di = 0;
-        addSlotToContainer(new ModSlot(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH), 0, 80, 58));
-        for (int i = 0; i < 3; i++) {
-            addSlotToContainer(new ModSlot(up, ui++, 18, 18 * (i + 1) - 1));
-            addSlotToContainer(new ModSlot(up, ui++, 36, 18 * (i + 1) - 1));
-            addSlotToContainer(new ModSlot(down, di++, 124, 18 * (i + 1) - 1));
-            addSlotToContainer(new ModSlot(down, di++, 142, 18 * (i + 1) - 1));
-        }
-        addPlayerSlots(inventory);
-    }
-
-    @Override
-    protected void sendToListener(IContainerListener listener) {
-        listener.sendWindowProperty(this, 0, tile.burnTime);
-        listener.sendWindowProperty(this, 1, tile.progress);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void updateProgressBar(int id, int data) {
-        if (id == 0) burnTime = data;
-        else progress = data;
-    }
+	private final TileEntityDistillery tile;
+	public int burnTime, progress;
+	
+	public ContainerDistillery(InventoryPlayer inventory, TileEntityDistillery tile) {
+		this.tile = tile;
+		IItemHandler up = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+		IItemHandler down = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
+		int ui = 0, di = 0;
+		addSlotToContainer(new ModSlot(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH), 0, 80, 58));
+		for (int i = 0; i < 3; i++) {
+			addSlotToContainer(new ModSlot(up, ui++, 18, 18 * (i + 1) - 1));
+			addSlotToContainer(new ModSlot(up, ui++, 36, 18 * (i + 1) - 1));
+			addSlotToContainer(new ModSlot(down, di++, 124, 18 * (i + 1) - 1));
+			addSlotToContainer(new ModSlot(down, di++, 142, 18 * (i + 1) - 1));
+		}
+		addPlayerSlots(inventory);
+	}
+	
+	@Override
+	protected void sendToListener(IContainerListener listener) {
+		listener.sendWindowProperty(this, 0, tile.burnTime);
+		listener.sendWindowProperty(this, 1, tile.progress);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void updateProgressBar(int id, int data) {
+		if (id == 0) burnTime = data;
+		else progress = data;
+	}
 }
