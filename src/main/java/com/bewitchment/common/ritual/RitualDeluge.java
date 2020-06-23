@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
+import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,7 @@ import java.util.Collections;
 
 public class RitualDeluge extends Ritual {
 	public RitualDeluge() {
-		super(new ResourceLocation(Bewitchment.MODID, "deluge"), Arrays.asList(Util.get(Items.WATER_BUCKET), Util.get("treeSapling"), Util.get("coquina"), Util.get("sand"), Util.get("gemLapis"), Util.get("gemLapis")), null, Collections.singletonList(new ItemStack(Items.BUCKET)), false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "deluge"), Arrays.asList(Util.get(Items.WATER_BUCKET), Util.get("treeSapling"), Util.get("coquina"), Util.get("sand"), Util.get("gemLapis"), Util.get("gemLapis"), Util.get(ModObjects.toe_of_frog)), null, Collections.singletonList(new ItemStack(Items.BUCKET)), false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
 	}
 	
 	@Override

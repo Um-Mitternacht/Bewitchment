@@ -18,7 +18,7 @@ import java.util.Collections;
 
 public class RitualDrought extends Ritual {
 	public RitualDrought() {
-		super(new ResourceLocation(Bewitchment.MODID, "drought"), Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.acacia_resin), Util.get(Blocks.CACTUS), Util.get("sand"), Util.get("gemOpal"), Util.get("gemOpal")), null, Collections.singletonList(new ItemStack(ModObjects.empty_jar)), false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
+		super(new ResourceLocation(Bewitchment.MODID, "drought"), Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.acacia_resin), Util.get(Blocks.CACTUS), Util.get("sand"), Util.get("gemOpal"), Util.get("gemOpal"), Util.get(ModObjects.lizard_leg)), null, Collections.singletonList(new ItemStack(ModObjects.empty_jar)), false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
 	}
 	
 	@Override
