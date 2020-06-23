@@ -34,7 +34,7 @@ public class RitualCallOfTheWild extends Ritual {
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(3) + 1; i++) {
 				EntityLiving entity;
-				int rand = world.rand.nextInt(14);
+				int rand = world.rand.nextInt(18);
 				if (rand == 0) entity = new EntityLizard(world);
 				else if (rand == 1) entity = new EntityLizard(world);
 				else if (rand == 2) entity = new EntityOwl(world);
@@ -48,6 +48,10 @@ public class RitualCallOfTheWild extends Ritual {
 				else if (rand == 10) entity = new EntityHorse(world);
 				else if (rand == 11) entity = new EntityLlama(world);
 				else if (rand == 12) entity = new EntityDonkey(world);
+                else if (rand == 13) entity = new EntitySheep(world);
+				else if (rand == 14) entity = new EntityCow(world);
+				else if (rand == 15) entity = new EntityPig(world);
+				else if (rand == 16) entity = new EntityChicken(world);
 				else entity = new EntityToad(world);
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
