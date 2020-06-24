@@ -33,7 +33,7 @@ public class CurseParanoia extends Curse {
 
     @Override
     public boolean doCurse(Event event, EntityPlayer target) {
-        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 120, 1));
+        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 1));
         return false;
     }
 }
