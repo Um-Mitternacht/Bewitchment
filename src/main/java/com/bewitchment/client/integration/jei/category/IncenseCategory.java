@@ -23,62 +23,62 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class IncenseCategory implements IRecipeCategory<IncenseCategory.Wrapper> {
-    public static final String UID = "jei.incense";
+	public static final String UID = "jei.incense";
 
-    private final IDrawable bg;
+	private final IDrawable bg;
 
-    public IncenseCategory(IGuiHelper helper) {
-        bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_brazier.png"), 0, 0, 72, 57).setTextureSize(72, 57).build();
-    }
+	public IncenseCategory(IGuiHelper helper) {
+		bg = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_brazier.png"), 0, 0, 72, 57).setTextureSize(72, 57).build();
+	}
 
-    @Override
-    public String getUid() {
-        return UID;
-    }
+	@Override
+	public String getUid() {
+		return UID;
+	}
 
-    @Override
-    public String getTitle() {
-        return I18n.format(UID);
-    }
+	@Override
+	public String getTitle() {
+		return I18n.format(UID);
+	}
 
-    @Override
-    public String getModName() {
-        return Bewitchment.NAME;
-    }
+	@Override
+	public String getModName() {
+		return Bewitchment.NAME;
+	}
 
-    @Override
-    public IDrawable getBackground() {
-        return bg;
-    }
+	@Override
+	public IDrawable getBackground() {
+		return bg;
+	}
 
-    @Override
-    public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
-        for (int i = 0; i < recipeWrapper.input.size(); i++) {
-            recipeLayout.getItemStacks().init(i, true, (i % 4) * 18, (i / 4) * 18);
-            recipeLayout.getItemStacks().set(i, Arrays.asList(recipeWrapper.input.get(i).getMatchingStacks()));
-        }
-    }
+	@Override
+	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeWrapper, IIngredients ingredients) {
+		for (int i = 0; i < recipeWrapper.input.size(); i++) {
+			recipeLayout.getItemStacks().init(i, true, (i % 4) * 18, (i / 4) * 18);
+			recipeLayout.getItemStacks().set(i, Arrays.asList(recipeWrapper.input.get(i).getMatchingStacks()));
+		}
+	}
 
-    public static class Wrapper implements IRecipeWrapper {
-        private final List<Ingredient> input;
-        private final String name;
+	public static class Wrapper implements IRecipeWrapper {
+		private final List<Ingredient> input;
+		private final String name;
 
-        public Wrapper(Incense incense) {
-            input = incense.input;
-            name = new TextComponentTranslation("incense." + incense.getRegistryName().toString().replace(":", ".")).getFormattedText();
-        }
+		public Wrapper(Incense incense) {
+			input = incense.input;
+			name = new TextComponentTranslation("incense." + incense.getRegistryName().toString().replace(":", ".")).getFormattedText();
+		}
 
-        @Override
-        public void getIngredients(IIngredients ingredients) {
-            List<List<ItemStack>> lists = new ArrayList<>();
-            for (Ingredient ing : input) lists.add(Arrays.asList(ing.getMatchingStacks()));
-            ingredients.setInputLists(VanillaTypes.ITEM, lists);
-        }
+		@Override
+		public void getIngredients(IIngredients ingredients) {
+			List<List<ItemStack>> lists = new ArrayList<>();
+			for (Ingredient ing : input) lists.add(Arrays.asList(ing.getMatchingStacks()));
+			ingredients.setInputLists(VanillaTypes.ITEM, lists);
+		}
 
-        @Override
-        public void drawInfo(Minecraft minecraft, int width, int height, int mouseX, int mouseY) {
-            FontRenderer font = minecraft.fontRenderer;
-            font.drawString(name, ((width - font.getStringWidth(name)) / 2), 47, 0);
-        }
-    }
+		@Override
+		public void drawInfo(Minecraft minecraft, int width, int height, int mouseX, int mouseY) {
+			FontRenderer font = minecraft.fontRenderer;
+			font.drawString(name, ((width - font.getStringWidth(name)) / 2), 47, 0);
+		}
+	}
 }

@@ -14,19 +14,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 public class BlockEmbergrass extends BlockBushSpreading {
-    public BlockEmbergrass() {
-        super("embergrass");
-    }
+	public BlockEmbergrass() {
+		super("embergrass");
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-        if (rand.nextBoolean())
-            world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (rand.nextBoolean())
+			world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), 0, 0, 0);
+	}
 
-    @Override
-    public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-        if (!world.isRemote && entity instanceof EntityLivingBase && this == ModObjects.embergrass) entity.setFire(10);
-    }
+	@Override
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (!world.isRemote && entity instanceof EntityLivingBase && this == ModObjects.embergrass) entity.setFire(10);
+	}
 }

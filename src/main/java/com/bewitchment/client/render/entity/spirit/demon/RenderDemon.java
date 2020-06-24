@@ -15,24 +15,24 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SuppressWarnings("WeakerAccess")
 @SideOnly(Side.CLIENT)
 public class RenderDemon extends RenderLiving<EntityDemon> {
-    private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_3.png")};
+	private static final ResourceLocation[] TEX = {new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_0.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_1.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_2.png"), new ResourceLocation(Bewitchment.MODID, "textures/entity/demon_3.png")};
 
-    public RenderDemon(RenderManager manager) {
-        this(manager, new ModelDemon());
-    }
+	public RenderDemon(RenderManager manager) {
+		this(manager, new ModelDemon());
+	}
 
-    protected RenderDemon(RenderManager manager, ModelBase model) {
-        super(manager, model, 0.3f);
-    }
+	protected RenderDemon(RenderManager manager, ModelBase model) {
+		super(manager, model, 0.3f);
+	}
 
-    @Override
-    protected ResourceLocation getEntityTexture(EntityDemon entity) {
-        return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
-    }
+	@Override
+	protected ResourceLocation getEntityTexture(EntityDemon entity) {
+		return TEX[entity.getDataManager().get(ModEntityMob.SKIN)];
+	}
 
-    @Override
-    protected void preRenderCallback(EntityDemon entity, float partialTickTime) {
-        super.preRenderCallback(entity, partialTickTime);
-        GlStateManager.scale(1.4, 1.4, 1.4);
-    }
+	@Override
+	protected void preRenderCallback(EntityDemon entity, float partialTickTime) {
+		super.preRenderCallback(entity, partialTickTime);
+		GlStateManager.scale(1.4, 1.4, 1.4);
+	}
 }

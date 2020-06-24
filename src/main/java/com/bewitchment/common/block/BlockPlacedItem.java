@@ -26,73 +26,73 @@ import java.util.Random;
 
 @SuppressWarnings({"NullableProblems", "deprecation", "ConstantConditions"})
 public class BlockPlacedItem extends ModBlockContainer {
-    private static final AxisAlignedBB BOX = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.0625, 0.75);
+	private static final AxisAlignedBB BOX = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.0625, 0.75);
 
-    public BlockPlacedItem() {
-        super(null, "placed_item", Material.ROCK, SoundType.CLOTH, 0, 0, "", -1);
-        setCreativeTab(null);
-        setLightOpacity(0);
-    }
+	public BlockPlacedItem() {
+		super(null, "placed_item", Material.ROCK, SoundType.CLOTH, 0, 0, "", -1);
+		setCreativeTab(null);
+		setLightOpacity(0);
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
-        return new TileEntityPlacedItem();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityPlacedItem();
+	}
 
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
-    }
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+	}
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.byHorizontalIndex(meta));
-    }
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.byHorizontalIndex(meta));
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
-    }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex();
+	}
 
-    @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return BOX;
-    }
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return BOX;
+	}
 
-    @Override
-    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-        if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) {
-            breakBlock(world, pos, state);
-            world.destroyBlock(pos, true);
-        }
-    }
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) != BlockFaceShape.SOLID) {
+			breakBlock(world, pos, state);
+			world.destroyBlock(pos, true);
+		}
+	}
 
-    @Override
-    public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-        world.scheduleUpdate(to, this, 0);
-    }
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
+		world.scheduleUpdate(to, this, 0);
+	}
 
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Items.AIR;
-    }
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Items.AIR;
+	}
 
-    @Override
-    public boolean canPlaceBlockAt(World world, BlockPos pos) {
-        return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
-    }
+	@Override
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID;
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, BlockHorizontal.FACING);
-    }
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, BlockHorizontal.FACING);
+	}
 
-    public Block.EnumOffsetType getOffsetType() {
-        return Block.EnumOffsetType.XZ;
-    }
+	public Block.EnumOffsetType getOffsetType() {
+		return Block.EnumOffsetType.XZ;
+	}
 
-    @Override
-    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-        return ((TileEntityPlacedItem) world.getTileEntity(pos)).getInventories()[0].getStackInSlot(0);
-    }
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		return ((TileEntityPlacedItem) world.getTileEntity(pos)).getInventories()[0].getStackInSlot(0);
+	}
 }

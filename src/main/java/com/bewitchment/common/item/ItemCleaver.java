@@ -11,16 +11,16 @@ import net.minecraftforge.common.MinecraftForge;
  */
 
 public class ItemCleaver extends ItemSword {
-    public ItemCleaver() {
-        super(ModObjects.TOOL_HELLISH);
-        Util.registerItem(this, "cleaver_sword");
-        setMaxDamage(333);
-        setMaxStackSize(1);
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+	public ItemCleaver() {
+		super(ModObjects.TOOL_HELLISH);
+		Util.registerItem(this, "cleaver_sword");
+		setMaxDamage(333);
+		setMaxStackSize(1);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return false;
-    }
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return false;
+	}
 }

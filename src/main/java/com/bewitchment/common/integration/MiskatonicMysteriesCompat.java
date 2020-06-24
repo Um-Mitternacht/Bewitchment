@@ -11,12 +11,12 @@ import com.miskatonicmysteries.registry.ModObjects;
  */
 public class MiskatonicMysteriesCompat {
 
-    public static void registerMiskatonicMysteriesStuff() {
-        Util.registerAltarUpgradeItem(ModObjects.black_goats_gutting_dagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.43));
-        Util.registerAltarUpgradeItem(ModObjects.black_goats_horned_dagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.43));
-        Util.registerAltarUpgradeItem(ModObjects.yellow_kings_dagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.43));
-        Util.registerAltarUpgradeItem(ModObjects.gold_oceanic, new AltarUpgrade(AltarUpgrade.Type.SWORD, 2, 0));
+	public static void registerMiskatonicMysteriesStuff() {
+		Util.registerAltarUpgradeItem(ModObjects.black_goats_gutting_dagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.43));
+		Util.registerAltarUpgradeItem(ModObjects.black_goats_horned_dagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.43));
+		Util.registerAltarUpgradeItem(ModObjects.yellow_kings_dagger, new AltarUpgrade(AltarUpgrade.Type.SWORD, 0, 1.43));
+		Util.registerAltarUpgradeItem(ModObjects.gold_oceanic, new AltarUpgrade(AltarUpgrade.Type.SWORD, 2, 0));
 
-        BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandles, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
-    }
+		BewitchmentAPI.ALTAR_UPGRADES.put(s -> s.getBlockState().getBlock() instanceof BlockCandles, new AltarUpgrade(AltarUpgrade.Type.WAND, 0, 1.125));
+	}
 }

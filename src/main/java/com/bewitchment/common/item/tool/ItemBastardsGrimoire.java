@@ -20,54 +20,54 @@ import java.util.List;
  */
 public class ItemBastardsGrimoire extends Item {
 
-    public ItemBastardsGrimoire() {
-        super();
-        setMaxStackSize(1);
-        Util.registerItem(this, "bastards_grimoire");
-    }
+	public ItemBastardsGrimoire() {
+		super();
+		setMaxStackSize(1);
+		Util.registerItem(this, "bastards_grimoire");
+	}
 
-    public static ItemStack create(int amount) {
-        ItemStack stack = new ItemStack(ModObjects.bastards_grimoire);
-        stack.setTagCompound(new NBTTagCompound());
-        stack.getTagCompound().setInteger("maxAmount", 2147483646);
-        stack.getTagCompound().setInteger("amount", 2147483646);
-        return stack;
-    }
+	public static ItemStack create(int amount) {
+		ItemStack stack = new ItemStack(ModObjects.bastards_grimoire);
+		stack.setTagCompound(new NBTTagCompound());
+		stack.getTagCompound().setInteger("maxAmount", 2147483646);
+		stack.getTagCompound().setInteger("amount", 2147483646);
+		return stack;
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
-        int amount = 0, maxAmount = 0;
-        if (stack.hasTagCompound()) {
-            amount = stack.getTagCompound().getInteger("amount");
-            maxAmount = stack.getTagCompound().getInteger("maxAmount");
-        }
-        tooltip.add(I18n.format("tooltip.bewitchment.grimoire_magia", amount, maxAmount));
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+		int amount = 0, maxAmount = 0;
+		if (stack.hasTagCompound()) {
+			amount = stack.getTagCompound().getInteger("amount");
+			maxAmount = stack.getTagCompound().getInteger("maxAmount");
+		}
+		tooltip.add(I18n.format("tooltip.bewitchment.grimoire_magia", amount, maxAmount));
+	}
 
-    @Override
-    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
-        if (isInCreativeTab(tab)) {
-            list.add(create(0));
-            list.add(create(2147483646));
-        }
-    }
+	@Override
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (isInCreativeTab(tab)) {
+			list.add(create(0));
+			list.add(create(2147483646));
+		}
+	}
 
-    @Override
-    public boolean showDurabilityBar(ItemStack stack) {
-        if (stack.hasTagCompound()) {
-            NBTTagCompound tag = stack.getTagCompound();
-            return tag.getInteger("amount") < tag.getInteger("maxAmount");
-        }
-        return super.showDurabilityBar(stack);
-    }
+	@Override
+	public boolean showDurabilityBar(ItemStack stack) {
+		if (stack.hasTagCompound()) {
+			NBTTagCompound tag = stack.getTagCompound();
+			return tag.getInteger("amount") < tag.getInteger("maxAmount");
+		}
+		return super.showDurabilityBar(stack);
+	}
 
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack) {
-        if (stack.hasTagCompound()) {
-            NBTTagCompound tag = stack.getTagCompound();
-            return 1 - (double) tag.getInteger("amount") / tag.getInteger("maxAmount");
-        }
-        return super.getDurabilityForDisplay(stack);
-    }
+	@Override
+	public double getDurabilityForDisplay(ItemStack stack) {
+		if (stack.hasTagCompound()) {
+			NBTTagCompound tag = stack.getTagCompound();
+			return 1 - (double) tag.getInteger("amount") / tag.getInteger("maxAmount");
+		}
+		return super.getDurabilityForDisplay(stack);
+	}
 }

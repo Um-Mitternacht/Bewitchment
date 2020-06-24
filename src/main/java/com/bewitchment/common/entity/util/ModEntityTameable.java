@@ -30,126 +30,126 @@ import java.util.Set;
 
 @SuppressWarnings({"NullableProblems", "EntityConstructor", "ConstantConditions", "WeakerAccess"})
 public abstract class ModEntityTameable extends EntityTameable {
-    public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityTameable.class, DataSerializers.VARINT);
+	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityTameable.class, DataSerializers.VARINT);
 
-    private final Set<Item> tameItems;
+	private final Set<Item> tameItems;
 
-    private final ResourceLocation lootTableLocation;
+	private final ResourceLocation lootTableLocation;
 
-    protected ModEntityTameable(World world, ResourceLocation lootTableLocation, Item... tameItems) {
-        super(world);
-        this.tameItems = Sets.newHashSet(tameItems);
-        this.lootTableLocation = lootTableLocation;
-    }
+	protected ModEntityTameable(World world, ResourceLocation lootTableLocation, Item... tameItems) {
+		super(world);
+		this.tameItems = Sets.newHashSet(tameItems);
+		this.lootTableLocation = lootTableLocation;
+	}
 
-    @Override
-    public EntityAgeable createChild(EntityAgeable other) {
-        EntityAgeable entity = (EntityAgeable) EntityRegistry.getEntry(getClass()).newInstance(world);
-        entity.getDataManager().set(SKIN, rand.nextBoolean() ? dataManager.get(SKIN) : other.getDataManager().get(SKIN));
-        return entity;
-    }
+	@Override
+	public EntityAgeable createChild(EntityAgeable other) {
+		EntityAgeable entity = (EntityAgeable) EntityRegistry.getEntry(getClass()).newInstance(world);
+		entity.getDataManager().set(SKIN, rand.nextBoolean() ? dataManager.get(SKIN) : other.getDataManager().get(SKIN));
+		return entity;
+	}
 
-    @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        Entity entity = source.getTrueSource();
-        if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow))
-            amount = (amount + 1) / 2f;
-        boolean flag = super.attackEntityFrom(source, amount);
-        if (flag && aiSit != null) aiSit.setSitting(false);
-        return flag;
-    }
+	@Override
+	public boolean attackEntityFrom(DamageSource source, float amount) {
+		Entity entity = source.getTrueSource();
+		if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow))
+			amount = (amount + 1) / 2f;
+		boolean flag = super.attackEntityFrom(source, amount);
+		if (flag && aiSit != null) aiSit.setSitting(false);
+		return flag;
+	}
 
-    @Override
-    public abstract boolean isBreedingItem(ItemStack stack);
+	@Override
+	public abstract boolean isBreedingItem(ItemStack stack);
 
-    @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand) {
-        ItemStack stack = player.getHeldItem(hand);
-        if (!isTamed() && tameItems.contains(stack.getItem())) {
-            if (!player.isCreative()) stack.shrink(1);
-            if (!isSilent())
-                world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_PARROT_EAT, getSoundCategory(), 1, 1 + (rand.nextFloat() - rand.nextFloat()) * 0.2f);
-            if (!world.isRemote) {
-                if (rand.nextInt(5) == 0 && !ForgeEventFactory.onAnimalTame(this, player)) {
-                    setTamedBy(player);
-                    playTameEffect(true);
-                    world.setEntityState(this, (byte) 7);
-                    heal(getMaxHealth());
-                } else {
-                    playTameEffect(false);
-                    world.setEntityState(this, (byte) 6);
-                }
-            }
-            return true;
-        }
-        if (!world.isRemote && isOwner(player) && isTamed() && !isBreedingItem(stack)) {
-            aiSit.setSitting(!isSitting());
-            isJumping = false;
-            navigator.clearPath();
-            setAttackTarget(null);
-        }
-        return super.processInteract(player, hand);
-    }
+	@Override
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (!isTamed() && tameItems.contains(stack.getItem())) {
+			if (!player.isCreative()) stack.shrink(1);
+			if (!isSilent())
+				world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_PARROT_EAT, getSoundCategory(), 1, 1 + (rand.nextFloat() - rand.nextFloat()) * 0.2f);
+			if (!world.isRemote) {
+				if (rand.nextInt(5) == 0 && !ForgeEventFactory.onAnimalTame(this, player)) {
+					setTamedBy(player);
+					playTameEffect(true);
+					world.setEntityState(this, (byte) 7);
+					heal(getMaxHealth());
+				} else {
+					playTameEffect(false);
+					world.setEntityState(this, (byte) 6);
+				}
+			}
+			return true;
+		}
+		if (!world.isRemote && isOwner(player) && isTamed() && !isBreedingItem(stack)) {
+			aiSit.setSitting(!isSitting());
+			isJumping = false;
+			navigator.clearPath();
+			setAttackTarget(null);
+		}
+		return super.processInteract(player, hand);
+	}
 
-    @Override
-    public boolean canMateWith(EntityAnimal other) {
-        if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
-        return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
-    }
+	@Override
+	public boolean canMateWith(EntityAnimal other) {
+		if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
+		return isTamed() && isInLove() && ((EntityTameable) other).isTamed() && other.isInLove() && !((EntityTameable) other).isSitting();
+	}
 
-    @Override
-    protected void initEntityAI() {
-        aiSit = new EntityAISit(this);
-    }
+	@Override
+	protected void initEntityAI() {
+		aiSit = new EntityAISit(this);
+	}
 
-    @Override
-    protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
-        boostHealth(isTamed());
-    }
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		boostHealth(isTamed());
+	}
 
-    @Override
-    protected ResourceLocation getLootTable() {
-        return lootTableLocation;
-    }
+	@Override
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
+	}
 
-    @Override
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-        dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-        return super.onInitialSpawn(difficulty, data);
-    }
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
+	}
 
-    @Override
-    protected void entityInit() {
-        super.entityInit();
-        dataManager.register(SKIN, 0);
-    }
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		dataManager.register(SKIN, 0);
+	}
 
-    @Override
-    public void writeEntityToNBT(NBTTagCompound tag) {
-        tag.setInteger("skin", dataManager.get(SKIN));
-        dataManager.setDirty(SKIN);
-        super.writeEntityToNBT(tag);
-    }
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("skin", dataManager.get(SKIN));
+		dataManager.setDirty(SKIN);
+		super.writeEntityToNBT(tag);
+	}
 
-    @Override
-    public void readEntityFromNBT(NBTTagCompound tag) {
-        dataManager.set(SKIN, tag.getInteger("skin"));
-        super.readEntityFromNBT(tag);
-    }
+	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		dataManager.set(SKIN, tag.getInteger("skin"));
+		super.readEntityFromNBT(tag);
+	}
 
-    @Override
-    public void setTamed(boolean tamed) {
-        super.setTamed(tamed);
-        boostHealth(tamed);
-    }
+	@Override
+	public void setTamed(boolean tamed) {
+		super.setTamed(tamed);
+		boostHealth(tamed);
+	}
 
-    protected int getSkinTypes() {
-        return 1;
-    }
+	protected int getSkinTypes() {
+		return 1;
+	}
 
-    protected void boostHealth(boolean tamed) {
-        if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
-        else getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
-    }
+	protected void boostHealth(boolean tamed) {
+		if (tamed) getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
+		else getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8);
+	}
 }

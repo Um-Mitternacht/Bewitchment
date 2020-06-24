@@ -15,79 +15,79 @@ import javax.annotation.Nullable;
  */
 @Cancelable
 public class LockCheckEvent extends Event {
-    @Nullable
-    private EntityPlayer user;
-    private BlockPos lock;
+	@Nullable
+	private EntityPlayer user;
+	private BlockPos lock;
 
-    public LockCheckEvent(EntityPlayer user, BlockPos lock) {
-        this.user = user;
-        this.lock = lock;
-    }
+	public LockCheckEvent(EntityPlayer user, BlockPos lock) {
+		this.user = user;
+		this.lock = lock;
+	}
 
-    @Nullable
-    public EntityPlayer getUser() {
-        return user;
-    }
+	@Nullable
+	public EntityPlayer getUser() {
+		return user;
+	}
 
-    public void setUser(EntityPlayer user) {
-        this.user = user;
-    }
+	public void setUser(EntityPlayer user) {
+		this.user = user;
+	}
 
-    public BlockPos getLock() {
-        return lock;
-    }
+	public BlockPos getLock() {
+		return lock;
+	}
 
-    public void setLock(BlockPos lock) {
-        this.lock = lock;
-    }
+	public void setLock(BlockPos lock) {
+		this.lock = lock;
+	}
 
 
-    /**
-     * Fired after the lock has been checked
-     */
-    @Cancelable
-    public static class LockCheckedEvent extends LockCheckEvent {
-        private boolean result;
-        private boolean sendMessage;
+	/**
+	 * Fired after the lock has been checked
+	 */
+	@Cancelable
+	public static class LockCheckedEvent extends LockCheckEvent {
+		private boolean result;
+		private boolean sendMessage;
 
-        public LockCheckedEvent(EntityPlayer user, BlockPos lock, boolean result, boolean sendMessage) {
-            super(user, lock);
-            this.result = result;
-            this.sendMessage = sendMessage;
-        }
+		public LockCheckedEvent(EntityPlayer user, BlockPos lock, boolean result, boolean sendMessage) {
+			super(user, lock);
+			this.result = result;
+			this.sendMessage = sendMessage;
+		}
 
-        public boolean isOpened() {
-            return result;
-        }
+		public boolean isOpened() {
+			return result;
+		}
 
-        public void setResult(boolean result) {
-            this.result = result;
-        }
+		public void setResult(boolean result) {
+			this.result = result;
+		}
 
-        public boolean shouldSendMessage() {
-            return sendMessage;
-        }
+		public boolean shouldSendMessage() {
+			return sendMessage;
+		}
 
-        public void setSendMessage(boolean sendMessage) {
-            this.sendMessage = sendMessage;
-        }
-    }
+		public void setSendMessage(boolean sendMessage) {
+			this.sendMessage = sendMessage;
+		}
+	}
 
-    /**
-     * Fired when a locked block is checked for the usage of a key; if the super-event is cancelled, this won't get called.
-     * If this event is cancelled, the key will "fit"
-     */
-    @Cancelable
-    public static class KeyCheckEvent extends LockCheckEvent {
-        private final ItemStack key;
+	/**
+	 * Fired when a locked block is checked for the usage of a key; if the super-event is cancelled, this won't get called.
+	 * If this event is cancelled, the key will "fit"
+	 */
+	@Cancelable
+	public static class KeyCheckEvent extends LockCheckEvent {
+		private final ItemStack key;
 
-        public KeyCheckEvent(EntityPlayer user, BlockPos lock, ItemStack key) {
-            super(user, lock);
-            this.key = key;
-        }
+		public KeyCheckEvent(EntityPlayer user, BlockPos lock, ItemStack key) {
+			super(user, lock);
+			this.key = key;
+		}
 
-        public ItemStack getKey() {
-            return key;
-        }
-    }
+		public ItemStack getKey() {
+			return key;
+		}
+	}
 }

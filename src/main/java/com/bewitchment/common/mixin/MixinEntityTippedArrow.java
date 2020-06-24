@@ -18,23 +18,23 @@ import java.util.Set;
 @Mixin(EntityArrow.class)
 public abstract class MixinEntityTippedArrow {
 
-    @SuppressWarnings("deprecation")
-    @Inject(method = "onHit", at = @At("HEAD"))
-    protected void applyEffects(RayTraceResult result, CallbackInfo ci) {
-        Object obj = this;
-        if (obj instanceof EntityTippedArrow) {
-            EntityTippedArrow entityTippedArrow = (EntityTippedArrow) obj;
-            boolean flag = false;
-            Set<PotionEffect> effects = ObfuscationReflectionHelper.getPrivateValue(EntityTippedArrow.class, entityTippedArrow, "customPotionEffects", "field_184561_h");
-            if (!entityTippedArrow.world.isRemote && result.typeOfHit != RayTraceResult.Type.MISS) {
-                BlockPos pos;
-                if (result.entityHit != null) pos = result.entityHit.getPosition();
-                else pos = result.getBlockPos();
-                for (PotionEffect effect : effects)
-                    if (effect.getPotion() instanceof ModPotion && ((ModPotion) effect.getPotion()).onImpact(entityTippedArrow.world, pos, effect.getAmplifier()))
-                        flag = true;
-            }
-            if (flag) effects.clear();
-        }
-    }
+	@SuppressWarnings("deprecation")
+	@Inject(method = "onHit", at = @At("HEAD"))
+	protected void applyEffects(RayTraceResult result, CallbackInfo ci) {
+		Object obj = this;
+		if (obj instanceof EntityTippedArrow) {
+			EntityTippedArrow entityTippedArrow = (EntityTippedArrow) obj;
+			boolean flag = false;
+			Set<PotionEffect> effects = ObfuscationReflectionHelper.getPrivateValue(EntityTippedArrow.class, entityTippedArrow, "customPotionEffects", "field_184561_h");
+			if (!entityTippedArrow.world.isRemote && result.typeOfHit != RayTraceResult.Type.MISS) {
+				BlockPos pos;
+				if (result.entityHit != null) pos = result.entityHit.getPosition();
+				else pos = result.getBlockPos();
+				for (PotionEffect effect : effects)
+					if (effect.getPotion() instanceof ModPotion && ((ModPotion) effect.getPotion()).onImpact(entityTippedArrow.world, pos, effect.getAmplifier()))
+						flag = true;
+			}
+			if (flag) effects.clear();
+		}
+	}
 }

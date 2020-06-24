@@ -18,70 +18,70 @@ import thaumcraft.api.crafting.IInfusionStabiliserExt;
 @SuppressWarnings({"deprecation", "NullableProblems", "WeakerAccess"})
 @Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliserExt", modid = "thaumcraft")
 public abstract class BlockCandleBase extends ModBlock implements IInfusionStabiliserExt {
-    public static final PropertyBool LIT = PropertyBool.create("lit");
+	public static final PropertyBool LIT = PropertyBool.create("lit");
 
-    protected BlockCandleBase(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level) {
-        super(name, mat, sound, hardness, resistance, tool, level);
-        setLightOpacity(0);
-    }
+	protected BlockCandleBase(String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level) {
+		super(name, mat, sound, hardness, resistance, tool, level);
+		setLightOpacity(0);
+	}
 
-    @Override
-    public boolean isFullBlock(IBlockState state) {
-        return false;
-    }
+	@Override
+	public boolean isFullBlock(IBlockState state) {
+		return false;
+	}
 
-    @Override
-    public abstract int getLightValue(IBlockState state);
+	@Override
+	public abstract int getLightValue(IBlockState state);
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(LIT, meta == 1);
-    }
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(LIT, meta == 1);
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(LIT) ? 1 : 0;
-    }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(LIT) ? 1 : 0;
+	}
 
-    @Override
-    public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
-        return BlockFaceShape.UNDEFINED;
-    }
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
 
-    @Override
-    public EnumPushReaction getPushReaction(IBlockState state) {
-        return EnumPushReaction.DESTROY;
-    }
+	@Override
+	public EnumPushReaction getPushReaction(IBlockState state) {
+		return EnumPushReaction.DESTROY;
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, LIT);
-    }
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, LIT);
+	}
 
-    @Override
-    public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-        return false;
-    }
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return false;
+	}
 
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
 
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
 
-    @Override
-    @Optional.Method(modid = "thaumcraft")
-    public boolean canStabaliseInfusion(World world, BlockPos pos) {
-        return true;
-    }
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
+	}
 
-    @Override
-    @Optional.Method(modid = "thaumcraft")
-    public float getStabilizationAmount(World world, BlockPos pos) {
-        return 0.5f;
-    }
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public float getStabilizationAmount(World world, BlockPos pos) {
+		return 0.5f;
+	}
 }

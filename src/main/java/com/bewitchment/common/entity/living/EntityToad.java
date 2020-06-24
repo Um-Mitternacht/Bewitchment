@@ -25,136 +25,136 @@ import net.minecraft.world.World;
 @SuppressWarnings({"ConstantConditions"})
 public class EntityToad extends ModEntityTameable {
 
-    private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
-    private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.createKey(EntityToad.class, DataSerializers.FLOAT);
+	private static final DataParameter<Integer> ANIMATION_TIME = EntityDataManager.createKey(EntityToad.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> ANIMATION_HEIGHT = EntityDataManager.createKey(EntityToad.class, DataSerializers.FLOAT);
 
-    public EntityToad(World world) {
-        super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
-        setSize(1, 0.3f);
-        experienceValue = 5;
-    }
+	public EntityToad(World world) {
+		super(world, new ResourceLocation(Bewitchment.MODID, "entities/toad"), Items.SPIDER_EYE);
+		setSize(1, 0.3f);
+		experienceValue = 5;
+	}
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return ModSounds.TOAD_IDLE;
-    }
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.TOAD_IDLE;
+	}
 
-    @Override
-    protected void despawnEntity() {
-        if (!isTamed()) {
-            super.despawnEntity();
-        }
-    }
+	@Override
+	protected void despawnEntity() {
+		if (!isTamed()) {
+			super.despawnEntity();
+		}
+	}
 
-    @Override
-    public int getMaxSpawnedInChunk() {
-        return 6;
-    }
+	@Override
+	public int getMaxSpawnedInChunk() {
+		return 6;
+	}
 
-    @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-        if (ticksExisted % 20 == 0 && isWet()) heal(1);
-    }
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (ticksExisted % 20 == 0 && isWet()) heal(1);
+	}
 
-    @Override
-    protected boolean canDespawn() {
-        return !isTamed();
-    }
+	@Override
+	protected boolean canDespawn() {
+		return !isTamed();
+	}
 
-    @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() == Items.FERMENTED_SPIDER_EYE;
-    }
+	@Override
+	public boolean isBreedingItem(ItemStack stack) {
+		return stack.getItem() == Items.FERMENTED_SPIDER_EYE;
+	}
 
-    @Override
-    protected void initEntityAI() {
-        super.initEntityAI();
-        tasks.addTask(0, new EntityAISwimming(this));
-        tasks.addTask(1, aiSit);
-        tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-        tasks.addTask(2, new EntityAIAttackMelee(this, getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), false));
-        tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-        tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-        tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-        tasks.addTask(3, new EntityAILookIdle(this));
-        tasks.addTask(4, new EntityAIFollowOwner(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 10, 2));
-        targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
-        targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
-        targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
-        targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
-        targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityEndermite || e instanceof EntitySilverfish));
-    }
+	@Override
+	protected void initEntityAI() {
+		super.initEntityAI();
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, aiSit);
+		tasks.addTask(2, new EntityAIMate(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+		tasks.addTask(2, new EntityAIAttackMelee(this, getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue(), false));
+		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+		tasks.addTask(3, new EntityAIFollowParent(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(4, new EntityAIFollowOwner(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 10, 2));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		targetTasks.addTask(0, new EntityAIOwnerHurtByTarget(this));
+		targetTasks.addTask(1, new EntityAIOwnerHurtTarget(this));
+		targetTasks.addTask(2, new EntityAITargetNonTamed<>(this, EntityPlayer.class, true, p -> p.getDistanceSq(this) < 1));
+		targetTasks.addTask(3, new EntityAITargetNonTamed<>(this, EntityLivingBase.class, false, e -> e instanceof EntityEndermite || e instanceof EntitySilverfish));
+	}
 
-    @Override
-    protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
-        getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(0.5);
-        getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
-    }
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(0.5);
+		getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(10);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.8);
+	}
 
-    @Override
-    protected void entityInit() {
-        super.entityInit();
-        this.dataManager.register(ANIMATION_TIME, 0);
-        this.dataManager.register(ANIMATION_HEIGHT, 0f);
-    }
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(ANIMATION_TIME, 0);
+		this.dataManager.register(ANIMATION_HEIGHT, 0f);
+	}
 
-    @Override
-    protected int getSkinTypes() {
-        return 4;
-    }
+	@Override
+	protected int getSkinTypes() {
+		return 4;
+	}
 
-    @Override
-    public boolean isPotionApplicable(PotionEffect effect) {
-        return effect.getPotion() != MobEffects.SLOWNESS && super.isPotionApplicable(effect);
-    }
+	@Override
+	public boolean isPotionApplicable(PotionEffect effect) {
+		return effect.getPotion() != MobEffects.SLOWNESS && super.isPotionApplicable(effect);
+	}
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.TOAD_HURT;
-    }
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return ModSounds.TOAD_HURT;
+	}
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return ModSounds.TOAD_DEATH;
-    }
+	@Override
+	protected SoundEvent getDeathSound() {
+		return ModSounds.TOAD_DEATH;
+	}
 
-    @Override
-    public boolean attackEntityAsMob(Entity entity) {
-        if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
-            applyEnchantments(this, entity);
-            if (entity instanceof EntityLivingBase)
-                ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
-        }
-        return super.attackEntityAsMob(entity);
-    }
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue())) {
+			applyEnchantments(this, entity);
+			if (entity instanceof EntityLivingBase)
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
+		}
+		return super.attackEntityAsMob(entity);
+	}
 
-    public float postIncAnimation() {
-        this.dataManager.set(ANIMATION_TIME, this.dataManager.get(ANIMATION_TIME) + 1);
-        return (float) this.dataManager.get(ANIMATION_TIME);
-    }
+	public float postIncAnimation() {
+		this.dataManager.set(ANIMATION_TIME, this.dataManager.get(ANIMATION_TIME) + 1);
+		return (float) this.dataManager.get(ANIMATION_TIME);
+	}
 
-    public float getAnimationTime() {
-        return (float) this.dataManager.get(ANIMATION_TIME);
-    }
+	public float getAnimationTime() {
+		return (float) this.dataManager.get(ANIMATION_TIME);
+	}
 
-    public void resetAnimationTime() {
-        this.dataManager.set(ANIMATION_TIME, 0);
-    }
+	public void resetAnimationTime() {
+		this.dataManager.set(ANIMATION_TIME, 0);
+	}
 
-    public float getAnimationHeight() {
-        return this.dataManager.get(ANIMATION_HEIGHT);
-    }
+	public float getAnimationHeight() {
+		return this.dataManager.get(ANIMATION_HEIGHT);
+	}
 
-    public float setAnimationHeight(float in) {
-        this.dataManager.set(ANIMATION_HEIGHT, in);
-        return in;
-    }
+	public float setAnimationHeight(float in) {
+		this.dataManager.set(ANIMATION_HEIGHT, in);
+		return in;
+	}
 
-    public void resetAnimationHeight() {
-        this.dataManager.set(ANIMATION_HEIGHT, 0.0F);
-    }
+	public void resetAnimationHeight() {
+		this.dataManager.set(ANIMATION_HEIGHT, 0.0F);
+	}
 }

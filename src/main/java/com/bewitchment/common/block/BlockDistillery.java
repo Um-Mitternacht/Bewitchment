@@ -24,48 +24,48 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class BlockDistillery extends ModBlockContainer {
-    public static final PropertyBool IN_USE = PropertyBool.create("in_use");
+	public static final PropertyBool IN_USE = PropertyBool.create("in_use");
 
-    private static final AxisAlignedBB BOX_X = new AxisAlignedBB(12 / 16d, 0, 0, 4 / 16d, 15 / 16d, 1), BOX_Z = new AxisAlignedBB(0, 0, 12 / 16d, 1, 15 / 16d, 4 / 16d);
+	private static final AxisAlignedBB BOX_X = new AxisAlignedBB(12 / 16d, 0, 0, 4 / 16d, 15 / 16d, 1), BOX_Z = new AxisAlignedBB(0, 0, 12 / 16d, 1, 15 / 16d, 4 / 16d);
 
-    public BlockDistillery() {
-        super(Bewitchment.instance, "distillery", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", GuiHandler.ModGui.DISTILLERY.ordinal());
-        setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH).withProperty(IN_USE, false));
-    }
+	public BlockDistillery() {
+		super(Bewitchment.instance, "distillery", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", GuiHandler.ModGui.DISTILLERY.ordinal());
+		setDefaultState(blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.SOUTH).withProperty(IN_USE, false));
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
-        return new TileEntityDistillery();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityDistillery();
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getRenderLayer() {
+		return BlockRenderLayer.TRANSLUCENT;
+	}
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta & 7]).withProperty(IN_USE, (meta & 8) > 0);
-    }
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.HORIZONTALS[meta & 7]).withProperty(IN_USE, (meta & 8) > 0);
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(BlockHorizontal.FACING).getHorizontalIndex() | (state.getValue(IN_USE) ? 1 : 0) << 3;
-    }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(BlockHorizontal.FACING).getHorizontalIndex() | (state.getValue(IN_USE) ? 1 : 0) << 3;
+	}
 
-    @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return state.getValue(BlockHorizontal.FACING).getAxis() == EnumFacing.Axis.X ? BOX_X : BOX_Z;
-    }
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return state.getValue(BlockHorizontal.FACING).getAxis() == EnumFacing.Axis.X ? BOX_X : BOX_Z;
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, BlockHorizontal.FACING, IN_USE);
-    }
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, BlockHorizontal.FACING, IN_USE);
+	}
 
-    @Override
-    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
-        return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw));
-    }
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing face, float hitX, float hitY, float hitZ, int meta, EntityLivingBase living, EnumHand hand) {
+		return getDefaultState().withProperty(BlockHorizontal.FACING, EnumFacing.fromAngle(living.rotationYaw));
+	}
 }

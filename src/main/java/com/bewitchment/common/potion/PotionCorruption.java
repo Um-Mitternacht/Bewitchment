@@ -7,22 +7,22 @@ import net.minecraft.potion.PotionEffect;
 
 @SuppressWarnings({"unused"})
 public class PotionCorruption extends ModPotion {
-    public PotionCorruption() {
-        super("corruption", true, 0x5c007f);
-    }
+	public PotionCorruption() {
+		super("corruption", true, 0x5c007f);
+	}
 
-    @Override
-    public boolean isInstant() {
-        return true;
-    }
+	@Override
+	public boolean isInstant() {
+		return true;
+	}
 
-    @Override
-    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-        super.affectEntity(source, indirectSource, living, amplifier, health);
-        if (!living.world.isRemote) {
-            PotionEffect[] effects = living.getActivePotionEffects().toArray(new PotionEffect[0]);
-            living.clearActivePotions();
-            for (PotionEffect effect : effects) if (effect.getPotion().isBadEffect()) living.addPotionEffect(effect);
-        }
-    }
+	@Override
+	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+		super.affectEntity(source, indirectSource, living, amplifier, health);
+		if (!living.world.isRemote) {
+			PotionEffect[] effects = living.getActivePotionEffects().toArray(new PotionEffect[0]);
+			living.clearActivePotions();
+			for (PotionEffect effect : effects) if (effect.getPotion().isBadEffect()) living.addPotionEffect(effect);
+		}
+	}
 }

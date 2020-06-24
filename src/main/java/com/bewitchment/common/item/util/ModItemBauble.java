@@ -23,51 +23,51 @@ import java.util.function.Predicate;
 
 @SuppressWarnings({"NullableProblems", "WeakerAccess"})
 public class ModItemBauble extends Item implements IBauble {
-    private final BaubleType type;
+	private final BaubleType type;
 
-    protected ModItemBauble(String name, BaubleType type, List<Predicate<ItemStack>> predicates) {
-        super();
-        setMaxStackSize(1);
-        this.type = type;
-        Util.registerItem(this, name, predicates);
-    }
+	protected ModItemBauble(String name, BaubleType type, List<Predicate<ItemStack>> predicates) {
+		super();
+		setMaxStackSize(1);
+		this.type = type;
+		Util.registerItem(this, name, predicates);
+	}
 
-    protected ModItemBauble(String name, BaubleType type) {
-        this(name, type, Collections.emptyList());
-    }
+	protected ModItemBauble(String name, BaubleType type) {
+		this(name, type, Collections.emptyList());
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        if (!world.isRemote) {
-            IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
-            for (int i = 0; i < handler.getSlots(); i++) {
-                if (handler.getStackInSlot(i).isEmpty() && handler.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
-                    handler.setStackInSlot(i, player.getHeldItem(hand).splitStack(1));
-                    onEquipped(handler.getStackInSlot(i), player);
-                    return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
-                }
-            }
-        }
-        return super.onItemRightClick(world, player, hand);
-    }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote) {
+			IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
+			for (int i = 0; i < handler.getSlots(); i++) {
+				if (handler.getStackInSlot(i).isEmpty() && handler.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
+					handler.setStackInSlot(i, player.getHeldItem(hand).splitStack(1));
+					onEquipped(handler.getStackInSlot(i), player);
+					return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+				}
+			}
+		}
+		return super.onItemRightClick(world, player, hand);
+	}
 
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment == Enchantments.BINDING_CURSE;
-    }
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return enchantment == Enchantments.BINDING_CURSE;
+	}
 
-    @Override
-    public BaubleType getBaubleType(ItemStack stack) {
-        return type;
-    }
+	@Override
+	public BaubleType getBaubleType(ItemStack stack) {
+		return type;
+	}
 
-    @Override
-    public boolean canUnequip(ItemStack stack, EntityLivingBase living) {
-        return !EnchantmentHelper.hasBindingCurse(stack);
-    }
+	@Override
+	public boolean canUnequip(ItemStack stack, EntityLivingBase living) {
+		return !EnchantmentHelper.hasBindingCurse(stack);
+	}
 
-    @Override
-    public boolean willAutoSync(ItemStack stack, EntityLivingBase living) {
-        return true;
-    }
+	@Override
+	public boolean willAutoSync(ItemStack stack, EntityLivingBase living) {
+		return true;
+	}
 }

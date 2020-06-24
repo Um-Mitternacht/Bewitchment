@@ -22,56 +22,56 @@ import java.util.List;
 
 @SuppressWarnings({"NullableProblems"})
 public class ItemPoppet extends Item {
-    public ItemPoppet(boolean oneTimeUse) {
-        super();
-        setMaxStackSize(1);
-        setMaxDamage(oneTimeUse ? 1 : 50);
-    }
+	public ItemPoppet(boolean oneTimeUse) {
+		super();
+		setMaxStackSize(1);
+		setMaxDamage(oneTimeUse ? 1 : 50);
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        EnumHand otherHand = hand == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
-        if (!player.getHeldItem(hand).hasTagCompound() && player.getHeldItem(otherHand).getItem() instanceof ItemTaglock && player.getHeldItem(otherHand).hasTagCompound() && player.getHeldItem(otherHand).getTagCompound().hasKey("boundId") && player.getHeldItem(otherHand).getTagCompound().hasKey("boundName")) {
-            ItemStack result = player.getHeldItem(hand);
-            ItemStack taglock = player.getHeldItem(otherHand);
-            result.setTagCompound(new NBTTagCompound());
-            result.getTagCompound().setString("boundId", taglock.getTagCompound().getString("boundId"));
-            result.getTagCompound().setString("boundName", taglock.getTagCompound().getString("boundName"));
-            player.setHeldItem(hand, result);
-            player.getHeldItem(otherHand).shrink(1);
-            if (world.isRemote)
-                world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-            return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
-        }
-        return super.onItemRightClick(world, player, hand);
-    }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		EnumHand otherHand = hand == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
+		if (!player.getHeldItem(hand).hasTagCompound() && player.getHeldItem(otherHand).getItem() instanceof ItemTaglock && player.getHeldItem(otherHand).hasTagCompound() && player.getHeldItem(otherHand).getTagCompound().hasKey("boundId") && player.getHeldItem(otherHand).getTagCompound().hasKey("boundName")) {
+			ItemStack result = player.getHeldItem(hand);
+			ItemStack taglock = player.getHeldItem(otherHand);
+			result.setTagCompound(new NBTTagCompound());
+			result.getTagCompound().setString("boundId", taglock.getTagCompound().getString("boundId"));
+			result.getTagCompound().setString("boundName", taglock.getTagCompound().getString("boundName"));
+			player.setHeldItem(hand, result);
+			player.getHeldItem(otherHand).shrink(1);
+			if (world.isRemote)
+				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 10.0F, 1.0F);
+			return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+		}
+		return super.onItemRightClick(world, player, hand);
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("boundName")) {
-            String boundName = stack.getTagCompound().getString("boundName");
-            tooltip.add(I18n.format("tooltip.bewitchment.poppet.bound", boundName));
-        }
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("boundName")) {
+			String boundName = stack.getTagCompound().getString("boundName");
+			tooltip.add(I18n.format("tooltip.bewitchment.poppet.bound", boundName));
+		}
+	}
 
-    @Override
-    public boolean hasEffect(ItemStack stack) {
-        return stack.hasTagCompound();
-    }
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return stack.hasTagCompound();
+	}
 
-    @Override
-    public boolean isEnchantable(ItemStack stack) {
-        return false;
-    }
+	@Override
+	public boolean isEnchantable(ItemStack stack) {
+		return false;
+	}
 
-    @Override
-    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-        return false;
-    }
+	@Override
+	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+		return false;
+	}
 
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return false;
-    }
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		return false;
+	}
 }

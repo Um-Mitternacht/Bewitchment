@@ -20,26 +20,26 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  */
 @SuppressWarnings("unused")
 public class ItemHorseshoe extends ModItemBauble {
-    public ItemHorseshoe() {
-        super("horseshoe", BaubleType.TRINKET);
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+	public ItemHorseshoe() {
+		super("horseshoe", BaubleType.TRINKET);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
-    @Override
-    public void onWornTick(ItemStack stack, EntityLivingBase living) {
-        if (living.ticksExisted % 40 == 0 && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) {
-            living.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
-        }
-    }
+	@Override
+	public void onWornTick(ItemStack stack, EntityLivingBase living) {
+		if (living.ticksExisted % 40 == 0 && living instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) living, 20)) {
+			living.addPotionEffect(new PotionEffect(MobEffects.LUCK, 120, 0, true, true));
+		}
+	}
 
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase living) {
-        living.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
-    }
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase living) {
+		living.playSound(SoundEvents.ITEM_ARMOR_EQUIP_IRON, .75F, 1.9f);
+	}
 
-    @SubscribeEvent
-    public void onHurt(LivingHurtEvent event) {
-        if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) event.getSource().getTrueSource()) > 1) && event.getEntityLiving() instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) event.getEntityLiving(), 20))
-            event.setAmount(event.getAmount() * 0.9f);
-    }
+	@SubscribeEvent
+	public void onHurt(LivingHurtEvent event) {
+		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) event.getSource().getTrueSource()) > 1) && event.getEntityLiving() instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) event.getEntityLiving(), 20))
+			event.setAmount(event.getAmount() * 0.9f);
+	}
 }

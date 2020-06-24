@@ -20,52 +20,52 @@ import net.minecraftforge.common.MinecraftForge;
 import java.util.List;
 
 public class ItemVoodooPoppet extends ItemPoppet {
-    public ItemVoodooPoppet() {
-        super(false);
-    }
+	public ItemVoodooPoppet() {
+		super(false);
+	}
 
 
-    @Override
-    public boolean onEntityItemUpdate(EntityItem entityItem) {
-        Block current = entityItem.world.getBlockState(entityItem.getPosition().down()).getBlock();
-        World world = entityItem.world;
-        if (current == Blocks.LAVA || current == Blocks.FLOWING_LAVA) {
-            ItemStack poppet = entityItem.getItem();
-            if (poppet.hasTagCompound() && poppet.getTagCompound().hasKey("boundId")) {
-                EntityLivingBase target = world.getEntities(EntityLivingBase.class, e -> e != null && e.getPersistentID().toString().equals(poppet.getTagCompound().getString("boundId"))).stream().findFirst().orElse(null);
-                if (target != null) {
-                    VoodooEvent event = new VoodooEvent(null, target);
-                    MinecraftForge.EVENT_BUS.post(event);
-                    if (!event.isCanceled()) target.setFire(30);
-                }
-            }
-        }
-        return super.onEntityItemUpdate(entityItem);
-    }
+	@Override
+	public boolean onEntityItemUpdate(EntityItem entityItem) {
+		Block current = entityItem.world.getBlockState(entityItem.getPosition().down()).getBlock();
+		World world = entityItem.world;
+		if (current == Blocks.LAVA || current == Blocks.FLOWING_LAVA) {
+			ItemStack poppet = entityItem.getItem();
+			if (poppet.hasTagCompound() && poppet.getTagCompound().hasKey("boundId")) {
+				EntityLivingBase target = world.getEntities(EntityLivingBase.class, e -> e != null && e.getPersistentID().toString().equals(poppet.getTagCompound().getString("boundId"))).stream().findFirst().orElse(null);
+				if (target != null) {
+					VoodooEvent event = new VoodooEvent(null, target);
+					MinecraftForge.EVENT_BUS.post(event);
+					if (!event.isCanceled()) target.setFire(30);
+				}
+			}
+		}
+		return super.onEntityItemUpdate(entityItem);
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        ItemStack stack = player.getHeldItem(hand);
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId") && stack.getTagCompound().hasKey("boundName")) {
-            EntityLivingBase target = world.getEntities(EntityLivingBase.class, e -> e != null && e.getPersistentID().toString().equals(stack.getTagCompound().getString("boundId"))).stream().findFirst().orElse(null);
-            if (target != null) {
-                VoodooEvent event = new VoodooEvent(player, target);
-                MinecraftForge.EVENT_BUS.post(event);
-                if (!event.isCanceled()) {
-                    if (player.isSneaking()) {
-                        List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
-                        for (ItemStack itemStack : inv) {
-                            if (itemStack.getItem() == ModObjects.bone_needle) {
-                                target.attackEntityFrom(DamageSource.MAGIC, 2);
-                                itemStack.shrink(1);
-                                stack.damageItem(1, player);
-                                return new ActionResult<>(EnumActionResult.SUCCESS, stack);
-                            }
-                        }
-                    }
-                } else player.sendStatusMessage(new TextComponentTranslation("poppet.protect"), true);
-            } else player.sendStatusMessage(new TextComponentTranslation("poppet.not_found"), true);
-        }
-        return super.onItemRightClick(world, player, hand);
-    }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("boundId") && stack.getTagCompound().hasKey("boundName")) {
+			EntityLivingBase target = world.getEntities(EntityLivingBase.class, e -> e != null && e.getPersistentID().toString().equals(stack.getTagCompound().getString("boundId"))).stream().findFirst().orElse(null);
+			if (target != null) {
+				VoodooEvent event = new VoodooEvent(player, target);
+				MinecraftForge.EVENT_BUS.post(event);
+				if (!event.isCanceled()) {
+					if (player.isSneaking()) {
+						List<ItemStack> inv = Bewitchment.proxy.getEntireInventory(player);
+						for (ItemStack itemStack : inv) {
+							if (itemStack.getItem() == ModObjects.bone_needle) {
+								target.attackEntityFrom(DamageSource.MAGIC, 2);
+								itemStack.shrink(1);
+								stack.damageItem(1, player);
+								return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+							}
+						}
+					}
+				} else player.sendStatusMessage(new TextComponentTranslation("poppet.protect"), true);
+			} else player.sendStatusMessage(new TextComponentTranslation("poppet.not_found"), true);
+		}
+		return super.onItemRightClick(world, player, hand);
+	}
 }

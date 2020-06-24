@@ -16,59 +16,59 @@ import javax.annotation.Nullable;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions", "EntityConstructor"})
 public abstract class ModEntityAnimal extends EntityAnimal {
-    public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityAnimal.class, DataSerializers.VARINT);
+	public static final DataParameter<Integer> SKIN = EntityDataManager.createKey(ModEntityAnimal.class, DataSerializers.VARINT);
 
-    private final ResourceLocation lootTableLocation;
+	private final ResourceLocation lootTableLocation;
 
-    protected ModEntityAnimal(World world, ResourceLocation lootTableLocation) {
-        super(world);
-        this.lootTableLocation = lootTableLocation;
-    }
+	protected ModEntityAnimal(World world, ResourceLocation lootTableLocation) {
+		super(world);
+		this.lootTableLocation = lootTableLocation;
+	}
 
-    @Override
-    protected ResourceLocation getLootTable() {
-        return lootTableLocation;
-    }
+	@Override
+	protected ResourceLocation getLootTable() {
+		return lootTableLocation;
+	}
 
-    @Override
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
-        dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
-        return super.onInitialSpawn(difficulty, data);
-    }
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		dataManager.set(SKIN, rand.nextInt(getSkinTypes()));
+		return super.onInitialSpawn(difficulty, data);
+	}
 
-    @Override
-    public EntityAgeable createChild(EntityAgeable other) {
-        EntityAgeable entity = (EntityAgeable) EntityRegistry.getEntry(getClass()).newInstance(world);
-        entity.getDataManager().set(SKIN, rand.nextBoolean() ? dataManager.get(SKIN) : other.getDataManager().get(SKIN));
-        return entity;
-    }
+	@Override
+	public EntityAgeable createChild(EntityAgeable other) {
+		EntityAgeable entity = (EntityAgeable) EntityRegistry.getEntry(getClass()).newInstance(world);
+		entity.getDataManager().set(SKIN, rand.nextBoolean() ? dataManager.get(SKIN) : other.getDataManager().get(SKIN));
+		return entity;
+	}
 
-    @Override
-    protected void entityInit() {
-        super.entityInit();
-        dataManager.register(SKIN, 0);
-    }
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		dataManager.register(SKIN, 0);
+	}
 
-    protected int getSkinTypes() {
-        return 1;
-    }
+	protected int getSkinTypes() {
+		return 1;
+	}
 
-    @Override
-    public void writeEntityToNBT(NBTTagCompound tag) {
-        tag.setInteger("skin", dataManager.get(SKIN));
-        dataManager.setDirty(SKIN);
-        super.writeEntityToNBT(tag);
-    }
+	@Override
+	public void writeEntityToNBT(NBTTagCompound tag) {
+		tag.setInteger("skin", dataManager.get(SKIN));
+		dataManager.setDirty(SKIN);
+		super.writeEntityToNBT(tag);
+	}
 
-    @Override
-    public void readEntityFromNBT(NBTTagCompound tag) {
-        dataManager.set(SKIN, tag.getInteger("skin"));
-        super.readEntityFromNBT(tag);
-    }
+	@Override
+	public void readEntityFromNBT(NBTTagCompound tag) {
+		dataManager.set(SKIN, tag.getInteger("skin"));
+		super.readEntityFromNBT(tag);
+	}
 
-    @Override
-    public boolean canMateWith(EntityAnimal other) {
-        if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
-        return isInLove() && other.isInLove();
-    }
+	@Override
+	public boolean canMateWith(EntityAnimal other) {
+		if (other == this || !(other.getClass().getName().equals(getClass().getName()))) return false;
+		return isInLove() && other.isInLove();
+	}
 }

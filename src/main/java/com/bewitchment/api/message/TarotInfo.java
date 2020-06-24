@@ -9,43 +9,43 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import java.util.ArrayList;
 
 public class TarotInfo {
-    private final ResourceLocation texture;
-    private final boolean isReversed;
-    private final int number;
+	private final ResourceLocation texture;
+	private final boolean isReversed;
+	private final int number;
 
-    public TarotInfo(Tarot tarot, EntityPlayer player) {
-        this.texture = tarot.texture;
-        this.isReversed = tarot.isReversed(player);
-        this.number = tarot.getNumber(player);
-    }
+	public TarotInfo(Tarot tarot, EntityPlayer player) {
+		this.texture = tarot.texture;
+		this.isReversed = tarot.isReversed(player);
+		this.number = tarot.getNumber(player);
+	}
 
-    private TarotInfo(ResourceLocation tarot, boolean isReversed, int number) {
-        this.texture = tarot;
-        this.isReversed = isReversed;
-        this.number = number;
-    }
+	private TarotInfo(ResourceLocation tarot, boolean isReversed, int number) {
+		this.texture = tarot;
+		this.isReversed = isReversed;
+		this.number = number;
+	}
 
-    public static ArrayList<TarotInfo> fromBuffer(ByteBuf buf) {
-        ArrayList<TarotInfo> result = new ArrayList<>();
-        int size = buf.readInt();
-        for (int i = 0; i < size; i++) {
-            String res = ByteBufUtils.readUTF8String(buf);
-            boolean reversed = buf.readBoolean();
-            int num = buf.readInt();
-            result.add(new TarotInfo(new ResourceLocation(res), reversed, num));
-        }
-        return result;
-    }
+	public static ArrayList<TarotInfo> fromBuffer(ByteBuf buf) {
+		ArrayList<TarotInfo> result = new ArrayList<>();
+		int size = buf.readInt();
+		for (int i = 0; i < size; i++) {
+			String res = ByteBufUtils.readUTF8String(buf);
+			boolean reversed = buf.readBoolean();
+			int num = buf.readInt();
+			result.add(new TarotInfo(new ResourceLocation(res), reversed, num));
+		}
+		return result;
+	}
 
-    public ResourceLocation getTexture() {
-        return texture;
-    }
+	public ResourceLocation getTexture() {
+		return texture;
+	}
 
-    public boolean isReversed() {
-        return isReversed;
-    }
+	public boolean isReversed() {
+		return isReversed;
+	}
 
-    public int getNumber() {
-        return number;
-    }
+	public int getNumber() {
+		return number;
+	}
 }
