@@ -20,26 +20,26 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.Arrays;
 
 public class CurseHydrophobia extends Curse {
-	public CurseHydrophobia() {
-		super(new ResourceLocation(Bewitchment.MODID, "hydrophobia"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get("coquina"), Util.get("coquina"), Util.get(Blocks.STONE), Util.get(new ItemStack(Items.DYE, 1, 0)), Util.get(Items.PRISMARINE_SHARD), Util.get(ModObjects.taglock)), true, false, CurseCondition.EXIST);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
-	
-	@SubscribeEvent
-	public void onAquaticDamage(LivingDamageEvent event) {
-		if (!event.getEntity().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().isWet()) {
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if (player.getCapability(ExtendedPlayer.CAPABILITY, null).hasCurse(this)) {
-				event.setAmount(event.getAmount() * 1.5f);
-			}
-		}
-	}
-	
-	@Override
-	public boolean doCurse(Event event, EntityPlayer target) {
-		if (target.isWet()) {
-			target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1));
-		}
-		return false;
-	}
+    public CurseHydrophobia() {
+        super(new ResourceLocation(Bewitchment.MODID, "hydrophobia"), Arrays.asList(Util.get(ModObjects.oil_of_vitriol), Util.get("coquina"), Util.get("coquina"), Util.get(Blocks.STONE), Util.get(new ItemStack(Items.DYE, 1, 0)), Util.get(Items.PRISMARINE_SHARD), Util.get(ModObjects.taglock)), true, false, CurseCondition.EXIST);
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onAquaticDamage(LivingDamageEvent event) {
+        if (!event.getEntity().getEntityWorld().isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().isWet()) {
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+            if (player.getCapability(ExtendedPlayer.CAPABILITY, null).hasCurse(this)) {
+                event.setAmount(event.getAmount() * 1.5f);
+            }
+        }
+    }
+
+    @Override
+    public boolean doCurse(Event event, EntityPlayer target) {
+        if (target.isWet()) {
+            target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1));
+        }
+        return false;
+    }
 }

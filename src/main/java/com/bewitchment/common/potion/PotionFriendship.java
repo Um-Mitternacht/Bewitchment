@@ -10,19 +10,19 @@ import net.minecraft.entity.player.EntityPlayer;
  * Created by Joseph on 5/27/2020.
  */
 public class PotionFriendship extends ModPotion {
-	public PotionFriendship() {
-		super("friendship", false, 0xF4C2C2);
-	}
-	
-	@Override
-	public boolean isInstant() {
-		return true;
-	}
-	
-	@Override
-	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-		super.affectEntity(source, indirectSource, living, amplifier, health);
-		EntityPlayer player = (EntityPlayer) indirectSource;
-		if (living instanceof EntityTameable) ((EntityTameable) living).setTamedBy(player);
-	}
+    public PotionFriendship() {
+        super("friendship", false, 0xF4C2C2);
+    }
+
+    @Override
+    public boolean isInstant() {
+        return true;
+    }
+
+    @Override
+    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+        super.affectEntity(source, indirectSource, living, amplifier, health);
+        EntityPlayer player = (EntityPlayer) indirectSource;
+        if (living instanceof EntityTameable) ((EntityTameable) living).setTamedBy(player);
+    }
 }

@@ -24,30 +24,29 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class ItemStewOfTheGrotesque extends ItemFood {
-	public ItemStewOfTheGrotesque() {
-		super(8, 1.25f, false);
-		Util.registerItem(this, "stew_of_the_grotesque");
-		setAlwaysEdible();
-	}
-	
-	@Override
-	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-		super.onFoodEaten(stack, world, player);
-		player.addItemStackToInventory(new ItemStack(Items.BOWL));
-		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 750, 3));
-		player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 750, 3));
-		player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 750, 3));
-		player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 750, 3));
-		player.addPotionEffect(new PotionEffect(MobEffects.POISON, 750, 3));
-		List<Entity> entities = world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX - 8, player.posY - 5, player.posZ - 8, player.posX + 8, player.posY + 5, player.posZ + 8), e -> e instanceof IPledgeable);
-		if (!entities.isEmpty() && (BewitchmentAPI.hasAlchemistGear(player) || BewitchmentAPI.hasBesmirchedGear(player) || BewitchmentAPI.hasGreenWitchGear(player) || BewitchmentAPI.hasWitchesGear(player))) {
-			IPledgeable boss = (IPledgeable) entities.get(0);
-			if (boss instanceof EntityBaphomet && player.getHeldItem(EnumHand.OFF_HAND).getItem() == ModObjects.pentacle) {
-				ExtendedWorld.pledgePlayerToDemon(world, player, boss);
-			}
-			else if (boss instanceof EntityLeonard && player.getHeldItem(EnumHand.OFF_HAND).getItem() == Item.getItemFromBlock(ModObjects.green_candle)) {
-				ExtendedWorld.pledgePlayerToDemon(world, player, boss);
-			}
-		}
-	}
+    public ItemStewOfTheGrotesque() {
+        super(8, 1.25f, false);
+        Util.registerItem(this, "stew_of_the_grotesque");
+        setAlwaysEdible();
+    }
+
+    @Override
+    protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+        super.onFoodEaten(stack, world, player);
+        player.addItemStackToInventory(new ItemStack(Items.BOWL));
+        player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 750, 3));
+        player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 750, 3));
+        player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 750, 3));
+        player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 750, 3));
+        player.addPotionEffect(new PotionEffect(MobEffects.POISON, 750, 3));
+        List<Entity> entities = world.getEntitiesWithinAABB(ModEntityMob.class, new AxisAlignedBB(player.posX - 8, player.posY - 5, player.posZ - 8, player.posX + 8, player.posY + 5, player.posZ + 8), e -> e instanceof IPledgeable);
+        if (!entities.isEmpty() && (BewitchmentAPI.hasAlchemistGear(player) || BewitchmentAPI.hasBesmirchedGear(player) || BewitchmentAPI.hasGreenWitchGear(player) || BewitchmentAPI.hasWitchesGear(player))) {
+            IPledgeable boss = (IPledgeable) entities.get(0);
+            if (boss instanceof EntityBaphomet && player.getHeldItem(EnumHand.OFF_HAND).getItem() == ModObjects.pentacle) {
+                ExtendedWorld.pledgePlayerToDemon(world, player, boss);
+            } else if (boss instanceof EntityLeonard && player.getHeldItem(EnumHand.OFF_HAND).getItem() == Item.getItemFromBlock(ModObjects.green_candle)) {
+                ExtendedWorld.pledgePlayerToDemon(world, player, boss);
+            }
+        }
+    }
 }

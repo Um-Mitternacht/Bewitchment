@@ -35,85 +35,85 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.ArrayList;
 
 public class DynamicTreesCompat {
-	public static ILeavesProperties cypressLeavesProperties;
-	public static ILeavesProperties elderLeavesProperties;
-	public static ILeavesProperties juniperLeavesProperties;
-	public static ILeavesProperties dragonsbloodLeavesProperties;
-	public static TreeFamily cypressTree;
-	public static TreeFamily elderTree;
-	public static TreeFamily juniperTree;
-	public static TreeFamily dragonsbloodTree;
-	
-	public static void preInit() {
-		IForgeRegistry<Block> blockRegistry = ForgeRegistries.BLOCKS;
-		cypressLeavesProperties = new LeavesProperties(ModObjects.cypress_leaves.getDefaultState(), new ItemStack(ModObjects.cypress_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "conifer")));
-		elderLeavesProperties = new LeavesProperties(ModObjects.elder_leaves.getDefaultState(), new ItemStack(ModObjects.elder_leaves));
-		juniperLeavesProperties = new LeavesProperties(ModObjects.juniper_leaves.getDefaultState(), new ItemStack(ModObjects.juniper_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "acacia")));
-		dragonsbloodLeavesProperties = new LeavesProperties(ModObjects.dragons_blood_leaves.getDefaultState(), new ItemStack(ModObjects.dragons_blood_leaves));
-		LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 0, cypressLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 1, elderLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 2, juniperLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 3, dragonsbloodLeavesProperties);
-		cypressTree = new TreeCypress();
-		elderTree = new TreeElder();
-		juniperTree = new TreeJuniper();
-		dragonsbloodTree = new TreeDragonsBlood();
-		cypressTree.registerSpecies(Species.REGISTRY);
-		elderTree.registerSpecies(Species.REGISTRY);
-		juniperTree.registerSpecies(Species.REGISTRY);
-		dragonsbloodTree.registerSpecies(Species.REGISTRY);
-		Species.REGISTRY.getValue(new ResourceLocation("dynamictrees", "oak")).addDropCreator(new DropCreatorFruit(ModObjects.oak_apple_gall, 30));
-		ArrayList<Block> treeBlocks = new ArrayList<>();
-		cypressTree.getRegisterableBlocks(treeBlocks);
-		elderTree.getRegisterableBlocks(treeBlocks);
-		juniperTree.getRegisterableBlocks(treeBlocks);
-		dragonsbloodTree.getRegisterableBlocks(treeBlocks);
-		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).values());
-		blockRegistry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
-		ArrayList<Item> treeItems = new ArrayList<>();
-		cypressTree.getRegisterableItems(treeItems);
-		dragonsbloodTree.getRegisterableItems(treeItems);
-		elderTree.getRegisterableItems(treeItems);
-		juniperTree.getRegisterableItems(treeItems);
-		for (Item toRegister : treeItems) {
-			toRegister.setTranslationKey(toRegister.getRegistryName().toString().replace(":", "."));
-			ForgeRegistries.ITEMS.register(toRegister);
-			Bewitchment.proxy.registerTexture(toRegister, "normal");
-		}
-		if (ModConfig.compat.replaceSapling) {
-			MinecraftForge.EVENT_BUS.register(new SaplingReplacer());
-		}
-		ResourceLocation seedConvertion = new ResourceLocation(Bewitchment.MODID, "seeds");
-		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "cypress"), seedConvertion, cypressTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.cypress_sapling), Util.get(ModItems.dirtBucket));
-		GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "dragonsblood"), seedConvertion, dragonsbloodTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.dragons_blood_sapling), Util.get(ModItems.dirtBucket));
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public static void clientPreInit() {
-		ModelHelper.regModel(cypressTree);
-		ModelHelper.regModel(elderTree);
-		ModelHelper.regModel(juniperTree);
-		ModelHelper.regModel(dragonsbloodTree);
-		ModelHelper.regModel(cypressTree.getDynamicBranch());
-		ModelHelper.regModel(elderTree.getDynamicBranch());
-		ModelHelper.regModel(juniperTree.getDynamicBranch());
-		ModelHelper.regModel(dragonsbloodTree.getDynamicBranch());
-		LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).forEach((key, leaves) -> {
-			ModelLoader.setCustomStateMapper(leaves, (new StateMap.Builder()).ignore(new IProperty[]{BlockLeaves.DECAYABLE}).build());
-		});
-	}
-	
-	public static boolean replaceWorldGen() {
-		return ModConfig.compat.genDynamic && WorldGenRegistry.isWorldGenEnabled();
-	}
-	
-	public static void addFurnaceRecipes() {
-		ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof Seed && i != Seed.NULLSEED && !i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty()).forEach(i -> GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f));
-	}
-	
-	@Method(modid = "dynamictrees")
-	@SubscribeEvent
-	public void registerDataBasePopulators(WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
-		event.register(new BiomeDataBasePopulator());
-	}
+    public static ILeavesProperties cypressLeavesProperties;
+    public static ILeavesProperties elderLeavesProperties;
+    public static ILeavesProperties juniperLeavesProperties;
+    public static ILeavesProperties dragonsbloodLeavesProperties;
+    public static TreeFamily cypressTree;
+    public static TreeFamily elderTree;
+    public static TreeFamily juniperTree;
+    public static TreeFamily dragonsbloodTree;
+
+    public static void preInit() {
+        IForgeRegistry<Block> blockRegistry = ForgeRegistries.BLOCKS;
+        cypressLeavesProperties = new LeavesProperties(ModObjects.cypress_leaves.getDefaultState(), new ItemStack(ModObjects.cypress_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "conifer")));
+        elderLeavesProperties = new LeavesProperties(ModObjects.elder_leaves.getDefaultState(), new ItemStack(ModObjects.elder_leaves));
+        juniperLeavesProperties = new LeavesProperties(ModObjects.juniper_leaves.getDefaultState(), new ItemStack(ModObjects.juniper_leaves), TreeRegistry.findCellKit(new ResourceLocation("dynamictrees", "acacia")));
+        dragonsbloodLeavesProperties = new LeavesProperties(ModObjects.dragons_blood_leaves.getDefaultState(), new ItemStack(ModObjects.dragons_blood_leaves));
+        LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 0, cypressLeavesProperties);
+        LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 1, elderLeavesProperties);
+        LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 2, juniperLeavesProperties);
+        LeavesPaging.getLeavesBlockForSequence(Bewitchment.MODID, 3, dragonsbloodLeavesProperties);
+        cypressTree = new TreeCypress();
+        elderTree = new TreeElder();
+        juniperTree = new TreeJuniper();
+        dragonsbloodTree = new TreeDragonsBlood();
+        cypressTree.registerSpecies(Species.REGISTRY);
+        elderTree.registerSpecies(Species.REGISTRY);
+        juniperTree.registerSpecies(Species.REGISTRY);
+        dragonsbloodTree.registerSpecies(Species.REGISTRY);
+        Species.REGISTRY.getValue(new ResourceLocation("dynamictrees", "oak")).addDropCreator(new DropCreatorFruit(ModObjects.oak_apple_gall, 30));
+        ArrayList<Block> treeBlocks = new ArrayList<>();
+        cypressTree.getRegisterableBlocks(treeBlocks);
+        elderTree.getRegisterableBlocks(treeBlocks);
+        juniperTree.getRegisterableBlocks(treeBlocks);
+        dragonsbloodTree.getRegisterableBlocks(treeBlocks);
+        treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).values());
+        blockRegistry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+        ArrayList<Item> treeItems = new ArrayList<>();
+        cypressTree.getRegisterableItems(treeItems);
+        dragonsbloodTree.getRegisterableItems(treeItems);
+        elderTree.getRegisterableItems(treeItems);
+        juniperTree.getRegisterableItems(treeItems);
+        for (Item toRegister : treeItems) {
+            toRegister.setTranslationKey(toRegister.getRegistryName().toString().replace(":", "."));
+            ForgeRegistries.ITEMS.register(toRegister);
+            Bewitchment.proxy.registerTexture(toRegister, "normal");
+        }
+        if (ModConfig.compat.replaceSapling) {
+            MinecraftForge.EVENT_BUS.register(new SaplingReplacer());
+        }
+        ResourceLocation seedConvertion = new ResourceLocation(Bewitchment.MODID, "seeds");
+        GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "cypress"), seedConvertion, cypressTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.cypress_sapling), Util.get(ModItems.dirtBucket));
+        GameRegistry.addShapelessRecipe(new ResourceLocation(Bewitchment.MODID, "dragonsblood"), seedConvertion, dragonsbloodTree.getCommonSpecies().getSeedStack(1), Util.get(ModObjects.dragons_blood_sapling), Util.get(ModItems.dirtBucket));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void clientPreInit() {
+        ModelHelper.regModel(cypressTree);
+        ModelHelper.regModel(elderTree);
+        ModelHelper.regModel(juniperTree);
+        ModelHelper.regModel(dragonsbloodTree);
+        ModelHelper.regModel(cypressTree.getDynamicBranch());
+        ModelHelper.regModel(elderTree.getDynamicBranch());
+        ModelHelper.regModel(juniperTree.getDynamicBranch());
+        ModelHelper.regModel(dragonsbloodTree.getDynamicBranch());
+        LeavesPaging.getLeavesMapForModId(Bewitchment.MODID).forEach((key, leaves) -> {
+            ModelLoader.setCustomStateMapper(leaves, (new StateMap.Builder()).ignore(new IProperty[]{BlockLeaves.DECAYABLE}).build());
+        });
+    }
+
+    public static boolean replaceWorldGen() {
+        return ModConfig.compat.genDynamic && WorldGenRegistry.isWorldGenEnabled();
+    }
+
+    public static void addFurnaceRecipes() {
+        ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof Seed && i != Seed.NULLSEED && !i.getRegistryName().toString().toLowerCase().contains("cactus") && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(i)).isEmpty()).forEach(i -> GameRegistry.addSmelting(i, new ItemStack(ModObjects.wood_ash, 1), 0.15f));
+    }
+
+    @Method(modid = "dynamictrees")
+    @SubscribeEvent
+    public void registerDataBasePopulators(WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
+        event.register(new BiomeDataBasePopulator());
+    }
 }

@@ -25,44 +25,44 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @SuppressWarnings({"unused", "ConstantConditions"})
 public class ClientHandler {
-	public static int ticksInGame = 0;
-	
-	@SubscribeEvent
-	public void onTooltipAdd(ItemTooltipEvent event) {
-		Item item = event.getItemStack().getItem();
-		if (item.getRegistryName().getNamespace().equals(Bewitchment.MODID) && !(item instanceof ItemJuniperKey) && !(item instanceof ItemGrimoireMagia) && !(item instanceof ItemTaglock) && !(item instanceof ItemWaystone) && !(item instanceof ItemContract)) {
-			String tip = "tooltip." + item.getTranslationKey().substring(5);
-			if (!I18n.format(tip).equals(tip)) event.getToolTip().add(1, I18n.format(tip));
-		}
-		if (event.getItemStack().hasTagCompound() && event.getItemStack().getTagCompound().hasKey("bewitchment_brew")) {
-			for (PotionEffect effect : PotionUtils.getEffectsFromStack(event.getItemStack())) {
-				if (!effect.doesShowParticles()) {
-					event.getToolTip().add(1, I18n.format("bewitchment.modifier.suppressed_particles"));
-					break;
-				}
-			}
-		}
-	}
-	
-	@SubscribeEvent
-	public void clientTickEnd(TickEvent.ClientTickEvent event) {
-		if (event.phase == TickEvent.Phase.END) {
-			GuiScreen gui = Minecraft.getMinecraft().currentScreen;
-			if (gui == null || !gui.doesGuiPauseGame()) ++ticksInGame;
-		}
-	}
-	
-	@SubscribeEvent
-	public void onChat(ClientChatEvent event) {
-		World world = Minecraft.getMinecraft().world;
-		EntityPlayer player = Minecraft.getMinecraft().player;
-		BlockPos pos = new BlockPos(player.posX, player.posY, player.posZ);
-		if (world.getBlockState(pos).getBlock() instanceof BlockWitchesCauldron && ((TileEntityWitchesCauldron) world.getTileEntity(pos)).mode == 4) {
-			String message = event.getOriginalMessage();
-			if (!message.isEmpty()) {
-				Bewitchment.network.sendToServer(new CauldronTeleport(message));
-				event.setCanceled(true);
-			}
-		}
-	}
+    public static int ticksInGame = 0;
+
+    @SubscribeEvent
+    public void onTooltipAdd(ItemTooltipEvent event) {
+        Item item = event.getItemStack().getItem();
+        if (item.getRegistryName().getNamespace().equals(Bewitchment.MODID) && !(item instanceof ItemJuniperKey) && !(item instanceof ItemGrimoireMagia) && !(item instanceof ItemTaglock) && !(item instanceof ItemWaystone) && !(item instanceof ItemContract)) {
+            String tip = "tooltip." + item.getTranslationKey().substring(5);
+            if (!I18n.format(tip).equals(tip)) event.getToolTip().add(1, I18n.format(tip));
+        }
+        if (event.getItemStack().hasTagCompound() && event.getItemStack().getTagCompound().hasKey("bewitchment_brew")) {
+            for (PotionEffect effect : PotionUtils.getEffectsFromStack(event.getItemStack())) {
+                if (!effect.doesShowParticles()) {
+                    event.getToolTip().add(1, I18n.format("bewitchment.modifier.suppressed_particles"));
+                    break;
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void clientTickEnd(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.END) {
+            GuiScreen gui = Minecraft.getMinecraft().currentScreen;
+            if (gui == null || !gui.doesGuiPauseGame()) ++ticksInGame;
+        }
+    }
+
+    @SubscribeEvent
+    public void onChat(ClientChatEvent event) {
+        World world = Minecraft.getMinecraft().world;
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        BlockPos pos = new BlockPos(player.posX, player.posY, player.posZ);
+        if (world.getBlockState(pos).getBlock() instanceof BlockWitchesCauldron && ((TileEntityWitchesCauldron) world.getTileEntity(pos)).mode == 4) {
+            String message = event.getOriginalMessage();
+            if (!message.isEmpty()) {
+                Bewitchment.network.sendToServer(new CauldronTeleport(message));
+                event.setCanceled(true);
+            }
+        }
+    }
 }

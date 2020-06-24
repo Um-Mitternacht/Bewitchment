@@ -19,91 +19,90 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class EntityShadowPerson extends ModEntityMob {
-	
-	public EntityShadowPerson(World world) {
-		super(world, new ResourceLocation(Bewitchment.MODID, "entities/shadow_person"));
-		setSize(1, 2.25f);
-		dataManager.set(SPECTRAL, true);
-		isImmuneToFire = true;
-		experienceValue = 45;
-		lifeTimeTicks = 600 + 20 * rand.nextInt(31);
-	}
-	
-	public void fall(float distance, float damageMultiplier) {
-	}
-	
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
-		return BewitchmentAPI.DEMON;
-	}
-	
-	@Override
-	protected SoundEvent getHurtSound(DamageSource source) {
-		return SoundEvents.ENTITY_ENDERMEN_SCREAM;
-	}
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
-		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(45);
-		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.65);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.22);
-		getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(0.5);
-		getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.9D);
-	}
-	
-	@Override
-	protected void initEntityAI() {
-		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(0, new EntityAIBreakDoor(this));
-		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
-		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
-		tasks.addTask(3, new EntityAILookIdle(this));
-		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
-		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
-		tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
-		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
-		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
-	}
-	
-	public void onEntityUpdate() {
-		int i = this.getAir();
-		super.onEntityUpdate();
-		
-		if (this.isEntityAlive() && !this.isInWater()) {
-			--i;
-			this.setAir(i);
-			
-			if (this.getAir() == -20) {
-				this.setAir(300);
-			}
-		}
-		else {
-			this.setAir(300);
-		}
-	}
-	
-	@Override
-	protected void despawnEntity() {
-		if (!hasCustomName()) {
-			super.despawnEntity();
-		}
-	}
-	
-	@Override
-	protected boolean canDespawn() {
-		return !hasCustomName();
-	}
-	
-	@Override
-	protected int getSkinTypes() {
-		return 4;
-	}
-	
-	@Override
-	protected boolean isValidLightLevel() {
-		return true;
-	}
+
+    public EntityShadowPerson(World world) {
+        super(world, new ResourceLocation(Bewitchment.MODID, "entities/shadow_person"));
+        setSize(1, 2.25f);
+        dataManager.set(SPECTRAL, true);
+        isImmuneToFire = true;
+        experienceValue = 45;
+        lifeTimeTicks = 600 + 20 * rand.nextInt(31);
+    }
+
+    public void fall(float distance, float damageMultiplier) {
+    }
+
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute() {
+        return BewitchmentAPI.DEMON;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundEvents.ENTITY_ENDERMEN_SCREAM;
+    }
+
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4);
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(45);
+        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.65);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.22);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(0.5);
+        getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.9D);
+    }
+
+    @Override
+    protected void initEntityAI() {
+        tasks.addTask(0, new EntityAISwimming(this));
+        tasks.addTask(0, new EntityAIBreakDoor(this));
+        tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
+        tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
+        tasks.addTask(3, new EntityAILookIdle(this));
+        tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
+        this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
+        tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
+        targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+        targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+        targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> e instanceof EntityVillager || e instanceof AbstractIllager || e instanceof EntityWitch || e instanceof EntityIronGolem));
+    }
+
+    public void onEntityUpdate() {
+        int i = this.getAir();
+        super.onEntityUpdate();
+
+        if (this.isEntityAlive() && !this.isInWater()) {
+            --i;
+            this.setAir(i);
+
+            if (this.getAir() == -20) {
+                this.setAir(300);
+            }
+        } else {
+            this.setAir(300);
+        }
+    }
+
+    @Override
+    protected void despawnEntity() {
+        if (!hasCustomName()) {
+            super.despawnEntity();
+        }
+    }
+
+    @Override
+    protected boolean canDespawn() {
+        return !hasCustomName();
+    }
+
+    @Override
+    protected int getSkinTypes() {
+        return 4;
+    }
+
+    @Override
+    protected boolean isValidLightLevel() {
+        return true;
+    }
 }

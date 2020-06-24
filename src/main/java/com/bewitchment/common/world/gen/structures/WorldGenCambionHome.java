@@ -18,26 +18,26 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 import java.util.Random;
 
 public class WorldGenCambionHome extends WorldGenerator {
-	
-	public WorldGenCambionHome() {
-		super();
-	}
-	
-	@Override
-	public boolean generate(World worldIn, Random rand, BlockPos position) {
-		
-		WorldServer worldServer = (WorldServer) worldIn;
-		MinecraftServer minecraftServer = worldIn.getMinecraftServer();
-		TemplateManager templateManager = worldServer.getStructureTemplateManager();
-		Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":cambion1"));
-		
-		if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
-			IBlockState iBlockState = worldIn.getBlockState(position);
-			worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
-			PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
-			template.addBlocksToWorld(worldIn, position.add(0, 0, 0), placementsettings);
-			return true;
-		}
-		return false;
-	}
+
+    public WorldGenCambionHome() {
+        super();
+    }
+
+    @Override
+    public boolean generate(World worldIn, Random rand, BlockPos position) {
+
+        WorldServer worldServer = (WorldServer) worldIn;
+        MinecraftServer minecraftServer = worldIn.getMinecraftServer();
+        TemplateManager templateManager = worldServer.getStructureTemplateManager();
+        Template template = templateManager.getTemplate(minecraftServer, new ResourceLocation(Bewitchment.MODID + ":cambion1"));
+
+        if (ModWorldGen.canSpawnHere(template, worldServer, position)) {
+            IBlockState iBlockState = worldIn.getBlockState(position);
+            worldIn.notifyBlockUpdate(position, iBlockState, iBlockState, 3);
+            PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
+            template.addBlocksToWorld(worldIn, position.add(0, 0, 0), placementsettings);
+            return true;
+        }
+        return false;
+    }
 }

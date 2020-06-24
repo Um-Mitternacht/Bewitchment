@@ -15,24 +15,24 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings("NullableProblems")
 public class ModBlockButton extends BlockButton {
-	public ModBlockButton(String name, Block base, String... oreDictionaryNames) {
-		super(base.getDefaultState().getMaterial() == Material.WOOD);
-		Util.registerBlock(this, name, base, oreDictionaryNames);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer() {
-		return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
-	}
-	
-	@Override
-	protected void playClickSound(EntityPlayer player, World world, BlockPos pos) {
-		world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, SoundCategory.BLOCKS, 0.3f, 0.6f);
-	}
-	
-	@Override
-	protected void playReleaseSound(World worldIn, BlockPos pos) {
-		worldIn.playSound(null, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3f, 0.5f);
-	}
+    public ModBlockButton(String name, Block base, String... oreDictionaryNames) {
+        super(base.getDefaultState().getMaterial() == Material.WOOD);
+        Util.registerBlock(this, name, base, oreDictionaryNames);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getRenderLayer() {
+        return Util.isTransparent(getDefaultState()) ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
+    protected void playClickSound(EntityPlayer player, World world, BlockPos pos) {
+        world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, SoundCategory.BLOCKS, 0.3f, 0.6f);
+    }
+
+    @Override
+    protected void playReleaseSound(World worldIn, BlockPos pos) {
+        worldIn.playSound(null, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3f, 0.5f);
+    }
 }

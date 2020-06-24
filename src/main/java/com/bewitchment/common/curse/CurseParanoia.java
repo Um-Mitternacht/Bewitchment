@@ -10,6 +10,9 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.Arrays;
@@ -30,12 +33,12 @@ public class CurseParanoia extends Curse {
     public boolean doCurse(Event event, EntityPlayer target) {
         target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 0));
         Random rand = target.getRNG();
+        World world = target.getEntityWorld();
+        BlockPos pos = target.getPosition();
         int i = rand.nextInt(100);
-        {
-            if (i < 10) {
-                target.playSound(SoundEvents.ENTITY_ENDERMEN_SCREAM, 1, 1);
-            }
-            return false;
+        if (i < 10) {
+            world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
         }
+        return false;
     }
 }

@@ -8,14 +8,14 @@ import net.minecraft.util.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class RenderCypressBroom extends RenderBroom {
-	private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/entity/cypress_broom.png");
-	
-	public RenderCypressBroom(RenderManager manager) {
-		super(manager);
-	}
-	
-	@Override
-	protected ResourceLocation getEntityTexture(EntityBroom entityBroom) {
-		return TEX;
-	}
+    private static final ResourceLocation TEX = new ResourceLocation(Bewitchment.MODID, "textures/entity/cypress_broom.png");
+
+    public RenderCypressBroom(RenderManager manager) {
+        super(manager);
+    }
+
+    @Override
+    protected ResourceLocation getEntityTexture(EntityBroom entityBroom) {
+        return TEX;
+    }
 }

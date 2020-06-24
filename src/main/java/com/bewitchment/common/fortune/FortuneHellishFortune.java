@@ -19,34 +19,34 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.List;
 
 public class FortuneHellishFortune extends Fortune {
-	public FortuneHellishFortune() {
-		super(new ResourceLocation(Bewitchment.MODID, "hellish_fortune"), false, 66, 666);
-	}
-	
-	@Override
-	public boolean apply(EntityPlayer player) {
-		return player.world.provider.getDimensionType() == DimensionType.NETHER;
-	}
-	
-	@SubscribeEvent
-	public void onDig(BlockEvent.BreakEvent event) {
-		if (!event.getWorld().isRemote) {
-			ExtendedPlayer cap = event.getPlayer().getCapability(ExtendedPlayer.CAPABILITY, null);
-			if (cap.fortune == this) {
-				Block block = event.getState().getBlock();
-				if (block == Blocks.SOUL_SAND || block == Blocks.NETHERRACK || block == Blocks.MAGMA || block == Blocks.GRAVEL || block == Blocks.NETHER_BRICK || block == Blocks.QUARTZ_ORE) {
-					LootTable table = event.getWorld().getLootTableManager().getLootTableFromLocation(new ResourceLocation(Bewitchment.MODID, "chests/nether_materials"));
-					LootContext context = (new LootContext.Builder((WorldServer) event.getWorld()).withLuck(event.getPlayer().getLuck()).withPlayer(event.getPlayer())).build();
-					List<ItemStack> list = table.generateLootForPools(event.getPlayer().getRNG(), context);
-					for (ItemStack stack : list) {
-						EntityItem entity = new EntityItem(event.getWorld(), event.getPos().getX() + 0.5, event.getPos().getY() + 0.5, event.getPos().getZ() + 0.5, stack);
-						entity.setNoPickupDelay();
-						event.getWorld().spawnEntity(entity);
-					}
-					cap.fortune = null;
-					ExtendedPlayer.syncToClient(event.getPlayer());
-				}
-			}
-		}
-	}
+    public FortuneHellishFortune() {
+        super(new ResourceLocation(Bewitchment.MODID, "hellish_fortune"), false, 66, 666);
+    }
+
+    @Override
+    public boolean apply(EntityPlayer player) {
+        return player.world.provider.getDimensionType() == DimensionType.NETHER;
+    }
+
+    @SubscribeEvent
+    public void onDig(BlockEvent.BreakEvent event) {
+        if (!event.getWorld().isRemote) {
+            ExtendedPlayer cap = event.getPlayer().getCapability(ExtendedPlayer.CAPABILITY, null);
+            if (cap.fortune == this) {
+                Block block = event.getState().getBlock();
+                if (block == Blocks.SOUL_SAND || block == Blocks.NETHERRACK || block == Blocks.MAGMA || block == Blocks.GRAVEL || block == Blocks.NETHER_BRICK || block == Blocks.QUARTZ_ORE) {
+                    LootTable table = event.getWorld().getLootTableManager().getLootTableFromLocation(new ResourceLocation(Bewitchment.MODID, "chests/nether_materials"));
+                    LootContext context = (new LootContext.Builder((WorldServer) event.getWorld()).withLuck(event.getPlayer().getLuck()).withPlayer(event.getPlayer())).build();
+                    List<ItemStack> list = table.generateLootForPools(event.getPlayer().getRNG(), context);
+                    for (ItemStack stack : list) {
+                        EntityItem entity = new EntityItem(event.getWorld(), event.getPos().getX() + 0.5, event.getPos().getY() + 0.5, event.getPos().getZ() + 0.5, stack);
+                        entity.setNoPickupDelay();
+                        event.getWorld().spawnEntity(entity);
+                    }
+                    cap.fortune = null;
+                    ExtendedPlayer.syncToClient(event.getPlayer());
+                }
+            }
+        }
+    }
 }

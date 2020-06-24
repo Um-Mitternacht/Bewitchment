@@ -17,32 +17,32 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 
 public class PotionBulk extends ModPotion {
-	
-	private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/bulk.png");
-	
-	public PotionBulk() {
-		super("bulk", false, 0x660000);
-		this.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR, "e02d546b-c672-4ae6-a241-38be9bb20bb5", 2D, 0);
-	}
-	
-	@SuppressWarnings("deprecation")
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
-		mc.getTextureManager().bindTexture(icon);
-		Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
-	}
-	
-	@SuppressWarnings("deprecation")
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
-		mc.getTextureManager().bindTexture(icon);
-		Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
-	}
-	
-	@Override
-	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
-		super.affectEntity(source, indirectSource, living, 2, health);
-	}
+
+    private static final ResourceLocation icon = new ResourceLocation(Bewitchment.MODID, "textures/gui/effect/bulk.png");
+
+    public PotionBulk() {
+        super("bulk", false, 0x660000);
+        this.registerPotionAttributeModifier(SharedMonsterAttributes.ARMOR, "e02d546b-c672-4ae6-a241-38be9bb20bb5", 2D, 0);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
+        mc.getTextureManager().bindTexture(icon);
+        Gui.drawModalRectWithCustomSizedTexture(x + 6, y + 7, 0, 0, 18, 18, 18, 18);
+    }
+
+    @SuppressWarnings("deprecation")
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
+        mc.getTextureManager().bindTexture(icon);
+        Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
+    }
+
+    @Override
+    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+        super.affectEntity(source, indirectSource, living, 2, health);
+    }
 }

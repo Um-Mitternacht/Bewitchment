@@ -14,18 +14,18 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import java.util.Arrays;
 
 public class ContractMahapadma extends Contract {
-	public ContractMahapadma() {
-		super(new ResourceLocation(Bewitchment.MODID, "mahapadma"), false, false, CurseCondition.INSTANT, null, Arrays.asList(Item.getItemFromBlock(Blocks.ICE), Items.WATER_BUCKET, Items.SLIME_BALL));
-	}
-	
-	@Override
-	public boolean doCurse(Event event, EntityPlayer target) {
-		for (BlockPos pos : BlockPos.MutableBlockPos.getAllInBoxMutable(target.getPosition().add(-1, -2, -1), target.getPosition().add(1, 2, 1))) {
-			if (target.world.getBlockState(pos).getBlock().isReplaceable(target.world, pos)) {
-				target.world.setBlockState(pos, target.getRNG().nextBoolean() ? Blocks.PACKED_ICE.getDefaultState() : Blocks.ICE.getDefaultState());
-			}
-		}
-		target.attackEntityFrom(DamageSource.MAGIC, Integer.MAX_VALUE);
-		return true;
-	}
+    public ContractMahapadma() {
+        super(new ResourceLocation(Bewitchment.MODID, "mahapadma"), false, false, CurseCondition.INSTANT, null, Arrays.asList(Item.getItemFromBlock(Blocks.ICE), Items.WATER_BUCKET, Items.SLIME_BALL));
+    }
+
+    @Override
+    public boolean doCurse(Event event, EntityPlayer target) {
+        for (BlockPos pos : BlockPos.MutableBlockPos.getAllInBoxMutable(target.getPosition().add(-1, -2, -1), target.getPosition().add(1, 2, 1))) {
+            if (target.world.getBlockState(pos).getBlock().isReplaceable(target.world, pos)) {
+                target.world.setBlockState(pos, target.getRNG().nextBoolean() ? Blocks.PACKED_ICE.getDefaultState() : Blocks.ICE.getDefaultState());
+            }
+        }
+        target.attackEntityFrom(DamageSource.MAGIC, Integer.MAX_VALUE);
+        return true;
+    }
 }
