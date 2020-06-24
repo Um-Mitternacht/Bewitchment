@@ -32,7 +32,7 @@ public class CurseParanoia extends Curse {
 
     @Override
     public boolean doCurse(Event event, EntityPlayer target) {
-        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 0));
+        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 1));
         Random rand = target.getRNG();
         World world = target.getEntityWorld();
         BlockPos pos = target.getPosition();
