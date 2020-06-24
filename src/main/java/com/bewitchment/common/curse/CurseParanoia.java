@@ -15,6 +15,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -31,6 +32,7 @@ public class CurseParanoia extends Curse {
 
     public CurseParanoia() {
         super(new ResourceLocation(Bewitchment.MODID, "paranoia"), Arrays.asList(Util.get(Items.ENDER_EYE), Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.snake_venom), Util.get(ModObjects.taglock)), false, false, CurseCondition.EXIST);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
@@ -38,14 +40,13 @@ public class CurseParanoia extends Curse {
         Random rand = target.getRNG();
         World world = target.getEntityWorld();
         BlockPos pos = target.getPosition();
-        if (target.getCapability(ExtendedPlayer.CAPABILITY, null).hasCurse(this)) {
-            int i = rand.nextInt(100);
+        int i = rand.nextInt(100);
+        if (target.getCapability(ExtendedPlayer.CAPABILITY, null).hasCurse(this))
             if (timer > 0) timer--;
-            if (i < 10 && timer == 0)
-                world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
-                timer = 750;
-            }
-        }
+        if (i < 10 && timer == 0)
+            world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
+        timer = 750;
+    }
 
     @Override
     public boolean doCurse(Event event, EntityPlayer target) {
