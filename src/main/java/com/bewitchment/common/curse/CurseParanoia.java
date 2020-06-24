@@ -41,12 +41,11 @@ public class CurseParanoia extends Curse {
         if (target.getCapability(ExtendedPlayer.CAPABILITY, null).hasCurse(this)) {
             int i = rand.nextInt(100);
             if (timer > 0) timer--;
-            if (i < 10 && timer == 0) {
+            if (i < 10 && timer == 0)
                 world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
                 timer = 750;
             }
         }
-    }
 
     @Override
     public boolean doCurse(Event event, EntityPlayer target) {
