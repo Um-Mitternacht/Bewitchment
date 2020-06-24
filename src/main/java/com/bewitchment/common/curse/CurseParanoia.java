@@ -2,18 +2,24 @@ package com.bewitchment.common.curse;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
+import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class CurseParanoia extends Curse {
 
@@ -28,7 +34,18 @@ public class CurseParanoia extends Curse {
     }
 
     @SubscribeEvent
-    public void onPlaySound(SoundEvent soundEvent) {
+    public void onPlaySound(SoundEvent event, EntityPlayer target) {
+        Random rand = target.getRNG();
+        World world = target.getEntityWorld();
+        BlockPos pos = target.getPosition();
+        if (target.getCapability(ExtendedPlayer.CAPABILITY, null).hasCurse(this)) {
+            int i = rand.nextInt(100);
+            if (timer > 0) timer--;
+            if (i < 10 && timer == 0) {
+                world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
+                timer = 750;
+            }
+        }
     }
 
     @Override
