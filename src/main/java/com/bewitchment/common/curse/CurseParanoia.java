@@ -22,22 +22,25 @@ public class CurseParanoia extends Curse {
 
 
     //Curse plans
-    //Enderman screeching every so often
-    //Shadow people can spawn nearby
-    //Nausea
+    //Random mob sounds
+    //Blindness
+    public int timer = 750;
+
     public CurseParanoia() {
         super(new ResourceLocation(Bewitchment.MODID, "paranoia"), Arrays.asList(Util.get(Items.ENDER_EYE), Util.get(Items.BLAZE_POWDER), Util.get(ModObjects.dragons_blood_resin), Util.get(ModObjects.snake_venom), Util.get(ModObjects.taglock)), false, false, CurseCondition.EXIST);
     }
 
     @Override
     public boolean doCurse(Event event, EntityPlayer target) {
-        target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 0));
+        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 0));
         Random rand = target.getRNG();
         World world = target.getEntityWorld();
         BlockPos pos = target.getPosition();
         int i = rand.nextInt(100);
-        if (i < 10) {
+        if (timer > 0) timer--;
+        if (i < 10 && timer == 0) {
             world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
+            timer = 750;
         }
         return false;
     }
