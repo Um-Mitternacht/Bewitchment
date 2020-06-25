@@ -24,6 +24,7 @@ public class CurseParanoia extends Curse {
 	//Curse plans
 	//Random mob sounds
 	//Blindness
+	//Display random messages
 	//Need to figure out capabilities so every player does not hear the same sound as the same time if there are multiples with the same curse. For now, this works.
 	public int timer = 750;
 

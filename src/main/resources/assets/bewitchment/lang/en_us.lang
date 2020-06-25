@@ -261,6 +261,10 @@ tooltip.bewitchment.silver_tool_description.name=Deals extra damage to undead
 tooltip.bewitchment.cold_iron_armor_description.name=Protects against demons and spirits
 tooltip.bewitchment.cold_iron_tool_description.name=Deals extra damage to spirits
 
+tooltip.bewitchment.cold_iron_arrow=Deals extra damage to spirits
+tooltip.bewitchment.silver_arrow=Deals extra damage to undead
+
+
 item.bewitchment.athame.name=Athame
 tooltip.bewitchment.athame=This ceremonial dagger also allows you to obtain special loot from mobs
 item.bewitchment.boline.name=Boline
@@ -364,6 +368,9 @@ tile.bewitchment.nether_brick_moloch_idol.name=Nether Brick Moloch Idol
 tile.bewitchment.stone_moloch_idol.name=Stone Moloch Idol
 
 tile.bewitchment.goddess_statue.name=Goddess Statue
+tooltip.bewitchment.goddess_statue=Removes all curses on a player
+
+
 
 item.bewitchment.bottled_frostfire.name=Bottled Frostfire
 item.bewitchment.bottled_hellfire.name=Bottled Hellfire
