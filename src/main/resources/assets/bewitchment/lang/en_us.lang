@@ -685,6 +685,7 @@ curse.bewitchment.hydrophobia=Curse of Hydrophobia
 curse.bewitchment.lightning_rod=Curse of Lightning Rod
 curse.bewitchment.darkness=Curse of Darkness
 curse.bewitchment.palor_pestilence=Curse of Palor Pestilence
+curse.bewitchment.paranoia=Curse of Paranoia
 
 #FORTUNE
 fortune.has_fortune=%s's future has already been revealed: %s
