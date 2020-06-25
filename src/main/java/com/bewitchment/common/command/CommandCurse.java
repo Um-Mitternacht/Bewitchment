@@ -29,7 +29,7 @@ public class CommandCurse extends CommandBase {
 
 	@Override
 	public String getUsage(ICommandSender iCommandSender) {
-		return "/curse <player> <get/add/remove/clear>";
+		return "/curse <player> <get/add/remove/clear> <time>";
 	}
 
 	@Override
