@@ -63,7 +63,7 @@ public class EntityRaven extends ModEntityTameable {
 
 	@Override
 	protected void despawnEntity() {
-		if (!isTamed()) {
+		if (canDespawn()) {
 			super.despawnEntity();
 		}
 	}
@@ -167,7 +167,7 @@ public class EntityRaven extends ModEntityTameable {
 
 	@Override
 	protected boolean canDespawn() {
-		return !isTamed();
+		return !(isTamed() || hasCustomName());
 	}
 
 	public int getPeckTime() {

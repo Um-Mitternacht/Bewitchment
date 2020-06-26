@@ -41,7 +41,7 @@ public class EntityToad extends ModEntityTameable {
 
 	@Override
 	protected void despawnEntity() {
-		if (!isTamed()) {
+		if (canDespawn()) {
 			super.despawnEntity();
 		}
 	}
@@ -59,7 +59,7 @@ public class EntityToad extends ModEntityTameable {
 
 	@Override
 	protected boolean canDespawn() {
-		return !isTamed();
+		return !(isTamed() || hasCustomName());
 	}
 
 	@Override
