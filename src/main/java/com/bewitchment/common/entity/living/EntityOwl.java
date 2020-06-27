@@ -7,7 +7,6 @@ import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -150,11 +149,6 @@ public class EntityOwl extends ModEntityTameable {
 	@Override
 	public boolean getCanSpawnHere() {
 		return !world.isDaytime() && super.getCanSpawnHere();
-	}
-
-	@Override
-	public EntityAgeable createChild(EntityAgeable other) {
-		return new EntityOwl(this.world);
 	}
 
 	@Override
