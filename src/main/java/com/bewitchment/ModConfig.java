@@ -64,15 +64,15 @@ public class ModConfig {
 
 			@Config.Comment("The chance for cypress trees to spawn. Set to 0 to disable.")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double cypressChance = 0.05;
+			public double cypressChance = 0.01;
 
 			@Config.Comment("The chance for elder trees to spawn. Set to 0 to disable.")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double elderChance = 0.05;
+			public double elderChance = 0.01;
 
 			@Config.Comment("The chance for juniper trees to spawn. Set to 0 to disable.")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double juniperChance = 0.05;
+			public double juniperChance = 0.01;
 		}
 
 		public static class OreGen {
@@ -165,24 +165,23 @@ public class ModConfig {
 		public static class StructureGen {
 			@Config.Comment("The chance for wickermen to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double wickermanChance = 0.005;
+			public double wickermanChance = 0.001;
 
 			@Config.Comment("The chance for a stone circle to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double stonecircleChance = 0.005;
-
+			public double stonecircleChance = 0.001;
 
 			@Config.Comment("The chance for menhir to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double menhirChance = 0.005;
+			public double menhirChance = 0.001;
 
 			@Config.Comment("The chance for a large cambion home to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double cambionHomeChance = 0.005;
+			public double cambionHomeChance = 0.001;
 
 			@Config.Comment("The chance for a medium cambion home to generate")
 			@Config.RangeDouble(min = 0, max = 1.0)
-			public double cambionHomeMediumChance = 0.005;
+			public double cambionHomeMediumChance = 0.001;
 		}
 	}
 
