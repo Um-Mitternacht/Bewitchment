@@ -6,7 +6,7 @@
 	{
 	  "type": "bewitchment:curse_recipe",
 	  "recipe": "bewitchment:overheating",
-	  "text": "Causes the target’s body to have a must lower tolerance to heat, causing them to randomly catch fire in hot biomes, and they will take more damage from fire and lava."
+	  "text": "Causes the target’s body to have a much lower tolerance to heat, causing them to randomly catch fire in hot biomes, and they will take more damage from fire and lava."
 	}
   ]
 }
