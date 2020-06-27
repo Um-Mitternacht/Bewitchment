@@ -2,6 +2,8 @@ package com.bewitchment.common.entity.living;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityAnimal;
+import com.covetedmobs.common.entity.living.mammals.EntityTiger;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +34,11 @@ public class EntityLizard extends ModEntityAnimal {
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(4, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * 2 / 3));
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.5D));
+	}
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable other) {
+		return new EntityLizard(this.world);
 	}
 
 	@Override

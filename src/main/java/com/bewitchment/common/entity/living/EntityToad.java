@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -44,6 +45,11 @@ public class EntityToad extends ModEntityTameable {
 		if (canDespawn()) {
 			super.despawnEntity();
 		}
+	}
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable other) {
+		return new EntityToad(this.world);
 	}
 
 	@Override

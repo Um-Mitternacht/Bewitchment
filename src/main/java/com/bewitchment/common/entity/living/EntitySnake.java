@@ -6,6 +6,7 @@ import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -48,6 +49,11 @@ public class EntitySnake extends ModEntityTameable {
 		if (canDespawn()) {
 			super.despawnEntity();
 		}
+	}
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable other) {
+		return new EntitySnake(this.world);
 	}
 
 	@Override
