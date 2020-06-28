@@ -161,7 +161,7 @@ public class TradeHandler {
 
 		private ItemStack getRandomSeed(Random random, int amount) {
 			ItemStack itemStack;
-			switch (random.nextInt(4)) {
+			switch (random.nextInt(11)) {
 				case 0:
 					itemStack = new ItemStack(Items.WHEAT_SEEDS, amount);
 					break;
@@ -170,6 +170,27 @@ public class TradeHandler {
 					break;
 				case 2:
 					itemStack = new ItemStack(Items.PUMPKIN_SEEDS, amount);
+					break;
+				case 3:
+					itemStack = new ItemStack(ModObjects.garlic_seeds, amount);
+					break;
+				case 4:
+					itemStack = new ItemStack(ModObjects.aconitum_seeds, amount);
+					break;
+				case 5:
+					itemStack = new ItemStack(ModObjects.belladonna_seeds, amount);
+					break;
+				case 6:
+					itemStack = new ItemStack(ModObjects.hellebore_seeds, amount);
+					break;
+				case 7:
+					itemStack = new ItemStack(ModObjects.mandrake_seeds, amount);
+					break;
+				case 8:
+					itemStack = new ItemStack(ModObjects.white_sage_seeds, amount);
+					break;
+				case 9:
+					itemStack = new ItemStack(ModObjects.wormwood_seeds, amount);
 					break;
 				default:
 					itemStack = new ItemStack(Items.BEETROOT_SEEDS, amount);
