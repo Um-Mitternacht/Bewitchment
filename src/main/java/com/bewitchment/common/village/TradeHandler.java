@@ -152,21 +152,34 @@ public class TradeHandler {
 	}
 
 	public static class RandomSeedsforEmeralds implements EntityVillager.ITradeList {
-		public EntityVillager.PriceInfo emeraldPriceInfo;
+		public EntityVillager.PriceInfo emeraldPriceInfo, itemPriceInfo;
 
-		public RandomSeedsforEmeralds(EntityVillager.PriceInfo emeraldPriceInfo) {
+		public RandomSeedsforEmeralds(EntityVillager.PriceInfo emeraldPriceInfo, EntityVillager.PriceInfo itemPriceInfo) {
 			this.emeraldPriceInfo = emeraldPriceInfo;
+			this.itemPriceInfo = itemPriceInfo;
 		}
 
-		private ItemStack getRandomSeed(Random random) {
-			List<Item> seeds = ForgeRegistries.ITEMS.getValuesCollection().stream().filter(i -> i instanceof ItemSeeds).collect(Collectors.toList());
-			if (!seeds.isEmpty()) return new ItemStack(seeds.get(random.nextInt(seeds.size())));
-			return new ItemStack(Items.MELON_SEEDS);
+		private ItemStack getRandomSeed(Random random, int amount) {
+			ItemStack itemStack;
+			switch (random.nextInt(4)) {
+				case 0:
+					itemStack = new ItemStack(Items.WHEAT_SEEDS, amount);
+					break;
+				case 1:
+					itemStack = new ItemStack(Items.MELON_SEEDS, amount);
+					break;
+				case 2:
+					itemStack = new ItemStack(Items.PUMPKIN_SEEDS, amount);
+					break;
+				default:
+					itemStack = new ItemStack(Items.BEETROOT_SEEDS, amount);
+			}
+			return itemStack;
 		}
 
 		@Override
 		public void addMerchantRecipe(IMerchant iMerchant, MerchantRecipeList merchantRecipeList, Random random) {
-			ItemStack itemStack = getRandomSeed(random);
+			ItemStack itemStack = getRandomSeed(random, itemPriceInfo.getPrice(random));
 			ItemStack itemStack1 = new ItemStack(Items.EMERALD, emeraldPriceInfo.getPrice(random));
 			merchantRecipeList.add(new MerchantRecipe(itemStack1, itemStack));
 		}
