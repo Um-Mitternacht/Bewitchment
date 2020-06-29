@@ -42,7 +42,7 @@ public class CurseParanoia extends Curse {
 		int i = rand.nextInt(100);
 		if (timer > 0) timer--;
 		if (i < 10 && timer == 0) {
-			switch (rand.nextInt(22)) {
+			switch (rand.nextInt(23)) {
 				case 0:
 					world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
 					timer = 1150;
@@ -125,6 +125,10 @@ public class CurseParanoia extends Curse {
 					break;
 				case 20:
 					world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 21:
+					world.playSound(null, pos, SoundEvents.BLOCK_GRASS_STEP, SoundCategory.HOSTILE, 1, 1);
 					timer = 1150;
 					break;
 				default:
