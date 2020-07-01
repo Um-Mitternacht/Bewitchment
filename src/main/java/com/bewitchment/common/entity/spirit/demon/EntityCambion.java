@@ -98,7 +98,6 @@ public class EntityCambion extends ModEntityMob {
 	@Override
 	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
-		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
 	}
 
 	@Override
@@ -133,6 +132,8 @@ public class EntityCambion extends ModEntityMob {
 		data = super.onInitialSpawn(difficulty, data);
 		int i = this.getRandomCambionType();
 		int a = rand.nextInt(4);
+		int b = rand.nextInt(4);
+		int c = rand.nextInt(4);
 
 		if (data instanceof EntityCambion.CambionTypeData) {
 			i = ((EntityCambion.CambionTypeData) data).typeData;
@@ -145,6 +146,14 @@ public class EntityCambion extends ModEntityMob {
 		if (a < 2) {
 			this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.CHAINMAIL_CHESTPLATE));
 		} else if (a > 2) this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
+
+		if (b < 2) {
+			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
+		} else if (b > 2) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+
+		if (c < 2) {
+			this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.SHIELD));
+		} else if (c > 2);
 
 		setEquipmentBasedOnDifficulty(difficulty);
 		setCanPickUpLoot(this.rand.nextFloat() < 0.55F * difficulty.getClampedAdditionalDifficulty());
@@ -198,10 +207,7 @@ public class EntityCambion extends ModEntityMob {
 	}
 
 	private int getRandomCambionType() {
-		int flag = rand.nextInt();
-		if (this.addedToChunk) for (int i = 0; i < 4; ++i) {
-			return flag;
-		}
+		int flag = rand.nextInt(4);
 		return flag;
 	}
 
