@@ -82,7 +82,7 @@ public class MiscHandler {
 	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 5, 0, 1);
 	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 8, 0, 3);
 	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 8, 0, 3);
-	Biome.SpawnListEntry cambionSpawn = new Biome.SpawnListEntry(EntityCambion.class, 1, 0, 2);
+	Biome.SpawnListEntry cambionSpawn = new Biome.SpawnListEntry(EntityCambion.class, 1, 0, 1);
 
 	Biome.SpawnListEntry shadeSpawn = new Biome.SpawnListEntry(EntityShadowPerson.class, 1, 0, 1);
 	Biome.SpawnListEntry ghostSpawn = new Biome.SpawnListEntry(EntityGhost.class, 4, 0, 1);
@@ -139,8 +139,12 @@ public class MiscHandler {
 		WorldServer world = (WorldServer) ev.getWorld();
 
 		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", ev.getPos())) {
-				ev.getList().add(cambionSpawn);
+			if (ev.getWorld().getCurrentMoonPhaseFactor() == 1.0) {
+				if (!world.isDaytime()) {
+					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", ev.getPos())) {
+						ev.getList().add(cambionSpawn);
+					}
+				}
 			}
 		}
 	}
