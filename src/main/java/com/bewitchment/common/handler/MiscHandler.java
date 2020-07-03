@@ -209,6 +209,9 @@ public class MiscHandler {
 			if (event.getEntityLiving() instanceof EntityGolem && event.getTarget() instanceof EntityCambion) {
 				((EntityLiving) event.getEntityLiving()).setAttackTarget(null);
 			}
+			if (event.getEntityLiving() instanceof EntityBafometyr && event.getTarget() instanceof EntityPlayer  && ExtendedWorld.playerPledgedToDemon(event.getEntityLiving().world, (EntityPlayer) event.getTarget(),"baphomet")) {
+				((EntityLiving) event.getEntityLiving()).setAttackTarget(null);
+			}
 			if (event.getEntityLiving() instanceof IPledgeable && event.getTarget() instanceof EntityPlayer && ExtendedWorld.playerPledgedToDemon(event.getEntityLiving().world, (EntityPlayer) event.getTarget(), ((IPledgeable) event.getEntityLiving()).getPledgeName())) {
 				((EntityMob) event.getEntityLiving()).setAttackTarget(null);
 			}
