@@ -62,13 +62,6 @@ public class EntityRaven extends ModEntityTameable {
 	}
 
 	@Override
-	protected void despawnEntity() {
-		if (canDespawn()) {
-			super.despawnEntity();
-		}
-	}
-
-	@Override
 	public int getMaxSpawnedInChunk() {
 		return 6;
 	}
@@ -163,11 +156,6 @@ public class EntityRaven extends ModEntityTameable {
 			this.dropItem(ModObjects.ravens_feather, 1);
 			this.timeUntilNextShed = this.rand.nextInt(6000) + 6000;
 		}
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return !(isTamed() || hasCustomName());
 	}
 
 	public int getPeckTime() {

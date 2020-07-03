@@ -56,13 +56,6 @@ public class EntityOwl extends ModEntityTameable {
 	}
 
 	@Override
-	protected void despawnEntity() {
-		if (canDespawn()) {
-			super.despawnEntity();
-		}
-	}
-
-	@Override
 	public int getMaxSpawnedInChunk() {
 		return 6;
 	}
@@ -149,11 +142,6 @@ public class EntityOwl extends ModEntityTameable {
 	@Override
 	public boolean getCanSpawnHere() {
 		return !world.isDaytime() && super.getCanSpawnHere();
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return !(isTamed() || hasCustomName());
 	}
 
 	@Override

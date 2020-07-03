@@ -40,13 +40,6 @@ public class EntityToad extends ModEntityTameable {
 	}
 
 	@Override
-	protected void despawnEntity() {
-		if (canDespawn()) {
-			super.despawnEntity();
-		}
-	}
-
-	@Override
 	public int getMaxSpawnedInChunk() {
 		return 6;
 	}
@@ -55,11 +48,6 @@ public class EntityToad extends ModEntityTameable {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (ticksExisted % 20 == 0 && isWet()) heal(1);
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return !(isTamed() || hasCustomName());
 	}
 
 	@Override

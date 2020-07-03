@@ -44,13 +44,6 @@ public class EntitySnake extends ModEntityTameable {
 	}
 
 	@Override
-	protected void despawnEntity() {
-		if (canDespawn()) {
-			super.despawnEntity();
-		}
-	}
-
-	@Override
 	public int getMaxSpawnedInChunk() {
 		return 6;
 	}
@@ -169,11 +162,6 @@ public class EntitySnake extends ModEntityTameable {
 		if (!this.world.isRemote && this.setHissTime(this.getHissTime() - 1) <= 0) {
 			this.setHissTime(this.getNewHiss());
 		}
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return !(isTamed() || hasCustomName());
 	}
 
 	public int getHissTime() {
