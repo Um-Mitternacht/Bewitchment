@@ -2,6 +2,7 @@ package com.bewitchment.common.entity.spirit.demon;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
@@ -13,6 +14,7 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -32,6 +34,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
+
+	private int timer = 0;
+
 	public EntityLeonard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/leonard"));
 		isImmuneToFire = true;
@@ -46,11 +51,35 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	}
 
 	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		compound.setInteger("timer", timer);
+		super.writeEntityToNBT(compound);
+	}
+
+	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
+		timer = compound.getInteger("timer");
 		if (this.hasCustomName()) {
 			this.bossInfo.setName(this.getDisplayName());
 		}
+	}
+
+	@Override
+	protected boolean processInteract(EntityPlayer player, EnumHand hand) {
+		if (hand == EnumHand.MAIN_HAND) {
+			if (ExtendedWorld.playerPledgedToDemon(player.world, player, this.getPledgeName())) {
+				if (player.experienceLevel >= 2) {
+					if (timer == 0) {
+						if (player.getHeldItem(hand).getItem() == Items.BOWL) {
+							player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.stew_of_the_grotesque));
+							timer = 24000;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -62,6 +91,7 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		if (timer > 0) timer--;
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
 			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, false, true));
 			world.playSound(null, getPosition(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.HOSTILE, 6, 1);
