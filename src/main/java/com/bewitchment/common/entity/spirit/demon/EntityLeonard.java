@@ -73,13 +73,14 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 					if (timer == 0) {
 						if (player.getHeldItem(hand).getItem() == Items.BOWL) {
 							player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.stew_of_the_grotesque));
+							world.playSound(player, player.getPosition(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.PLAYERS, 1, 1);
 							timer = 24000;
 						}
 					}
 				}
 			}
 		}
-		return false;
+		return super.processInteract(player, hand);
 	}
 
 	@Override
