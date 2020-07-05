@@ -160,13 +160,6 @@ public class EntityFeuerwurm extends ModEntityMob {
 	}
 
 	@Override
-	protected void despawnEntity() {
-		if (!hasCustomName()) {
-			super.despawnEntity();
-		}
-	}
-
-	@Override
 	public int getMaxSpawnedInChunk() {
 		return 6;
 	}
