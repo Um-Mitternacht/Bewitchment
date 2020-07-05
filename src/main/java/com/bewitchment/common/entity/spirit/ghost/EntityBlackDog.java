@@ -111,12 +111,6 @@ public class EntityBlackDog extends ModEntityMob {
 		return path;
 	}
 
-	@Override
-	protected void despawnEntity() {
-		if (!hasCustomName()) {
-			super.despawnEntity();
-		}
-	}
 
 	public void onEntityUpdate() {
 		int i = this.getAir();
