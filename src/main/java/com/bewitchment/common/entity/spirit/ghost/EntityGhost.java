@@ -78,12 +78,6 @@ public class EntityGhost extends ModEntityMob {
 		if (!world.isRemote && world.isDaytime() && canDespawn()) setDead();
 	}
 
-	@Override
-	protected void despawnEntity() {
-		if (!hasCustomName()) {
-			super.despawnEntity();
-		}
-	}
 
 	@Override
 	protected boolean canDespawn() {
