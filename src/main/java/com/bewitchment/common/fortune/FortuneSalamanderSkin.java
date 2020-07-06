@@ -24,7 +24,7 @@ public class FortuneSalamanderSkin extends Fortune {
 	@Override
 	public boolean apply(EntityPlayer player) {
 		if (this.isValid(player)) {
-			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 1000, 0, false, false));
+			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600, 0, false, false));
 			return true;
 		}
 		return false;
