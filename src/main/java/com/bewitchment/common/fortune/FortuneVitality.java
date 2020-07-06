@@ -14,7 +14,7 @@ public class FortuneVitality extends Fortune {
 
 	@Override
 	public boolean apply(EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
+		player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 500, 1 + player.world.getDifficulty().ordinal(), false, false));
 		return true;
 	}
 }

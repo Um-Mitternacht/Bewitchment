@@ -14,7 +14,7 @@ public class FortuneBadLuck extends Fortune {
 
 	@Override
 	public boolean apply(EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(MobEffects.UNLUCK, 415, 1 + player.world.getDifficulty().ordinal(), false, false));
+		player.addPotionEffect(new PotionEffect(MobEffects.UNLUCK, 666, 1 + player.world.getDifficulty().ordinal(), false, false));
 		return true;
 	}
 }

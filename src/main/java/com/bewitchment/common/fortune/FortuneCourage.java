@@ -15,7 +15,7 @@ public class FortuneCourage extends Fortune {
 	@Override
 	public boolean apply(EntityPlayer player) {
 		if (!player.world.isRemote && player.getAttackingEntity() != null)
-			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
+			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 500, 1 + player.world.getDifficulty().ordinal(), false, false));
 		return true;
 	}
 }

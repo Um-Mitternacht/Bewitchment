@@ -14,7 +14,7 @@ public class FortuneResilience extends Fortune {
 
 	@Override
 	public boolean apply(EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 215, 1 + player.world.getDifficulty().ordinal(), false, false));
+		player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 1000, 1 + player.world.getDifficulty().ordinal(), false, false));
 		return true;
 	}
 }
