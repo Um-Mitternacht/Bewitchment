@@ -12,7 +12,7 @@ import net.minecraftforge.common.BiomeDictionary;
 
 public class FortuneSalamanderSkin extends Fortune {
 	public FortuneSalamanderSkin() {
-		super(new ResourceLocation(Bewitchment.MODID, "salamander_skin"), false, (60), (60 * 10));
+		super(new ResourceLocation(Bewitchment.MODID, "salamander_skin"), false, 66, 6666);
 	}
 
 	@Override
