@@ -14,17 +14,10 @@ public class FortuneSalamanderSkin extends Fortune {
 	}
 
 	@Override
-	public boolean isValid(EntityPlayer player) {
-		return true;
-	}
-
-	@Override
 	public boolean apply(EntityPlayer player) {
-		if (this.isValid(player)) {
-			if (player.world.provider.getDimensionType() == DimensionType.NETHER) {
-				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600, 0, false, false));
-				return true;
-			}
+		if (player.world.provider.getDimensionType() == DimensionType.NETHER) {
+			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600, 0, false, false));
+			return true;
 		}
 		return false;
 	}
