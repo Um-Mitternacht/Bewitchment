@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:opal"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.mined_opal.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.mined_opal.description"
-	}
+    "icon": {
+      "item": "bewitchment:opal"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.mined_opal.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.mined_opal.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:opal"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:opal"
+          }
+        ]
+      }
+    }
   }
 }

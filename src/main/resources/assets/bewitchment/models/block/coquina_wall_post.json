@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_post",
   "textures": {
-	"wall": "bewitchment:blocks/coquina"
+    "wall": "bewitchment:blocks/coquina"
   }
 }

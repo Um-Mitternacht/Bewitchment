@@ -1,24 +1,24 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:silver_sword"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.beast.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.beast.description"
-	}
+    "icon": {
+      "item": "bewitchment:silver_sword"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.beast.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.beast.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"werewolf": {
-	  "trigger": "minecraft:player_killed_entity",
-	  "conditions": {
-		"entity": {
-		  "type": "bewitchment:werewolf"
-		}
-	  }
-	}
+    "werewolf": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "bewitchment:werewolf"
+        }
+      }
+    }
   }
 }

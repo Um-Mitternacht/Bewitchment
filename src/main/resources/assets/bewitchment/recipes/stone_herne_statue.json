@@ -1,23 +1,23 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"F F",
-	"FDF",
-	"FRF"
+    "F F",
+    "FDF",
+    "FRF"
   ],
   "key": {
-	"F": {
-	  "type": "forge:ore_dict",
-	  "ore": "stone"
-	},
-	"D": {
-	  "item": "bewitchment:bottled_hellfire"
-	},
-	"R": {
-	  "item": "minecraft:arrow"
-	}
+    "F": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "D": {
+      "item": "bewitchment:bottled_hellfire"
+    },
+    "R": {
+      "item": "minecraft:arrow"
+    }
   },
   "result": {
-	"item": "bewitchment:stone_herne_statue"
+    "item": "bewitchment:stone_herne_statue"
   }
 }

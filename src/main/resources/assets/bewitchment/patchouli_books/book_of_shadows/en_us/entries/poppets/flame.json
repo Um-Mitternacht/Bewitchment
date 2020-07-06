@@ -3,10 +3,10 @@
   "category": "poppets",
   "icon": "bewitchment:poppet_flameprotection",
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_flameprotection",
-	  "text": "Reduces fire damage"
-	}
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_flameprotection",
+      "text": "Reduces fire damage"
+    }
   ]
 }

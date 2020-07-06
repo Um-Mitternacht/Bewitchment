@@ -1,22 +1,22 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "bewitchment:belladonna"
-	},
-	{
-	  "item": "bewitchment:elderberries"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "materialWax"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "bewitchment:belladonna"
+    },
+    {
+      "item": "bewitchment:elderberries"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "materialWax"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_clumsy",
-	"count": 1
+    "item": "bewitchment:poppet_clumsy",
+    "count": 1
   }
 }

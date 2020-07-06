@@ -3,14 +3,14 @@
   "category": "sigils",
   "icon": "bewitchment:sigil_battle",
   "pages": [
-	{
-	  "type": "bewitchment:sigil_recipe",
-	  "recipe": "bewitchment:battle"
-	},
-	{
-	  "type": "spotlight",
-	  "item": "bewitchment:sigil_battle",
-	  "text": "Provides a minor strength and resistance buff"
-	}
+    {
+      "type": "bewitchment:sigil_recipe",
+      "recipe": "bewitchment:battle"
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:sigil_battle",
+      "text": "Provides a minor strength and resistance buff"
+    }
   ]
 }

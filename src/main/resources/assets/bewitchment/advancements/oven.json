@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:witches_oven"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.oven.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.oven.description"
-	}
+    "icon": {
+      "item": "bewitchment:witches_oven"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.oven.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.oven.description"
+    }
   },
   "parent": "bewitchment:crafted_altar",
   "criteria": {
-	"oven": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:witches_oven"
-		  }
-		]
-	  }
-	}
+    "oven": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:witches_oven"
+          }
+        ]
+      }
+    }
   }
 }

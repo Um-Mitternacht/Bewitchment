@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_side",
   "textures": {
-	"wall": "bewitchment:blocks/ochre_despair_bricks"
+    "wall": "bewitchment:blocks/ochre_despair_bricks"
   }
 }

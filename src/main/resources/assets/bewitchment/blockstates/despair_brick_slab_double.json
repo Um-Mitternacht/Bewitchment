@@ -1,20 +1,20 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/despair_bricks"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/despair_bricks"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	],
-	"half=bottom,variant=default": [
-	  {}
-	],
-	"half=top,variant=default": [
-	  {}
-	]
+    "normal": [
+      {}
+    ],
+    "half=bottom,variant=default": [
+      {}
+    ],
+    "half=top,variant=default": [
+      {}
+    ]
   }
 }

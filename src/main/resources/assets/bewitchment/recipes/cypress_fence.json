@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"PSP",
-	"PSP"
+    "PSP",
+    "PSP"
   ],
   "key": {
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	"P": {
-	  "item": "bewitchment:cypress_planks"
-	}
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "P": {
+      "item": "bewitchment:cypress_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:cypress_fence",
-	"count": 3
+    "item": "bewitchment:cypress_fence",
+    "count": 3
   }
 }

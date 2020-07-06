@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"B",
-	"B"
+    "B",
+    "B"
   ],
   "key": {
-	"B": {
-	  "item": "bewitchment:embittered_bricks_slab",
-	  "data": 0
-	}
+    "B": {
+      "item": "bewitchment:embittered_bricks_slab",
+      "data": 0
+    }
   },
   "result": {
-	"item": "bewitchment:chiseled_embittered_bricks"
+    "item": "bewitchment:chiseled_embittered_bricks"
   }
 }

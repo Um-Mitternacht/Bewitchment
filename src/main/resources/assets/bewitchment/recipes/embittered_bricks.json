@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:perpetual_ice"
-	},
-	{
-	  "item": "bewitchment:perpetual_ice"
-	},
-	{
-	  "item": "bewitchment:perpetual_ice"
-	},
-	{
-	  "item": "bewitchment:perpetual_ice"
-	}
+    {
+      "item": "bewitchment:perpetual_ice"
+    },
+    {
+      "item": "bewitchment:perpetual_ice"
+    },
+    {
+      "item": "bewitchment:perpetual_ice"
+    },
+    {
+      "item": "bewitchment:perpetual_ice"
+    }
   ],
   "result": {
-	"item": "bewitchment:embittered_bricks",
-	"count": 4
+    "item": "bewitchment:embittered_bricks",
+    "count": 4
   }
 }

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"PPP",
-	"PPP"
+    "PPP",
+    "PPP"
   ],
   "key": {
-	"P": {
-	  "item": "bewitchment:dragons_blood_planks"
-	}
+    "P": {
+      "item": "bewitchment:dragons_blood_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:dragons_blood_trapdoor",
-	"count": 2
+    "item": "bewitchment:dragons_blood_trapdoor",
+    "count": 2
   }
 }

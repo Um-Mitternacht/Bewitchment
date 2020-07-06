@@ -1,31 +1,31 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:brazier"
+    "model": "bewitchment:brazier"
   },
   "variants": {
-	"normal": [
-	  {}
-	],
-	"hanging=false,lit=false": [
-	  {
-		"model": "bewitchment:brazier"
-	  }
-	],
-	"hanging=false,lit=true": [
-	  {
-		"model": "bewitchment:brazier"
-	  }
-	],
-	"hanging=true,lit=true": [
-	  {
-		"model": "bewitchment:brazier_hanging"
-	  }
-	],
-	"hanging=true,lit=false": [
-	  {
-		"model": "bewitchment:brazier_hanging"
-	  }
-	]
+    "normal": [
+      {}
+    ],
+    "hanging=false,lit=false": [
+      {
+        "model": "bewitchment:brazier"
+      }
+    ],
+    "hanging=false,lit=true": [
+      {
+        "model": "bewitchment:brazier"
+      }
+    ],
+    "hanging=true,lit=true": [
+      {
+        "model": "bewitchment:brazier_hanging"
+      }
+    ],
+    "hanging=true,lit=false": [
+      {
+        "model": "bewitchment:brazier_hanging"
+      }
+    ]
   }
 }

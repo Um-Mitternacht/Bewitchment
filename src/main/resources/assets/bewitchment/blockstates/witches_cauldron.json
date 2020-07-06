@@ -1,11 +1,11 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:witches_cauldron"
+    "model": "bewitchment:witches_cauldron"
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

@@ -1,28 +1,28 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	" ST",
-	"SHT",
-	"PPP"
+    " ST",
+    "SHT",
+    "PPP"
   ],
   "key": {
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "string"
-	},
-	"T": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	"H": {
-	  "item": "bewitchment:spruce_heart"
-	},
-	"P": {
-	  "type": "forge:ore_dict",
-	  "ore": "plankWood"
-	}
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "string"
+    },
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "H": {
+      "item": "bewitchment:spruce_heart"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    }
   },
   "result": {
-	"item": "bewitchment:spinning_wheel"
+    "item": "bewitchment:spinning_wheel"
   }
 }

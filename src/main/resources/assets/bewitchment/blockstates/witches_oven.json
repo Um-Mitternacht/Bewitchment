@@ -1,62 +1,62 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:witches_oven"
+    "model": "bewitchment:witches_oven"
   },
   "variants": {
-	"normal": [
-	  {
-	  }
-	],
-	"facing=north,lit=false": [
-	  {
-	  }
-	],
-	"facing=north,lit=true": [
-	  {
-		"textures": {
-		  "particle": "bewitchment:blocks/witches_oven_lit"
-		}
-	  }
-	],
-	"facing=south,lit=false": [
-	  {
-		"y": 180
-	  }
-	],
-	"facing=south,lit=true": [
-	  {
-		"y": 180,
-		"textures": {
-		  "particle": "bewitchment:blocks/witches_oven_lit"
-		}
-	  }
-	],
-	"facing=east,lit=false": [
-	  {
-		"y": 90
-	  }
-	],
-	"facing=east,lit=true": [
-	  {
-		"y": 90,
-		"textures": {
-		  "particle": "bewitchment:blocks/witches_oven_lit"
-		}
-	  }
-	],
-	"facing=west,lit=false": [
-	  {
-		"y": 270
-	  }
-	],
-	"facing=west,lit=true": [
-	  {
-		"y": 270,
-		"textures": {
-		  "particle": "bewitchment:blocks/witches_oven_lit"
-		}
-	  }
-	]
+    "normal": [
+      {
+      }
+    ],
+    "facing=north,lit=false": [
+      {
+      }
+    ],
+    "facing=north,lit=true": [
+      {
+        "textures": {
+          "particle": "bewitchment:blocks/witches_oven_lit"
+        }
+      }
+    ],
+    "facing=south,lit=false": [
+      {
+        "y": 180
+      }
+    ],
+    "facing=south,lit=true": [
+      {
+        "y": 180,
+        "textures": {
+          "particle": "bewitchment:blocks/witches_oven_lit"
+        }
+      }
+    ],
+    "facing=east,lit=false": [
+      {
+        "y": 90
+      }
+    ],
+    "facing=east,lit=true": [
+      {
+        "y": 90,
+        "textures": {
+          "particle": "bewitchment:blocks/witches_oven_lit"
+        }
+      }
+    ],
+    "facing=west,lit=false": [
+      {
+        "y": 270
+      }
+    ],
+    "facing=west,lit=true": [
+      {
+        "y": 270,
+        "textures": {
+          "particle": "bewitchment:blocks/witches_oven_lit"
+        }
+      }
+    ]
   }
 }

@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "bewitchment:coquina"
-	},
-	{
-	  "item": "bewitchment:swirl_of_depths"
-	},
-	{
-	  "item": "minecraft:prismarine_shard"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "bewitchment:coquina"
+    },
+    {
+      "item": "bewitchment:swirl_of_depths"
+    },
+    {
+      "item": "minecraft:prismarine_shard"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_waterprotection",
-	"count": 1
+    "item": "bewitchment:poppet_waterprotection",
+    "count": 1
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/stew_of_the_grotesque"
+    "layer0": "bewitchment:items/stew_of_the_grotesque"
   }
 }

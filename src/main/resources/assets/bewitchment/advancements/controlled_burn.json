@@ -1,24 +1,24 @@
 {
   "display": {
-	"icon": {
-	  "item": "minecraft:flint_and_steel"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.burn.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.burn.description"
-	}
+    "icon": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.burn.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.burn.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"druden": {
-	  "trigger": "minecraft:player_killed_entity",
-	  "conditions": {
-		"entity": {
-		  "type": "bewitchment:druden"
-		}
-	  }
-	}
+    "druden": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "bewitchment:druden"
+        }
+      }
+    }
   }
 }

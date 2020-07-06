@@ -1,34 +1,34 @@
 {
   "display": {
-	"title": {
-	  "text": "Bewitchment",
-	  "color": "purple",
-	  "bold": true,
-	  "italic": false
-	},
-	"description": {
-	  "text": "Join a world of occultism",
-	  "color": "yellow",
-	  "bold": false,
-	  "italic": true
-	},
-	"icon": {
-	  "item": "bewitchment:pentacle"
-	},
-	"frame": "task",
-	"show_toast": true,
-	"announce_to_chat": false,
-	"hidden": false,
-	"background": "bewitchment:textures/blocks/scorned_bricks.png"
+    "title": {
+      "text": "Bewitchment",
+      "color": "purple",
+      "bold": true,
+      "italic": false
+    },
+    "description": {
+      "text": "Join a world of occultism",
+      "color": "yellow",
+      "bold": false,
+      "italic": true
+    },
+    "icon": {
+      "item": "bewitchment:pentacle"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "bewitchment:textures/blocks/scorned_bricks.png"
   },
   "criteria": {
-	"tick": {
-	  "trigger": "minecraft:tick"
-	}
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
   },
   "requirements": [
-	[
-	  "tick"
-	]
+    [
+      "tick"
+    ]
   ]
 }

@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetSilver"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	{
-	  "item": "bewitchment:ravens_feather"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "nuggetSilver"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    {
+      "item": "bewitchment:ravens_feather"
+    }
   ],
   "result": {
-	"item": "bewitchment:silver_arrow",
-	"count": 4
+    "item": "bewitchment:silver_arrow",
+    "count": 4
   }
 }

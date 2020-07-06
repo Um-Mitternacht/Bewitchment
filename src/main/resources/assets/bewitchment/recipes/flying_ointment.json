@@ -1,30 +1,30 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "item": "minecraft:glass_bottle"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "cropMandrake"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "cropBelladonna"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "cropAconitum"
-	},
-	{
-	  "item": "minecraft:red_flower",
-	  "data": 0
-	},
-	{
-	  "item": "#GENERIC_WAX"
-	}
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "cropMandrake"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "cropBelladonna"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "cropAconitum"
+    },
+    {
+      "item": "minecraft:red_flower",
+      "data": 0
+    },
+    {
+      "item": "#GENERIC_WAX"
+    }
   ],
   "result": {
-	"item": "bewitchment:flying_ointment"
+    "item": "bewitchment:flying_ointment"
   }
 }

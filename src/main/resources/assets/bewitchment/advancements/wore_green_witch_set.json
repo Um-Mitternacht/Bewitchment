@@ -1,60 +1,60 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:green_witch_robes"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.wore_green_witch_set.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.wore_green_witch_set.description"
-	}
+    "icon": {
+      "item": "bewitchment:green_witch_robes"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.wore_green_witch_set.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.wore_green_witch_set.description"
+    }
   },
   "parent": "bewitchment:loom",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:green_witch_robes"
-		  },
-		  {
-			"item": "bewitchment:green_witch_hat"
-		  },
-		  {
-			"item": "bewitchment:green_witch_pants"
-		  },
-		  {
-			"item": "bewitchment:girdle_of_the_dryads"
-		  }
-		]
-	  }
-	},
-	"hood": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:green_witch_robes"
-		  },
-		  {
-			"item": "bewitchment:green_witch_hood"
-		  },
-		  {
-			"item": "bewitchment:green_witch_pants"
-		  },
-		  {
-			"item": "bewitchment:girdle_of_the_dryads"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:green_witch_robes"
+          },
+          {
+            "item": "bewitchment:green_witch_hat"
+          },
+          {
+            "item": "bewitchment:green_witch_pants"
+          },
+          {
+            "item": "bewitchment:girdle_of_the_dryads"
+          }
+        ]
+      }
+    },
+    "hood": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:green_witch_robes"
+          },
+          {
+            "item": "bewitchment:green_witch_hood"
+          },
+          {
+            "item": "bewitchment:green_witch_pants"
+          },
+          {
+            "item": "bewitchment:girdle_of_the_dryads"
+          }
+        ]
+      }
+    }
   },
   "requirements": [
-	[
-	  "hat",
-	  "hood"
-	]
+    [
+      "hat",
+      "hood"
+    ]
   ]
 }

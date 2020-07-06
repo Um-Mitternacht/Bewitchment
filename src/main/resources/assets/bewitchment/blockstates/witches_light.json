@@ -1,12 +1,12 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube",
-	"texture": "bewitchment:blocks/nothing"
+    "model": "cube",
+    "texture": "bewitchment:blocks/nothing"
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

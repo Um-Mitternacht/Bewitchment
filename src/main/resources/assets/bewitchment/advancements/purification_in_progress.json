@@ -1,24 +1,24 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:hidden_bat"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.ghost.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.ghost.description"
-	}
+    "icon": {
+      "item": "bewitchment:hidden_bat"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.ghost.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.ghost.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"ghost": {
-	  "trigger": "minecraft:player_killed_entity",
-	  "conditions": {
-		"entity": {
-		  "type": "bewitchment:ghost"
-		}
-	  }
-	}
+    "ghost": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "bewitchment:ghost"
+        }
+      }
+    }
   }
 }

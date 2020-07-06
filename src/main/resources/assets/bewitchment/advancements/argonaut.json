@@ -1,24 +1,24 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:athame"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.argonaut.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.argonaut.description"
-	}
+    "icon": {
+      "item": "bewitchment:athame"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.argonaut.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.argonaut.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"cleaver": {
-	  "trigger": "minecraft:player_killed_entity",
-	  "conditions": {
-		"entity": {
-		  "type": "bewitchment:cleaver"
-		}
-	  }
-	}
+    "cleaver": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "bewitchment:cleaver"
+        }
+      }
+    }
   }
 }

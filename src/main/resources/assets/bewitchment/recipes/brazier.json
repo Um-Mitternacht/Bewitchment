@@ -1,29 +1,29 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"NON",
-	"SSS",
-	"I I"
+    "NON",
+    "SSS",
+    "I I"
   ],
   "key": {
-	"N": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetSilver"
-	},
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	},
-	"I": {
-	  "item": "minecraft:iron_bars"
-	},
-	"O": {
-	  "item": "bewitchment:otherworldly_tears"
-	}
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetSilver"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    },
+    "I": {
+      "item": "minecraft:iron_bars"
+    },
+    "O": {
+      "item": "bewitchment:otherworldly_tears"
+    }
   },
   "result": {
-	"item": "bewitchment:brazier",
-	"count": 1
+    "item": "bewitchment:brazier",
+    "count": 1
   }
 }
 

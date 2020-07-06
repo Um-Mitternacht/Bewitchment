@@ -1,12 +1,12 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:frostfire"
+    "model": "bewitchment:frostfire"
   },
   "variants": {
-	"normal": [
-	  {
-	  }
-	]
+    "normal": [
+      {
+      }
+    ]
   }
 }

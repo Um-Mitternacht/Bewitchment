@@ -3,10 +3,10 @@
   "category": "poppets",
   "icon": "bewitchment:poppet_waterprotection",
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_waterprotection",
-	  "text": "Protects the owner from drowning for a short while"
-	}
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_waterprotection",
+      "text": "Protects the owner from drowning for a short while"
+    }
   ]
 }

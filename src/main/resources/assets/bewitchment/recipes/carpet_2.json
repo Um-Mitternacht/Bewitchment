@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"PP"
+    "PP"
   ],
   "key": {
-	"P": {
-	  "item": "bewitchment:besmirched_fleece"
-	}
+    "P": {
+      "item": "bewitchment:besmirched_fleece"
+    }
   },
   "result": {
-	"item": "bewitchment:besmirched_carpet",
-	"count": 3
+    "item": "bewitchment:besmirched_carpet",
+    "count": 3
   }
 }

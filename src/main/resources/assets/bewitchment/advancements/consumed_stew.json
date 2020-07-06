@@ -1,24 +1,24 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:stew_of_the_grotesque"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.consumed_stew.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.consumed_stew.description"
-	}
+    "icon": {
+      "item": "bewitchment:stew_of_the_grotesque"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.consumed_stew.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.consumed_stew.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"altar": {
-	  "trigger": "minecraft:consume_item",
-	  "conditions": {
-		"item": {
-		  "item": "bewitchment:stew_of_the_grotesque"
-		}
-	  }
-	}
+    "altar": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "bewitchment:stew_of_the_grotesque"
+        }
+      }
+    }
   }
 }

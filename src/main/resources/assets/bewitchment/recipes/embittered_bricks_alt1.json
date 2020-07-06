@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:chiseled_embittered_bricks"
-	}
+    {
+      "item": "bewitchment:chiseled_embittered_bricks"
+    }
   ],
   "result": {
-	"item": "bewitchment:embittered_bricks"
+    "item": "bewitchment:embittered_bricks"
   }
 }

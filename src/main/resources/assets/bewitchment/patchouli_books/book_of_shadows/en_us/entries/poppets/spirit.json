@@ -3,10 +3,10 @@
   "category": "poppets",
   "icon": "bewitchment:poppet_spiritbane",
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_spiritbane",
-	  "text": "Reduces damage from spirits"
-	}
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_spiritbane",
+      "text": "Reduces damage from spirits"
+    }
   ]
 }

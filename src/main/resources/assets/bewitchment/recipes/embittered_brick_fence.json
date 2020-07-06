@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"BBB",
-	"BBB"
+    "BBB",
+    "BBB"
   ],
   "key": {
-	"B": {
-	  "item": "bewitchment:embittered_bricks"
-	}
+    "B": {
+      "item": "bewitchment:embittered_bricks"
+    }
   },
   "result": {
-	"item": "bewitchment:embittered_brick_fence",
-	"count": 6
+    "item": "bewitchment:embittered_brick_fence",
+    "count": 6
   }
 }

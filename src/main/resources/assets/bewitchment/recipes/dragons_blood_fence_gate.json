@@ -1,19 +1,19 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"SPS",
-	"SPS"
+    "SPS",
+    "SPS"
   ],
   "key": {
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	"P": {
-	  "item": "bewitchment:dragons_blood_planks"
-	}
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "P": {
+      "item": "bewitchment:dragons_blood_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:dragons_blood_fence_gate"
+    "item": "bewitchment:dragons_blood_fence_gate"
   }
 }

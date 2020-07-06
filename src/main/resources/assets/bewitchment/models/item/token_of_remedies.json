@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/token_of_remedies"
+    "layer0": "bewitchment:items/token_of_remedies"
   }
 }

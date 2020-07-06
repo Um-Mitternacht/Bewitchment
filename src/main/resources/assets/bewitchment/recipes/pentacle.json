@@ -1,24 +1,24 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"SIS",
-	"IFI",
-	"SIS"
+    "SIS",
+    "IFI",
+    "SIS"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetIron"
-	},
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetSilver"
-	},
-	"F": {
-	  "item": "bewitchment:liquid_witchcraft"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetSilver"
+    },
+    "F": {
+      "item": "bewitchment:liquid_witchcraft"
+    }
   },
   "result": {
-	"item": "bewitchment:pentacle"
+    "item": "bewitchment:pentacle"
   }
 }

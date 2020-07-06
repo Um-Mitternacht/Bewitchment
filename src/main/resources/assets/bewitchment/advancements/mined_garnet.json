@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:garnet"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.mined_garnet.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.mined_garnet.description"
-	}
+    "icon": {
+      "item": "bewitchment:garnet"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.mined_garnet.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.mined_garnet.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:garnet"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:garnet"
+          }
+        ]
+      }
+    }
   }
 }

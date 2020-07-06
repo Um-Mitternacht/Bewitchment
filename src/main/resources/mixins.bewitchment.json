@@ -5,10 +5,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixins.bewitchment.refmap.json",
   "mixins": [
-	"MixinEntityPotion",
-	"MixinEntityTippedArrow"
+    "MixinEntityPotion",
+    "MixinEntityTippedArrow"
   ],
   "injectors": {
-	"defaultRequire": 1
+    "defaultRequire": 1
   }
 }

@@ -3,13 +3,13 @@
   "category": "rituals",
   "icon": "minecraft:ender_eye",
   "pages": [
-	{
-	  "type": "text",
-	  "text": "Causes entities nearby to glow"
-	},
-	{
-	  "type": "bewitchment:ritual",
-	  "recipe": "bewitchment:perception"
-	}
+    {
+      "type": "text",
+      "text": "Causes entities nearby to glow"
+    },
+    {
+      "type": "bewitchment:ritual",
+      "recipe": "bewitchment:perception"
+    }
   ]
 }

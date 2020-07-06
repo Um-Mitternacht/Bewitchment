@@ -3,10 +3,10 @@
   "category": "curses",
   "icon": "minecraft:water_bucket",
   "pages": [
-	{
-	  "type": "bewitchment:curse_recipe",
-	  "recipe": "bewitchment:hydrophobia",
-	  "text": "The target moves slower in water, they sink faster in water, and hostile aquatic creatures deal more damage to them."
-	}
+    {
+      "type": "bewitchment:curse_recipe",
+      "recipe": "bewitchment:hydrophobia",
+      "text": "The target moves slower in water, they sink faster in water, and hostile aquatic creatures deal more damage to them."
+    }
   ]
 }

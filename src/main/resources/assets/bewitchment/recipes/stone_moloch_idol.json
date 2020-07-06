@@ -1,23 +1,23 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"F F",
-	"FDF",
-	"FRF"
+    "F F",
+    "FDF",
+    "FRF"
   ],
   "key": {
-	"F": {
-	  "type": "forge:ore_dict",
-	  "ore": "stone"
-	},
-	"D": {
-	  "item": "bewitchment:liquid_witchcraft"
-	},
-	"R": {
-	  "item": "bewitchment:heart"
-	}
+    "F": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "D": {
+      "item": "bewitchment:liquid_witchcraft"
+    },
+    "R": {
+      "item": "bewitchment:heart"
+    }
   },
   "result": {
-	"item": "bewitchment:stone_moloch_idol"
+    "item": "bewitchment:stone_moloch_idol"
   }
 }

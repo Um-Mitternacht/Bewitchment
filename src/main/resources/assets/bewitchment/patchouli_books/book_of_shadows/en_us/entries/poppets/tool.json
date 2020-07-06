@@ -3,10 +3,10 @@
   "category": "poppets",
   "icon": "bewitchment:poppet_tool",
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_tool",
-	  "text": "Like its armor variant, the poppet will break instead of your tool, preserving it for one last use."
-	}
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_tool",
+      "text": "Like its armor variant, the poppet will break instead of your tool, preserving it for one last use."
+    }
   ]
 }

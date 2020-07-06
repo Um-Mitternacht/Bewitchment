@@ -1,36 +1,36 @@
 [
   {
-	"modid": "bewitchment",
-	"name": "Bewitchment",
-	"description": "A Witchery inspired mod",
-	"version": "${version}",
-	"mcversion": "${mcversion}",
-	"url": "https://minecraft.curseforge.com/projects/bewitchment",
-	"updateUrl": "",
-	"authorList": [
-	  "Zabi94",
-	  "Sunconure11",
-	  "Ingoleth",
-	  "MoriyaShiine",
-	  "Samaritans",
-	  "and a whole lot of awesome people from our discord server!",
-	  "And our awesome patrons!"
-	],
-	"credits": "To all contributors of the mod. Credit to Monospace for Nethersteel Textures. Credit to Dobroide and NewAgeSoup for some of the sounds.",
-	"logoFile": "",
-	"screenshots": [],
-	"requiredMods": [
-	  "baubles",
-	  "forge",
-	  "patchouli"
-	],
-	"dependencies": [
-	  "baubles",
-	  "forge",
-	  "patchouli",
-	  "dynamictrees",
-	  "thaumcraft"
-	],
-	"useDependencyInformation": true
+    "modid": "bewitchment",
+    "name": "Bewitchment",
+    "description": "A Witchery inspired mod",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://minecraft.curseforge.com/projects/bewitchment",
+    "updateUrl": "",
+    "authorList": [
+      "Zabi94",
+      "Sunconure11",
+      "Ingoleth",
+      "MoriyaShiine",
+      "Samaritans",
+      "and a whole lot of awesome people from our discord server!",
+      "And our awesome patrons!"
+    ],
+    "credits": "To all contributors of the mod. Credit to Monospace for Nethersteel Textures. Credit to Dobroide and NewAgeSoup for some of the sounds.",
+    "logoFile": "",
+    "screenshots": [],
+    "requiredMods": [
+      "baubles",
+      "forge",
+      "patchouli"
+    ],
+    "dependencies": [
+      "baubles",
+      "forge",
+      "patchouli",
+      "dynamictrees",
+      "thaumcraft"
+    ],
+    "useDependencyInformation": true
   }
 ]

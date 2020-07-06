@@ -1,13 +1,13 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "blockDragonsBloodResin"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockDragonsBloodResin"
+    }
   ],
   "result": {
-	"item": "bewitchment:dragons_blood_resin",
-	"count": 9
+    "item": "bewitchment:dragons_blood_resin",
+    "count": 9
   }
 }

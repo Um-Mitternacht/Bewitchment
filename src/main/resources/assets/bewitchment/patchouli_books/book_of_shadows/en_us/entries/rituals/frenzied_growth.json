@@ -3,13 +3,13 @@
   "category": "rituals",
   "icon": "bewitchment:elder_sapling",
   "pages": [
-	{
-	  "type": "text",
-	  "text": "Charges vanilla trees with magic to mutate them into their more witchy counterpart"
-	},
-	{
-	  "type": "bewitchment:ritual",
-	  "recipe": "bewitchment:frenzied_growth"
-	}
+    {
+      "type": "text",
+      "text": "Charges vanilla trees with magic to mutate them into their more witchy counterpart"
+    },
+    {
+      "type": "bewitchment:ritual",
+      "recipe": "bewitchment:frenzied_growth"
+    }
   ]
 }

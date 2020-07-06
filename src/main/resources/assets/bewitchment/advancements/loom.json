@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:spinning_wheel"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.loom.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.loom.description"
-	}
+    "icon": {
+      "item": "bewitchment:spinning_wheel"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.loom.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.loom.description"
+    }
   },
   "parent": "bewitchment:distillery",
   "criteria": {
-	"loom": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:spinning_wheel"
-		  }
-		]
-	  }
-	}
+    "loom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:spinning_wheel"
+          }
+        ]
+      }
+    }
   }
 }

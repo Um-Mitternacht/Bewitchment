@@ -1,85 +1,85 @@
 {
   "entries": [
-	{
-	  "key": "MATSTUDCOLDIRON",
-	  "name": "research.MATSTUDCOLDIRON.title",
-	  "icons": [
-		"bewitchment:cold_iron_plate"
-	  ],
-	  "category": "GOLEMANCY",
-	  "location": [
-		-2,
-		-4
-	  ],
-	  "parents": [
-		"MATSTUDDRAGONSBLOOD"
-	  ],
-	  "meta": [
-		"REVERSE",
-		"ROUND"
-	  ],
-	  "stages": [
-		{
-		  "text": "research.MATSTUDCOLDIRON.stage.1",
-		  "required_research": [
-			"f_MATCOLDIRON"
-		  ]
-		}
-	  ]
-	},
-	{
-	  "key": "MATSTUDSILVER",
-	  "name": "research.MATSTUDSILVER.title",
-	  "icons": [
-		"bewitchment:silver_plate"
-	  ],
-	  "category": "GOLEMANCY",
-	  "location": [
-		-4,
-		-4
-	  ],
-	  "parents": [
-		"MATSTUDDRAGONSBLOOD"
-	  ],
-	  "meta": [
-		"REVERSE",
-		"ROUND"
-	  ],
-	  "stages": [
-		{
-		  "text": "research.MATSTUDSILVER.stage.1",
-		  "required_research": [
-			"f_MATSILVER"
-		  ]
-		}
-	  ]
-	},
-	{
-	  "key": "MATSTUDDRAGONSBLOOD",
-	  "name": "research.MATSTUDDRAGONSBLOOD.title",
-	  "icons": [
-		"bewitchment:dragons_blood_resin"
-	  ],
-	  "category": "GOLEMANCY",
-	  "location": [
-		-3,
-		-3
-	  ],
-	  "parents": [
-		"MATSTUDIRON"
-	  ],
-	  "meta": [
-		"REVERSE",
-		"ROUND"
-	  ],
-	  "stages": [
-		{
-		  "text": "research.MATSTUDDRAGONSBLOOD.stage.1",
-		  "required_research": [
-			"f_MATDRAGONSBLOOD"
-		  ]
-		}
-	  ]
-	}
+    {
+      "key": "MATSTUDCOLDIRON",
+      "name": "research.MATSTUDCOLDIRON.title",
+      "icons": [
+        "bewitchment:cold_iron_plate"
+      ],
+      "category": "GOLEMANCY",
+      "location": [
+        -2,
+        -4
+      ],
+      "parents": [
+        "MATSTUDDRAGONSBLOOD"
+      ],
+      "meta": [
+        "REVERSE",
+        "ROUND"
+      ],
+      "stages": [
+        {
+          "text": "research.MATSTUDCOLDIRON.stage.1",
+          "required_research": [
+            "f_MATCOLDIRON"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "MATSTUDSILVER",
+      "name": "research.MATSTUDSILVER.title",
+      "icons": [
+        "bewitchment:silver_plate"
+      ],
+      "category": "GOLEMANCY",
+      "location": [
+        -4,
+        -4
+      ],
+      "parents": [
+        "MATSTUDDRAGONSBLOOD"
+      ],
+      "meta": [
+        "REVERSE",
+        "ROUND"
+      ],
+      "stages": [
+        {
+          "text": "research.MATSTUDSILVER.stage.1",
+          "required_research": [
+            "f_MATSILVER"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "MATSTUDDRAGONSBLOOD",
+      "name": "research.MATSTUDDRAGONSBLOOD.title",
+      "icons": [
+        "bewitchment:dragons_blood_resin"
+      ],
+      "category": "GOLEMANCY",
+      "location": [
+        -3,
+        -3
+      ],
+      "parents": [
+        "MATSTUDIRON"
+      ],
+      "meta": [
+        "REVERSE",
+        "ROUND"
+      ],
+      "stages": [
+        {
+          "text": "research.MATSTUDDRAGONSBLOOD.stage.1",
+          "required_research": [
+            "f_MATDRAGONSBLOOD"
+          ]
+        }
+      ]
+    }
   ]
 }

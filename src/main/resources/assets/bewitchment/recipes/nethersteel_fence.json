@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"BBB",
-	"BBB"
+    "BBB",
+    "BBB"
   ],
   "key": {
-	"B": {
-	  "item": "bewitchment:nethersteel"
-	}
+    "B": {
+      "item": "bewitchment:nethersteel"
+    }
   },
   "result": {
-	"item": "bewitchment:nethersteel_fence",
-	"count": 6
+    "item": "bewitchment:nethersteel_fence",
+    "count": 6
   }
 }

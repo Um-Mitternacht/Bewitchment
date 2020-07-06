@@ -1,24 +1,24 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"SPS",
-	"SGS",
-	" S "
+    "SPS",
+    "SGS",
+    " S "
   ],
   "key": {
-	"G": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemOpal"
-	},
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stone"
-	},
-	"P": {
-	  "item": "bewitchment:pentacle"
-	}
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "gemOpal"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "P": {
+      "item": "bewitchment:pentacle"
+    }
   },
   "result": {
-	"item": "bewitchment:waystone"
+    "item": "bewitchment:waystone"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-	"layer0": "bewitchment:items/silver_sword"
+    "layer0": "bewitchment:items/silver_sword"
   }
 }

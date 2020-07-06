@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"III",
-	"III",
-	"III"
+    "III",
+    "III",
+    "III"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemOpal"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "gemOpal"
+    }
   },
   "result": {
-	"item": "bewitchment:block_of_opal"
+    "item": "bewitchment:block_of_opal"
   }
 }

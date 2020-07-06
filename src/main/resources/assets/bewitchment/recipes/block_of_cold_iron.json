@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"III",
-	"III",
-	"III"
+    "III",
+    "III",
+    "III"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotColdIron"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotColdIron"
+    }
   },
   "result": {
-	"item": "bewitchment:block_of_cold_iron"
+    "item": "bewitchment:block_of_cold_iron"
   }
 }

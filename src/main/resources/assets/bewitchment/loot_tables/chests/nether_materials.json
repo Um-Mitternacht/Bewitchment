@@ -1,210 +1,210 @@
 {
   "pools": [
-	{
-	  "name": "nether_materials",
-	  "rolls": 1,
-	  "entries": [
-		{
-		  "type": "item",
-		  "name": "patchouli:guide_book",
-		  "weight": 3,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 1,
-				"max": 2
-			  }
-			},
-			{
-			  "function": "set_nbt",
-			  "tag": "{\"patchouli:book\": \"bewitchment:codex_infernalis\"}"
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:dragons_blood_sapling",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:scorned_bricks",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 16
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:despair_bricks",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 16
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "minecraft:quartz",
-		  "weight": 3,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 4
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "minecraft:nether_wart",
-		  "weight": 4,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 4
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:nethersteel",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 16
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:hellebore",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 6
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:dragons_blood_resin",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 8
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:heart",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 6
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:fortunes_favor",
-		  "weight": 1,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 1
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:demon_heart",
-		  "weight": 1,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:hellhound_horn",
-		  "weight": 1,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 4
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:hecates_visage",
-		  "weight": 1,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 1
-			  }
-			}
-		  ]
-		}
-	  ]
-	}
+    {
+      "name": "nether_materials",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "patchouli:guide_book",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{\"patchouli:book\": \"bewitchment:codex_infernalis\"}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:dragons_blood_sapling",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:scorned_bricks",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:despair_bricks",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:quartz",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:nether_wart",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:nethersteel",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:hellebore",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:dragons_blood_resin",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:heart",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:fortunes_favor",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:demon_heart",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:hellhound_horn",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:hecates_visage",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
   ]
 }

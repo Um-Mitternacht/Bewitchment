@@ -1,25 +1,25 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "soulSand"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "soulSand"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "sand"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "sand"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "soulSand"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "soulSand"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "sand"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "sand"
+    }
   ],
   "result": {
-	"item": "bewitchment:despair_bricks",
-	"count": 4
+    "item": "bewitchment:despair_bricks",
+    "count": 4
   }
 }

@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	" I ",
-	"BBB",
-	"BIB"
+    " I ",
+    "BBB",
+    "BIB"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotIron"
-	},
-	"B": {
-	  "item": "minecraft:iron_bars"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "B": {
+      "item": "minecraft:iron_bars"
+    }
   },
   "result": {
-	"item": "bewitchment:witches_oven"
+    "item": "bewitchment:witches_oven"
   }
 }

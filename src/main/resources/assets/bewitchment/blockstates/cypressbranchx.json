@@ -1,7 +1,7 @@
 {
   "variants": {
-	"normal": {
-	  "model": "bewitchment:cypressbranch#dynamicthick"
-	}
+    "normal": {
+      "model": "bewitchment:cypressbranch#dynamicthick"
+    }
   }
 }

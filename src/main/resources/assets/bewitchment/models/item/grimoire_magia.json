@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/grimoire_magia"
+    "layer0": "bewitchment:items/grimoire_magia"
   }
 }

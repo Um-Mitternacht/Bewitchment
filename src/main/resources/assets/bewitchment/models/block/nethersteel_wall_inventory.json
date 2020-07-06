@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_inventory",
   "textures": {
-	"wall": "bewitchment:blocks/nethersteel"
+    "wall": "bewitchment:blocks/nethersteel"
   }
 }

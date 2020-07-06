@@ -1,16 +1,16 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/block_of_amethyst_side",
-	  "up": "bewitchment:blocks/block_of_amethyst_top",
-	  "down": "bewitchment:blocks/block_of_amethyst_bottom"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/block_of_amethyst_side",
+      "up": "bewitchment:blocks/block_of_amethyst_top",
+      "down": "bewitchment:blocks/block_of_amethyst_bottom"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

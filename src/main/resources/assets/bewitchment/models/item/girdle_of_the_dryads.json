@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/girdle_of_the_dryads"
+    "layer0": "bewitchment:items/girdle_of_the_dryads"
   }
 }

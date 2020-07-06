@@ -1,11 +1,11 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:goblet"
+    "model": "bewitchment:goblet"
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

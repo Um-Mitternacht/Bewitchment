@@ -1,23 +1,23 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "ingotIron"
-	},
-	{
-	  "item": "#GENERIC_WAX"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    {
+      "item": "#GENERIC_WAX"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_tool",
-	"count": 1
+    "item": "bewitchment:poppet_tool",
+    "count": 1
   }
 }

@@ -1,22 +1,22 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "bewitchment:hoof"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "feather"
-	},
-	{
-	  "item": "bewitchment:toe_of_frog"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "bewitchment:hoof"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "feather"
+    },
+    {
+      "item": "bewitchment:toe_of_frog"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_earthprotection",
-	"count": 1
+    "item": "bewitchment:poppet_earthprotection",
+    "count": 1
   }
 }

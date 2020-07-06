@@ -3,10 +3,10 @@
   "category": "poppets",
   "icon": "bewitchment:poppet_clumsy",
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_clumsy",
-	  "text": "Has a chance to make attackers drop their weapons"
-	}
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_clumsy",
+      "text": "Has a chance to make attackers drop their weapons"
+    }
   ]
 }

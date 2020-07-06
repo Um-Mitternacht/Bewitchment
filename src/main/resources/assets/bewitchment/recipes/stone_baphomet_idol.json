@@ -1,23 +1,23 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"F F",
-	"FDF",
-	"FRF"
+    "F F",
+    "FDF",
+    "FRF"
   ],
   "key": {
-	"F": {
-	  "type": "forge:ore_dict",
-	  "ore": "stone"
-	},
-	"D": {
-	  "item": "bewitchment:liquid_witchcraft"
-	},
-	"R": {
-	  "item": "bewitchment:pentacle"
-	}
+    "F": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "D": {
+      "item": "bewitchment:liquid_witchcraft"
+    },
+    "R": {
+      "item": "bewitchment:pentacle"
+    }
   },
   "result": {
-	"item": "bewitchment:stone_baphomet_idol"
+    "item": "bewitchment:stone_baphomet_idol"
   }
 }

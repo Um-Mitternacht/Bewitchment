@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/wood_ash"
+    "layer0": "bewitchment:items/wood_ash"
   }
 }

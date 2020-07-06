@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/green_witch_robes"
+    "layer0": "bewitchment:items/green_witch_robes"
   }
 }

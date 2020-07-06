@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"N N",
-	"NNN",
-	" N "
+    "N N",
+    "NNN",
+    " N "
   ],
   "key": {
-	"N": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetIron"
-	}
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    }
   },
   "result": {
-	"item": "bewitchment:goblet"
+    "item": "bewitchment:goblet"
   }
 }

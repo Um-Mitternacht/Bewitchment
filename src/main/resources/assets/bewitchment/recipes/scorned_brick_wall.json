@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"WBW",
-	"WBW"
+    "WBW",
+    "WBW"
   ],
   "key": {
-	"B": {
-	  "item": "bewitchment:scorned_bricks"
-	},
-	"W": {
-	  "item": "bewitchment:scorned_bricks_slab",
-	  "data": 0
-	}
+    "B": {
+      "item": "bewitchment:scorned_bricks"
+    },
+    "W": {
+      "item": "bewitchment:scorned_bricks_slab",
+      "data": 0
+    }
   },
   "result": {
-	"item": "bewitchment:scorned_brick_wall",
-	"data": 0,
-	"count": 6
+    "item": "bewitchment:scorned_brick_wall",
+    "data": 0,
+    "count": 6
   }
 }

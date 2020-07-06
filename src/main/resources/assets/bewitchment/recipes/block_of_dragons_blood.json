@@ -1,16 +1,16 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"III",
-	"III",
-	"III"
+    "III",
+    "III",
+    "III"
   ],
   "key": {
-	"I": {
-	  "item": "bewitchment:dragons_blood_resin"
-	}
+    "I": {
+      "item": "bewitchment:dragons_blood_resin"
+    }
   },
   "result": {
-	"item": "bewitchment:dragons_blood_resin_block"
+    "item": "bewitchment:dragons_blood_resin_block"
   }
 }

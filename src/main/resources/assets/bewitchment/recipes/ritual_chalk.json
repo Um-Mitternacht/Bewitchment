@@ -1,23 +1,23 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"WFW",
-	"WCW",
-	"WCW"
+    "WFW",
+    "WCW",
+    "WCW"
   ],
   "key": {
-	"W": {
-	  "item": "bewitchment:wood_ash"
-	},
-	"F": {
-	  "item": "bewitchment:birch_soul"
-	},
-	"C": {
-	  "type": "forge:ore_dict",
-	  "ore": "cobblestone"
-	}
+    "W": {
+      "item": "bewitchment:wood_ash"
+    },
+    "F": {
+      "item": "bewitchment:birch_soul"
+    },
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "cobblestone"
+    }
   },
   "result": {
-	"item": "bewitchment:ritual_chalk"
+    "item": "bewitchment:ritual_chalk"
   }
 }

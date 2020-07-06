@@ -4,17 +4,17 @@
   "icon": "bewitchment:empty_jar",
   "sortnum": 0,
   "pages": [
-	{
-	  "type": "text",
-	  "text": "Clay jars are essential to a witch's collection, they are used to store all kinds of fumes used for crafting."
-	},
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:unfired_jar"
-	},
-	{
-	  "type": "smelting",
-	  "recipe": "bewitchment:unfired_jar"
-	}
+    {
+      "type": "text",
+      "text": "Clay jars are essential to a witch's collection, they are used to store all kinds of fumes used for crafting."
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:unfired_jar"
+    },
+    {
+      "type": "smelting",
+      "recipe": "bewitchment:unfired_jar"
+    }
   ]
 }

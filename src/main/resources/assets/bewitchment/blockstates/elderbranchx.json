@@ -1,7 +1,7 @@
 {
   "variants": {
-	"normal": {
-	  "model": "bewitchment:elderbranch#dynamicthick"
-	}
+    "normal": {
+      "model": "bewitchment:elderbranch#dynamicthick"
+    }
   }
 }

@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:box_of_sealed_evil"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.obtained_box.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.obtained_box.description"
-	}
+    "icon": {
+      "item": "bewitchment:box_of_sealed_evil"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.obtained_box.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.obtained_box.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:box_of_sealed_evil"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:box_of_sealed_evil"
+          }
+        ]
+      }
+    }
   }
 }

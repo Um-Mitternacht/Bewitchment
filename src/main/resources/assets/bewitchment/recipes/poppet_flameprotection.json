@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "minecraft:magma_cream"
-	},
-	{
-	  "item": "bewitchment:dragons_blood_resin"
-	},
-	{
-	  "item": "bewitchment:embergrass"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "minecraft:magma_cream"
+    },
+    {
+      "item": "bewitchment:dragons_blood_resin"
+    },
+    {
+      "item": "bewitchment:embergrass"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_flameprotection",
-	"count": 1
+    "item": "bewitchment:poppet_flameprotection",
+    "count": 1
   }
 }

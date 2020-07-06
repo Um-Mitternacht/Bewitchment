@@ -3,10 +3,10 @@
   "category": "poppets",
   "icon": "bewitchment:poppet_earthprotection",
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_earthprotection",
-	  "text": "Reduces fall damage"
-	}
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_earthprotection",
+      "text": "Reduces fall damage"
+    }
   ]
 }

@@ -1,145 +1,145 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:witches_altar",
-	"textures": {
-	  "end": "bewitchment:blocks/altar/coquina_end",
-	  "side": "bewitchment:blocks/altar/coquina_side"
-	}
+    "model": "bewitchment:witches_altar",
+    "textures": {
+      "end": "bewitchment:blocks/altar/coquina_end",
+      "side": "bewitchment:blocks/altar/coquina_side"
+    }
   },
   "variants": {
-	"normal": [
-	  {
-	  }
-	],
-	"type": {
-	  "0": {
-	  },
-	  "1": {
-	  },
-	  "2": {
-	  }
-	},
-	"color": {
-	  "0": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/nothing",
-		  "cloth_side": "bewitchment:blocks/nothing",
-		  "shadow": "bewitchment:blocks/nothing"
-		}
-	  },
-	  "1": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_white",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_white",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "2": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_orange",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_orange",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "3": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_magenta",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_magenta",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "4": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_light_blue",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_light_blue",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "5": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_yellow",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_yellow",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "6": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_lime",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_lime",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "7": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_pink",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_pink",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "8": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_gray",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_gray",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "9": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_light_gray",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_light_gray",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "10": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_cyan",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_cyan",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "11": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_purple",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_purple",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "12": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_blue",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_blue",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "13": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_brown",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_brown",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "14": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_green",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_green",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "15": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_red",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_red",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  },
-	  "16": {
-		"textures": {
-		  "cloth_top": "bewitchment:blocks/altar/cloth/top_black",
-		  "cloth_side": "bewitchment:blocks/altar/cloth/side_black",
-		  "shadow": "bewitchment:blocks/altar/coquina_shadow"
-		}
-	  }
-	}
+    "normal": [
+      {
+      }
+    ],
+    "type": {
+      "0": {
+      },
+      "1": {
+      },
+      "2": {
+      }
+    },
+    "color": {
+      "0": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/nothing",
+          "cloth_side": "bewitchment:blocks/nothing",
+          "shadow": "bewitchment:blocks/nothing"
+        }
+      },
+      "1": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_white",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_white",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "2": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_orange",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_orange",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "3": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_magenta",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_magenta",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "4": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_light_blue",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_light_blue",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "5": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_yellow",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_yellow",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "6": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_lime",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_lime",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "7": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_pink",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_pink",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "8": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_gray",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_gray",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "9": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_light_gray",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_light_gray",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "10": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_cyan",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_cyan",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "11": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_purple",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_purple",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "12": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_blue",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_blue",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "13": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_brown",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_brown",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "14": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_green",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_green",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "15": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_red",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_red",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      },
+      "16": {
+        "textures": {
+          "cloth_top": "bewitchment:blocks/altar/cloth/top_black",
+          "cloth_side": "bewitchment:blocks/altar/cloth/side_black",
+          "shadow": "bewitchment:blocks/altar/coquina_shadow"
+        }
+      }
+    }
   }
 }

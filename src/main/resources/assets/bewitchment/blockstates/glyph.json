@@ -1,61 +1,61 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:glyph"
+    "model": "bewitchment:glyph"
   },
   "variants": {
-	"facing": {
-	  "north": {
-		"y": 0
-	  },
-	  "south": {
-		"y": 180
-	  },
-	  "east": {
-		"y": 90
-	  },
-	  "west": {
-		"y": 270
-	  }
-	},
-	"letter": {
-	  "0": {
-		"textures": {
-		  "texture": "bewitchment:blocks/glyph/glyph0"
-		}
-	  },
-	  "1": {
-		"textures": {
-		  "texture": "bewitchment:blocks/glyph/glyph1"
-		}
-	  },
-	  "2": {
-		"textures": {
-		  "texture": "bewitchment:blocks/glyph/glyph2"
-		}
-	  },
-	  "3": {
-		"textures": {
-		  "texture": "bewitchment:blocks/glyph/glyph3"
-		}
-	  },
-	  "4": {
-		"textures": {
-		  "texture": "bewitchment:blocks/glyph/glyph4"
-		}
-	  },
-	  "5": {
-		"textures": {
-		  "texture": "bewitchment:blocks/glyph/glyph5"
-		}
-	  }
-	},
-	"type": {
-	  "0": {},
-	  "1": {},
-	  "2": {},
-	  "3": {},
-	  "4": {}
-	}
+    "facing": {
+      "north": {
+        "y": 0
+      },
+      "south": {
+        "y": 180
+      },
+      "east": {
+        "y": 90
+      },
+      "west": {
+        "y": 270
+      }
+    },
+    "letter": {
+      "0": {
+        "textures": {
+          "texture": "bewitchment:blocks/glyph/glyph0"
+        }
+      },
+      "1": {
+        "textures": {
+          "texture": "bewitchment:blocks/glyph/glyph1"
+        }
+      },
+      "2": {
+        "textures": {
+          "texture": "bewitchment:blocks/glyph/glyph2"
+        }
+      },
+      "3": {
+        "textures": {
+          "texture": "bewitchment:blocks/glyph/glyph3"
+        }
+      },
+      "4": {
+        "textures": {
+          "texture": "bewitchment:blocks/glyph/glyph4"
+        }
+      },
+      "5": {
+        "textures": {
+          "texture": "bewitchment:blocks/glyph/glyph5"
+        }
+      }
+    },
+    "type": {
+      "0": {},
+      "1": {},
+      "2": {},
+      "3": {},
+      "4": {}
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_inventory",
   "textures": {
-	"wall": "bewitchment:blocks/scorned_bricks"
+    "wall": "bewitchment:blocks/scorned_bricks"
   }
 }

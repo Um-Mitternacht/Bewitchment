@@ -1,67 +1,67 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cross",
-	"textures": {
-	  "cross": "bewitchment:blocks/crop/crop_hellebore_0"
-	}
+    "model": "cross",
+    "textures": {
+      "cross": "bewitchment:blocks/crop/crop_hellebore_0"
+    }
   },
   "variants": {
-	"age=0": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_0"
-		}
-	  }
-	],
-	"age=1": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_1"
-		}
-	  }
-	],
-	"age=2": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_1"
-		}
-	  }
-	],
-	"age=3": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_1"
-		}
-	  }
-	],
-	"age=4": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_2"
-		}
-	  }
-	],
-	"age=5": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_2"
-		}
-	  }
-	],
-	"age=6": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_2"
-		}
-	  }
-	],
-	"age=7": [
-	  {
-		"textures": {
-		  "cross": "bewitchment:blocks/crop/crop_hellebore_3"
-		}
-	  }
-	]
+    "age=0": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_0"
+        }
+      }
+    ],
+    "age=1": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_1"
+        }
+      }
+    ],
+    "age=2": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_1"
+        }
+      }
+    ],
+    "age=3": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_1"
+        }
+      }
+    ],
+    "age=4": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_2"
+        }
+      }
+    ],
+    "age=5": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_2"
+        }
+      }
+    ],
+    "age=6": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_2"
+        }
+      }
+    ],
+    "age=7": [
+      {
+        "textures": {
+          "cross": "bewitchment:blocks/crop/crop_hellebore_3"
+        }
+      }
+    ]
   }
 }

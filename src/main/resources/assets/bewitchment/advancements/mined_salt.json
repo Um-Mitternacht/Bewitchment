@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:salt"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.mined_salt.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.mined_salt.description"
-	}
+    "icon": {
+      "item": "bewitchment:salt"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.mined_salt.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.mined_salt.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:salt"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:salt"
+          }
+        ]
+      }
+    }
   }
 }

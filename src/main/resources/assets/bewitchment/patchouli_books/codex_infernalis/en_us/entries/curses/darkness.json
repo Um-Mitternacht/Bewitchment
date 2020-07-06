@@ -3,10 +3,10 @@
   "category": "curses",
   "icon": "minecraft:dye",
   "pages": [
-	{
-	  "type": "bewitchment:curse_recipe",
-	  "recipe": "bewitchment:darkness",
-	  "text": "Blinds all those near the target, along with the target themselves.  Not constant, randomly occurs for the duration of the curse."
-	}
+    {
+      "type": "bewitchment:curse_recipe",
+      "recipe": "bewitchment:darkness",
+      "text": "Blinds all those near the target, along with the target themselves.  Not constant, randomly occurs for the duration of the curse."
+    }
   ]
 }

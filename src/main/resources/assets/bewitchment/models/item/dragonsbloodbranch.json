@@ -1,7 +1,7 @@
 {
   "parent": "dynamictrees:item/branch",
   "textures": {
-	"bark": "bewitchment:blocks/dragons_blood_log_side",
-	"rings": "bewitchment:blocks/dragons_blood_log_top"
+    "bark": "bewitchment:blocks/dragons_blood_log_side",
+    "rings": "bewitchment:blocks/dragons_blood_log_top"
   }
 }

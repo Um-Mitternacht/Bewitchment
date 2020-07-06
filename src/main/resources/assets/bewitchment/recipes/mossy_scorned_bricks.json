@@ -1,21 +1,21 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:scorned_bricks"
-	},
-	{
-	  "item": "bewitchment:scorned_bricks"
-	},
-	{
-	  "item": "minecraft:nether_wart_block"
-	},
-	{
-	  "item": "minecraft:nether_wart_block"
-	}
+    {
+      "item": "bewitchment:scorned_bricks"
+    },
+    {
+      "item": "bewitchment:scorned_bricks"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    }
   ],
   "result": {
-	"item": "bewitchment:mossy_scorned_bricks",
-	"count": 4
+    "item": "bewitchment:mossy_scorned_bricks",
+    "count": 4
   }
 }

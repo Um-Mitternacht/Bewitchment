@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:flying_ointment"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.fda.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.fda.description"
-	}
+    "icon": {
+      "item": "bewitchment:flying_ointment"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.fda.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.fda.description"
+    }
   },
   "parent": "bewitchment:eye_of_newt",
   "criteria": {
-	"fda": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:flying_ointment"
-		  }
-		]
-	  }
-	}
+    "fda": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:flying_ointment"
+          }
+        ]
+      }
+    }
   }
 }

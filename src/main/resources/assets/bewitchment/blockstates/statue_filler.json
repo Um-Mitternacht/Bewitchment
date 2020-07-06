@@ -1,15 +1,15 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/nothing",
-	  "particle": "blocks/stonebrick"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/nothing",
+      "particle": "blocks/stonebrick"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

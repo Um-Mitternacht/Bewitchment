@@ -1,22 +1,22 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "minecraft:rotten_flesh"
-	},
-	{
-	  "item": "bewitchment:belladonna"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "bone"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "bewitchment:belladonna"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "bone"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_wasting",
-	"count": 1
+    "item": "bewitchment:poppet_wasting",
+    "count": 1
   }
 }

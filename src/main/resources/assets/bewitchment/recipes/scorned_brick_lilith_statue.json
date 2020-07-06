@@ -1,22 +1,22 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"F F",
-	"FDF",
-	"FRF"
+    "F F",
+    "FDF",
+    "FRF"
   ],
   "key": {
-	"F": {
-	  "item": "bewitchment:scorned_bricks"
-	},
-	"D": {
-	  "item": "bewitchment:bottled_hellfire"
-	},
-	"R": {
-	  "item": "bewitchment:bottle_of_blood"
-	}
+    "F": {
+      "item": "bewitchment:scorned_bricks"
+    },
+    "D": {
+      "item": "bewitchment:bottled_hellfire"
+    },
+    "R": {
+      "item": "bewitchment:bottle_of_blood"
+    }
   },
   "result": {
-	"item": "bewitchment:scorned_brick_lilith_statue"
+    "item": "bewitchment:scorned_brick_lilith_statue"
   }
 }

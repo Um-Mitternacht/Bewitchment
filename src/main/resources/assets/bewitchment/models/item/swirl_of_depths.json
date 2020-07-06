@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/swirl_of_depths"
+    "layer0": "bewitchment:items/swirl_of_depths"
   }
 }

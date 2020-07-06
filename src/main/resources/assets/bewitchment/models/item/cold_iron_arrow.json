@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/cold_iron_arrow"
+    "layer0": "bewitchment:items/cold_iron_arrow"
   }
 }

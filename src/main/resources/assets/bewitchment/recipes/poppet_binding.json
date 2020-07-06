@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "minecraft:vine"
-	},
-	{
-	  "item": "bewitchment:iron_gall_ink"
-	},
-	{
-	  "item": "bewitchment:dragons_blood_resin"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "minecraft:vine"
+    },
+    {
+      "item": "bewitchment:iron_gall_ink"
+    },
+    {
+      "item": "bewitchment:dragons_blood_resin"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_binding",
-	"count": 1
+    "item": "bewitchment:poppet_binding",
+    "count": 1
   }
 }

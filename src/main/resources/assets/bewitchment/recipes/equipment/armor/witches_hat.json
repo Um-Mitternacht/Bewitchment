@@ -1,24 +1,24 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	" L ",
-	"WLW",
-	"LGL"
+    " L ",
+    "WLW",
+    "LGL"
   ],
   "key": {
-	"L": {
-	  "type": "forge:ore_dict",
-	  "ore": "leather"
-	},
-	"W": {
-	  "item": "bewitchment:witches_stitching"
-	},
-	"G": {
-	  "type": "forge:ore_dict",
-	  "ore": "dustGlowstone"
-	}
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "leather"
+    },
+    "W": {
+      "item": "bewitchment:witches_stitching"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "dustGlowstone"
+    }
   },
   "result": {
-	"item": "bewitchment:witches_hat"
+    "item": "bewitchment:witches_hat"
   }
 }

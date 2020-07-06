@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"BBB",
-	"BBB"
+    "BBB",
+    "BBB"
   ],
   "key": {
-	"B": {
-	  "item": "bewitchment:despair_bricks"
-	}
+    "B": {
+      "item": "bewitchment:despair_bricks"
+    }
   },
   "result": {
-	"item": "bewitchment:despair_brick_fence",
-	"count": 6
+    "item": "bewitchment:despair_brick_fence",
+    "count": 6
   }
 }

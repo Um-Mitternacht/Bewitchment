@@ -3,1047 +3,1047 @@
   "parent": "minecraft:block/block",
   "ambientocclusion": false,
   "textures": {
-	"particle": "bewitchment:models/leonards_wand"
+    "particle": "bewitchment:models/leonards_wand"
   },
   "elements": [
-	{
-	  "name": "bottomSpikeBase",
-	  "from": [
-		6.56,
-		-6.768,
-		9.44
-	  ],
-	  "to": [
-		9.44,
-		-2.448,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			1,
-			14.5,
-			2,
-			16
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0.5,
-			14.5,
-			1,
-			16
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			2.5,
-			14.5,
-			3.5,
-			16
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			2,
-			14.5,
-			2.5,
-			16
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			2,
-			14.5,
-			1,
-			14
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			3,
-			14,
-			2,
-			14.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "spikesPlateRightLower",
-	  "from": [
-		3.248,
-		12.24,
-		9.44
-	  ],
-	  "to": [
-		4.688,
-		15.12,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": 45,
-		"axis": "z",
-		"origin": [
-		  -4.96,
-		  28.8,
-		  -3.52
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			9,
-			7,
-			9.5,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			8.5,
-			7,
-			9,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			10,
-			7,
-			10.5,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			9.5,
-			7,
-			10,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			9.5,
-			7,
-			9,
-			6.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			10,
-			6.5,
-			9.5,
-			7
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "bottomSpikeTip",
-	  "from": [
-		7.28,
-		-9.504,
-		9.44
-	  ],
-	  "to": [
-		8.72,
-		-6.624,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			5,
-			14,
-			5.5,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			4.5,
-			14,
-			5,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			6,
-			14,
-			6.5,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			5.5,
-			14,
-			6,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			5.5,
-			14,
-			5,
-			13.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			6,
-			13.5,
-			5.5,
-			14
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "spikesPlate",
-	  "from": [
-		5.12,
-		23.76,
-		8.72
-	  ],
-	  "to": [
-		10.88,
-		25.2,
-		11.6
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			8,
-			12.5,
-			10,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			7,
-			12.5,
-			8,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			11,
-			12.5,
-			13,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			10,
-			12.5,
-			11,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			10,
-			12.5,
-			8,
-			11.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			12,
-			11.5,
-			10,
-			12.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "shaft",
-	  "from": [
-		5.84,
-		-2.88,
-		8.72
-	  ],
-	  "to": [
-		10.16,
-		21.6,
-		11.6
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			1,
-			1,
-			2.5,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			1,
-			1,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			3.5,
-			1,
-			5,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			2.5,
-			1,
-			3.5,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			2.5,
-			1,
-			1,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			4,
-			0,
-			2.5,
-			1
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "spikesPlateLeftLower",
-	  "from": [
-		4.544,
-		28.512,
-		9.44
-	  ],
-	  "to": [
-		5.984,
-		31.392,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": -45,
-		"axis": "z",
-		"origin": [
-		  -2.08,
-		  28.8,
-		  -3.52
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			9,
-			7,
-			9.5,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			8.5,
-			7,
-			9,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			10,
-			7,
-			10.5,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			9.5,
-			7,
-			10,
-			8
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			9.5,
-			7,
-			9,
-			6.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			10,
-			6.5,
-			9.5,
-			7
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "spikesBase",
-	  "from": [
-		6.56,
-		21.168,
-		9.44
-	  ],
-	  "to": [
-		9.44,
-		24.048,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			7.5,
-			14,
-			8.5,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			7,
-			14,
-			7.5,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			9,
-			14,
-			10,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			8.5,
-			14,
-			9,
-			15
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			8.5,
-			14,
-			7.5,
-			13.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			9.5,
-			13.5,
-			8.5,
-			14
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "leftSpike",
-	  "from": [
-		5.264,
-		24.48,
-		9.44
-	  ],
-	  "to": [
-		6.704,
-		30.24,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			6,
-			8,
-			6.5,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			5.5,
-			8,
-			6,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			7,
-			8,
-			7.5,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			6.5,
-			8,
-			7,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			6.5,
-			8,
-			6,
-			7.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			7,
-			7.5,
-			6.5,
-			8
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "rightSpike",
-	  "from": [
-		9.296,
-		24.48,
-		9.44
-	  ],
-	  "to": [
-		10.736,
-		30.24,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			6,
-			8,
-			6.5,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			5.5,
-			8,
-			6,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			7,
-			8,
-			7.5,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			6.5,
-			8,
-			7,
-			10
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			6.5,
-			8,
-			6,
-			7.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			7,
-			7.5,
-			6.5,
-			8
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "middleSpike",
-	  "from": [
-		7.28,
-		24.48,
-		9.44
-	  ],
-	  "to": [
-		8.72,
-		31.68,
-		10.88
-	  ],
-	  "rotation": {
-		"angle": 0,
-		"axis": "y",
-		"origin": [
-		  8,
-		  11.52,
-		  8
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			6,
-			8,
-			6.5,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			5.5,
-			8,
-			6,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			7,
-			8,
-			7.5,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			6.5,
-			8,
-			7,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			6.5,
-			8,
-			6,
-			7.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			7,
-			7.5,
-			6.5,
-			8
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "spikesPlateLeftMain",
-	  "from": [
-		5.12,
-		26.928,
-		8.72
-	  ],
-	  "to": [
-		6.56,
-		28.368,
-		11.6
-	  ],
-	  "rotation": {
-		"angle": -22.5,
-		"axis": "z",
-		"origin": [
-		  -2.08,
-		  28.8,
-		  -3.52
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			9.5,
-			10,
-			10,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			8.5,
-			10,
-			9.5,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			11,
-			10,
-			11.5,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			10,
-			10,
-			11,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			10,
-			10,
-			9.5,
-			9
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			10.5,
-			9,
-			10,
-			10
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "spikesPlateRightMain",
-	  "from": [
-		7.712,
-		18.144,
-		8.72
-	  ],
-	  "to": [
-		9.152,
-		19.584,
-		11.6
-	  ],
-	  "rotation": {
-		"angle": 22.5,
-		"axis": "z",
-		"origin": [
-		  -4.96,
-		  28.8,
-		  -3.52
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			9.5,
-			10,
-			10,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			8.5,
-			10,
-			9.5,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			11,
-			10,
-			11.5,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			10,
-			10,
-			11,
-			10.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			10,
-			10,
-			9.5,
-			9
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			10.5,
-			9,
-			10,
-			10
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	}
+    {
+      "name": "bottomSpikeBase",
+      "from": [
+        6.56,
+        -6.768,
+        9.44
+      ],
+      "to": [
+        9.44,
+        -2.448,
+        10.88
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            14.5,
+            2,
+            16
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0.5,
+            14.5,
+            1,
+            16
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            2.5,
+            14.5,
+            3.5,
+            16
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            2,
+            14.5,
+            2.5,
+            16
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            2,
+            14.5,
+            1,
+            14
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            3,
+            14,
+            2,
+            14.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "spikesPlateRightLower",
+      "from": [
+        3.248,
+        12.24,
+        9.44
+      ],
+      "to": [
+        4.688,
+        15.12,
+        10.88
+      ],
+      "rotation": {
+        "angle": 45,
+        "axis": "z",
+        "origin": [
+          -4.96,
+          28.8,
+          -3.52
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            9,
+            7,
+            9.5,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            8.5,
+            7,
+            9,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            10,
+            7,
+            10.5,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            9.5,
+            7,
+            10,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            9.5,
+            7,
+            9,
+            6.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            10,
+            6.5,
+            9.5,
+            7
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "bottomSpikeTip",
+      "from": [
+        7.28,
+        -9.504,
+        9.44
+      ],
+      "to": [
+        8.72,
+        -6.624,
+        10.88
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            14,
+            5.5,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            4.5,
+            14,
+            5,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            6,
+            14,
+            6.5,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            5.5,
+            14,
+            6,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            5.5,
+            14,
+            5,
+            13.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            6,
+            13.5,
+            5.5,
+            14
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "spikesPlate",
+      "from": [
+        5.12,
+        23.76,
+        8.72
+      ],
+      "to": [
+        10.88,
+        25.2,
+        11.6
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            12.5,
+            10,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            7,
+            12.5,
+            8,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            11,
+            12.5,
+            13,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            10,
+            12.5,
+            11,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            10,
+            12.5,
+            8,
+            11.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            12,
+            11.5,
+            10,
+            12.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "shaft",
+      "from": [
+        5.84,
+        -2.88,
+        8.72
+      ],
+      "to": [
+        10.16,
+        21.6,
+        11.6
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            1,
+            2.5,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            1,
+            1,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            3.5,
+            1,
+            5,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            2.5,
+            1,
+            3.5,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            2.5,
+            1,
+            1,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            4,
+            0,
+            2.5,
+            1
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "spikesPlateLeftLower",
+      "from": [
+        4.544,
+        28.512,
+        9.44
+      ],
+      "to": [
+        5.984,
+        31.392,
+        10.88
+      ],
+      "rotation": {
+        "angle": -45,
+        "axis": "z",
+        "origin": [
+          -2.08,
+          28.8,
+          -3.52
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            9,
+            7,
+            9.5,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            8.5,
+            7,
+            9,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            10,
+            7,
+            10.5,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            9.5,
+            7,
+            10,
+            8
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            9.5,
+            7,
+            9,
+            6.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            10,
+            6.5,
+            9.5,
+            7
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "spikesBase",
+      "from": [
+        6.56,
+        21.168,
+        9.44
+      ],
+      "to": [
+        9.44,
+        24.048,
+        10.88
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            7.5,
+            14,
+            8.5,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            7,
+            14,
+            7.5,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            9,
+            14,
+            10,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            8.5,
+            14,
+            9,
+            15
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            8.5,
+            14,
+            7.5,
+            13.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            9.5,
+            13.5,
+            8.5,
+            14
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "leftSpike",
+      "from": [
+        5.264,
+        24.48,
+        9.44
+      ],
+      "to": [
+        6.704,
+        30.24,
+        10.88
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            8,
+            6.5,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            5.5,
+            8,
+            6,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            7,
+            8,
+            7.5,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            8,
+            7,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            8,
+            6,
+            7.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            7,
+            7.5,
+            6.5,
+            8
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "rightSpike",
+      "from": [
+        9.296,
+        24.48,
+        9.44
+      ],
+      "to": [
+        10.736,
+        30.24,
+        10.88
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            8,
+            6.5,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            5.5,
+            8,
+            6,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            7,
+            8,
+            7.5,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            8,
+            7,
+            10
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            8,
+            6,
+            7.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            7,
+            7.5,
+            6.5,
+            8
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "middleSpike",
+      "from": [
+        7.28,
+        24.48,
+        9.44
+      ],
+      "to": [
+        8.72,
+        31.68,
+        10.88
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          11.52,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            8,
+            6.5,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            5.5,
+            8,
+            6,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            7,
+            8,
+            7.5,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            8,
+            7,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            8,
+            6,
+            7.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            7,
+            7.5,
+            6.5,
+            8
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "spikesPlateLeftMain",
+      "from": [
+        5.12,
+        26.928,
+        8.72
+      ],
+      "to": [
+        6.56,
+        28.368,
+        11.6
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "z",
+        "origin": [
+          -2.08,
+          28.8,
+          -3.52
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            9.5,
+            10,
+            10,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            8.5,
+            10,
+            9.5,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            11,
+            10,
+            11.5,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            10,
+            10,
+            11,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            10,
+            10,
+            9.5,
+            9
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            10.5,
+            9,
+            10,
+            10
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "spikesPlateRightMain",
+      "from": [
+        7.712,
+        18.144,
+        8.72
+      ],
+      "to": [
+        9.152,
+        19.584,
+        11.6
+      ],
+      "rotation": {
+        "angle": 22.5,
+        "axis": "z",
+        "origin": [
+          -4.96,
+          28.8,
+          -3.52
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            9.5,
+            10,
+            10,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            8.5,
+            10,
+            9.5,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            11,
+            10,
+            11.5,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            10,
+            10,
+            11,
+            10.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            10,
+            10,
+            9.5,
+            9
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            10.5,
+            9,
+            10,
+            10
+          ],
+          "texture": "#particle"
+        }
+      }
+    }
   ],
   "display": {
-	"thirdperson_righthand": {
-	  "translation": [
-		0,
-		-1.25,
-		0
-	  ],
-	  "scale": [
-		0.45,
-		0.45,
-		0.45
-	  ]
-	},
-	"thirdperson_lefthand": {
-	  "translation": [
-		0,
-		-1.25,
-		0
-	  ],
-	  "scale": [
-		0.45,
-		0.45,
-		0.45
-	  ]
-	},
-	"firstperson_righthand": {
-	  "translation": [
-		0,
-		-1.25,
-		0
-	  ],
-	  "scale": [
-		0.45,
-		0.45,
-		0.45
-	  ]
-	},
-	"firstperson_lefthand": {
-	  "translation": [
-		0,
-		-0.25,
-		0
-	  ],
-	  "scale": [
-		0.65,
-		0.65,
-		0.65
-	  ]
-	},
-	"ground": {
-	  "translation": [
-		0,
-		0.75,
-		0
-	  ],
-	  "scale": [
-		0.2,
-		0.2,
-		0.2
-	  ]
-	},
-	"gui": {
-	  "rotation": [
-		10,
-		-5,
-		38
-	  ],
-	  "translation": [
-		0,
-		-0.75,
-		0
-	  ],
-	  "scale": [
-		0.4,
-		0.4,
-		0.4
-	  ]
-	},
-	"head": {
-	  "translation": [
-		0,
-		-1.25,
-		0
-	  ],
-	  "scale": [
-		0.45,
-		0.45,
-		0.45
-	  ]
-	},
-	"fixed": {
-	  "translation": [
-		0,
-		-1,
-		-2
-	  ],
-	  "scale": [
-		0.4,
-		0.4,
-		0.4
-	  ]
-	}
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        -1.25,
+        0
+      ],
+      "scale": [
+        0.45,
+        0.45,
+        0.45
+      ]
+    },
+    "thirdperson_lefthand": {
+      "translation": [
+        0,
+        -1.25,
+        0
+      ],
+      "scale": [
+        0.45,
+        0.45,
+        0.45
+      ]
+    },
+    "firstperson_righthand": {
+      "translation": [
+        0,
+        -1.25,
+        0
+      ],
+      "scale": [
+        0.45,
+        0.45,
+        0.45
+      ]
+    },
+    "firstperson_lefthand": {
+      "translation": [
+        0,
+        -0.25,
+        0
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        0.75,
+        0
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "gui": {
+      "rotation": [
+        10,
+        -5,
+        38
+      ],
+      "translation": [
+        0,
+        -0.75,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        -1.25,
+        0
+      ],
+      "scale": [
+        0.45,
+        0.45,
+        0.45
+      ]
+    },
+    "fixed": {
+      "translation": [
+        0,
+        -1,
+        -2
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    }
   }
 }

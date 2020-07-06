@@ -1,69 +1,69 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"uvlock": true,
-	"model": "cube_all",
-	"textures": {
-	  "texture": "bewitchment:blocks/elder_planks"
-	}
+    "uvlock": true,
+    "model": "cube_all",
+    "textures": {
+      "texture": "bewitchment:blocks/elder_planks"
+    }
   },
   "variants": {
-	"normal": [
-	  {
-		"model": "button_inventory"
-	  }
-	],
-	"facing=up,powered=false": {
-	  "model": "button"
-	},
-	"facing=down,powered=false": {
-	  "model": "button",
-	  "x": 180
-	},
-	"facing=east,powered=false": {
-	  "model": "button",
-	  "x": 90,
-	  "y": 90
-	},
-	"facing=west,powered=false": {
-	  "model": "button",
-	  "x": 90,
-	  "y": 270
-	},
-	"facing=south,powered=false": {
-	  "model": "button",
-	  "x": 90,
-	  "y": 180
-	},
-	"facing=north,powered=false": {
-	  "model": "button",
-	  "x": 90
-	},
-	"facing=up,powered=true": {
-	  "model": "button_pressed"
-	},
-	"facing=down,powered=true": {
-	  "model": "button_pressed",
-	  "x": 180
-	},
-	"facing=east,powered=true": {
-	  "model": "button_pressed",
-	  "x": 90,
-	  "y": 90
-	},
-	"facing=west,powered=true": {
-	  "model": "button_pressed",
-	  "x": 90,
-	  "y": 270
-	},
-	"facing=south,powered=true": {
-	  "model": "button_pressed",
-	  "x": 90,
-	  "y": 180
-	},
-	"facing=north,powered=true": {
-	  "model": "button_pressed",
-	  "x": 90
-	}
+    "normal": [
+      {
+        "model": "button_inventory"
+      }
+    ],
+    "facing=up,powered=false": {
+      "model": "button"
+    },
+    "facing=down,powered=false": {
+      "model": "button",
+      "x": 180
+    },
+    "facing=east,powered=false": {
+      "model": "button",
+      "x": 90,
+      "y": 90
+    },
+    "facing=west,powered=false": {
+      "model": "button",
+      "x": 90,
+      "y": 270
+    },
+    "facing=south,powered=false": {
+      "model": "button",
+      "x": 90,
+      "y": 180
+    },
+    "facing=north,powered=false": {
+      "model": "button",
+      "x": 90
+    },
+    "facing=up,powered=true": {
+      "model": "button_pressed"
+    },
+    "facing=down,powered=true": {
+      "model": "button_pressed",
+      "x": 180
+    },
+    "facing=east,powered=true": {
+      "model": "button_pressed",
+      "x": 90,
+      "y": 90
+    },
+    "facing=west,powered=true": {
+      "model": "button_pressed",
+      "x": 90,
+      "y": 270
+    },
+    "facing=south,powered=true": {
+      "model": "button_pressed",
+      "x": 90,
+      "y": 180
+    },
+    "facing=north,powered=true": {
+      "model": "button_pressed",
+      "x": 90
+    }
   }
 }

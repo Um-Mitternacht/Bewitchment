@@ -1,27 +1,27 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"POP",
-	"OGO",
-	"LOL"
+    "POP",
+    "OGO",
+    "LOL"
   ],
   "key": {
-	"P": {
-	  "item": "bewitchment:pure_filament"
-	},
-	"O": {
-	  "item": "bewitchment:oak_spirit"
-	},
-	"L": {
-	  "type": "forge:ore_dict",
-	  "ore": "logWood"
-	},
-	"G": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemGarnet"
-	}
+    "P": {
+      "item": "bewitchment:pure_filament"
+    },
+    "O": {
+      "item": "bewitchment:oak_spirit"
+    },
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "logWood"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "gemGarnet"
+    }
   },
   "result": {
-	"item": "bewitchment:girdle_of_the_dryads"
+    "item": "bewitchment:girdle_of_the_dryads"
   }
 }

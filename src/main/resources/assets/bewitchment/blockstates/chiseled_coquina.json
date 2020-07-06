@@ -1,14 +1,14 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/chiseled_coquina"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/chiseled_coquina"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

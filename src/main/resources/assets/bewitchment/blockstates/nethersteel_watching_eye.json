@@ -1,14 +1,14 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/chisel/nethersteel/watching_eye"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/chisel/nethersteel/watching_eye"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

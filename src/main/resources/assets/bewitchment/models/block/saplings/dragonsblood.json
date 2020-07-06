@@ -1,8 +1,8 @@
 {
   "parent": "dynamictrees:block/sapling",
   "textures": {
-	"particle": "bewitchment:blocks/dragons_blood_leaves",
-	"log": "bewitchment:blocks/dragons_blood_log_side",
-	"leaves": "bewitchment:blocks/dragons_blood_leaves"
+    "particle": "bewitchment:blocks/dragons_blood_leaves",
+    "log": "bewitchment:blocks/dragons_blood_log_side",
+    "leaves": "bewitchment:blocks/dragons_blood_leaves"
   }
 }

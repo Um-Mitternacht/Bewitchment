@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:brazier"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.brazier.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.brazier.description"
-	}
+    "icon": {
+      "item": "bewitchment:brazier"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.brazier.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.brazier.description"
+    }
   },
   "parent": "bewitchment:distillery",
   "criteria": {
-	"brazier": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:brazier"
-		  }
-		]
-	  }
-	}
+    "brazier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:brazier"
+          }
+        ]
+      }
+    }
   }
 }

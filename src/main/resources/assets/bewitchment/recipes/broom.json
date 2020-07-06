@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	" S ",
-	" S ",
-	"HHH"
+    " S ",
+    " S ",
+    "HHH"
   ],
   "key": {
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	"H": {
-	  "item": "minecraft:hay_block"
-	}
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "H": {
+      "item": "minecraft:hay_block"
+    }
   },
   "result": {
-	"item": "bewitchment:broom"
+    "item": "bewitchment:broom"
   }
 }

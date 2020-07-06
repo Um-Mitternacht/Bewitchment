@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:poppet"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.voodoo.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.voodoo.description"
-	}
+    "icon": {
+      "item": "bewitchment:poppet"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.voodoo.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.voodoo.description"
+    }
   },
   "parent": "bewitchment:loom",
   "criteria": {
-	"voodoo": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:poppet"
-		  }
-		]
-	  }
-	}
+    "voodoo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:poppet"
+          }
+        ]
+      }
+    }
   }
 }

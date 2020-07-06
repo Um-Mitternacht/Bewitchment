@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"PP"
+    "PP"
   ],
   "key": {
-	"P": {
-	  "item": "bewitchment:juniper_planks"
-	}
+    "P": {
+      "item": "bewitchment:juniper_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:juniper_pressure_plate"
+    "item": "bewitchment:juniper_pressure_plate"
   }
 }

@@ -3,10 +3,10 @@
   "category": "curses",
   "icon": "minecraft:double_plant",
   "pages": [
-	{
-	  "type": "bewitchment:curse_recipe",
-	  "recipe": "bewitchment:solar_hatred",
-	  "text": "Weakens the target’s flesh, causing it to burn and crack when in the presence of sunlight, like that of a foul undead."
-	}
+    {
+      "type": "bewitchment:curse_recipe",
+      "recipe": "bewitchment:solar_hatred",
+      "text": "Weakens the target’s flesh, causing it to burn and crack when in the presence of sunlight, like that of a foul undead."
+    }
   ]
 }

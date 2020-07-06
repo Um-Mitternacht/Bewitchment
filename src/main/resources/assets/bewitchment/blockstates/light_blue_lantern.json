@@ -1,14 +1,14 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:lantern",
-	"textures": {
-	  "0": "bewitchment:blocks/candle/light_blue"
-	}
+    "model": "bewitchment:lantern",
+    "textures": {
+      "0": "bewitchment:blocks/candle/light_blue"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

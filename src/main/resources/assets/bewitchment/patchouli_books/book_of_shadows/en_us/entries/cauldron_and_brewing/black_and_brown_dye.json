@@ -3,19 +3,19 @@
   "category": "cauldron_and_brewing",
   "icon": "bewitchment:iron_gall_ink",
   "pages": [
-	{
-	  "type": "text",
-	  "text": "Just some alternative ways to get these colors"
-	},
-	{
-	  "type": "bewitchment:cauldron_recipe",
-	  "recipe": "bewitchment:iron_gall_ink",
-	  "text": "A cruelty-free substitute for Ink Sacs. Some claim it is vital in the creation of demonic contracts…"
-	},
-	{
-	  "type": "bewitchment:cauldron_recipe",
-	  "recipe": "bewitchment:catechu_brown",
-	  "text": "A wood-derived alternative to cocoa beans for brown dye."
-	}
+    {
+      "type": "text",
+      "text": "Just some alternative ways to get these colors"
+    },
+    {
+      "type": "bewitchment:cauldron_recipe",
+      "recipe": "bewitchment:iron_gall_ink",
+      "text": "A cruelty-free substitute for Ink Sacs. Some claim it is vital in the creation of demonic contracts…"
+    },
+    {
+      "type": "bewitchment:cauldron_recipe",
+      "recipe": "bewitchment:catechu_brown",
+      "text": "A wood-derived alternative to cocoa beans for brown dye."
+    }
   ]
 }

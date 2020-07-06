@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:dragons_blood_wood"
-	}
+    {
+      "item": "bewitchment:dragons_blood_wood"
+    }
   ],
   "result": {
-	"item": "bewitchment:dragons_blood_planks",
-	"count": 4
+    "item": "bewitchment:dragons_blood_planks",
+    "count": 4
   }
 }

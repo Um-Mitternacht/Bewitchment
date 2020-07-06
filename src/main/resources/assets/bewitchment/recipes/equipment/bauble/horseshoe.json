@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"C C",
-	"CAC",
-	"CCC"
+    "C C",
+    "CAC",
+    "CCC"
   ],
   "key": {
-	"C": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetColdIron"
-	},
-	"A": {
-	  "item": "bewitchment:acacia_resin"
-	}
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetColdIron"
+    },
+    "A": {
+      "item": "bewitchment:acacia_resin"
+    }
   },
   "result": {
-	"item": "bewitchment:horseshoe"
+    "item": "bewitchment:horseshoe"
   }
 }

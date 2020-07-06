@@ -3,10 +3,10 @@
   "category": "poppets",
   "icon": "bewitchment:poppet_binding",
   "pages": [
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:poppet_binding",
-	  "text": "Slows those who attack you"
-	}
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:poppet_binding",
+      "text": "Slows those who attack you"
+    }
   ]
 }

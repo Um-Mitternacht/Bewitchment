@@ -1,16 +1,16 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"###"
+    "###"
   ],
   "key": {
-	"#": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	}
+    "#": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    }
   },
   "result": {
-	"item": "bewitchment:silver_plate",
-	"count": 3
+    "item": "bewitchment:silver_plate",
+    "count": 3
   }
 }

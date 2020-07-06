@@ -1,136 +1,136 @@
 {
   "pools": [
-	{
-	  "rolls": 3,
-	  "name": "druden",
-	  "entries": [
-		{
-		  "type": "item",
-		  "name": "bewitchment:heart",
-		  "weight": 3,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 1
-			  }
-			},
-			{
-			  "function": "looting_enchant",
-			  "count": {
-				"min": 0,
-				"max": 1
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:cypress_sapling",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			},
-			{
-			  "function": "looting_enchant",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "minecraft:sapling",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			},
-			{
-			  "function": "set_data",
-			  "data": {
-				"min": 0,
-				"max": 5
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:elder_sapling",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			},
-			{
-			  "function": "looting_enchant",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:oak_apple_gall",
-		  "weight": 3,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 4
-			  }
-			},
-			{
-			  "function": "looting_enchant",
-			  "count": {
-				"min": 0,
-				"max": 4
-			  }
-			}
-		  ]
-		},
-		{
-		  "type": "item",
-		  "name": "bewitchment:juniper_sapling",
-		  "weight": 2,
-		  "functions": [
-			{
-			  "function": "set_count",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			},
-			{
-			  "function": "looting_enchant",
-			  "count": {
-				"min": 0,
-				"max": 2
-			  }
-			}
-		  ]
-		}
-	  ]
-	}
+    {
+      "rolls": 3,
+      "name": "druden",
+      "entries": [
+        {
+          "type": "item",
+          "name": "bewitchment:heart",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            },
+            {
+              "function": "looting_enchant",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:cypress_sapling",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "function": "looting_enchant",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:sapling",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "function": "set_data",
+              "data": {
+                "min": 0,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:elder_sapling",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "function": "looting_enchant",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:oak_apple_gall",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 4
+              }
+            },
+            {
+              "function": "looting_enchant",
+              "count": {
+                "min": 0,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "bewitchment:juniper_sapling",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "function": "looting_enchant",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
   ]
 }

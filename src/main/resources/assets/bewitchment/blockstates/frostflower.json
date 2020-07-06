@@ -1,23 +1,23 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"transform": "forge:default-item",
-	"model": "cross",
-	"textures": {
-	  "cross": "bewitchment:blocks/frostflower"
-	}
+    "transform": "forge:default-item",
+    "model": "cross",
+    "textures": {
+      "cross": "bewitchment:blocks/frostflower"
+    }
   },
   "variants": {
-	"inventory": [
-	  {
-		"model": "builtin/generated",
-		"textures": {
-		  "layer0": "#cross"
-		}
-	  }
-	],
-	"normal": [
-	  {}
-	]
+    "inventory": [
+      {
+        "model": "builtin/generated",
+        "textures": {
+          "layer0": "#cross"
+        }
+      }
+    ],
+    "normal": [
+      {}
+    ]
   }
 }

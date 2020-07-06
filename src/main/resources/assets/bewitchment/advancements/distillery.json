@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:distillery"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.distillery.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.distillery.description"
-	}
+    "icon": {
+      "item": "bewitchment:distillery"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.distillery.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.distillery.description"
+    }
   },
   "parent": "bewitchment:crafted_altar",
   "criteria": {
-	"distillery": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:distillery"
-		  }
-		]
-	  }
-	}
+    "distillery": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:distillery"
+          }
+        ]
+      }
+    }
   }
 }

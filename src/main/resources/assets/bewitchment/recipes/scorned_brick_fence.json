@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"BBB",
-	"BBB"
+    "BBB",
+    "BBB"
   ],
   "key": {
-	"B": {
-	  "item": "bewitchment:scorned_bricks"
-	}
+    "B": {
+      "item": "bewitchment:scorned_bricks"
+    }
   },
   "result": {
-	"item": "bewitchment:scorned_brick_fence",
-	"count": 6
+    "item": "bewitchment:scorned_brick_fence",
+    "count": 6
   }
 }

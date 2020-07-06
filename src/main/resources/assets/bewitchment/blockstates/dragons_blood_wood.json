@@ -1,69 +1,69 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_column",
-	"textures": {
-	  "end": "bewitchment:blocks/dragons_blood_log_top",
-	  "side": "bewitchment:blocks/dragons_blood_log_side"
-	}
+    "model": "cube_column",
+    "textures": {
+      "end": "bewitchment:blocks/dragons_blood_log_top",
+      "side": "bewitchment:blocks/dragons_blood_log_side"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	],
-	"axis=y,slashed=true": [
-	  {
-		"textures": {
-		  "side": "bewitchment:blocks/dragons_blood_log_cut"
-		}
-	  }
-	],
-	"axis=y,slashed=false": [
-	  {}
-	],
-	"axis=x,slashed=true": [
-	  {
-		"textures": {
-		  "side": "bewitchment:blocks/dragons_blood_log_cut"
-		},
-		"x": 90,
-		"y": 90
-	  }
-	],
-	"axis=x,slashed=false": [
-	  {
-		"x": 90,
-		"y": 90
-	  }
-	],
-	"axis=z,slashed=true": [
-	  {
-		"textures": {
-		  "side": "bewitchment:blocks/dragons_blood_log_cut"
-		},
-		"x": 90
-	  }
-	],
-	"axis=z,slashed=false": [
-	  {
-		"x": 90
-	  }
-	],
-	"axis=none,slashed=true": [
-	  {
-		"textures": {
-		  "side": "bewitchment:blocks/dragons_blood_log_cut",
-		  "end": "bewitchment:blocks/dragons_blood_log_cut"
-		}
-	  }
-	],
-	"axis=none,slashed=false": [
-	  {
-		"textures": {
-		  "side": "bewitchment:blocks/dragons_blood_log_side",
-		  "end": "bewitchment:blocks/dragons_blood_log_side"
-		}
-	  }
-	]
+    "normal": [
+      {}
+    ],
+    "axis=y,slashed=true": [
+      {
+        "textures": {
+          "side": "bewitchment:blocks/dragons_blood_log_cut"
+        }
+      }
+    ],
+    "axis=y,slashed=false": [
+      {}
+    ],
+    "axis=x,slashed=true": [
+      {
+        "textures": {
+          "side": "bewitchment:blocks/dragons_blood_log_cut"
+        },
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "axis=x,slashed=false": [
+      {
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "axis=z,slashed=true": [
+      {
+        "textures": {
+          "side": "bewitchment:blocks/dragons_blood_log_cut"
+        },
+        "x": 90
+      }
+    ],
+    "axis=z,slashed=false": [
+      {
+        "x": 90
+      }
+    ],
+    "axis=none,slashed=true": [
+      {
+        "textures": {
+          "side": "bewitchment:blocks/dragons_blood_log_cut",
+          "end": "bewitchment:blocks/dragons_blood_log_cut"
+        }
+      }
+    ],
+    "axis=none,slashed=false": [
+      {
+        "textures": {
+          "side": "bewitchment:blocks/dragons_blood_log_side",
+          "end": "bewitchment:blocks/dragons_blood_log_side"
+        }
+      }
+    ]
   }
 }

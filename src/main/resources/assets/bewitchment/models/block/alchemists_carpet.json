@@ -1,7 +1,7 @@
 {
   "parent": "block/carpet",
   "textures": {
-	"particle": "bewitchment:blocks/alchemists_fleece",
-	"wool": "bewitchment:blocks/alchemists_fleece"
+    "particle": "bewitchment:blocks/alchemists_fleece",
+    "wool": "bewitchment:blocks/alchemists_fleece"
   }
 }

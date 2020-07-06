@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"PP"
+    "PP"
   ],
   "key": {
-	"P": {
-	  "item": "bewitchment:dragons_blood_planks"
-	}
+    "P": {
+      "item": "bewitchment:dragons_blood_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:dragons_blood_pressure_plate"
+    "item": "bewitchment:dragons_blood_pressure_plate"
   }
 }

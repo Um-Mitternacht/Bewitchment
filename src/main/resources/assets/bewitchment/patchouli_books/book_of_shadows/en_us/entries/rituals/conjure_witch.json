@@ -3,13 +3,13 @@
   "category": "rituals",
   "icon": "minecraft:apple",
   "pages": [
-	{
-	  "type": "text",
-	  "text": "Summons a fellow practitioner. However, they may not always be happy you did so…"
-	},
-	{
-	  "type": "bewitchment:ritual",
-	  "recipe": "bewitchment:conjure_witch"
-	}
+    {
+      "type": "text",
+      "text": "Summons a fellow practitioner. However, they may not always be happy you did so…"
+    },
+    {
+      "type": "bewitchment:ritual",
+      "recipe": "bewitchment:conjure_witch"
+    }
   ]
 }

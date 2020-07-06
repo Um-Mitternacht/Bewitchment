@@ -1,21 +1,21 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "bewitchment:candelabra_iron"
+    "model": "bewitchment:candelabra_iron"
   },
   "variants": {
-	"normal": [
-	  {}
-	],
-	"lit=false": [
-	  {
-		"model": "bewitchment:candelabra_iron"
-	  }
-	],
-	"lit=true": [
-	  {
-		"model": "bewitchment:candelabra_iron"
-	  }
-	]
+    "normal": [
+      {}
+    ],
+    "lit=false": [
+      {
+        "model": "bewitchment:candelabra_iron"
+      }
+    ],
+    "lit=true": [
+      {
+        "model": "bewitchment:candelabra_iron"
+      }
+    ]
   }
 }

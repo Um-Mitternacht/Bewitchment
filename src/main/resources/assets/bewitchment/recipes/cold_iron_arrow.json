@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetColdIron"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	{
-	  "item": "bewitchment:ravens_feather"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "nuggetColdIron"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    {
+      "item": "bewitchment:ravens_feather"
+    }
   ],
   "result": {
-	"item": "bewitchment:cold_iron_arrow",
-	"count": 4
+    "item": "bewitchment:cold_iron_arrow",
+    "count": 4
   }
 }

@@ -1,34 +1,34 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"textures": {
-	  "texture": "minecraft:blocks/planks_spruce"
-	},
-	"model": "bewitchment:poppet_shelf"
+    "textures": {
+      "texture": "minecraft:blocks/planks_spruce"
+    },
+    "model": "bewitchment:poppet_shelf"
   },
   "variants": {
-	"normal": [
-	  {
-	  }
-	],
-	"facing=north": [
-	  {
-	  }
-	],
-	"facing=south": [
-	  {
-		"y": 180
-	  }
-	],
-	"facing=east": [
-	  {
-		"y": 90
-	  }
-	],
-	"facing=west": [
-	  {
-		"y": 270
-	  }
-	]
+    "normal": [
+      {
+      }
+    ],
+    "facing=north": [
+      {
+      }
+    ],
+    "facing=south": [
+      {
+        "y": 180
+      }
+    ],
+    "facing=east": [
+      {
+        "y": 90
+      }
+    ],
+    "facing=west": [
+      {
+        "y": 270
+      }
+    ]
   }
 }

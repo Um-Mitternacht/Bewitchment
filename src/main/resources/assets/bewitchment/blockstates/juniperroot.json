@@ -1,7 +1,7 @@
 {
   "variants": {
-	"normal": {
-	  "model": "bewitchment:juniperroot#dynamicroot"
-	}
+    "normal": {
+      "model": "bewitchment:juniperroot#dynamicroot"
+    }
   }
 }

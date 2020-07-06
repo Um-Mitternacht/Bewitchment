@@ -4,17 +4,17 @@
   "icon": "bewitchment:distillery",
   "priority": true,
   "pages": [
-	{
-	  "type": "text",
-	  "text": "Despite their mundane uses and appearance, both the Oven and Distillery are vital to all forms of higher magic. The Oven can distill saplings and other items into pure extract, while the Distillery can process the Fumes with other ingredients into more complex mixtures."
-	},
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:witches_oven"
-	},
-	{
-	  "type": "crafting",
-	  "recipe": "bewitchment:distillery"
-	}
+    {
+      "type": "text",
+      "text": "Despite their mundane uses and appearance, both the Oven and Distillery are vital to all forms of higher magic. The Oven can distill saplings and other items into pure extract, while the Distillery can process the Fumes with other ingredients into more complex mixtures."
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:witches_oven"
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:distillery"
+    }
   ]
 }

@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:crystal_ball"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.gaze.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.gaze.description"
-	}
+    "icon": {
+      "item": "bewitchment:crystal_ball"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.gaze.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.gaze.description"
+    }
   },
   "parent": "bewitchment:oven",
   "criteria": {
-	"gaze": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:crystal_ball"
-		  }
-		]
-	  }
-	}
+    "gaze": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:crystal_ball"
+          }
+        ]
+      }
+    }
   }
 }

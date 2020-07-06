@@ -1,13 +1,13 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "blockOpal"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockOpal"
+    }
   ],
   "result": {
-	"item": "bewitchment:opal",
-	"count": 9
+    "item": "bewitchment:opal",
+    "count": 9
   }
 }

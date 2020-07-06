@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:coquina"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.mined_coquina.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.mined_coquina.description"
-	}
+    "icon": {
+      "item": "bewitchment:coquina"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.mined_coquina.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.mined_coquina.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:coquina"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:coquina"
+          }
+        ]
+      }
+    }
   }
 }

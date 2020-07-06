@@ -1,25 +1,25 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "ingotIron"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "ingotIron"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "gemQuartz"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "ingotBrickNether"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "gemQuartz"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotBrickNether"
+    }
   ],
   "result": {
-	"item": "bewitchment:nethersteel",
-	"count": 4
+    "item": "bewitchment:nethersteel",
+    "count": 4
   }
 }

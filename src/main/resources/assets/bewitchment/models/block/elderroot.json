@@ -1,7 +1,7 @@
 {
   "parent": "dynamictrees:block/smartmodel/branch",
   "textures": {
-	"bark": "bewitchment:blocks/elder_wood_side",
-	"rings": "bewitchment:blocks/elder_wood_end"
+    "bark": "bewitchment:blocks/elder_wood_side",
+    "rings": "bewitchment:blocks/elder_wood_end"
   }
 }

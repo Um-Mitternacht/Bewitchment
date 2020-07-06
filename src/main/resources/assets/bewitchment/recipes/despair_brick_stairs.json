@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"I  ",
-	"II ",
-	"III"
+    "I  ",
+    "II ",
+    "III"
   ],
   "key": {
-	"I": {
-	  "item": "bewitchment:despair_bricks"
-	}
+    "I": {
+      "item": "bewitchment:despair_bricks"
+    }
   },
   "result": {
-	"item": "bewitchment:despair_brick_stairs",
-	"count": 4
+    "item": "bewitchment:despair_brick_stairs",
+    "count": 4
   }
 }

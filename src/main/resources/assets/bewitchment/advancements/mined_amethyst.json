@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:amethyst"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.mined_amethyst.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.mined_amethyst.description"
-	}
+    "icon": {
+      "item": "bewitchment:amethyst"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.mined_amethyst.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.mined_amethyst.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:amethyst"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:amethyst"
+          }
+        ]
+      }
+    }
   }
 }

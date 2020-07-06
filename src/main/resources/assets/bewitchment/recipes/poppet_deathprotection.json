@@ -1,22 +1,22 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "bewitchment:heart"
-	},
-	{
-	  "item": "bewitchment:juniper_berries"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "gemDiamond"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "bewitchment:heart"
+    },
+    {
+      "item": "bewitchment:juniper_berries"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_deathprotection",
-	"count": 1
+    "item": "bewitchment:poppet_deathprotection",
+    "count": 1
   }
 }

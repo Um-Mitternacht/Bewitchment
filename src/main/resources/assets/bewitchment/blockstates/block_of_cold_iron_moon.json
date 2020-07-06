@@ -1,14 +1,14 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/chisel/cold_iron/moon"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/chisel/cold_iron/moon"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

@@ -3,1019 +3,1019 @@
   "parent": "minecraft:block/block",
   "ambientocclusion": false,
   "textures": {
-	"particle": "bewitchment:blocks/spinning_wheel"
+    "particle": "bewitchment:blocks/spinning_wheel"
   },
   "elements": [
-	{
-	  "name": "leftLeg",
-	  "from": [
-		6.1,
-		0,
-		3
-	  ],
-	  "to": [
-		7.1,
-		3,
-		4
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			0.5,
-			0.5,
-			1,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			0.5,
-			0.5,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			1.5,
-			0.5,
-			2,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			1,
-			0.5,
-			1.5,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			1,
-			0.5,
-			0.5,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			1.5,
-			0,
-			1,
-			0.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "wheelRod",
-	  "from": [
-		7,
-		2.5,
-		5.7
-	  ],
-	  "to": [
-		8,
-		10.5,
-		6.7
-	  ],
-	  "rotation": {
-		"angle": -22.5,
-		"axis": "x",
-		"origin": [
-		  0,
-		  6,
-		  0
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			0.5,
-			0.5,
-			1,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			0.5,
-			0.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			1.5,
-			0.5,
-			2,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			1,
-			0.5,
-			1.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			1,
-			0.5,
-			0.5,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			1.5,
-			0,
-			1,
-			0.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "baseboardBack",
-	  "from": [
-		6,
-		1,
-		13
-	  ],
-	  "to": [
-		10,
-		3,
-		15
-	  ],
-	  "rotation": {
-		"angle": -22.5,
-		"axis": "x",
-		"origin": [
-		  0,
-		  6,
-		  0
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			1,
-			12,
-			3,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			12,
-			1,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			4,
-			12,
-			6,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			3,
-			12,
-			4,
-			13
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			3,
-			12,
-			1,
-			11
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			5,
-			11,
-			3,
-			12
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "wheelBack",
-	  "from": [
-		8,
-		9,
-		7.1
-	  ],
-	  "to": [
-		9,
-		15,
-		8.1
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			0.5,
-			0.5,
-			1,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			0.5,
-			0.5,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			1.5,
-			0.5,
-			2,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			1,
-			0.5,
-			1.5,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			1,
-			0.5,
-			0.5,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			1.5,
-			0,
-			1,
-			0.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "rightLeg",
-	  "from": [
-		8.9,
-		0,
-		3
-	  ],
-	  "to": [
-		9.9,
-		3,
-		4
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			0.5,
-			0.5,
-			1,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			0.5,
-			0.5,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			1.5,
-			0.5,
-			2,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			1,
-			0.5,
-			1.5,
-			2
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			1,
-			0.5,
-			0.5,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			1.5,
-			0,
-			1,
-			0.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "baseboardFront",
-	  "from": [
-		6,
-		1,
-		1
-	  ],
-	  "to": [
-		10,
-		3,
-		13
-	  ],
-	  "rotation": {
-		"angle": -22.5,
-		"axis": "x",
-		"origin": [
-		  0,
-		  6,
-		  0
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			6,
-			14.5,
-			8,
-			15.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			14.5,
-			6,
-			15.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			14,
-			14.5,
-			16,
-			15.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			8,
-			14.5,
-			14,
-			15.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			8,
-			14.5,
-			6,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			10,
-			8.5,
-			8,
-			14.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "spindle",
-	  "from": [
-		7.5,
-		7.7,
-		12
-	  ],
-	  "to": [
-		8.5,
-		15.7,
-		13
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			0.5,
-			5.5,
-			1,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			5.5,
-			0.5,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			1.5,
-			5.5,
-			2,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			1,
-			5.5,
-			1.5,
-			9.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			1,
-			5.5,
-			0.5,
-			5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			1.5,
-			5,
-			1,
-			5.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "wheelSpokeFront",
-	  "from": [
-		7.9,
-		2.5,
-		1
-	  ],
-	  "to": [
-		8.9,
-		11.5,
-		2
-	  ],
-	  "rotation": {
-		"angle": -45,
-		"axis": "x",
-		"origin": [
-		  0,
-		  13,
-		  -3
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			4.5,
-			4,
-			5,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			4,
-			4,
-			4.5,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			5.5,
-			4,
-			6,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			5,
-			4,
-			5.5,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			5,
-			4,
-			4.5,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			5.5,
-			3.5,
-			5,
-			4
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "wheelTop",
-	  "from": [
-		8,
-		15,
-		0.1
-	  ],
-	  "to": [
-		9,
-		16,
-		8.1
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			11,
-			4,
-			11.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			7,
-			4,
-			11,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			15.5,
-			4,
-			16,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			11.5,
-			4,
-			15.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			11.5,
-			4,
-			11,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			12,
-			0,
-			11.5,
-			4
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "backLeg",
-	  "from": [
-		7.5,
-		0,
-		14
-	  ],
-	  "to": [
-		8.5,
-		8,
-		15
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			0.5,
-			0.5,
-			1,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			0.5,
-			0.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			1.5,
-			0.5,
-			2,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			1,
-			0.5,
-			1.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			1,
-			0.5,
-			0.5,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			1.5,
-			0,
-			1,
-			0.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "threads",
-	  "from": [
-		7,
-		12,
-		11.5
-	  ],
-	  "to": [
-		9,
-		15,
-		13.5
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			4,
-			1,
-			5,
-			2.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			3,
-			1,
-			4,
-			2.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			6,
-			1,
-			7,
-			2.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			5,
-			1,
-			6,
-			2.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			5,
-			1,
-			4,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			6,
-			0,
-			5,
-			1
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "wheelSpokeBack",
-	  "from": [
-		7.9,
-		12.5,
-		2
-	  ],
-	  "to": [
-		8.9,
-		21.5,
-		3
-	  ],
-	  "rotation": {
-		"angle": 45,
-		"axis": "x",
-		"origin": [
-		  0,
-		  13,
-		  -3
-		]
-	  },
-	  "faces": {
-		"north": {
-		  "uv": [
-			4.5,
-			4,
-			5,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			4,
-			4,
-			4.5,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			5.5,
-			4,
-			6,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			5,
-			4,
-			5.5,
-			8.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			5,
-			4,
-			4.5,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			5.5,
-			3.5,
-			5,
-			4
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "wheelFront",
-	  "from": [
-		8,
-		9,
-		0.1
-	  ],
-	  "to": [
-		9,
-		15,
-		1.1
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			0.5,
-			0.5,
-			1,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			0,
-			0.5,
-			0.5,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			1.5,
-			0.5,
-			2,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			1,
-			0.5,
-			1.5,
-			3.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			1,
-			0.5,
-			0.5,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			1.5,
-			0,
-			1,
-			0.5
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	},
-	{
-	  "name": "wheelBottom",
-	  "from": [
-		8,
-		8,
-		0.1
-	  ],
-	  "to": [
-		9,
-		9,
-		8.1
-	  ],
-	  "faces": {
-		"north": {
-		  "uv": [
-			11,
-			4,
-			11.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"east": {
-		  "uv": [
-			7,
-			4,
-			11,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"south": {
-		  "uv": [
-			15.5,
-			4,
-			16,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"west": {
-		  "uv": [
-			11.5,
-			4,
-			15.5,
-			4.5
-		  ],
-		  "texture": "#particle"
-		},
-		"up": {
-		  "uv": [
-			11.5,
-			4,
-			11,
-			0
-		  ],
-		  "texture": "#particle"
-		},
-		"down": {
-		  "uv": [
-			12,
-			0,
-			11.5,
-			4
-		  ],
-		  "texture": "#particle"
-		}
-	  }
-	}
+    {
+      "name": "leftLeg",
+      "from": [
+        6.1,
+        0,
+        3
+      ],
+      "to": [
+        7.1,
+        3,
+        4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            1,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            1,
+            0.5,
+            1.5,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            1,
+            0.5,
+            0.5,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            0,
+            1,
+            0.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "wheelRod",
+      "from": [
+        7,
+        2.5,
+        5.7
+      ],
+      "to": [
+        8,
+        10.5,
+        6.7
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "x",
+        "origin": [
+          0,
+          6,
+          0
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            1,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            1,
+            0.5,
+            1.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            1,
+            0.5,
+            0.5,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            0,
+            1,
+            0.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "baseboardBack",
+      "from": [
+        6,
+        1,
+        13
+      ],
+      "to": [
+        10,
+        3,
+        15
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "x",
+        "origin": [
+          0,
+          6,
+          0
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            12,
+            3,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            12,
+            1,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            4,
+            12,
+            6,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            3,
+            12,
+            4,
+            13
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            3,
+            12,
+            1,
+            11
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            5,
+            11,
+            3,
+            12
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "wheelBack",
+      "from": [
+        8,
+        9,
+        7.1
+      ],
+      "to": [
+        9,
+        15,
+        8.1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            1,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            1,
+            0.5,
+            1.5,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            1,
+            0.5,
+            0.5,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            0,
+            1,
+            0.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "rightLeg",
+      "from": [
+        8.9,
+        0,
+        3
+      ],
+      "to": [
+        9.9,
+        3,
+        4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            1,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            1,
+            0.5,
+            1.5,
+            2
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            1,
+            0.5,
+            0.5,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            0,
+            1,
+            0.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "baseboardFront",
+      "from": [
+        6,
+        1,
+        1
+      ],
+      "to": [
+        10,
+        3,
+        13
+      ],
+      "rotation": {
+        "angle": -22.5,
+        "axis": "x",
+        "origin": [
+          0,
+          6,
+          0
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            14.5,
+            8,
+            15.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            14.5,
+            6,
+            15.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            14,
+            14.5,
+            16,
+            15.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            8,
+            14.5,
+            14,
+            15.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            8,
+            14.5,
+            6,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            10,
+            8.5,
+            8,
+            14.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "spindle",
+      "from": [
+        7.5,
+        7.7,
+        12
+      ],
+      "to": [
+        8.5,
+        15.7,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            5.5,
+            1,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            5.5,
+            0.5,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            5.5,
+            2,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            1,
+            5.5,
+            1.5,
+            9.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            1,
+            5.5,
+            0.5,
+            5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            5,
+            1,
+            5.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "wheelSpokeFront",
+      "from": [
+        7.9,
+        2.5,
+        1
+      ],
+      "to": [
+        8.9,
+        11.5,
+        2
+      ],
+      "rotation": {
+        "angle": -45,
+        "axis": "x",
+        "origin": [
+          0,
+          13,
+          -3
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            4.5,
+            4,
+            5,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            4,
+            4,
+            4.5,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            5.5,
+            4,
+            6,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            5,
+            4,
+            5.5,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            5,
+            4,
+            4.5,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            5.5,
+            3.5,
+            5,
+            4
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "wheelTop",
+      "from": [
+        8,
+        15,
+        0.1
+      ],
+      "to": [
+        9,
+        16,
+        8.1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            11,
+            4,
+            11.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            7,
+            4,
+            11,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            15.5,
+            4,
+            16,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            11.5,
+            4,
+            15.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            11.5,
+            4,
+            11,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            11.5,
+            4
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "backLeg",
+      "from": [
+        7.5,
+        0,
+        14
+      ],
+      "to": [
+        8.5,
+        8,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            1,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            1,
+            0.5,
+            1.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            1,
+            0.5,
+            0.5,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            0,
+            1,
+            0.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "threads",
+      "from": [
+        7,
+        12,
+        11.5
+      ],
+      "to": [
+        9,
+        15,
+        13.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            1,
+            5,
+            2.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            3,
+            1,
+            4,
+            2.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            6,
+            1,
+            7,
+            2.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            5,
+            1,
+            6,
+            2.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            5,
+            1,
+            4,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            6,
+            0,
+            5,
+            1
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "wheelSpokeBack",
+      "from": [
+        7.9,
+        12.5,
+        2
+      ],
+      "to": [
+        8.9,
+        21.5,
+        3
+      ],
+      "rotation": {
+        "angle": 45,
+        "axis": "x",
+        "origin": [
+          0,
+          13,
+          -3
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            4.5,
+            4,
+            5,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            4,
+            4,
+            4.5,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            5.5,
+            4,
+            6,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            5,
+            4,
+            5.5,
+            8.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            5,
+            4,
+            4.5,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            5.5,
+            3.5,
+            5,
+            4
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "wheelFront",
+      "from": [
+        8,
+        9,
+        0.1
+      ],
+      "to": [
+        9,
+        15,
+        1.1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            1,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            1,
+            0.5,
+            1.5,
+            3.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            1,
+            0.5,
+            0.5,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            0,
+            1,
+            0.5
+          ],
+          "texture": "#particle"
+        }
+      }
+    },
+    {
+      "name": "wheelBottom",
+      "from": [
+        8,
+        8,
+        0.1
+      ],
+      "to": [
+        9,
+        9,
+        8.1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            11,
+            4,
+            11.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "east": {
+          "uv": [
+            7,
+            4,
+            11,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "south": {
+          "uv": [
+            15.5,
+            4,
+            16,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "west": {
+          "uv": [
+            11.5,
+            4,
+            15.5,
+            4.5
+          ],
+          "texture": "#particle"
+        },
+        "up": {
+          "uv": [
+            11.5,
+            4,
+            11,
+            0
+          ],
+          "texture": "#particle"
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            11.5,
+            4
+          ],
+          "texture": "#particle"
+        }
+      }
+    }
   ]
 }

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"CC",
-	"CC"
+    "CC",
+    "CC"
   ],
   "key": {
-	"C": {
-	  "item": "bewitchment:chiseled_coquina"
-	}
+    "C": {
+      "item": "bewitchment:chiseled_coquina"
+    }
   },
   "result": {
-	"item": "bewitchment:coquina",
-	"count": 4
+    "item": "bewitchment:coquina",
+    "count": 4
   }
 }

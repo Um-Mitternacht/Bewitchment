@@ -3,14 +3,14 @@
   "category": "devilish_oddities",
   "icon": "bewitchment:box_of_sealed_evil",
   "pages": [
-	{
-	  "type": "text",
-	  "text": "A box marked with some strange horned creature that you feel as if it’s watching you. Do you dare open it?"
-	},
-	{
-	  "type": "spotlight",
-	  "item": "bewitchment:box_of_sealed_evil",
-	  "text": "$(o)Surprise, Pandora's box~"
-	}
+    {
+      "type": "text",
+      "text": "A box marked with some strange horned creature that you feel as if it’s watching you. Do you dare open it?"
+    },
+    {
+      "type": "spotlight",
+      "item": "bewitchment:box_of_sealed_evil",
+      "text": "$(o)Surprise, Pandora's box~"
+    }
   ]
 }

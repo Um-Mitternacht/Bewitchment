@@ -1,21 +1,21 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"SS ",
-	"S  ",
-	"G  "
+    "SS ",
+    "S  ",
+    "G  "
   ],
   "key": {
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	},
-	"G": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemAll"
-	}
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "gemAll"
+    }
   },
   "result": {
-	"item": "bewitchment:boline"
+    "item": "bewitchment:boline"
   }
 }

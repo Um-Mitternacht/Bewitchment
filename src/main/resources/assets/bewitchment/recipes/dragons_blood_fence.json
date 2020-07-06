@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"PSP",
-	"PSP"
+    "PSP",
+    "PSP"
   ],
   "key": {
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	"P": {
-	  "item": "bewitchment:dragons_blood_planks"
-	}
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "P": {
+      "item": "bewitchment:dragons_blood_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:dragons_blood_fence",
-	"count": 3
+    "item": "bewitchment:dragons_blood_fence",
+    "count": 3
   }
 }

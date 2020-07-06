@@ -1,22 +1,22 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "bewitchment:garlic"
-	},
-	{
-	  "item": "bewitchment:white_sage"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "bewitchment:garlic"
+    },
+    {
+      "item": "bewitchment:white_sage"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_voodooprotection",
-	"count": 1
+    "item": "bewitchment:poppet_voodooprotection",
+    "count": 1
   }
 }

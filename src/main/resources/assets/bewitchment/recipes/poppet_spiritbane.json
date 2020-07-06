@@ -1,22 +1,22 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "#GENERIC_SALT"
-	},
-	{
-	  "item": "bewitchment:white_sage"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "dustGlowstone"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "#GENERIC_SALT"
+    },
+    {
+      "item": "bewitchment:white_sage"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustGlowstone"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_spiritbane",
-	"count": 1
+    "item": "bewitchment:poppet_spiritbane",
+    "count": 1
   }
 }

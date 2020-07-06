@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/fortunes_favor"
+    "layer0": "bewitchment:items/fortunes_favor"
   }
 }

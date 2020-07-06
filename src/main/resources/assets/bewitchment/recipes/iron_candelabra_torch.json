@@ -1,24 +1,24 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"DDD",
-	"RFR",
-	" F "
+    "DDD",
+    "RFR",
+    " F "
   ],
   "key": {
-	"F": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotIron"
-	},
-	"D": {
-	  "item": "minecraft:torch"
-	},
-	"R": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetIron"
-	}
+    "F": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "D": {
+      "item": "minecraft:torch"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    }
   },
   "result": {
-	"item": "bewitchment:candelabra_iron"
+    "item": "bewitchment:candelabra_iron"
   }
 }

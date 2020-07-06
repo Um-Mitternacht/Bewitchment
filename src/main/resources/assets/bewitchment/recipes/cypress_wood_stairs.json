@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"I  ",
-	"II ",
-	"III"
+    "I  ",
+    "II ",
+    "III"
   ],
   "key": {
-	"I": {
-	  "item": "bewitchment:cypress_planks"
-	}
+    "I": {
+      "item": "bewitchment:cypress_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:cypress_wood_stairs",
-	"count": 4
+    "item": "bewitchment:cypress_wood_stairs",
+    "count": 4
   }
 }

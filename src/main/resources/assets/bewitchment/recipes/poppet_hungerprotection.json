@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "minecraft:apple"
-	},
-	{
-	  "item": "#MEAT_ANY"
-	},
-	{
-	  "item": "bewitchment:tongue_of_dog"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "#MEAT_ANY"
+    },
+    {
+      "item": "bewitchment:tongue_of_dog"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_hungerprotection",
-	"count": 1
+    "item": "bewitchment:poppet_hungerprotection",
+    "count": 1
   }
 }

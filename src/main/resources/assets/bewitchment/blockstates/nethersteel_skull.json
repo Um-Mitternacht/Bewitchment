@@ -1,14 +1,14 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/chisel/nethersteel/skull"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/chisel/nethersteel/skull"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

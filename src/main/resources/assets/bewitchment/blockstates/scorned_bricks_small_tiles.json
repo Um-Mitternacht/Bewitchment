@@ -1,14 +1,14 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/chisel/scorned_bricks/small_tiles"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/chisel/scorned_bricks/small_tiles"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

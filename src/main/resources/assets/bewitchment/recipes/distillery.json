@@ -1,25 +1,25 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"GGG",
-	"G G",
-	"IAI"
+    "GGG",
+    "G G",
+    "IAI"
   ],
   "key": {
-	"G": {
-	  "type": "forge:ore_dict",
-	  "ore": "blockGlass"
-	},
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	},
-	"A": {
-	  "type": "forge:ore_dict",
-	  "ore": "gemOpal"
-	}
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "blockGlass"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    },
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "gemOpal"
+    }
   },
   "result": {
-	"item": "bewitchment:distillery"
+    "item": "bewitchment:distillery"
   }
 }

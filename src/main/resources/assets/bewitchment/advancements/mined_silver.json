@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:silver_ore"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.mined_silver.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.mined_silver.description"
-	}
+    "icon": {
+      "item": "bewitchment:silver_ore"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.mined_silver.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.mined_silver.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:silver_ore"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:silver_ore"
+          }
+        ]
+      }
+    }
   }
 }

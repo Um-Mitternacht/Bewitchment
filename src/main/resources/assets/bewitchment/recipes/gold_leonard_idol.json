@@ -1,23 +1,23 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"F F",
-	"FDF",
-	"FRF"
+    "F F",
+    "FDF",
+    "FRF"
   ],
   "key": {
-	"F": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotGold"
-	},
-	"D": {
-	  "item": "bewitchment:liquid_witchcraft"
-	},
-	"R": {
-	  "item": "bewitchment:stew_of_the_grotesque"
-	}
+    "F": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "D": {
+      "item": "bewitchment:liquid_witchcraft"
+    },
+    "R": {
+      "item": "bewitchment:stew_of_the_grotesque"
+    }
   },
   "result": {
-	"item": "bewitchment:gold_leonard_idol"
+    "item": "bewitchment:gold_leonard_idol"
   }
 }

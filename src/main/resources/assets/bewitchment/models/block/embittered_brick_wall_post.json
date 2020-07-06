@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_post",
   "textures": {
-	"wall": "bewitchment:blocks/embittered_bricks"
+    "wall": "bewitchment:blocks/embittered_bricks"
   }
 }

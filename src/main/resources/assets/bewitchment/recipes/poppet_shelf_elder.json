@@ -1,23 +1,23 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"PSP",
-	"PWP",
-	"PSP"
+    "PSP",
+    "PWP",
+    "PSP"
   ],
   "key": {
-	"P": {
-	  "item": "bewitchment:elder_planks"
-	},
-	"S": {
-	  "item": "bewitchment:spanish_moss"
-	},
-	"W": {
-	  "item": "bewitchment:liquid_witchcraft"
-	}
+    "P": {
+      "item": "bewitchment:elder_planks"
+    },
+    "S": {
+      "item": "bewitchment:spanish_moss"
+    },
+    "W": {
+      "item": "bewitchment:liquid_witchcraft"
+    }
   },
   "result": {
-	"item": "bewitchment:poppet_shelf_elder",
-	"count": 1
+    "item": "bewitchment:poppet_shelf_elder",
+    "count": 1
   }
 }

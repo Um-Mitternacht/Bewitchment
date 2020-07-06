@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:contract"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.diabolus.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.diabolus.description"
-	}
+    "icon": {
+      "item": "bewitchment:contract"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.diabolus.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.diabolus.description"
+    }
   },
   "parent": "bewitchment:root",
   "criteria": {
-	"diabolus": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:contract"
-		  }
-		]
-	  }
-	}
+    "diabolus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:contract"
+          }
+        ]
+      }
+    }
   }
 }

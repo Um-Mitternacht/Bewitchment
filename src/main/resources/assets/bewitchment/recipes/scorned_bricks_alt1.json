@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:chiseled_scorned_bricks"
-	}
+    {
+      "item": "bewitchment:chiseled_scorned_bricks"
+    }
   ],
   "result": {
-	"item": "bewitchment:scorned_bricks"
+    "item": "bewitchment:scorned_bricks"
   }
 }

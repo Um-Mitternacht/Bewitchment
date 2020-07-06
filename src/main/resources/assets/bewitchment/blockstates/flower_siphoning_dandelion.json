@@ -1,7 +1,7 @@
 {
   "variants": {
-	"normal": {
-	  "model": "dandelion"
-	}
+    "normal": {
+      "model": "dandelion"
+    }
   }
 }

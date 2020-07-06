@@ -1,16 +1,16 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"###"
+    "###"
   ],
   "key": {
-	"#": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotColdIron"
-	}
+    "#": {
+      "type": "forge:ore_dict",
+      "ore": "ingotColdIron"
+    }
   },
   "result": {
-	"item": "bewitchment:cold_iron_plate",
-	"count": 3
+    "item": "bewitchment:cold_iron_plate",
+    "count": 3
   }
 }

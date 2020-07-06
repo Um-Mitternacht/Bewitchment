@@ -1,60 +1,60 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:besmirched_robes"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.wore_besmirched_set.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.wore_besmirched_set.description"
-	}
+    "icon": {
+      "item": "bewitchment:besmirched_robes"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.wore_besmirched_set.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.wore_besmirched_set.description"
+    }
   },
   "parent": "bewitchment:loom",
   "criteria": {
-	"hat": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:besmirched_robes"
-		  },
-		  {
-			"item": "bewitchment:besmirched_hat"
-		  },
-		  {
-			"item": "bewitchment:besmirched_pants"
-		  },
-		  {
-			"item": "bewitchment:hellish_bauble"
-		  }
-		]
-	  }
-	},
-	"hood": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:besmirched_robes"
-		  },
-		  {
-			"item": "bewitchment:besmirched_hood"
-		  },
-		  {
-			"item": "bewitchment:besmirched_pants"
-		  },
-		  {
-			"item": "bewitchment:hellish_bauble"
-		  }
-		]
-	  }
-	}
+    "hat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:besmirched_robes"
+          },
+          {
+            "item": "bewitchment:besmirched_hat"
+          },
+          {
+            "item": "bewitchment:besmirched_pants"
+          },
+          {
+            "item": "bewitchment:hellish_bauble"
+          }
+        ]
+      }
+    },
+    "hood": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:besmirched_robes"
+          },
+          {
+            "item": "bewitchment:besmirched_hood"
+          },
+          {
+            "item": "bewitchment:besmirched_pants"
+          },
+          {
+            "item": "bewitchment:hellish_bauble"
+          }
+        ]
+      }
+    }
   },
   "requirements": [
-	[
-	  "hat",
-	  "hood"
-	]
+    [
+      "hat",
+      "hood"
+    ]
   ]
 }

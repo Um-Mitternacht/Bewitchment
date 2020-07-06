@@ -1,21 +1,21 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"II",
-	" S",
-	" S"
+    "II",
+    " S",
+    " S"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	},
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
   },
   "result": {
-	"item": "bewitchment:silver_hoe"
+    "item": "bewitchment:silver_hoe"
   }
 }

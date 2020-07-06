@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"III"
+    "III"
   ],
   "key": {
-	"I": {
-	  "item": "bewitchment:dragons_blood_planks"
-	}
+    "I": {
+      "item": "bewitchment:dragons_blood_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:dragons_blood_slab",
-	"data": 0,
-	"count": 6
+    "item": "bewitchment:dragons_blood_slab",
+    "data": 0,
+    "count": 6
   }
 }

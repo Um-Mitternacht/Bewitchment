@@ -1,20 +1,20 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"LWL",
-	"WWW",
-	"W W"
+    "LWL",
+    "WWW",
+    "W W"
   ],
   "key": {
-	"L": {
-	  "type": "forge:ore_dict",
-	  "ore": "leather"
-	},
-	"W": {
-	  "item": "bewitchment:witches_stitching"
-	}
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "leather"
+    },
+    "W": {
+      "item": "bewitchment:witches_stitching"
+    }
   },
   "result": {
-	"item": "bewitchment:witches_cowl"
+    "item": "bewitchment:witches_cowl"
   }
 }

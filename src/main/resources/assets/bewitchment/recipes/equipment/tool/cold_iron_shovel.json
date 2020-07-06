@@ -1,21 +1,21 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"I",
-	"S",
-	"S"
+    "I",
+    "S",
+    "S"
   ],
   "key": {
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotColdIron"
-	},
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	}
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotColdIron"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
   },
   "result": {
-	"item": "bewitchment:cold_iron_shovel"
+    "item": "bewitchment:cold_iron_shovel"
   }
 }

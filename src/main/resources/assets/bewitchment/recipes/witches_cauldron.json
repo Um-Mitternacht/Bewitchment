@@ -1,25 +1,25 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"N N",
-	"I I",
-	"ISI"
+    "N N",
+    "I I",
+    "ISI"
   ],
   "key": {
-	"N": {
-	  "type": "forge:ore_dict",
-	  "ore": "nuggetIron"
-	},
-	"I": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotIron"
-	},
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotSilver"
-	}
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSilver"
+    }
   },
   "result": {
-	"item": "bewitchment:witches_cauldron"
+    "item": "bewitchment:witches_cauldron"
   }
 }

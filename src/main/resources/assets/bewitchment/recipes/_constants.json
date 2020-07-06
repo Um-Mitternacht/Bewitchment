@@ -1,194 +1,194 @@
 [
   {
-	"name": "GENERIC_WAX",
-	"ingredient": [
-	  {
-		"type": "forge:ore_dict",
-		"ore": "materialWax"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "materialBeesax"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "materialPressedWax"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "itemBeeswax"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "wax"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "tallow"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "clumpWax"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "beeswax"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "itemWax"
-	  }
-	]
+    "name": "GENERIC_WAX",
+    "ingredient": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "materialWax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "materialBeesax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "materialPressedWax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "itemBeeswax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "wax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "tallow"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "clumpWax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "beeswax"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "itemWax"
+      }
+    ]
   },
   {
-	"name": "GENERIC_SALT",
-	"ingredient": [
-	  {
-		"type": "forge:ore_dict",
-		"ore": "salt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "itemSalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "dustSalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "foodSalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "listAllsalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "ingredientSalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "pinchSalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "portionSalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "lumpSalt"
-	  },
-	  {
-		"type": "forge:ore_dict",
-		"ore": "materialSalt"
-	  }
-	]
+    "name": "GENERIC_SALT",
+    "ingredient": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "salt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "itemSalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "dustSalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "foodSalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "listAllsalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "ingredientSalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "pinchSalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "portionSalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "lumpSalt"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "materialSalt"
+      }
+    ]
   },
   {
-	"name": "CANDLE_ANY",
-	"ingredient": [
-	  {
-		"item": "bewitchment:white_candle"
-	  },
-	  {
-		"item": "bewitchment:orange_candle"
-	  },
-	  {
-		"item": "bewitchment:magenta_candle"
-	  },
-	  {
-		"item": "bewitchment:light_blue_candle"
-	  },
-	  {
-		"item": "bewitchment:yellow_candle"
-	  },
-	  {
-		"item": "bewitchment:lime_candle"
-	  },
-	  {
-		"item": "bewitchment:pink_candle"
-	  },
-	  {
-		"item": "bewitchment:gray_candle"
-	  },
-	  {
-		"item": "bewitchment:light_gray_candle"
-	  },
-	  {
-		"item": "bewitchment:cyan_candle"
-	  },
-	  {
-		"item": "bewitchment:purple_candle"
-	  },
-	  {
-		"item": "bewitchment:blue_candle"
-	  },
-	  {
-		"item": "bewitchment:brown_candle"
-	  },
-	  {
-		"item": "bewitchment:green_candle"
-	  },
-	  {
-		"item": "bewitchment:red_candle"
-	  },
-	  {
-		"item": "bewitchment:black_candle"
-	  }
-	]
+    "name": "CANDLE_ANY",
+    "ingredient": [
+      {
+        "item": "bewitchment:white_candle"
+      },
+      {
+        "item": "bewitchment:orange_candle"
+      },
+      {
+        "item": "bewitchment:magenta_candle"
+      },
+      {
+        "item": "bewitchment:light_blue_candle"
+      },
+      {
+        "item": "bewitchment:yellow_candle"
+      },
+      {
+        "item": "bewitchment:lime_candle"
+      },
+      {
+        "item": "bewitchment:pink_candle"
+      },
+      {
+        "item": "bewitchment:gray_candle"
+      },
+      {
+        "item": "bewitchment:light_gray_candle"
+      },
+      {
+        "item": "bewitchment:cyan_candle"
+      },
+      {
+        "item": "bewitchment:purple_candle"
+      },
+      {
+        "item": "bewitchment:blue_candle"
+      },
+      {
+        "item": "bewitchment:brown_candle"
+      },
+      {
+        "item": "bewitchment:green_candle"
+      },
+      {
+        "item": "bewitchment:red_candle"
+      },
+      {
+        "item": "bewitchment:black_candle"
+      }
+    ]
   },
   {
-	"name": "MEAT_ANY",
-	"ingredient": [
-	  {
-		"item": "minecraft:chicken"
-	  },
-	  {
-		"item": "minecraft:beef"
-	  },
-	  {
-		"item": "minecraft:porkchop"
-	  },
-	  {
-		"item": "minecraft:mutton"
-	  },
-	  {
-		"item": "minecraft:rabbit"
-	  }
-	]
+    "name": "MEAT_ANY",
+    "ingredient": [
+      {
+        "item": "minecraft:chicken"
+      },
+      {
+        "item": "minecraft:beef"
+      },
+      {
+        "item": "minecraft:porkchop"
+      },
+      {
+        "item": "minecraft:mutton"
+      },
+      {
+        "item": "minecraft:rabbit"
+      }
+    ]
   },
   {
-	"name": "SLAB_STONE",
-	"ingredient": [
-	  {
-		"item": "minecraft:stone_slab",
-		"data": 0
-	  },
-	  {
-		"item": "minecraft:stone_slab",
-		"data": 1
-	  },
-	  {
-		"item": "minecraft:stone_slab",
-		"data": 3
-	  },
-	  {
-		"item": "minecraft:stone_slab",
-		"data": 7
-	  },
-	  {
-		"item": "minecraft:stone_slab",
-		"data": 5
-	  },
-	  {
-		"item": "minecraft:stone_slab2",
-		"data": 0
-	  },
-	  {
-		"item": "bewitchment:scorned_bricks_slab",
-		"data": 0
-	  }
-	]
+    "name": "SLAB_STONE",
+    "ingredient": [
+      {
+        "item": "minecraft:stone_slab",
+        "data": 0
+      },
+      {
+        "item": "minecraft:stone_slab",
+        "data": 1
+      },
+      {
+        "item": "minecraft:stone_slab",
+        "data": 3
+      },
+      {
+        "item": "minecraft:stone_slab",
+        "data": 7
+      },
+      {
+        "item": "minecraft:stone_slab",
+        "data": 5
+      },
+      {
+        "item": "minecraft:stone_slab2",
+        "data": 0
+      },
+      {
+        "item": "bewitchment:scorned_bricks_slab",
+        "data": 0
+      }
+    ]
   }
 ]

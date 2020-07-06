@@ -1,11 +1,11 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:frostflower"
-	}
+    {
+      "item": "bewitchment:frostflower"
+    }
   ],
   "result": {
-	"item": "minecraft:snowball"
+    "item": "minecraft:snowball"
   }
 }

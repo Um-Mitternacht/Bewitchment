@@ -1,44 +1,44 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "fence_post",
-	"uvlock": true,
-	"textures": {
-	  "texture": "bewitchment:blocks/elder_planks"
-	}
+    "model": "fence_post",
+    "uvlock": true,
+    "textures": {
+      "texture": "bewitchment:blocks/elder_planks"
+    }
   },
   "variants": {
-	"normal": [
-	  {
-		"model": "fence_inventory"
-	  }
-	],
-	"north": {
-	  "true": {
-		"submodel": "fence_side"
-	  },
-	  "false": {}
-	},
-	"south": {
-	  "true": {
-		"submodel": "fence_side",
-		"y": 180
-	  },
-	  "false": {}
-	},
-	"east": {
-	  "true": {
-		"submodel": "fence_side",
-		"y": 90
-	  },
-	  "false": {}
-	},
-	"west": {
-	  "true": {
-		"submodel": "fence_side",
-		"y": 270
-	  },
-	  "false": {}
-	}
+    "normal": [
+      {
+        "model": "fence_inventory"
+      }
+    ],
+    "north": {
+      "true": {
+        "submodel": "fence_side"
+      },
+      "false": {}
+    },
+    "south": {
+      "true": {
+        "submodel": "fence_side",
+        "y": 180
+      },
+      "false": {}
+    },
+    "east": {
+      "true": {
+        "submodel": "fence_side",
+        "y": 90
+      },
+      "false": {}
+    },
+    "west": {
+      "true": {
+        "submodel": "fence_side",
+        "y": 270
+      },
+      "false": {}
+    }
   }
 }

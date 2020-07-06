@@ -1,19 +1,19 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"SPS",
-	"SPS"
+    "SPS",
+    "SPS"
   ],
   "key": {
-	"S": {
-	  "type": "forge:ore_dict",
-	  "ore": "stickWood"
-	},
-	"P": {
-	  "item": "bewitchment:elder_planks"
-	}
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "P": {
+      "item": "bewitchment:elder_planks"
+    }
   },
   "result": {
-	"item": "bewitchment:elder_fence_gate"
+    "item": "bewitchment:elder_fence_gate"
   }
 }

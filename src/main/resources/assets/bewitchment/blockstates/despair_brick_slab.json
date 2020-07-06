@@ -1,26 +1,26 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "half_slab",
-	"textures": {
-	  "top": "bewitchment:blocks/despair_bricks",
-	  "bottom": "#top",
-	  "side": "#top"
-	}
+    "model": "half_slab",
+    "textures": {
+      "top": "bewitchment:blocks/despair_bricks",
+      "bottom": "#top",
+      "side": "#top"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	],
-	"half=bottom,variant=default": [
-	  {
-		"model": "half_slab"
-	  }
-	],
-	"half=top,variant=default": [
-	  {
-		"model": "upper_slab"
-	  }
-	]
+    "normal": [
+      {}
+    ],
+    "half=bottom,variant=default": [
+      {
+        "model": "half_slab"
+      }
+    ],
+    "half=top,variant=default": [
+      {
+        "model": "upper_slab"
+      }
+    ]
   }
 }

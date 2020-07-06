@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	"I  ",
-	"II ",
-	"III"
+    "I  ",
+    "II ",
+    "III"
   ],
   "key": {
-	"I": {
-	  "item": "bewitchment:nethersteel"
-	}
+    "I": {
+      "item": "bewitchment:nethersteel"
+    }
   },
   "result": {
-	"item": "bewitchment:nethersteel_stairs",
-	"count": 4
+    "item": "bewitchment:nethersteel_stairs",
+    "count": 4
   }
 }

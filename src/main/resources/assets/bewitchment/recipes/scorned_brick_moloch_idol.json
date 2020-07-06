@@ -1,22 +1,22 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"F F",
-	"FDF",
-	"FRF"
+    "F F",
+    "FDF",
+    "FRF"
   ],
   "key": {
-	"F": {
-	  "item": "bewitchment:scorned_bricks"
-	},
-	"D": {
-	  "item": "bewitchment:liquid_witchcraft"
-	},
-	"R": {
-	  "item": "bewitchment:heart"
-	}
+    "F": {
+      "item": "bewitchment:scorned_bricks"
+    },
+    "D": {
+      "item": "bewitchment:liquid_witchcraft"
+    },
+    "R": {
+      "item": "bewitchment:heart"
+    }
   },
   "result": {
-	"item": "bewitchment:scorned_brick_moloch_idol"
+    "item": "bewitchment:scorned_brick_moloch_idol"
   }
 }

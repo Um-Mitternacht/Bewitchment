@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-	{
-	  "item": "bewitchment:poppet"
-	},
-	{
-	  "item": "bewitchment:ebb_of_death"
-	},
-	{
-	  "item": "bewitchment:elderberries"
-	},
-	{
-	  "item": "bewitchment:bottle_of_blood"
-	}
+    {
+      "item": "bewitchment:poppet"
+    },
+    {
+      "item": "bewitchment:ebb_of_death"
+    },
+    {
+      "item": "bewitchment:elderberries"
+    },
+    {
+      "item": "bewitchment:bottle_of_blood"
+    }
   ],
   "result": {
-	"item": "bewitchment:poppet_vampiric",
-	"count": 1
+    "item": "bewitchment:poppet_vampiric",
+    "count": 1
   }
 }

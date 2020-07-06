@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-	"layer0": "bewitchment:items/box_of_sealed_evil"
+    "layer0": "bewitchment:items/box_of_sealed_evil"
   }
 }

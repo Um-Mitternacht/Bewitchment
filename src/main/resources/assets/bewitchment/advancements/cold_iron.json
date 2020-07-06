@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:cold_iron_ingot"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.cold_iron.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.cold_iron.description"
-	}
+    "icon": {
+      "item": "bewitchment:cold_iron_ingot"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.cold_iron.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.cold_iron.description"
+    }
   },
   "parent": "bewitchment:distillery",
   "criteria": {
-	"cold_iron": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:cold_iron_ingot"
-		  }
-		]
-	  }
-	}
+    "cold_iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:cold_iron_ingot"
+          }
+        ]
+      }
+    }
   }
 }

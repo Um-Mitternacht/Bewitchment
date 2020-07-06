@@ -1,7 +1,7 @@
 {
   "variants": {
-	"normal": {
-	  "model": "bewitchment:dragonsbloodroot#dynamicroot"
-	}
+    "normal": {
+      "model": "bewitchment:dragonsbloodroot#dynamicroot"
+    }
   }
 }

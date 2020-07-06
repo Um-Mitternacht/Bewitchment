@@ -1,25 +1,25 @@
 {
   "type": "forge:ore_shapeless",
   "ingredients": [
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "obsidian"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "obsidian"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "netherrack"
-	},
-	{
-	  "type": "forge:ore_dict",
-	  "ore": "netherrack"
-	}
+    {
+      "type": "forge:ore_dict",
+      "ore": "obsidian"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "obsidian"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "netherrack"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "netherrack"
+    }
   ],
   "result": {
-	"item": "bewitchment:scorned_bricks",
-	"count": 4
+    "item": "bewitchment:scorned_bricks",
+    "count": 4
   }
 }

@@ -1,26 +1,26 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"SSS",
-	"PRP",
-	"PWP"
+    "SSS",
+    "PRP",
+    "PWP"
   ],
   "key": {
-	"S": {
-	  "item": "#SLAB_STONE"
-	},
-	"P": {
-	  "type": "forge:ore_dict",
-	  "ore": "plankWood"
-	},
-	"R": {
-	  "item": "bewitchment:dragons_blood_resin"
-	},
-	"W": {
-	  "item": "bewitchment:liquid_witchcraft"
-	}
+    "S": {
+      "item": "#SLAB_STONE"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "R": {
+      "item": "bewitchment:dragons_blood_resin"
+    },
+    "W": {
+      "item": "bewitchment:liquid_witchcraft"
+    }
   },
   "result": {
-	"item": "bewitchment:sigil_table"
+    "item": "bewitchment:sigil_table"
   }
 }

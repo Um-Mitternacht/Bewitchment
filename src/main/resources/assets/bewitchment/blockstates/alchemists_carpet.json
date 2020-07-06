@@ -1,7 +1,7 @@
 {
   "variants": {
-	"normal": {
-	  "model": "bewitchment:alchemists_carpet"
-	}
+    "normal": {
+      "model": "bewitchment:alchemists_carpet"
+    }
   }
 }

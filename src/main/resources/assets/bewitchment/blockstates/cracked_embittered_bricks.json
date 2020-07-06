@@ -1,14 +1,14 @@
 {
   "forge_marker": 1,
   "defaults": {
-	"model": "cube_all",
-	"textures": {
-	  "all": "bewitchment:blocks/cracked_embittered_bricks"
-	}
+    "model": "cube_all",
+    "textures": {
+      "all": "bewitchment:blocks/cracked_embittered_bricks"
+    }
   },
   "variants": {
-	"normal": [
-	  {}
-	]
+    "normal": [
+      {}
+    ]
   }
 }

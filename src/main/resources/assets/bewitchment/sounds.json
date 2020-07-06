@@ -1,88 +1,88 @@
 {
   "broom_sweep": {
-	"sounds": [
-	  "bewitchment:broom_sweep"
-	]
+    "sounds": [
+      "bewitchment:broom_sweep"
+    ]
   },
   "chalk_scribble": {
-	"sounds": [
-	  "bewitchment:chalk_scribble_0",
-	  "bewitchment:chalk_scribble_1",
-	  "bewitchment:chalk_scribble_2"
-	]
+    "sounds": [
+      "bewitchment:chalk_scribble_0",
+      "bewitchment:chalk_scribble_1",
+      "bewitchment:chalk_scribble_2"
+    ]
   },
   "owl_hoot": {
-	"sounds": [
-	  "bewitchment:owl_hoot_0",
-	  "bewitchment:owl_hoot_1"
-	]
+    "sounds": [
+      "bewitchment:owl_hoot_0",
+      "bewitchment:owl_hoot_1"
+    ]
   },
   "raven_cry": {
-	"sounds": [
-	  "bewitchment:raven_cry_0",
-	  "bewitchment:raven_cry_1"
-	]
+    "sounds": [
+      "bewitchment:raven_cry_0",
+      "bewitchment:raven_cry_1"
+    ]
   },
   "toad_death": {
-	"sounds": [
-	  "bewitchment:toad_death"
-	]
+    "sounds": [
+      "bewitchment:toad_death"
+    ]
   },
   "toad_hurt": {
-	"sounds": [
-	  "bewitchment:toad_hurt_0",
-	  "bewitchment:toad_hurt_1",
-	  "bewitchment:toad_hurt_2"
-	]
+    "sounds": [
+      "bewitchment:toad_hurt_0",
+      "bewitchment:toad_hurt_1",
+      "bewitchment:toad_hurt_2"
+    ]
   },
   "toad_idle": {
-	"sounds": [
-	  "bewitchment:toad_idle_0",
-	  "bewitchment:toad_idle_1",
-	  "bewitchment:toad_idle_2"
-	]
+    "sounds": [
+      "bewitchment:toad_idle_0",
+      "bewitchment:toad_idle_1",
+      "bewitchment:toad_idle_2"
+    ]
   },
   "cleaver_death": {
-	"sounds": [
-	  "bewitchment:cleaver_death_0",
-	  "bewitchment:cleaver_death_1"
-	]
+    "sounds": [
+      "bewitchment:cleaver_death_0",
+      "bewitchment:cleaver_death_1"
+    ]
   },
   "cleaver_hurt": {
-	"sounds": [
-	  "bewitchment:cleaver_hurt_0",
-	  "bewitchment:cleaver_hurt_1"
-	]
+    "sounds": [
+      "bewitchment:cleaver_hurt_0",
+      "bewitchment:cleaver_hurt_1"
+    ]
   },
   "werewolf_howl": {
-	"sounds": [
-	  "bewitchment:werewolf_howl"
-	]
+    "sounds": [
+      "bewitchment:werewolf_howl"
+    ]
   },
   "cleaver_living": {
-	"sounds": [
-	  "bewitchment:cleaver_living_0",
-	  "bewitchment:cleaver_living_1",
-	  "bewitchment:cleaver_living_2"
-	]
+    "sounds": [
+      "bewitchment:cleaver_living_0",
+      "bewitchment:cleaver_living_1",
+      "bewitchment:cleaver_living_2"
+    ]
   },
   "bafometyr_living": {
-	"sounds": [
-	  "bewitchment:bafometyr_living_0",
-	  "bewitchment:bafometyr_living_1",
-	  "bewitchment:bafometyr_living_2",
-	  "bewitchment:bafometyr_living_3"
-	]
+    "sounds": [
+      "bewitchment:bafometyr_living_0",
+      "bewitchment:bafometyr_living_1",
+      "bewitchment:bafometyr_living_2",
+      "bewitchment:bafometyr_living_3"
+    ]
   },
   "bafometyr_hurt": {
-	"sounds": [
-	  "bewitchment:bafometyr_hurt_0"
-	]
+    "sounds": [
+      "bewitchment:bafometyr_hurt_0"
+    ]
   },
   "bafometyr_death": {
-	"sounds": [
-	  "bewitchment:bafometyr_death_0",
-	  "bewitchment:bafometyr_death_1"
-	]
+    "sounds": [
+      "bewitchment:bafometyr_death_0",
+      "bewitchment:bafometyr_death_1"
+    ]
   }
 }

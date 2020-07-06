@@ -1,26 +1,26 @@
 {
   "display": {
-	"icon": {
-	  "item": "bewitchment:witches_cauldron"
-	},
-	"title": {
-	  "translate": "advancements.bewitchment.cauldron.title"
-	},
-	"description": {
-	  "translate": "advancements.bewitchment.cauldron.description"
-	}
+    "icon": {
+      "item": "bewitchment:witches_cauldron"
+    },
+    "title": {
+      "translate": "advancements.bewitchment.cauldron.title"
+    },
+    "description": {
+      "translate": "advancements.bewitchment.cauldron.description"
+    }
   },
   "parent": "bewitchment:crafted_altar",
   "criteria": {
-	"cauldron": {
-	  "trigger": "minecraft:inventory_changed",
-	  "conditions": {
-		"items": [
-		  {
-			"item": "bewitchment:witches_cauldron"
-		  }
-		]
-	  }
-	}
+    "cauldron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bewitchment:witches_cauldron"
+          }
+        ]
+      }
+    }
   }
 }

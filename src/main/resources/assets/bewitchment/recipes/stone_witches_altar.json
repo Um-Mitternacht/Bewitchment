@@ -1,27 +1,27 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"ESE",
-	"BLB",
-	"BLB"
+    "ESE",
+    "BLB",
+    "BLB"
   ],
   "key": {
-	"E": {
-	  "item": "bewitchment:empty_jar"
-	},
-	"S": {
-	  "item": "#GENERIC_SALT"
-	},
-	"B": {
-	  "type": "forge:ore_dict",
-	  "ore": "stone"
-	},
-	"L": {
-	  "item": "bewitchment:elder_wood"
-	}
+    "E": {
+      "item": "bewitchment:empty_jar"
+    },
+    "S": {
+      "item": "#GENERIC_SALT"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "L": {
+      "item": "bewitchment:elder_wood"
+    }
   },
   "result": {
-	"item": "bewitchment:stone_witches_altar",
-	"count": 3
+    "item": "bewitchment:stone_witches_altar",
+    "count": 3
   }
 }

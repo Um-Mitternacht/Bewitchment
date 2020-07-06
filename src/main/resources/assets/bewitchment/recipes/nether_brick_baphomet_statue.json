@@ -1,23 +1,23 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-	"F F",
-	"FDF",
-	"FRF"
+    "F F",
+    "FDF",
+    "FRF"
   ],
   "key": {
-	"F": {
-	  "type": "forge:ore_dict",
-	  "ore": "ingotBrickNether"
-	},
-	"D": {
-	  "item": "bewitchment:bottled_hellfire"
-	},
-	"R": {
-	  "item": "bewitchment:pentacle"
-	}
+    "F": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBrickNether"
+    },
+    "D": {
+      "item": "bewitchment:bottled_hellfire"
+    },
+    "R": {
+      "item": "bewitchment:pentacle"
+    }
   },
   "result": {
-	"item": "bewitchment:nether_brick_baphomet_statue"
+    "item": "bewitchment:nether_brick_baphomet_statue"
   }
 }
