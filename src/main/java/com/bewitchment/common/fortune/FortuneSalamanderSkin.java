@@ -7,6 +7,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.BiomeDictionary;
 
 public class FortuneSalamanderSkin extends Fortune {
@@ -18,8 +19,10 @@ public class FortuneSalamanderSkin extends Fortune {
 	public boolean apply(EntityPlayer player) {
 		BlockPos pos = player.getPosition();
 		if (BiomeDictionary.hasType(player.world.getBiome(pos), BiomeDictionary.Type.NETHER)) {
-			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600, 0, false, false));
-			return true;
+			if (player.world.provider.getDimensionType() == DimensionType.NETHER) {
+				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600, 0, false, false));
+				return true;
+			}
 		}
 		return false;
 	}
