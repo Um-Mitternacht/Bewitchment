@@ -13,6 +13,7 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTable;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class FortuneHellishFortune extends Fortune {
 	public FortuneHellishFortune() {
 		super(new ResourceLocation(Bewitchment.MODID, "hellish_fortune"), false, 66, 666);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@Override
