@@ -47,7 +47,7 @@ public class RecipeWand extends ShapelessRecipes {
 				ItemStack stack = var1.getStackInSlot(i);
 				if (!stack.isEmpty() && stack.getItem() == Items.SPLASH_POTION) {
 					wandCopy.setTagCompound(new NBTTagCompound());
-					wandCopy.getTagCompound().setInteger("uses", 16);
+					wandCopy.getTagCompound().setInteger("uses", 8);
 					List<PotionEffect> effects = PotionUtils.getEffectsFromStack(stack);
 					PotionUtils.appendEffects(wandCopy, effects);
 				}

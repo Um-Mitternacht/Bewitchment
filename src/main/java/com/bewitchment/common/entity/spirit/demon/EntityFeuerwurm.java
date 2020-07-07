@@ -27,7 +27,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 
 	public EntityFeuerwurm(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/feuerwurm"));
-		setSize(1, 0.85f);
+		setSize(1.45f, 0.85f);
 		isImmuneToFire = true;
 		setPathPriority(PathNodeType.WATER, -1);
 		setPathPriority(PathNodeType.LAVA, 8);
