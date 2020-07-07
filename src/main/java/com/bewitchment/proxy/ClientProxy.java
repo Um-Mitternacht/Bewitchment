@@ -35,6 +35,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IThreadListener;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -45,6 +46,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.List;
@@ -76,6 +78,24 @@ public class ClientProxy extends ServerProxy {
 			}
 		}
 		return super.doesPlayerHaveAdvancement(player, name);
+	}
+
+	@Override
+	public EntityPlayer getPlayer(final MessageContext context) {
+		if (context.side.isClient()) {
+			return Minecraft.getMinecraft().player;
+		} else {
+			return context.getServerHandler().player;
+		}
+	}
+
+	@Override
+	public IThreadListener getThreadListener(final MessageContext context) {
+		if (context.side.isClient()) {
+			return Minecraft.getMinecraft();
+		} else {
+			return context.getServerHandler().player.server;
+		}
 	}
 
 	@Override
