@@ -44,10 +44,8 @@ public class RitualBiomeShift extends Ritual {
                         //
                         BlockPos.MutableBlockPos X = new BlockPos.MutableBlockPos();
                         X.setPos(-16, 0, -16);
-
-                        Iterable<BlockPos> pos1 = BlockPos.getAllInBox(Z, X);
-                        for (BlockPos pos : pos1) {
-                            BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), (BlockPos) BlockPos.MutableBlockPos.getAllInBox(X, Z));
+                        {
+                            BiomeChangingUtils.setMultiBiome(world, Biome.getBiomeForId(id), effectivePos, X, Z);
                         }
                     }
                 }
