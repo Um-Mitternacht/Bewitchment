@@ -12,11 +12,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IThreadListener;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,22 +46,6 @@ public class ServerProxy {
 		ModObjects.preInit();
 		if (Loader.isModLoaded("dynamictrees")) {
 			DynamicTreesCompat.preInit();
-		}
-	}
-
-	public EntityPlayer getPlayer(MessageContext ctx) {
-		if (ctx.side.isServer()) {
-			return ctx.getServerHandler().player;
-		} else {
-			throw new RuntimeException("Tried to get the player from a client-side MessageContext on the dedicated server");
-		}
-	}
-
-	public IThreadListener getThreadListener(final MessageContext context) {
-		if (context.side.isServer()) {
-			return context.getServerHandler().player.server;
-		} else {
-			throw new RuntimeException("Tried to get the IThreadListener from a client-side MessageContext on the dedicated server");
 		}
 	}
 

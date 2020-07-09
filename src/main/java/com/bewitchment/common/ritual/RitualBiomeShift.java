@@ -11,6 +11,7 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -22,7 +23,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
- * Original code by Zabi94, modified by Sunconure11 afterwards, with bits stuck on from Ael.
+ * Original code by Zabi94, modified by Sunconure11 afterwards.
  */
 public class RitualBiomeShift extends Ritual {
 	public RitualBiomeShift() {
@@ -42,15 +43,20 @@ public class RitualBiomeShift extends Ritual {
 				}
 			}
 			int radius = (int) MathHelper.sqrt(64 * (1 + 2) * (1 + 2));
+			BiomeChangingUtils.BiomeChangerWalker walker = new BiomeChangingUtils.BiomeChangerWalker(id);
 			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 			mpos.setPos(effectivePos.getX() - radius, 0, effectivePos.getZ() - radius);
 			for (int x = -radius; x <= radius; x++) {
 				for (int z = -radius; z <= radius; z++) {
 					if (x * x + z * z <= radius * radius) {
-						BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), mpos);
+						walker.visit(world, mpos);
 					}
+					mpos.move(EnumFacing.SOUTH);
 				}
+				mpos.move(EnumFacing.NORTH, 2 * radius + 1);
+				mpos.move(EnumFacing.EAST);
 			}
+			walker.complete();
 		}
 	}
 }
