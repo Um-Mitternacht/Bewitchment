@@ -44,9 +44,7 @@ public class RitualBiomeShift extends Ritual {
 						for (double z = -radius; z < radius; z++) {
 							if (Math.sqrt((x * x) + (z * z)) < radius) {
 								BlockPos pos = effectivePos.add(x, 0, z);
-								System.out.println(pos);
 								BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), pos);
-                                Bewitchment.network.sendToAll(new PacketChangeBiome(Biome.getBiomeForId(id), pos));
 							}
 						}
 					}

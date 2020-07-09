@@ -1,10 +1,15 @@
 package com.bewitchment.common.world;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
+import com.bewitchment.common.network.PacketChangeBiome;
 import com.google.common.collect.HashMultimap;
+import net.minecraft.server.management.PlayerChunkMap;
+import net.minecraft.server.management.PlayerChunkMapEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
@@ -62,5 +67,16 @@ public class BiomeChangingUtils {
 
 		chunk.getBiomeArray()[j << 4 | i] = id;
 		chunk.markDirty();
+
+		if (world instanceof WorldServer) {
+			PlayerChunkMap playerChunkMap = ((WorldServer) world).getPlayerChunkMap();
+			int chunkX = pos.getX() >> 4;
+			int chunkZ = pos.getZ() >> 4;
+
+			PlayerChunkMapEntry entry = playerChunkMap.getEntry(chunkX, chunkZ);
+			if (entry != null) {
+				Bewitchment.network.sendToAll(new PacketChangeBiome(biome, pos));
+			}
+		}
 	}
 }
