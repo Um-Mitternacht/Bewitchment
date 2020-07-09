@@ -124,8 +124,6 @@ public class Bewitchment {
 		ModRecipes.init();
 		Compat.init();
 
-		Bewitchment.network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
-
 		int id = -1;
 		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
@@ -138,6 +136,7 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
 		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
+		Bewitchment.network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
 
 		for (Item item : ForgeRegistries.ITEMS) {
 			if (Util.isRelated(true, item, "silver")) MaterialHandler.SILVER_ARMOR.add(item);
