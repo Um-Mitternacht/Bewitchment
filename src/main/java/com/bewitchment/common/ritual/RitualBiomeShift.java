@@ -44,11 +44,15 @@ public class RitualBiomeShift extends Ritual {
 			}
 			int radius = (int) MathHelper.sqrt(64 * (1 + 2) * (1 + 2));
 			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+			BlockPos.MutableBlockPos radiusvalue = new BlockPos.MutableBlockPos();
+			BlockPos.MutableBlockPos radiusvalue2 = new BlockPos.MutableBlockPos();
 			mpos.setPos(effectivePos.getX() - radius, 0, effectivePos.getZ() - radius);
+			radiusvalue.setPos(0, 0, effectivePos.getZ());
+			radiusvalue2.setPos(effectivePos.getX(), 0, 0);
 			for (int x = -radius; x <= radius; x++) {
 				for (int z = -radius; z <= radius; z++) {
 					if (x * x + z * z <= radius * radius) {
-						BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), mpos);
+						BiomeChangingUtils.setMultiBiome(world, Biome.getBiomeForId(id), radiusvalue, radiusvalue2);
 					}
 				}
 			}
