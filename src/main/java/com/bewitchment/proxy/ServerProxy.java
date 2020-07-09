@@ -51,6 +51,22 @@ public class ServerProxy {
 		}
 	}
 
+	public EntityPlayer getPlayer(MessageContext ctx) {
+		if (ctx.side.isServer()) {
+			return ctx.getServerHandler().player;
+		} else {
+			throw new RuntimeException("Tried to get the player from a client-side MessageContext on the dedicated server");
+		}
+	}
+
+	public IThreadListener getThreadListener(final MessageContext context) {
+		if (context.side.isServer()) {
+			return context.getServerHandler().player.server;
+		} else {
+			throw new RuntimeException("Tried to get the IThreadListener from a client-side MessageContext on the dedicated server");
+		}
+	}
+
 	public void handleTarot(List<TarotInfo> infoList) {
 	}
 
@@ -65,22 +81,6 @@ public class ServerProxy {
 	}
 
 	public void registerTextureVariant(Item item, List<Predicate<ItemStack>> predicates) {
-	}
-
-	public EntityPlayer getPlayer(MessageContext ctx){
-		if (ctx.side.isServer()) {
-			return ctx.getServerHandler().player;
-		} else {
-			throw new RuntimeException("Tried to get the player from a client-side MessageContext on the dedicated server");
-		}
-	}
-
-	public IThreadListener getThreadListener(final MessageContext context) {
-		if (context.side.isServer()) {
-			return context.getServerHandler().player.server;
-		} else {
-			throw new RuntimeException("Tried to get the IThreadListener from a client-side MessageContext on the dedicated server");
-		}
 	}
 
 	public void ignoreProperty(Block block, IProperty<?>... properties) {
