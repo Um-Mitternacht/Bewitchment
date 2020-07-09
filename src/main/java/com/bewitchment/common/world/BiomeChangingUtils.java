@@ -2,7 +2,6 @@ package com.bewitchment.common.world;
 
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.google.common.collect.HashMultimap;
-import com.miskatonicmysteries.common.world.gen.BiomeManipulator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
@@ -43,7 +42,7 @@ public class BiomeChangingUtils {
 	public static void resetRandomOverriddenBiome(World world) {
 		ExtendedWorld extendedWorld = ExtendedWorld.get(world);
 		BlockPos randomPos = extendedWorld.STORED_OVERRIDE_BIOMES.keySet().toArray(new BlockPos[extendedWorld.STORED_OVERRIDE_BIOMES.size()])[world.rand.nextInt(extendedWorld.STORED_OVERRIDE_BIOMES.size())];
-		BiomeManipulator.setBiome(world, extendedWorld.STORED_OVERRIDE_BIOMES.get(randomPos), randomPos);
+		BiomeChangingUtils.setBiome(world, extendedWorld.STORED_OVERRIDE_BIOMES.get(randomPos), randomPos);
 		extendedWorld.STORED_OVERRIDE_BIOMES.remove(randomPos);
 		extendedWorld.setDirty(true);
 	}

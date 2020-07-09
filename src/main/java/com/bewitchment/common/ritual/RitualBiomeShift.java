@@ -46,7 +46,6 @@ public class RitualBiomeShift extends Ritual {
                                 BlockPos pos = effectivePos.add(x, 0, z);
                                 System.out.println(pos);
                                 BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), pos);
-                                world.setBlockToAir(pos);
                             }
                         }
                     }
