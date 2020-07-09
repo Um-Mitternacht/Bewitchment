@@ -81,24 +81,6 @@ public class ClientProxy extends ServerProxy {
 	}
 
 	@Override
-	public EntityPlayer getPlayer(final MessageContext context) {
-		if (context.side.isClient()) {
-			return Minecraft.getMinecraft().player;
-		} else {
-			return context.getServerHandler().player;
-		}
-	}
-
-	@Override
-	public IThreadListener getThreadListener(final MessageContext context) {
-		if (context.side.isClient()) {
-			return Minecraft.getMinecraft();
-		} else {
-			return context.getServerHandler().player.server;
-		}
-	}
-
-	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 
@@ -158,6 +140,24 @@ public class ClientProxy extends ServerProxy {
 			GuiTarotTable gtt = new GuiTarotTable(new ContainerTarotTable(infoList));
 			Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(gtt));
 			Minecraft.getMinecraft().addScheduledTask(() -> gtt.loadData(infoList));
+		}
+	}
+
+	@Override
+	public EntityPlayer getPlayer(final MessageContext context) {
+		if (context.side.isClient()) {
+			return Minecraft.getMinecraft().player;
+		} else {
+			return context.getServerHandler().player;
+		}
+	}
+
+	@Override
+	public IThreadListener getThreadListener(final MessageContext context) {
+		if (context.side.isClient()) {
+			return Minecraft.getMinecraft();
+		} else {
+			return context.getServerHandler().player.server;
 		}
 	}
 

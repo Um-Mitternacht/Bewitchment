@@ -10,14 +10,11 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 @SuppressWarnings({"ConstantConditions", "SameReturnValue", "WeakerAccess"})
 public class ExtendedWorld extends WorldSavedData {
@@ -26,7 +23,6 @@ public class ExtendedWorld extends WorldSavedData {
 	public final List<NBTTagCompound> storedCauldrons = new ArrayList<>();
 	public final List<NBTTagCompound> storedPoppetShelves = new ArrayList<>();
 	public final Map<String, Set<UUID>> demonPledgedPlayers = new HashMap<>(); //demon name - players
-	public final Map<BlockPos, Biome> STORED_OVERRIDE_BIOMES = new ConcurrentHashMap<>();
 
 	public ExtendedWorld(String name) {
 		super(name);
@@ -39,18 +35,6 @@ public class ExtendedWorld extends WorldSavedData {
 			world.getMapStorage().setData(TAG, data);
 		}
 		return data;
-	}
-
-	/**
-	 * Adds a biome to the map of overridden biomes, so it may be restored, should it be replaced.
-	 *
-	 * @param world
-	 * @param pos
-	 */
-	public static void addOverriddenBiome(World world, BlockPos pos) {
-		ExtendedWorld extendedWorld = get(world);
-		extendedWorld.STORED_OVERRIDE_BIOMES.putIfAbsent(new BlockPos(pos.getX(), pos.getY(), pos.getZ()), world.getBiome(pos));
-		extendedWorld.markDirty();
 	}
 
 	public static void pledgePlayerToDemon(World world, EntityPlayer player, IPledgeable demon) {
@@ -89,9 +73,6 @@ public class ExtendedWorld extends WorldSavedData {
 	public void readFromNBT(NBTTagCompound nbt) {
 		NBTTagList storedCauldrons = nbt.getTagList("storedCauldrons", Constants.NBT.TAG_COMPOUND);
 		NBTTagList storedPoppetShelves = nbt.getTagList("storedPoppetShelves", Constants.NBT.TAG_COMPOUND);
-		for (NBTBase tag : nbt.getTagList("biome_id", Constants.NBT.TAG_COMPOUND)) {
-			STORED_OVERRIDE_BIOMES.put(BlockPos.fromLong(((NBTTagCompound) tag).getLong("pos")), Biome.getBiome(((NBTTagCompound) tag).getInteger("biomeId")));
-		}
 		for (int i = 0; i < storedCauldrons.tagCount(); i++)
 			this.storedCauldrons.add(storedCauldrons.getCompoundTagAt(i));
 		for (int i = 0; i < storedPoppetShelves.tagCount(); i++)
@@ -110,14 +91,6 @@ public class ExtendedWorld extends WorldSavedData {
 		nbt.setTag("storedCauldrons", storedCauldrons);
 		nbt.setTag("storedPoppetShelves", storedPoppetShelves);
 		nbt.setTag("demonPledges", demonPledges);
-		NBTTagList biomeOverrides = new NBTTagList();
-		STORED_OVERRIDE_BIOMES.forEach((pos, biome) -> {
-			NBTTagCompound data = new NBTTagCompound();
-			data.setLong("pos", pos.toLong());
-			data.setInteger("biomeId", Biome.getIdForBiome(biome));
-			biomeOverrides.appendTag(data);
-		});
-		nbt.setTag("biome_id", biomeOverrides);
 		return nbt;
 	}
 
