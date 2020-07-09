@@ -16,6 +16,7 @@ public class ModBlockStairs extends BlockStairs {
 	public ModBlockStairs(String name, Block base, String... oreDictionaryNames) {
 		super(base.getDefaultState());
 		Util.registerBlock(this, name, base, oreDictionaryNames);
+		this.setLightOpacity(0);
 	}
 
 	@Override

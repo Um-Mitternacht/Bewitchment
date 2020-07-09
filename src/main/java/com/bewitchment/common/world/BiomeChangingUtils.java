@@ -1,16 +1,11 @@
 package com.bewitchment.common.world;
 
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
-import com.bewitchment.common.network.PacketChangeBiome;
-import com.bewitchment.common.network.PacketHandler;
 import com.google.common.collect.HashMultimap;
 import com.miskatonicmysteries.common.world.gen.BiomeManipulator;
-import net.minecraft.server.management.PlayerChunkMap;
-import net.minecraft.server.management.PlayerChunkMapEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
@@ -43,19 +38,6 @@ public class BiomeChangingUtils {
 				}
 			}
 		}
-
-		if (world instanceof WorldServer) {
-			PlayerChunkMap playerChunkMap = ((WorldServer) world).getPlayerChunkMap();
-			for (ChunkPos chunkPos : changes.keySet()) {
-				Set<BlockPos> changeSet = changes.get(chunkPos);
-				if (changeSet.isEmpty()) continue;
-
-				PlayerChunkMapEntry entry = playerChunkMap.getEntry(chunkPos.x, chunkPos.z);
-				if (entry != null) {
-					PacketHandler.network.sendToAll(new PacketChangeBiome(biome, changeSet.toArray(new BlockPos[0])));
-				}
-			}
-		}
 	}
 
 	public static void resetRandomOverriddenBiome(World world) {
@@ -81,16 +63,5 @@ public class BiomeChangingUtils {
 
 		chunk.getBiomeArray()[j << 4 | i] = id;
 		chunk.markDirty();
-
-		if (world instanceof WorldServer) {
-			PlayerChunkMap playerChunkMap = ((WorldServer) world).getPlayerChunkMap();
-			int chunkX = pos.getX() >> 4;
-			int chunkZ = pos.getZ() >> 4;
-
-			PlayerChunkMapEntry entry = playerChunkMap.getEntry(chunkX, chunkZ);
-			if (entry != null) {
-				PacketHandler.network.sendToAll(new PacketChangeBiome(biome, pos));
-			}
-		}
 	}
 }

@@ -30,20 +30,25 @@ public class RitualBiomeShift extends Ritual {
 
     @Override
     public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-        int id = Biome.getIdForBiome(Biomes.PLAINS);
+        int id;
         if (world.getTileEntity(effectivePos) instanceof TileEntityGlyph) {
             for (int i = 0; i < inventory.getSlots(); i++) {
                 ItemStack stack = inventory.getStackInSlot(i);
                 if (stack.getItem() instanceof ItemBoline) {
                     id = stack.getTagCompound().getInteger("biome_id");
                     stack.damageItem(25, caster);
-                    {
-                        //
-                        BlockPos.MutableBlockPos Z = new BlockPos.MutableBlockPos(16, 0, 16);
-                        //
-                        BlockPos.MutableBlockPos X = new BlockPos.MutableBlockPos(-16, 0, -16);
-                        //
-                        BiomeChangingUtils.setMultiBiome(world, Biome.getBiomeForId(id), X, Z);
+
+                    //might run thru that only server side, since all client change is done with packets afterwards
+                    int radius = 32; //maybe change that depending on some other stuff?
+                    for (double x = -radius; x < radius; x++) {
+                        for (double z = -radius; z < radius; z++) {
+                            if (Math.sqrt((x * x) + (z * z)) < radius) {
+                                BlockPos pos = effectivePos.add(x, 0, z);
+                                System.out.println(pos);
+                                BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), pos);
+                                world.setBlockToAir(pos);
+                            }
+                        }
                     }
                 }
             }

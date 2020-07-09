@@ -34,6 +34,7 @@ import com.bewitchment.common.handler.*;
 import com.bewitchment.common.integration.Compat;
 import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
+import com.bewitchment.common.network.PacketChangeBiome;
 import com.bewitchment.common.village.VillagerTradeHandler;
 import com.bewitchment.common.world.gen.ModWorldGen;
 import com.bewitchment.proxy.ServerProxy;
@@ -122,6 +123,8 @@ public class Bewitchment {
 
 		ModRecipes.init();
 		Compat.init();
+
+		Bewitchment.network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
 
 		int id = -1;
 		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
