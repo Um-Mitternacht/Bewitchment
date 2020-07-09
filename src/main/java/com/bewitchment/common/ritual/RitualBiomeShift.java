@@ -39,14 +39,11 @@ public class RitualBiomeShift extends Ritual {
                     stack.damageItem(25, caster);
                     {
                         //
-                        BlockPos.MutableBlockPos Z = new BlockPos.MutableBlockPos();
-                        Z.setPos(16, 0, 16);
+                        BlockPos.MutableBlockPos Z = new BlockPos.MutableBlockPos(16, 0, 16);
                         //
-                        BlockPos.MutableBlockPos X = new BlockPos.MutableBlockPos();
-                        X.setPos(-16, 0, -16);
-                        {
-                            BiomeChangingUtils.setMultiBiome(world, Biome.getBiomeForId(id), effectivePos, X, Z);
-                        }
+                        BlockPos.MutableBlockPos X = new BlockPos.MutableBlockPos(-16, 0, -16);
+                        //
+                        BiomeChangingUtils.setMultiBiome(world, Biome.getBiomeForId(id), X, Z);
                     }
                 }
             }
