@@ -30,10 +30,6 @@ public class RitualBiomeShift extends Ritual {
 		super(new ResourceLocation(Bewitchment.MODID, "biome_shift"), Arrays.asList(Util.get("treeSapling"), Util.get("logWood"), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.oak_spirit)), Util.get(new ItemStack(ModObjects.dimensional_sand)), Util.get(new ItemStack(ModObjects.boline))), null, Collections.singletonList(new ItemStack(ModObjects.boline, 1, 0)), 50, 1300, 33, BlockGlyph.ENDER, BlockGlyph.ENDER, BlockGlyph.ENDER);
 	}
 
-	public int getRadius() {
-		return 16;
-	}
-
 	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		int id = Biome.getIdForBiome(Biomes.PLAINS);
@@ -43,25 +39,8 @@ public class RitualBiomeShift extends Ritual {
 				if (stack.getItem() instanceof ItemBoline) {
 					id = stack.getTagCompound().getInteger("biome_id");
 					stack.damageItem(25, caster);
-					{
-						double radius = getRadius();
-						//
-						BlockPos.MutableBlockPos minZ = new BlockPos.MutableBlockPos();
-						minZ.setPos(0, 0, effectivePos.getZ() - --radius);
-						//
-						BlockPos.MutableBlockPos maxZ = new BlockPos.MutableBlockPos();
-						maxZ.setPos(0, 0, effectivePos.getZ() + ++radius);
-						//
-						BlockPos.MutableBlockPos minX = new BlockPos.MutableBlockPos();
-						minX.setPos(effectivePos.getX() - --radius, 0, 0);
-						//
-						BlockPos.MutableBlockPos maxX = new BlockPos.MutableBlockPos();
-						maxX.setPos(effectivePos.getX() + ++radius, 0, 0);
-						{
-							BiomeChangingUtils.setMultiBiome(world, Biome.getBiomeForId(id), minZ, maxZ, minX, maxX);
-							break;
-						}
-					}
+					BiomeChangingUtils.setMultiBiome(world, Biome.getBiomeForId(id), effectivePos);
+					break;
 				}
 			}
 		}
