@@ -1,168 +1,95 @@
 package com.bewitchment.common.world;
 
-import com.bewitchment.api.BewitchmentAPI;
-import com.google.common.collect.Sets;
-import net.minecraft.network.play.server.SPacketChunkData;
+import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
+import com.bewitchment.common.network.PacketChangeBiome;
+import com.bewitchment.common.network.PacketHandler;
+import com.google.common.collect.HashMultimap;
+import com.miskatonicmysteries.common.world.gen.BiomeManipulator;
+import net.minecraft.server.management.PlayerChunkMap;
+import net.minecraft.server.management.PlayerChunkMapEntry;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.common.BiomeDictionary;
 
+import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Original code created by Zabi94. This is from our legacy-master branch.
+ * Original code created by Ael.
  */
 public class BiomeChangingUtils {
 
-	public static void changeWholeBiome(BlockPos pos, Biome newBiome, World world) {
-		int id = Biome.getIdForBiome(newBiome);
-		Chunk ch = world.getChunk(pos);
-		Object array = ch.getBiomeArray();
-		for (int i = 0; i < 255; i++) setArrayValue(array, id, i);
-		ch.markDirty();
-		refreshChunk(ch);
+	public static void setMultiBiome(World world, Biome biome, BlockPos... poses) {
+		byte id = (byte) Biome.getIdForBiome(biome);
+		HashMultimap<ChunkPos, BlockPos> changes = HashMultimap.create();
+		for (BlockPos pos : poses) {
+			changes.put(new ChunkPos(pos), pos);
+		}
+		for (ChunkPos chunkPos : changes.keySet().toArray(new ChunkPos[changes.keySet().size()])) {
+			Chunk chunk = world.getChunk(chunkPos.x, chunkPos.z);
+			byte[] biomeArray = chunk.getBiomeArray();
+			Set<BlockPos> changeSet = changes.get(chunkPos);
+			for (Iterator<BlockPos> iterator = changeSet.iterator(); iterator.hasNext(); ) {
+				BlockPos pos = iterator.next();
+				int i = pos.getX() & 15;
+				int j = pos.getZ() & 15;
+				if (biomeArray[j << 4 | i] == id) {
+					iterator.remove();
+				} else {
+					biomeArray[j << 4 | i] = id;
+				}
+			}
+		}
+
+		if (world instanceof WorldServer) {
+			PlayerChunkMap playerChunkMap = ((WorldServer) world).getPlayerChunkMap();
+			for (ChunkPos chunkPos : changes.keySet()) {
+				Set<BlockPos> changeSet = changes.get(chunkPos);
+				if (changeSet.isEmpty()) continue;
+
+				PlayerChunkMapEntry entry = playerChunkMap.getEntry(chunkPos.x, chunkPos.z);
+				if (entry != null) {
+					PacketHandler.network.sendToAll(new PacketChangeBiome(biome, changeSet.toArray(new BlockPos[0])));
+				}
+			}
+		}
+	}
+
+	public static void resetRandomOverriddenBiome(World world) {
+		ExtendedWorld extendedWorld = ExtendedWorld.get(world);
+		BlockPos randomPos = extendedWorld.STORED_OVERRIDE_BIOMES.keySet().toArray(new BlockPos[extendedWorld.STORED_OVERRIDE_BIOMES.size()])[world.rand.nextInt(extendedWorld.STORED_OVERRIDE_BIOMES.size())];
+		BiomeManipulator.setBiome(world, extendedWorld.STORED_OVERRIDE_BIOMES.get(randomPos), randomPos);
+		extendedWorld.STORED_OVERRIDE_BIOMES.remove(randomPos);
+		extendedWorld.setDirty(true);
 	}
 
 
-	//This is used to proxy the array type, as it might be modified to an int array by mods like JeID
-	private static boolean setArrayValue(Object array, int value, int index) {
-		if (int[].class.isAssignableFrom(array.getClass())) {
-			if (((int[]) array)[index] == value) {
-				return false;
-			}
-			((int[]) array)[index] = value;
-			return true;
-		}
-		if (((byte[]) array)[index] == (byte) (value & 0xFF)) {
-			return false;
-		}
-		((byte[]) array)[index] = (byte) (value & 0xFF);
-		return true;
-	}
+	public static void setBiome(World world, Biome biome, BlockPos pos) {
+		Chunk chunk = world.getChunk(pos);
 
-	//TODO fix entities in the chunk becoming invisible
-	private static void refreshChunk(Chunk ch) {
-		ch.getWorld().getMinecraftServer().getPlayerList().getPlayers().stream().forEach(p -> p.connection.sendPacket(new SPacketChunkData(ch, 65535)));
-	}
+		int i = pos.getX() & 15;
+		int j = pos.getZ() & 15;
 
-	public static class BiomeChangerWalker {
+		byte id = (byte) Biome.getIdForBiome(biome);
 
-		private final int biomeId;
-		private final Set<Chunk> chunkSet = Sets.newHashSet();
-		private boolean complete = false;
+		byte b = chunk.getBiomeArray()[j << 4 | i];
 
-		/**
-		 * Use this class to efficiently change biome to multiple block coords spanning across multiple chunks.
-		 * <br><br>Use {@link #visit(Chunk, BlockPos)} or {@link #visit(World, BlockPos)} to add blocks to change, using
-		 * MutableBlockPos for efficiency when too many.
-		 * <br><br>When done adding coords use {@link #complete()} to complete the process. Don't leave a walker that has
-		 * visited at least a coordinate hanging, as it may cause desyncs and random weirdness.
-		 * <br><br>Biomes with the BiomeDict tag IMMUTABLE won't be converted unless using the {@link #visitImmutable(Chunk, BlockPos)}
-		 * and {@link #visitImmutable(World, BlockPos)} methods.
-		 *
-		 * @param destinationBiome What biome to convert blocks to
-		 * @see BewitchmentAPI#IMMUTABLE
-		 */
-		public BiomeChangerWalker(Biome destinationBiome) {
-			this(Biome.getIdForBiome(destinationBiome));
-		}
+		if (b == id) return;
 
-		/**
-		 * Use this class to efficiently change biome to multiple block coords spanning across multiple chunks.
-		 * <br><br>Use {@link #visit(Chunk, BlockPos)} or {@link #visit(World, BlockPos)} to add blocks to change, using
-		 * MutableBlockPos for efficiency when too many.
-		 * <br><br>When done adding coords use {@link #complete()} to complete the process. Don't leave a walker that has
-		 * visited at least a coordinate hanging, as it may cause desyncs and random weirdness.
-		 * <br><br>Biomes with the BiomeDict tag IMMUTABLE won't be converted unless using the {@link #visitImmutable(Chunk, BlockPos)}
-		 * and {@link #visitImmutable(World, BlockPos)} methods.
-		 *
-		 * @param destinationBiomeId What biome ID to convert blocks to
-		 * @see BewitchmentAPI#IMMUTABLE
-		 */
-		public BiomeChangerWalker(int destinationBiomeId) {
-			if (destinationBiomeId < 0) {
-				throw new IllegalArgumentException("Biome ID must be positive, it was " + destinationBiomeId);
-			}
-			biomeId = destinationBiomeId;
-		}
+		chunk.getBiomeArray()[j << 4 | i] = id;
+		chunk.markDirty();
 
-		/**
-		 * Changes a biome column in the chunk. Won't change biomes that have the IMMUTABLE dict type
-		 *
-		 * @param ch  The chunk the column belongs to
-		 * @param pos The position of the column. Y value is ignored
-		 * @return true if the chunk changed, false otherwise
-		 * @throws IllegalStateException if invoked after being marked as {@link #complete()}
-		 * @see BewitchmentAPI#IMMUTABLE
-		 */
-		public boolean visit(Chunk ch, BlockPos pos) {
-			if (BiomeDictionary.hasType(ch.getWorld().getBiome(pos), BewitchmentAPI.IMMUTABLE)) {
-				return false;
-			}
-			return visitImmutable(ch, pos);
-		}
+		if (world instanceof WorldServer) {
+			PlayerChunkMap playerChunkMap = ((WorldServer) world).getPlayerChunkMap();
+			int chunkX = pos.getX() >> 4;
+			int chunkZ = pos.getZ() >> 4;
 
-		/**
-		 * Changes a biome column in the world. Won't change biomes that have the IMMUTABLE dict type
-		 *
-		 * @param world The world the column belongs to
-		 * @param pos   The position of the column. Y value is ignored
-		 * @return true if the chunk changed, false otherwise
-		 * @throws IllegalStateException if invoked after being marked as {@link #complete()}
-		 * @see BewitchmentAPI#IMMUTABLE
-		 */
-		public boolean visit(World world, BlockPos pos) {
-			return visit(world.getChunk(pos), pos);
-		}
-
-		/**
-		 * Changes a biome column in the chunk. Will also change biomes that have the IMMUTABLE dict type
-		 *
-		 * @param ch  The chunk the column belongs to
-		 * @param pos The position of the column. Y value is ignored
-		 * @return true if the chunk changed, false otherwise
-		 * @throws IllegalStateException if invoked after being marked as {@link #complete()}
-		 * @see BewitchmentAPI#IMMUTABLE
-		 */
-		public boolean visitImmutable(Chunk ch, BlockPos pos) {
-			if (complete) {
-				throw new IllegalStateException("Cannot walk after completion!");
-			}
-			chunkSet.add(ch);
-			return setArrayValue(ch.getBiomeArray(), biomeId, (pos.getX() - ch.x * 16) + (16 * (pos.getZ() - ch.z * 16)));
-		}
-
-		/**
-		 * Changes a biome column in the world. Will also change biomes that have the IMMUTABLE dict type
-		 *
-		 * @param world The world the column belongs to
-		 * @param pos   The position of the column. Y value is ignored
-		 * @return true if the chunk changed, false otherwise
-		 * @throws IllegalStateException if invoked after being marked as {@link #complete()}
-		 * @see BewitchmentAPI#IMMUTABLE
-		 */
-		public boolean visitImmutable(World world, BlockPos pos) {
-			return visitImmutable(world.getChunk(pos), pos);
-		}
-
-		/**
-		 * This method will mark all the chunks interested by the instance as dirty and will synchronize them to
-		 * the clients in the dimension. Any following invocation to other methods from this class will likely
-		 * result in an exception.
-		 * <br><br>Don't forget to call this if this walker has used any visit or visitImmutable methods
-		 *
-		 * @throws IllegalStateException if called twice on the same object instance
-		 */
-		public void complete() {
-			if (complete) {
-				throw new IllegalStateException("Cannot complete the same walker multiple times!");
-			}
-			complete = true;
-			for (Chunk ch : chunkSet) {
-				ch.markDirty();
-				refreshChunk(ch);
+			PlayerChunkMapEntry entry = playerChunkMap.getEntry(chunkX, chunkZ);
+			if (entry != null) {
+				PacketHandler.network.sendToAll(new PacketChangeBiome(biome, pos));
 			}
 		}
 	}
