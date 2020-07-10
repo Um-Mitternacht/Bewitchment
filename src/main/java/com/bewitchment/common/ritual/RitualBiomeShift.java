@@ -38,7 +38,7 @@ public class RitualBiomeShift extends Ritual {
 					stack.damageItem(25, caster);
 
 					//might run thru that only server side, since all client change is done with packets afterwards
-					int radius = 32; //maybe change that depending on some other stuff?
+					int radius = 12; //maybe change that depending on some other stuff?
 					for (double x = -radius; x < radius; x++) {
 						for (double z = -radius; z < radius; z++) {
 							if (Math.sqrt((x * x) + (z * z)) < radius) {
