@@ -42,7 +42,7 @@ public class CurseParanoia extends Curse {
 		int i = rand.nextInt(100);
 		if (timer > 0) timer--;
 		if (i < 10 && timer == 0) {
-			switch (rand.nextInt(23)) {
+			switch (rand.nextInt(30)) {
 				case 0:
 					world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
 					timer = 1150;
@@ -129,6 +129,34 @@ public class CurseParanoia extends Curse {
 					break;
 				case 21:
 					world.playSound(null, pos, SoundEvents.BLOCK_GRASS_STEP, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 22:
+					world.playSound(null, pos, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 23:
+					world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 24:
+					world.playSound(null, pos, ModSounds.CLEAVER_IDLE, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 25:
+					world.playSound(null, pos, ModSounds.BAFOMETYR_IDLE, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 26:
+					world.playSound(null, pos, SoundEvents.ENTITY_SILVERFISH_HURT, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 27:
+					world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+					timer = 1150;
+					break;
+				case 28:
+					world.playSound(null, pos, SoundEvents.ENTITY_EGG_THROW, SoundCategory.HOSTILE, 1, 1);
 					timer = 1150;
 					break;
 				default:
