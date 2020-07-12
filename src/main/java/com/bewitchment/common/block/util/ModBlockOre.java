@@ -18,7 +18,7 @@ public class ModBlockOre extends ModBlock {
 
 	@Override
 	public int quantityDropped(Random random) {
-		return this == ModObjects.salt_ore ? 1 + random.nextInt(3) : 1;
+		return this == ModObjects.salt_ore ? 2 + random.nextInt(5) : 1;
 	}
 
 	@Override
