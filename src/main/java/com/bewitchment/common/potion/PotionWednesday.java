@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @SuppressWarnings({"ConstantConditions", "unused"})
 public class PotionWednesday extends ModPotion {
 	public PotionWednesday() {
-		super("wednesday", false, 0x00ff00);
+		super("wednesday", true, 0x00ff00);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
