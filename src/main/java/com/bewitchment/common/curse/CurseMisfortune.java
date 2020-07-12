@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Curse;
 import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModPotions;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
@@ -30,7 +31,7 @@ public class CurseMisfortune extends Curse {
 	}
 
 	private Potion getRandomNegativePotion(Random rand) {
-		List<Potion> potionList = GameRegistry.findRegistry(Potion.class).getValuesCollection().stream().filter(Potion::isBadEffect).filter(p -> !p.isInstant()).filter(p -> p != MobEffects.WITHER).filter(p -> p != MobEffects.POISON).collect(Collectors.toList());
+		List<Potion> potionList = GameRegistry.findRegistry(Potion.class).getValuesCollection().stream().filter(Potion::isBadEffect).filter(p -> !p.isInstant()).filter(p -> p != MobEffects.WITHER).filter(p -> p != ModPotions.mortal_coil).filter(p -> p != ModPotions.wednesday).filter(p -> p != MobEffects.POISON).collect(Collectors.toList());
 		return potionList.get(rand.nextInt(potionList.size()));
 	}
 }
