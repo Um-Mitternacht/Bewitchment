@@ -34,26 +34,26 @@ public class RitualSowingSalt extends Ritual {
     @Override
     public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
         int radius = 32;
+        int minY = 64;
+        int maxY = 256;
         for (double x = -radius; x < radius; x++) {
-            for (double z = -radius; z < radius; z++) {
-                if (Math.sqrt((x * x) + (z * z)) < radius) {
-                    BlockPos pos = effectivePos.add(x, -1, z);
-                    BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
-                    Block block = world.getBlockState(pos).getBlock();
-                    if (block instanceof BlockDirt) {
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-                    }
-                    else if (block instanceof BlockGrass) {
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-                    }
-                    else if (block instanceof BlockGrassPath) {
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-                    }
-                    else if (block instanceof BlockMycelium) {
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-                    }
-                    else if (block instanceof BlockFarmland) {
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+            for (double y = -minY; y < maxY; y++) {
+                for (double z = -radius; z < radius; z++) {
+                    if (Math.sqrt((x * x) + (z * z)) < radius) {
+                        BlockPos pos = effectivePos.add(x, y, z);
+                        BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
+                        Block block = world.getBlockState(pos).getBlock();
+                        if (block instanceof BlockDirt) {
+                            world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                        } else if (block instanceof BlockGrass) {
+                            world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                        } else if (block instanceof BlockGrassPath) {
+                            world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                        } else if (block instanceof BlockMycelium) {
+                            world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                        } else if (block instanceof BlockFarmland) {
+                            world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                        }
                     }
                 }
             }
