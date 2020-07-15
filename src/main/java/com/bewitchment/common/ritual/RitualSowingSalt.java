@@ -4,7 +4,6 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockDirt;
@@ -34,15 +33,13 @@ public class RitualSowingSalt extends Ritual {
 
     @Override
     public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-        if (world.getTileEntity(effectivePos) instanceof TileEntityGlyph) {
-            int radius = 32;
-            for (double x = -radius; x < radius; x++) {
-                for (double z = -radius; z < radius; z++) {
-                    if (Math.sqrt((x * x) + (z * z)) < radius) {
-                        BlockPos pos = effectivePos.add(x, -1, z);
-                        BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-                    }
+        int radius = 32;
+        for (double x = -radius; x < radius; x++) {
+            for (double z = -radius; z < radius; z++) {
+                if (Math.sqrt((x * x) + (z * z)) < radius) {
+                    BlockPos pos = effectivePos.add(x, -1, z);
+                    BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
+                    world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
                 }
             }
         }
