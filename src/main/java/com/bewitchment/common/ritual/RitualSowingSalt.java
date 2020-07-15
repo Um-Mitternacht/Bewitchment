@@ -6,7 +6,7 @@ import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
-import net.minecraft.block.BlockDirt;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
@@ -39,10 +39,22 @@ public class RitualSowingSalt extends Ritual {
                 if (Math.sqrt((x * x) + (z * z)) < radius) {
                     BlockPos pos = effectivePos.add(x, -1, z);
                     BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
-                    if {
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), 3);
+                    Block block = world.getBlockState(pos).getBlock();
+                    if (block instanceof BlockDirt) {
+                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
                     }
-                    world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                    else if (block instanceof BlockGrass) {
+                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                    }
+                    else if (block instanceof BlockGrassPath) {
+                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                    }
+                    else if (block instanceof BlockMycelium) {
+                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                    }
+                    else if (block instanceof BlockFarmland) {
+                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+                    }
                 }
             }
         }
