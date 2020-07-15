@@ -39,6 +39,9 @@ public class RitualSowingSalt extends Ritual {
                 if (Math.sqrt((x * x) + (z * z)) < radius) {
                     BlockPos pos = effectivePos.add(x, -1, z);
                     BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
+                    if {
+                        world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), 3);
+                    }
                     world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
                 }
             }
