@@ -66,8 +66,8 @@ public class ModBlockFenceGate extends BlockFenceGate {
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		if (placer instanceof EntityPlayer) {
 			BlockPos pos0 = pos;
-			while (worldIn.getBlockState(pos0).getBlock() != ModObjects.juniper_fence_gate) pos0 = pos0.up();
-			Util.giveItem((EntityPlayer) placer, ((ItemJuniperKey) ModObjects.juniper_key).setTags(worldIn, pos0, new ItemStack(ModObjects.juniper_key)));
+			if (this == ModObjects.juniper_fence_gate)
+				Util.giveItem((EntityPlayer) placer, ((ItemJuniperKey) ModObjects.juniper_key).setTags(worldIn, pos0, new ItemStack(ModObjects.juniper_key)));
 		}
 
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
@@ -76,13 +76,6 @@ public class ModBlockFenceGate extends BlockFenceGate {
 	@Override
 	public EnumPushReaction getPushReaction(IBlockState state) {
 		return state.getBlock() == ModObjects.juniper_fence_gate ? EnumPushReaction.BLOCK : super.getPushReaction(state);
-	}
-
-	@Override
-	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
-		if (this == ModObjects.juniper_fence_gate && entity instanceof EntityZombie) {
-			return false;
-		} else return super.canEntityDestroy(state, world, pos, entity);
 	}
 
 	@Override
