@@ -20,8 +20,11 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class EntityBlackDog extends ModEntityMob {
@@ -30,6 +33,24 @@ public class EntityBlackDog extends ModEntityMob {
 		setSize(1.08f, 1.53f);
 		experienceValue = 35;
 		isImmuneToFire = true;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEvents.ENTITY_WOLF_HURT;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_WOLF_DEATH;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEvents.ENTITY_WOLF_GROWL;
 	}
 
 	@Override
