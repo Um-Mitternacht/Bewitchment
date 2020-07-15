@@ -17,16 +17,16 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class RitualDeluge extends Ritual {
-	public RitualDeluge() {
-		super(new ResourceLocation(Bewitchment.MODID, "deluge"), Arrays.asList(Util.get(Items.WATER_BUCKET), Util.get("treeSapling"), Util.get("coquina"), Util.get("sand"), Util.get("gemLapis"), Util.get("gemLapis"), Util.get(ModObjects.toe_of_frog)), null, Collections.singletonList(new ItemStack(Items.BUCKET)), false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
-	}
+    public RitualDeluge() {
+        super(new ResourceLocation(Bewitchment.MODID, "deluge"), Arrays.asList(Util.get(Items.WATER_BUCKET), Util.get("treeSapling"), Util.get("coquina"), Util.get("sand"), Util.get("gemLapis"), Util.get("gemLapis"), Util.get(ModObjects.toe_of_frog)), null, Collections.singletonList(new ItemStack(Items.BUCKET)), false, 5, 250, 20, BlockGlyph.NORMAL, -1, -1);
+    }
 
-	@Override
-	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, altarPos, effectivePos, caster, inventory);
-		if (!world.isRemote) {
-			world.getWorldInfo().setRaining(true);
-			world.getWorldInfo().setRainTime(world.rand.nextInt(20 * 60 * 7) + (20 * 60 * 3));
-		}
-	}
+    @Override
+    public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        super.onFinished(world, altarPos, effectivePos, caster, inventory);
+        if (!world.isRemote) {
+            world.getWorldInfo().setRaining(true);
+            world.getWorldInfo().setRainTime(world.rand.nextInt(20 * 60 * 7) + (20 * 60 * 3));
+        }
+    }
 }

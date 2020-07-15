@@ -602,6 +602,7 @@ public class ModRecipes {
 		ritualRecipes.add(new RitualBiomeShift());
 		ritualRecipes.add(new RitualCurseCleansing(true));
 		ritualRecipes.add(new RitualCurseCleansing(false));
+		ritualRecipes.add(new RitualSowingSalt());
 		ritualRecipes.add(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_small"), Collections.singletonList(Util.get(Items.CLAY_BALL)), 150, BlockGlyph.ANY, -1, -1, Ritual.small));
 		ritualRecipes.add(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_medium"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash)), 300, BlockGlyph.ANY, BlockGlyph.ANY, -1, Ritual.medium));
 		ritualRecipes.add(new RitualDrawing(new ResourceLocation(Bewitchment.MODID, "draw_large"), Arrays.asList(Util.get(Items.CLAY_BALL), Util.get(Items.CLAY_BALL), Util.get(ModObjects.wood_ash), Util.get(ModObjects.wood_ash)), 450, BlockGlyph.ANY, BlockGlyph.ANY, BlockGlyph.ANY, Ritual.large));
