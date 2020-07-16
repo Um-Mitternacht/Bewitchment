@@ -90,7 +90,7 @@ dependencies {
     deobfProvided "curse.maven:coveted-mobs:3001536"
     deobfProvided "curse.maven:serene-seasons:2799213"
     deobfProvided "curse.maven:tough-as-nails:2710969"
-    deobfCompile "net.ilexiconn:llibrary:1.7.19-1.12.2"
+    deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"
     deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2"
     deobfCompile "vazkii.patchouli:Patchouli:1.0-20.99"
     implementation 'org.jetbrains:annotations:15.0'
