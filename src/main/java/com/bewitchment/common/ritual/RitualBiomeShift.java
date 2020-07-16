@@ -4,7 +4,6 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.block.tile.entity.TileEntityGlyph;
 import com.bewitchment.common.item.tool.ItemBoline;
 import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
@@ -30,21 +29,19 @@ public class RitualBiomeShift extends Ritual {
     @Override
     public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
         int id;
-        if (world.getTileEntity(effectivePos) instanceof TileEntityGlyph) {
-            for (int i = 0; i < inventory.getSlots(); i++) {
-                ItemStack stack = inventory.getStackInSlot(i);
-                if (stack.getItem() instanceof ItemBoline) {
-                    id = stack.getTagCompound().getInteger("biome_id");
-                    stack.damageItem(25, caster);
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            ItemStack stack = inventory.getStackInSlot(i);
+            if (stack.getItem() instanceof ItemBoline) {
+                id = stack.getTagCompound().getInteger("biome_id");
+                stack.damageItem(25, caster);
 
-                    //might run thru that only server side, since all client change is done with packets afterwards
-                    int radius = 16; //maybe change that depending on some other stuff?
-                    for (double x = -radius; x < radius; x++) {
-                        for (double z = -radius; z < radius; z++) {
-                            if (Math.sqrt((x * x) + (z * z)) < radius) {
-                                BlockPos pos = effectivePos.add(x, 0, z);
-                                BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), pos);
-                            }
+                //might run thru that only server side, since all client change is done with packets afterwards
+                int radius = 32; //maybe change that depending on some other stuff?
+                for (double x = -radius; x < radius; x++) {
+                    for (double z = -radius; z < radius; z++) {
+                        if (Math.sqrt((x * x) + (z * z)) < radius) {
+                            BlockPos pos = effectivePos.add(x, 0, z);
+                            BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), pos);
                         }
                     }
                 }
