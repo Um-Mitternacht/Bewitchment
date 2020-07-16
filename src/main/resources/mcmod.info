@@ -29,7 +29,16 @@
       "forge",
       "patchouli",
       "dynamictrees",
-      "thaumcraft"
+      "thaumcraft",
+      "mowziesmobs",
+      "elementaristics",
+      "covetedmobs",
+      "botania",
+      "betteranimalsplus",
+      "consecration",
+      "quark",
+      "miskatonicmysteries",
+      "toughasnails"
     ],
     "useDependencyInformation": true
   }
