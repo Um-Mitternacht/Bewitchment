@@ -1,0 +1,16 @@
+{
+  "name": "Waystone",
+  "category": "devices",
+  "icon": "bewitchment:waystone",
+  "pages": [
+    {
+      "type": "text",
+      "text": "A waystone is a carved piece of stone, usually bound to a specific location. If used in rites (via right-clicking on a running rite), it will transport the rite result to that location. However, the stone must be bound, via right-clicking on it in a desirable location."
+    },
+    {
+      "type": "crafting",
+      "recipe": "bewitchment:waystone",
+      "text": "Waystones can also be used for teleportation-based rites."
+    }
+  ]
+}
