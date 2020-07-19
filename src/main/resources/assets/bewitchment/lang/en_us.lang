@@ -808,6 +808,7 @@ ritual.bewitchment.lesser_curse_cleansing=Rite of Lesser Curse Cleansing
 ritual.bewitchment.greater_curse_cleansing=Rite of Greater Curse Cleansing
 ritual.bewitchment.biome_shift=Rite of Shifting Seasons
 ritual.bewitchment.drought=Ritual of the Parched Sands
+ritual.bewitchment.sowing_salt=Rite of Blighted Lands
 
 #INFO
 itemGroup.bewitchment=Bewitchment

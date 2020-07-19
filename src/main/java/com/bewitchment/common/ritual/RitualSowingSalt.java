@@ -24,7 +24,7 @@ import java.util.Arrays;
  */
 public class RitualSowingSalt extends Ritual {
     public RitualSowingSalt() {
-        super(new ResourceLocation(Bewitchment.MODID, "sowing_salt"), Arrays.asList(Util.get("salt"), Util.get("salt"), Util.get(ModObjects.demon_heart), Util.get(ModObjects.opal), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.ebb_of_death)), Util.get(new ItemStack(ModObjects.dimensional_sand)), Util.get(new ItemStack(ModObjects.lizard_leg))), null, null, true, 150, 1600, 75, BlockGlyph.ENDER, BlockGlyph.ENDER, BlockGlyph.ENDER);
+        super(new ResourceLocation(Bewitchment.MODID, "sowing_salt"), Arrays.asList(Util.get("salt"), Util.get("salt"), Util.get(ModObjects.demon_heart), Util.get(ModObjects.opal), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.ebb_of_death)), Util.get(new ItemStack(ModObjects.dimensional_sand)), Util.get(new ItemStack(ModObjects.lizard_leg), Util.get(new ItemStack(ModObjects.ravens_feather), Util.get(new ItemStack(ModObjects.ectoplasm))))), null, null, true, 150, 1600, 75, BlockGlyph.ENDER, BlockGlyph.NETHER, BlockGlyph.ENDER);
     }
 
     public Biome getSaltedBiome() {
