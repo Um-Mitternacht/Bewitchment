@@ -23,6 +23,6 @@ public class PotionFriendship extends ModPotion {
 	public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
 		super.affectEntity(source, indirectSource, living, amplifier, health);
 		EntityPlayer player = (EntityPlayer) indirectSource;
-		if (living instanceof EntityTameable) ((EntityTameable) living).setTamedBy(player);
+		if (living instanceof EntityTameable && !living.getClass().getName().contains("Dragon")) ((EntityTameable) living).setTamedBy(player);
 	}
 }
