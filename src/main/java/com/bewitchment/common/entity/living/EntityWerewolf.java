@@ -167,6 +167,7 @@ public class EntityWerewolf extends ModEntityMob {
 		Biome biome = world.getBiome(getPosition());
 		if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SNOWY)) return flag ? 1 : 5;
 		else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.CONIFEROUS)) return flag ? 3 : 2;
+		else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) return flag ? 3 : 0;
 		else return flag ? 4 : 0;
 	}
 
