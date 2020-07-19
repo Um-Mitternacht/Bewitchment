@@ -535,6 +535,8 @@ public class ModRecipes {
 
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_7"), new ItemStack(Items.RABBIT, 1), new ItemStack(Items.COOKED_RABBIT), new ItemStack(ModObjects.tallow), 0.35f, false));
 
+		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "bread_from_oven"), new ItemStack(Items.WHEAT, 1), new ItemStack(Items.BREAD), new ItemStack(ModObjects.cloudy_oil), 0.35f, true));
+
 		ovenRecipes.add(new OvenRecipe(new ResourceLocation(Bewitchment.MODID, "witches_can_cook_8"), new ItemStack(ModObjects.garlic, 1), new ItemStack(ModObjects.garlic_grilled), new ItemStack(ModObjects.cloudy_oil), 0.35f, true));
 	}
 
