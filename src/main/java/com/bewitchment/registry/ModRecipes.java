@@ -489,6 +489,9 @@ public class ModRecipes {
 		// There, the witches danced, and ate the flesh of an unborn lamb, tainted with reptiles and amphibians, to sully it's sinless nature.
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "stew_of_the_grotesque"), Arrays.asList(Util.get(ModObjects.demonic_elixir), Util.get(ModObjects.heart), Util.get(Items.MUTTON), Util.get(Items.SLIME_BALL), Util.get(ModObjects.lizard_leg), Util.get(ModObjects.toe_of_frog), Util.get(ModObjects.adders_fork), Util.get(ModObjects.belladonna), Util.get(ModObjects.hellebore)), Arrays.asList(new ItemStack(ModObjects.stew_of_the_grotesque), new ItemStack(ModObjects.empty_jar))));
 
+		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "soop_1"), Arrays.asList(Util.get(Items.BEETROOT), Util.get(Items.BEETROOT), Util.get(Items.BEETROOT), Util.get("salt"), Util.get(Items.BOWL)), Collections.singletonList(new ItemStack(Items.BEETROOT_SOUP))));
+		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "soop_2"), Arrays.asList(Util.get(Blocks.BROWN_MUSHROOM), Util.get(Blocks.RED_MUSHROOM), Util.get("salt"), Util.get(Items.BOWL)), Collections.singletonList(new ItemStack(Items.MUSHROOM_STEW))));
+
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "no_juniper_january"), Arrays.asList(Util.get(ModObjects.juniper_berries), Util.get(ModObjects.juniper_berries), Util.get(ModObjects.juniper_berries), Util.get(Items.SUGAR), Util.get(Items.GLASS_BOTTLE)), Collections.singletonList(new ItemStack(ModObjects.juniper_tea))));
 		cauldronRecipes.add(new CauldronRecipe(new ResourceLocation(Bewitchment.MODID, "no_jello_january"), Arrays.asList(Util.get(ModObjects.elderberries), Util.get(ModObjects.elderberries), Util.get(ModObjects.elderberries), Util.get(Items.SUGAR), Util.get(Items.GLASS_BOTTLE)), Collections.singletonList(new ItemStack(ModObjects.elderberry_jelly))));
 	}

@@ -55,6 +55,8 @@ public class EntityDruden extends ModEntityMob {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
+		if (ticksExisted % 20 == 0 && isInWater()) heal(3);
+		if (ticksExisted % 20 == 0 && isWet()) heal(3);
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
 			this.heal(2);
 			this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 80, 2));

@@ -1,6 +1,6 @@
 {
   "name": "Distilling and Smelting",
-  "description": " ",
+  "description": "Likely the first machine the aspiring witch will obtain, the Witches' Oven can burn certain reagents down to special fumes, and can produce a range of secondary products. If a Witches' Oven is given Clay Jars, it will collect the produced fumes. The jar is only needed if the outpute is a fume. On top of that, it may be used to produce various cooked foods.",
   "icon": "bewitchment:textures/gui/patchouli/icons/book_of_shadows/oven.png",
   "sortnum": 3
 }

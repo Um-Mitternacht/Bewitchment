@@ -1,6 +1,6 @@
 {
   "name": "Cauldron and Brewing",
-  "description": "The witches cauldron can be used to do a multitude of things.",
+  "description": "Used most commonly for creating advanced brews that mundane Brewing Stands simply can’t match. Certain other items can be boiled down and combined in the cauldron to create new ones. Cauldrons require magic energy and need a fire under them to work. At any point, Wood Ash can be thrown in to clear the cauldron. On top of this, a few food items can be made in a cauldron as well.",
   "icon": "bewitchment:textures/gui/patchouli/icons/book_of_shadows/cauldron.png",
   "sortnum": 4
 }
