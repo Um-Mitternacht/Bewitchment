@@ -1,6 +1,17 @@
-﻿#BLOCKS
+﻿#BOOKS
+
+item.bewitchment.book_of_shadows.name=Book of Shadows
+info.bewitchment.book_of_shadows.landing=Witchcraft is an ancient art of magic and nature. This book shall guide you in discovering its secrets for yourself.
+
+item.bewitchment.codex_infernalis.name=Codex Infernalis
+info.bewitchment.codex_infernalis.landing=Simply holding this book feels wrong… do you dare proceed?
+
+
+#BLOCKS
 tile.bewitchment.blessed_stone.name=Blessed Stone
 tooltip.bewitchment.blessed_stone=Gives infinite altar power. Creative only.
+
+
 
 tile.bewitchment.block_of_amethyst.name=Block of Amethyst
 tile.bewitchment.block_of_garnet.name=Block of Garnet
