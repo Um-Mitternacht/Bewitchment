@@ -1,7 +1,7 @@
 {
-  "name": "Book of Shadows",
+  "name": "item.bewitchment.book_of_shadows.name",
   "version": "4",
-  "landing_text": "Witchcraft is an ancient art of magic and nature. This book shall guide you in discovering its secrets for yourself.",
+  "landing_text": "info.bewitchment.book_of_shadows.landing",
   "model": "bewitchment:book_of_shadows",
   "book_texture": "bewitchment:textures/gui/book.png",
   "show_toasts": false,
