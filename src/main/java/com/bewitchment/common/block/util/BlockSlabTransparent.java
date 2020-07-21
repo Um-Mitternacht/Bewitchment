@@ -70,6 +70,26 @@ public class BlockSlabTransparent extends BlockSlab {
     }
 
     @Override
+    public boolean isNormalCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isTranslucent(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public boolean isFullBlock(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isBlockNormalCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
     public IProperty<?> getVariantProperty() {
         return BlockPurpurSlab.VARIANT;
     }
