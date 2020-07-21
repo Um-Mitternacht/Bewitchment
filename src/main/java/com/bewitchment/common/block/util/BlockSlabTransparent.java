@@ -25,138 +25,137 @@ import java.util.Random;
 @SuppressWarnings({"deprecation", "ConstantConditions", "NullableProblems"})
 public class BlockSlabTransparent extends BlockSlab {
 
-    private final boolean isDouble;
-    public Block double_slab;
-    private Block half;
-    public boolean cutout;
+	private final boolean isDouble;
+	public Block double_slab;
+	public boolean cutout;
+	private Block half;
 
-    public BlockSlabTransparent(String name, Block base, String... oreDictionaryNames) {
-        this(name, base, false);
-        BlockSlabTransparent double_slab = new BlockSlabTransparent(getRegistryName().getPath() + "_double", base, true);
-        double_slab.setCreativeTab(null);
-        this.half = this;
-        double_slab.half = this;
-        Item item_slab = Util.registerItem(new ItemSlab(this, this, double_slab), name, oreDictionaryNames);
-        ForgeRegistries.ITEMS.register(item_slab);
-        Bewitchment.proxy.registerTexture(item_slab, "normal");
-        this.double_slab = double_slab;
-        ForgeRegistries.BLOCKS.register(double_slab);
-        this.useNeighborBrightness = true;
-        setLightOpacity(0);
-        if(cutout) {
-            translucent = true;
-            setLightOpacity(0);
-        }
-    }
+	public BlockSlabTransparent(String name, Block base, String... oreDictionaryNames) {
+		this(name, base, false);
+		BlockSlabTransparent double_slab = new BlockSlabTransparent(getRegistryName().getPath() + "_double", base, true);
+		double_slab.setCreativeTab(null);
+		this.half = this;
+		double_slab.half = this;
+		Item item_slab = Util.registerItem(new ItemSlab(this, this, double_slab), name, oreDictionaryNames);
+		ForgeRegistries.ITEMS.register(item_slab);
+		Bewitchment.proxy.registerTexture(item_slab, "normal");
+		this.double_slab = double_slab;
+		ForgeRegistries.BLOCKS.register(double_slab);
+		this.useNeighborBrightness = true;
+		setLightOpacity(0);
+		if (cutout) {
+			translucent = true;
+			setLightOpacity(0);
+		}
+	}
 
-    private BlockSlabTransparent(String name, Block base, boolean isDouble) {
-        super(base.getDefaultState().getMaterial());
-        Util.registerBlock(this, name, base);
-        this.setDefaultState(isDouble ? blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM));
-        this.isDouble = isDouble;
-        this.fullBlock = isDouble;
-        cutout = true;
-    }
+	private BlockSlabTransparent(String name, Block base, boolean isDouble) {
+		super(base.getDefaultState().getMaterial());
+		Util.registerBlock(this, name, base);
+		this.setDefaultState(isDouble ? blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM));
+		this.isDouble = isDouble;
+		this.fullBlock = isDouble;
+		cutout = true;
+	}
 
-    @Override
-    public String getTranslationKey(int meta) {
-        return super.getTranslationKey();
-    }
+	@Override
+	public String getTranslationKey(int meta) {
+		return super.getTranslationKey();
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        if(cutout) return BlockRenderLayer.TRANSLUCENT;
-        else return super.getRenderLayer();
-    }
+	@SideOnly(Side.CLIENT)
+	@Override
+	public BlockRenderLayer getRenderLayer() {
+		if (cutout) return BlockRenderLayer.TRANSLUCENT;
+		else return super.getRenderLayer();
+	}
 
-    @Override
-    public boolean isFullBlock(IBlockState state) {
-        if(cutout) return false;
-        else return super.isFullBlock(state);
-    }
+	@Override
+	public boolean isFullBlock(IBlockState state) {
+		if (cutout) return false;
+		else return super.isFullBlock(state);
+	}
 
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        if(cutout) return false;
-        else return super.isFullCube(state);
-    }
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		if (cutout) return false;
+		else return super.isFullCube(state);
+	}
 
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        if(cutout) return false;
-        else return super.isOpaqueCube(state);
-    }
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		if (cutout) return false;
+		else return super.isOpaqueCube(state);
+	}
 
-    @Override
-    public boolean isDouble() {
-        return isDouble;
-    }
+	@Override
+	public boolean isDouble() {
+		return isDouble;
+	}
 
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
-    {
-        return blockAccess.getBlockState(pos.offset(side)).getBlock() != this && super.shouldSideBeRendered(blockState, blockAccess, pos, side);
-    }
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		return blockAccess.getBlockState(pos.offset(side)).getBlock() != this && super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+	}
 
-    @Override
-    public boolean isNormalCube(IBlockState state) {
-        return false;
-    }
+	@Override
+	public boolean isNormalCube(IBlockState state) {
+		return false;
+	}
 
-    @Override
-    public boolean isTranslucent(IBlockState state) {
-        return true;
-    }
+	@Override
+	public boolean isTranslucent(IBlockState state) {
+		return true;
+	}
 
-    @Override
-    public boolean isBlockNormalCube(IBlockState state) {
-        return false;
-    }
+	@Override
+	public boolean isBlockNormalCube(IBlockState state) {
+		return false;
+	}
 
-    @Override
-    public IProperty<?> getVariantProperty() {
-        return BlockPurpurSlab.VARIANT;
-    }
+	@Override
+	public IProperty<?> getVariantProperty() {
+		return BlockPurpurSlab.VARIANT;
+	}
 
-    @Override
-    public Comparable<?> getTypeForItem(ItemStack stack) {
-        return BlockPurpurSlab.Variant.DEFAULT;
-    }
+	@Override
+	public Comparable<?> getTypeForItem(ItemStack stack) {
+		return BlockPurpurSlab.Variant.DEFAULT;
+	}
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return isDouble() ? getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, meta == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
-    }
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return isDouble() ? getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : getDefaultState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, meta == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
+	}
 
-    @Override
-    public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-        if(cutout) return false;
-        else return super.doesSideBlockRendering(state, world, pos, face);
-    }
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		if (cutout) return false;
+		else return super.doesSideBlockRendering(state, world, pos, face);
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return !isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP ? 1 : 0;
-    }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return !isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP ? 1 : 0;
+	}
 
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(half);
-    }
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(half);
+	}
 
-    @Override
-    public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-        return true;
-    }
+	@Override
+	public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		return true;
+	}
 
-    @Override
-    public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
-        return new ItemStack(half);
-    }
+	@Override
+	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+		return new ItemStack(half);
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, HALF, BlockPurpurSlab.VARIANT);
-    }
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, HALF, BlockPurpurSlab.VARIANT);
+	}
 }

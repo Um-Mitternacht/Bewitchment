@@ -167,13 +167,13 @@ public class PoppetHandler {
 	public void toolProtection(PlayerDestroyItemEvent event) {
 		EntityPlayer player = event.getEntityPlayer();
 		ItemStack original = event.getOriginal();
-		if(player.world.isRemote || original.getItem() == ModObjects.poppet_tool || original.getMaxDamage() == 0) return;
+		if (player.world.isRemote || original.getItem() == ModObjects.poppet_tool || original.getMaxDamage() == 0)
+			return;
 		List<Entity> frames = player.world.getEntitiesInAABBexcluding(null, new AxisAlignedBB(player.posX - 5, player.posY - 5, player.posZ - 5, player.posX + 5, player.posY + 5, player.posZ + 5), entity -> {
-			if(entity instanceof EntityItemFrame) return true;
-			return false;
+			return entity instanceof EntityItemFrame;
 		});
-		for(Entity frame : frames) {
-			if(ItemStack.areItemStacksEqual(((EntityItemFrame)frame).getDisplayedItem(), original)) return;
+		for (Entity frame : frames) {
+			if (ItemStack.areItemStacksEqual(((EntityItemFrame) frame).getDisplayedItem(), original)) return;
 		}
 		if (Util.attemptDamagePoppet(player, ModObjects.poppet_tool)) {
 			player.setHeldItem(event.getHand(), original);

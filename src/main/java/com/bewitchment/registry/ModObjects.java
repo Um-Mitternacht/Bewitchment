@@ -98,7 +98,7 @@ public class ModObjects {
 	public static final Block coquina_bricks = new ModBlock("coquina_bricks", coquina[0]);
 	public static final Block chiseled_coquina = new ModBlock("chiseled_coquina", coquina[0]);
 	public static final Block[] nethersteel = createChiselBlocks("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockNethersteel"), "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
-	public static final Block perpetual_ice = new ModBlock("perpetual_ice", Blocks.ICE);
+	public static final Block perpetual_ice = new BlockTransparent("perpetual_ice", Blocks.ICE);
 	public static final Block perpetual_ice_stairs = new ModBlockStairs("perpetual_ice_stairs", perpetual_ice);
 	public static final Block perpetual_ice_slab = new BlockSlabTransparent("perpetual_ice_slab", perpetual_ice);
 	public static final Block perpetual_ice_fence = new ModBlockFence("perpetual_ice_fence", perpetual_ice);
