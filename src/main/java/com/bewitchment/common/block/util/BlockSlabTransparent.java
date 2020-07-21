@@ -42,6 +42,7 @@ public class BlockSlabTransparent extends BlockSlab {
         ForgeRegistries.BLOCKS.register(double_slab);
         this.useNeighborBrightness = true;
         setLightOpacity(0);
+
     }
 
     private BlockSlabTransparent(String name, Block base, boolean isDouble) {
@@ -107,6 +108,11 @@ public class BlockSlabTransparent extends BlockSlab {
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
+    }
+
+    @Override
+    public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+        return true;
     }
 
     @Override
