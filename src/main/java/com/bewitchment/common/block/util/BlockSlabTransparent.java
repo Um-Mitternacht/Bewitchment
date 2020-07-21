@@ -28,6 +28,7 @@ public class BlockSlabTransparent extends BlockSlab {
     private final boolean isDouble;
     public Block double_slab;
     private Block half;
+    public boolean cutout;
 
     public BlockSlabTransparent(String name, Block base, String... oreDictionaryNames) {
         this(name, base, false);
@@ -42,7 +43,10 @@ public class BlockSlabTransparent extends BlockSlab {
         ForgeRegistries.BLOCKS.register(double_slab);
         this.useNeighborBrightness = true;
         setLightOpacity(0);
-
+        if(cutout) {
+            translucent = true;
+            setLightOpacity(0);
+        }
     }
 
     private BlockSlabTransparent(String name, Block base, boolean isDouble) {
@@ -51,11 +55,37 @@ public class BlockSlabTransparent extends BlockSlab {
         this.setDefaultState(isDouble ? blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT) : blockState.getBaseState().withProperty(BlockPurpurSlab.VARIANT, BlockPurpurSlab.Variant.DEFAULT).withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM));
         this.isDouble = isDouble;
         this.fullBlock = isDouble;
+        cutout = true;
     }
 
     @Override
     public String getTranslationKey(int meta) {
         return super.getTranslationKey();
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public BlockRenderLayer getRenderLayer() {
+        if(cutout) return BlockRenderLayer.TRANSLUCENT;
+        else return super.getRenderLayer();
+    }
+
+    @Override
+    public boolean isFullBlock(IBlockState state) {
+        if(cutout) return false;
+        else return super.isFullBlock(state);
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        if(cutout) return false;
+        else return super.isFullCube(state);
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        if(cutout) return false;
+        else return super.isOpaqueCube(state);
     }
 
     @Override
@@ -80,11 +110,6 @@ public class BlockSlabTransparent extends BlockSlab {
     }
 
     @Override
-    public boolean isFullBlock(IBlockState state) {
-        return false;
-    }
-
-    @Override
     public boolean isBlockNormalCube(IBlockState state) {
         return false;
     }
@@ -105,6 +130,12 @@ public class BlockSlabTransparent extends BlockSlab {
     }
 
     @Override
+    public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+        if(cutout) return false;
+        else return super.doesSideBlockRendering(state, world, pos, face);
+    }
+
+    @Override
     public int getMetaFromState(IBlockState state) {
         return !isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP ? 1 : 0;
     }
@@ -112,22 +143,6 @@ public class BlockSlabTransparent extends BlockSlab {
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(half);
-    }
-
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getRenderLayer()
-    {
-        return BlockRenderLayer.TRANSLUCENT;
-    }
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
     }
 
     @Override
