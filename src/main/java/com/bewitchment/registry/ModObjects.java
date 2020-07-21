@@ -100,7 +100,7 @@ public class ModObjects {
 	public static final Block[] nethersteel = createChiselBlocks("nethersteel", Material.IRON, SoundType.METAL, 5, 30, "pickaxe", 2, Collections.singletonList("blockNethersteel"), "symbol", "bevel", "polished", "sentient", "pentacle", "pentagram", "skull", "eye", "watching_eye", "hellish", "watching_hellish");
 	public static final Block perpetual_ice = new ModBlock("perpetual_ice", Blocks.ICE);
 	public static final Block perpetual_ice_stairs = new ModBlockStairs("perpetual_ice_stairs", perpetual_ice);
-	public static final Block perpetual_ice_slab = new ModBlockSlab("perpetual_ice_slab", perpetual_ice);
+	public static final Block perpetual_ice_slab = new BlockSlabTransparent("perpetual_ice_slab", perpetual_ice);
 	public static final Block perpetual_ice_fence = new ModBlockFence("perpetual_ice_fence", perpetual_ice);
 	public static final Block embittered_bricks = new ModBlock("embittered_bricks", Material.PACKED_ICE, SoundType.STONE, 1.5f, 30, "pickaxe", 0);
 	public static final Block cracked_embittered_bricks = new ModBlock("cracked_embittered_bricks", embittered_bricks);
