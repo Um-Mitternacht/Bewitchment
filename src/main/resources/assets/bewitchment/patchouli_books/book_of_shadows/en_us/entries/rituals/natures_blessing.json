@@ -1,0 +1,15 @@
+{
+  "name": "Natures Blessing",
+  "category": "rituals",
+  "icon": "minecraft:sapling",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Through supernatural means, this rite changes the local weather in an area to become fertile once more, in the event of total destruction. It cannot restore biomes, however, for that requires another rite."
+    },
+    {
+      "type": "bewitchment:ritual",
+      "recipe": "bewitchment:natures_blessing"
+    }
+  ]
+}
