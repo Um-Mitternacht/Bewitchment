@@ -42,10 +42,8 @@ public class ItemCleaver extends ItemSword {
 		if (!target.world.isRemote && (!(target instanceof EntityPlayer) || !(attacker instanceof EntityPlayer))) {
 			int i = itemRand.nextInt(100);
 			if (i < 5) {
-				target.motionX += 0.6;
 				target.motionY += 0.6;
-				target.motionZ += 0.6;
-				target.addPotionEffect(new PotionEffect(ModPotions.corrosion, 450, 1, false, true));
+				target.addPotionEffect(new PotionEffect(ModPotions.corrosion, 450, 1, false, false));
 				stack.damageItem(9, attacker);
 				if (target instanceof EntityPlayer)
 					((EntityPlayerMP) target).connection.sendPacket(new SPacketEntityVelocity(target));
