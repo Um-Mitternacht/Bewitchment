@@ -41,7 +41,7 @@ public class ItemCleaver extends ItemSword {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (!target.world.isRemote && (!(target instanceof EntityPlayer) || !(attacker instanceof EntityPlayer))) {
 			int i = itemRand.nextInt(100);
-			if (i < 20) {
+			if (i < 5) {
 				target.motionX += 0.6;
 				target.motionY += 0.6;
 				target.motionZ += 0.6;
