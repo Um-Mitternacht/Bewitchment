@@ -4,17 +4,16 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
-import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Arrays;
@@ -24,7 +23,11 @@ import java.util.Arrays;
  */
 public class RitualNaturesBlessing extends Ritual {
 	public RitualNaturesBlessing() {
-		super(new ResourceLocation(Bewitchment.MODID, "natures_blessing"), Arrays.asList(Util.get("salt"), Util.get("salt"), Util.get(ModObjects.demon_heart), Util.get(ModObjects.opal), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.ebb_of_death)), Util.get(new ItemStack(ModObjects.dimensional_sand)), Util.get(new ItemStack(ModObjects.lizard_leg)), Util.get(new ItemStack(ModObjects.ravens_feather)), Util.get(new ItemStack(ModObjects.ectoplasm))), null, null, true, 150, 1600, 75, BlockGlyph.ENDER, BlockGlyph.NETHER, BlockGlyph.ENDER);
+		super(new ResourceLocation(Bewitchment.MODID, "natures_blessing"), Arrays.asList(Util.get(ModObjects.white_sage), Util.get(ModObjects.white_sage), Util.get("gemLapis"), Util.get(ModObjects.essence_of_vitality), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.cleansing_balm)), Util.get(new ItemStack(ModObjects.dimensional_sand)), Util.get(new ItemStack(ModObjects.spruce_heart)), Util.get(new ItemStack(ModObjects.oak_spirit)), Util.get(new ItemStack(ModObjects.garlic))), null, null, true, 150, 1600, 75, BlockGlyph.ENDER, BlockGlyph.NORMAL, BlockGlyph.ENDER);
+	}
+
+	public IBlockState getCoarseDirt() {
+		return Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT);
 	}
 
 	@Override
@@ -38,7 +41,8 @@ public class RitualNaturesBlessing extends Ritual {
 					if (Math.sqrt((x * x) + (z * z)) < radius) {
 						BlockPos pos = effectivePos.add(x, y, z);
 						Block block = world.getBlockState(pos).getBlock();
-						if (block == Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT)) {
+						//Todo: Check only if a block is an instance of coarse dirt.
+						if (block instanceof BlockDirt) {
 							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), 3);
 						}
 					}
