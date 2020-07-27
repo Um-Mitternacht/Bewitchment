@@ -2,7 +2,7 @@ package com.bewitchment.client.model.entity.spirit.demon;
 
 import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,7 +12,7 @@ import net.minecraft.util.math.MathHelper;
  * drude - cybercat5555
  * Created using Tabula 5.1.0
  */
-public class ModelDruden extends ModelBase {
+public class ModelDruden extends ModelBiped {
 	public ModelRenderer bipedBody;
 	public ModelRenderer boobs;
 	public ModelRenderer bipedHead;
