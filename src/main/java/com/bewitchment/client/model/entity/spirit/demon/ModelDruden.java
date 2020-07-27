@@ -4,8 +4,10 @@ import com.bewitchment.common.entity.spirit.demon.EntityDruden;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 
 /**
@@ -458,6 +460,16 @@ public class ModelDruden extends ModelBiped {
 			bipedRightArm.rotateAngleX = -2 + 1.5f * triangleWave((float) i - partialTickTime, 10);
 			bipedLeftArm.rotateAngleX = -2 + 1.5f * triangleWave((float) i - partialTickTime, 10);
 		}
+	}
+
+	@Override
+	public void postRenderArm(float scale, EnumHandSide side) {
+		GlStateManager.translate(-0.025F, -0.35, 0);
+		super.postRenderArm(scale, side);
+	}
+
+	protected ModelRenderer getArmForSide(EnumHandSide side) {
+		return side == EnumHandSide.LEFT ? this.bipedLeftArm : this.bipedRightArm;
 	}
 
 	/**

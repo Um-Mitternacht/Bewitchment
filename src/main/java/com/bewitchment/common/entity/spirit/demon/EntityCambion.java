@@ -153,9 +153,9 @@ public class EntityCambion extends ModEntityMob {
 
 		if (c < 2) {
 			this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.SHIELD));
-		} else if (c > 2) ;
+		} else if (c > 2)
 
-		setEquipmentBasedOnDifficulty(difficulty);
+			setEquipmentBasedOnDifficulty(difficulty);
 		setCanPickUpLoot(this.rand.nextFloat() < 0.55F * difficulty.getClampedAdditionalDifficulty());
 		setEnchantmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);

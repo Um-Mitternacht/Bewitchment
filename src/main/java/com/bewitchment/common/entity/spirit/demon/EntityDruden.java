@@ -3,12 +3,10 @@ package com.bewitchment.common.entity.spirit.demon;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityGolem;
@@ -16,14 +14,19 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class EntityDruden extends ModEntityMob {
 
@@ -135,6 +138,21 @@ public class EntityDruden extends ModEntityMob {
 		} else {
 			this.setAir(300);
 		}
+	}
+
+	@Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
+		data = super.onInitialSpawn(difficulty, data);
+		int a = rand.nextInt(12);
+
+		if (a < 2) {
+			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModObjects.thyrsus));
+		} else if (a > 10)
+
+			setEquipmentBasedOnDifficulty(difficulty);
+		setCanPickUpLoot(this.rand.nextFloat() < 0.35F * difficulty.getClampedAdditionalDifficulty());
+		setEnchantmentBasedOnDifficulty(difficulty);
+		return super.onInitialSpawn(difficulty, data);
 	}
 
 	@Override

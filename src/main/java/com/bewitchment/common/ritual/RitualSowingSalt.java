@@ -54,6 +54,10 @@ public class RitualSowingSalt extends Ritual {
 						} else if (block instanceof BlockFarmland) {
 							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
 						}
+						if (!world.isRemote) {
+							world.getWorldInfo().setRaining(false);
+							world.getWorldInfo().setThundering(false);
+						}
 					}
 				}
 			}
