@@ -51,6 +51,9 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 		experienceValue = 185;
 	}
 
+	public void fall(float distance, float damageMultiplier) {
+	}
+
 	@Override
 	protected boolean isValidLightLevel() {
 		return false;

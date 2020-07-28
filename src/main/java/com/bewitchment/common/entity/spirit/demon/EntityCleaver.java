@@ -67,6 +67,9 @@ public class EntityCleaver extends ModEntityMob {
 		return !hasCustomName();
 	}
 
+	public void fall(float distance, float damageMultiplier) {
+	}
+
 	@Override
 	protected void initEntityAI() {
 		tasks.addTask(0, new EntityAISwimming(this));

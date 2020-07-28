@@ -124,6 +124,9 @@ public class EntityBafometyr extends ModEntityMob {
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityPlayer || e instanceof EntityHellhound || e instanceof EntityCleaver || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() != EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
 	}
 
+	public void fall(float distance, float damageMultiplier) {
+	}
+
 	public void onEntityUpdate() {
 		int i = this.getAir();
 		super.onEntityUpdate();

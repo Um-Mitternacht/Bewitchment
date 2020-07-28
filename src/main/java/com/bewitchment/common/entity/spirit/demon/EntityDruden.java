@@ -54,6 +54,9 @@ public class EntityDruden extends ModEntityMob {
 		return !hasCustomName();
 	}
 
+	public void fall(float distance, float damageMultiplier) {
+	}
+
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();

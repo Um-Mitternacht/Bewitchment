@@ -50,6 +50,9 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 		return false;
 	}
 
+	public void fall(float distance, float damageMultiplier) {
+	}
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		compound.setInteger("timer", timer);
