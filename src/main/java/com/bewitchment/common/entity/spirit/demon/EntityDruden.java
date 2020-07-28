@@ -18,10 +18,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
@@ -81,6 +78,16 @@ public class EntityDruden extends ModEntityMob {
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		return super.attackEntityFrom(source, amount * (source.getImmediateSource() instanceof EntityLivingBase && ((EntityLivingBase) source.getImmediateSource()).getHeldItemMainhand().getItem() instanceof ItemAxe ? 3 : 1));
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return SoundEvents.ENTITY_GHAST_SCREAM;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_GHAST_DEATH;
 	}
 
 	@Override
