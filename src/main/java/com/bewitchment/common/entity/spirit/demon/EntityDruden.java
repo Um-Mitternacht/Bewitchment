@@ -124,7 +124,7 @@ public class EntityDruden extends ModEntityMob {
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 10, false, false, p -> (p.getDistanceSq(this) < 2) && !(BewitchmentAPI.hasBesmirchedGear(p) || BewitchmentAPI.hasGreenWitchGear(p))));
-		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityVillager || e instanceof EntityEnderman || e instanceof EntityGolem || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)) && !BewitchmentAPI.hasBesmirchedGear(e)));
+		targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, false, false, e -> (e instanceof EntityVillager || e instanceof EntityEnderman || e instanceof EntityGolem || (!e.isImmuneToFire() && e.getCreatureAttribute() != BewitchmentAPI.DEMON && e.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)) && !(BewitchmentAPI.hasBesmirchedGear(e) || BewitchmentAPI.hasGreenWitchGear(e))));
 	}
 
 	public void onEntityUpdate() {
