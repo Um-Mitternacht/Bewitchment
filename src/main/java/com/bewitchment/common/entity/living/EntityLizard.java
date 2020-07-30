@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 public class EntityLizard extends ModEntityAnimal {
 	public EntityLizard(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/lizard"));
-		setSize(1, 0.3f);
+		setSize(0.3f, 0.3f);
 		experienceValue = 5;
 	}
 
