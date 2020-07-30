@@ -61,7 +61,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 		ExtendedPlayer cap = tagPlayer.getCapability(ExtendedPlayer.CAPABILITY, null);
 		if (BewitchmentAPI.hasColdIronGear(tagPlayer))
 			player.sendStatusMessage(new TextComponentTranslation("tarot.is_shrouded", tagPlayer.getDisplayName()), true);
-		else switch (tagPlayer.getRNG().nextInt(10)) {
+		else switch (tagPlayer.getRNG().nextInt(11)) {
 			case 0:
 				// Chance for no reveal
 				player.sendStatusMessage(new TextComponentTranslation("tarot.no_tarot", tagPlayer.getDisplayName()), true);
@@ -143,6 +143,17 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				// Display how many villagers or other players the player in question has killed.
 				player.sendStatusMessage(new TextComponentTranslation("tarot.bloodshed", tagPlayer.getDisplayName(), cap.peopleKilled), true);
 				break;
+			case 10:
+				if (BewitchmentAPI.hasGreenWitchGear(tagPlayer)) {
+					player.sendStatusMessage(new TextComponentTranslation("gear1", tagPlayer.getDisplayName()), true);
+				} else if (BewitchmentAPI.hasBesmirchedGear(tagPlayer)) {
+					player.sendStatusMessage(new TextComponentTranslation("gear2", tagPlayer.getDisplayName()), true);
+				} else if (BewitchmentAPI.hasAlchemistGear(tagPlayer)) {
+					player.sendStatusMessage(new TextComponentTranslation("gear3", tagPlayer.getDisplayName()), true);
+				} else if (BewitchmentAPI.hasWitchesGear(tagPlayer)) {
+					player.sendStatusMessage(new TextComponentTranslation("gear4", tagPlayer.getDisplayName()), true);
+				}
+
 		}
 	}
 }
