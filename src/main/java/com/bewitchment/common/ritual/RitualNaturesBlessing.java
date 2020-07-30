@@ -53,9 +53,7 @@ public class RitualNaturesBlessing extends Ritual {
 						}
 						if (!world.isRemote) {
 							world.getWorldInfo().setRaining(true);
-							world.setRainStrength(1.0f);
 							world.getWorldInfo().setThundering(true);
-							world.setThunderStrength(1.0f);
 						}
 					}
 				}
