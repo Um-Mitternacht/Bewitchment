@@ -153,6 +153,7 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				} else if (BewitchmentAPI.hasWitchesGear(tagPlayer)) {
 					player.sendStatusMessage(new TextComponentTranslation("gear4", tagPlayer.getDisplayName()), true);
 				}
+				break;
 
 		}
 	}
