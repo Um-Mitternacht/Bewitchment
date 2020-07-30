@@ -145,13 +145,13 @@ public class TileEntityCrystalBall extends TileEntityAltarStorage {
 				break;
 			case 10:
 				if (BewitchmentAPI.hasGreenWitchGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("gear1", tagPlayer.getDisplayName()), true);
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_hedgewitch", tagPlayer.getDisplayName()), true);
 				} else if (BewitchmentAPI.hasBesmirchedGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("gear2", tagPlayer.getDisplayName()), true);
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_besmirched", tagPlayer.getDisplayName()), true);
 				} else if (BewitchmentAPI.hasAlchemistGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("gear3", tagPlayer.getDisplayName()), true);
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_alchemist", tagPlayer.getDisplayName()), true);
 				} else if (BewitchmentAPI.hasWitchesGear(tagPlayer)) {
-					player.sendStatusMessage(new TextComponentTranslation("gear4", tagPlayer.getDisplayName()), true);
+					player.sendStatusMessage(new TextComponentTranslation("tarot.is_witch", tagPlayer.getDisplayName()), true);
 				}
 				break;
 
