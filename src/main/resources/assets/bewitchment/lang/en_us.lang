@@ -1453,6 +1453,9 @@ entity.bewitchment.given_name.499=Vanity
 entity.bewitchment.given_name.500=Vainglory
 entity.bewitchment.given_name.501=Erichtho
 entity.bewitchment.given_name.502=Amatsu-Mikaboshi
+entity.bewitchment.given_name.503=Merihem
+entity.bewitchment.given_name.504=Pytho
+entity.bewitchment.given_name.505=Abaddon
 
 //Titles
 entity.bewitchment.prefix.0=King
