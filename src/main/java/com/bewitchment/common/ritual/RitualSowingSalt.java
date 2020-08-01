@@ -9,7 +9,6 @@ import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
