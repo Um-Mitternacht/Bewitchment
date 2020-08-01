@@ -9,6 +9,7 @@ import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -38,8 +39,6 @@ public class RitualSowingSalt extends Ritual {
 					for (double z = -radius; z < radius; z++) {
 						if (Math.sqrt((x * x) + (z * z)) < radius) {
 							BlockPos pos = effectivePos.add(x, y, z);
-							Bewitchment.network.sendToAll(new PacketChangeBiome(Biome.getBiomeForId(2), pos));
-							BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(2), pos);
 							Block block = world.getBlockState(pos).getBlock();
 							if (block instanceof BlockDirt) {
 								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
@@ -59,6 +58,7 @@ public class RitualSowingSalt extends Ritual {
 								world.getWorldInfo().setRaining(false);
 								world.getWorldInfo().setThundering(false);
 							}
+							BiomeChangingUtils.setBiome(world, Biomes.DESERT, pos);
 						}
 					}
 				}
