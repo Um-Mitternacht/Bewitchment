@@ -36,27 +36,32 @@ public class RitualSowingSalt extends Ritual {
 		int radius = 32;
 		int minY = 64;
 		int maxY = 256;
-		for (double x = -radius; x < radius; x++) {
-			for (double y = -minY; y < maxY; y++) {
-				for (double z = -radius; z < radius; z++) {
-					if (Math.sqrt((x * x) + (z * z)) < radius) {
-						BlockPos pos = effectivePos.add(x, y, z);
-						BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
-						Block block = world.getBlockState(pos).getBlock();
-						if (block instanceof BlockDirt) {
-							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-						} else if (block instanceof BlockGrass) {
-							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-						} else if (block instanceof BlockGrassPath) {
-							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-						} else if (block instanceof BlockMycelium) {
-							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-						} else if (block instanceof BlockFarmland) {
-							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
-						}
-						if (!world.isRemote) {
-							world.getWorldInfo().setRaining(false);
-							world.getWorldInfo().setThundering(false);
+		for (int i = 0; i < inventory.getSlots(); i++) {
+			for (double x = -radius; x < radius; x++) {
+				for (double y = -minY; y < maxY; y++) {
+					for (double z = -radius; z < radius; z++) {
+						if (Math.sqrt((x * x) + (z * z)) < radius) {
+							BlockPos pos = effectivePos.add(x, y, z);
+							BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
+							Block block = world.getBlockState(pos).getBlock();
+							if (block instanceof BlockDirt) {
+								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+							} else if (block instanceof BlockGrass) {
+								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+							} else if (block instanceof BlockGrassPath) {
+								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+							} else if (block instanceof BlockMycelium) {
+								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+							} else if (block instanceof BlockFarmland) {
+								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
+							}
+							for (i = 0; i < inventory.getSlots(); i++) {
+								inventory.extractItem(i, 1, false);
+							}
+							if (!world.isRemote) {
+								world.getWorldInfo().setRaining(false);
+								world.getWorldInfo().setThundering(false);
+							}
 						}
 					}
 				}

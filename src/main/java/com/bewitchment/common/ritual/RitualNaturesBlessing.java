@@ -41,19 +41,24 @@ public class RitualNaturesBlessing extends Ritual {
 		int radius = 32;
 		int minY = 64;
 		int maxY = 256;
-		for (double x = -radius; x < radius; x++) {
-			for (double y = -minY; y < maxY; y++) {
-				for (double z = -radius; z < radius; z++) {
-					if (Math.sqrt((x * x) + (z * z)) < radius) {
-						BlockPos pos = effectivePos.add(x, y, z);
-						Block block = world.getBlockState(pos).getBlock();
-						//Todo: Check only if a block is an instance of coarse dirt.
-						if (block instanceof BlockDirt) {
-							world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), 3);
-						}
-						if (!world.isRemote) {
-							world.getWorldInfo().setRaining(true);
-							world.getWorldInfo().setThundering(true);
+		for (int i = 0; i < inventory.getSlots(); i++) {
+			for (double x = -radius; x < radius; x++) {
+				for (double y = -minY; y < maxY; y++) {
+					for (double z = -radius; z < radius; z++) {
+						if (Math.sqrt((x * x) + (z * z)) < radius) {
+							BlockPos pos = effectivePos.add(x, y, z);
+							Block block = world.getBlockState(pos).getBlock();
+							//Todo: Check only if a block is an instance of coarse dirt.
+							if (block instanceof BlockDirt) {
+								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), 3);
+							}
+							for (i = 0; i < inventory.getSlots(); i++) {
+								inventory.extractItem(i, 1, false);
+							}
+							if (!world.isRemote) {
+								world.getWorldInfo().setRaining(true);
+								world.getWorldInfo().setThundering(true);
+							}
 						}
 					}
 				}
