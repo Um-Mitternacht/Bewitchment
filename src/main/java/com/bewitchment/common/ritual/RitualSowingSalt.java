@@ -43,8 +43,8 @@ public class RitualSowingSalt extends Ritual {
 					for (double z = -radius; z < radius; z++) {
 						if (Math.sqrt((x * x) + (z * z)) < radius) {
 							BlockPos pos = effectivePos.add(x, y, z);
-							BiomeChangingUtils.setBiome(world, getSaltedBiome(), pos);
 							Bewitchment.network.sendToAll(new PacketChangeBiome(Biome.getBiomeForId(2), pos));
+							BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(2), pos);
 							Block block = world.getBlockState(pos).getBlock();
 							if (block instanceof BlockDirt) {
 								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
@@ -57,7 +57,6 @@ public class RitualSowingSalt extends Ritual {
 							} else if (block instanceof BlockFarmland) {
 								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
 							}
-
 							for (i = 0; i < inventory.getSlots(); i++) {
 								inventory.extractItem(i, 1, false);
 							}
