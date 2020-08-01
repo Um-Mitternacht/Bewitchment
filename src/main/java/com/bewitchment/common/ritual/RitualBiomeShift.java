@@ -6,6 +6,7 @@ import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.common.network.PacketChangeBiome;
 import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,6 +51,7 @@ public class RitualBiomeShift extends Ritual {
 					for (double z = -radius; z < radius; z++) {
 						if (Math.sqrt((x * x) + (z * z)) < radius) {
 							BlockPos pos = effectivePos.add(x, 0, z);
+							Bewitchment.network.sendToAll(new PacketChangeBiome(Biome.getBiomeForId(id), pos));
 							BiomeChangingUtils.setBiome(world, Biome.getBiomeForId(id), pos);
 							for (i = 0; i < inventory.getSlots(); i++) {
 								inventory.extractItem(i, 1, false);
