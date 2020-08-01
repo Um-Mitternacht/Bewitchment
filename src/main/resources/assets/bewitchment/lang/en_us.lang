@@ -765,7 +765,7 @@ tarot.is_cursed=%s has a rather bleak affliction.
 tarot.is_not_cursed=%s has no magical ailments.
 
 tarot.is_witch=%s walks the wicked path.
-tarot.is_hedgewitch=%s crosses paths with deer and elk.
+tarot.is_hedgewitch=%s crosses paths with deer.
 tarot.is_besmirched=%s dances at infernal orgies.
 tarot.is_alchemist=%s seeks the magnum opus.
 
