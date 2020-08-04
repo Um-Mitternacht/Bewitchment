@@ -127,11 +127,13 @@ public class MiscHandler {
 		WorldServer world = (WorldServer) ev.getWorld();
 		if (ev.getType() == EnumCreatureType.MONSTER) {
 			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
-				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
-						ev.getList().add(shadeSpawn);
-						ev.getList().add(ghostSpawn);
-						ev.getList().add(dogeSpawn);
+				if (ev.getWorld().isRaining()) {
+					if (!world.isDaytime()) {
+						if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
+							ev.getList().add(shadeSpawn);
+							ev.getList().add(ghostSpawn);
+							ev.getList().add(dogeSpawn);
+						}
 					}
 				}
 			}
@@ -141,7 +143,6 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void onVillageSpawnsCheck(WorldEvent.PotentialSpawns ev) {
 		WorldServer world = (WorldServer) ev.getWorld();
-
 		if (ev.getType() == EnumCreatureType.MONSTER) {
 			if (ev.getWorld().getCurrentMoonPhaseFactor() == 1.0) {
 				if (!world.isDaytime()) {
@@ -156,7 +157,6 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void onMineshaftSpawnsCheck(WorldEvent.PotentialSpawns ev) {
 		WorldServer world = (WorldServer) ev.getWorld();
-
 		if (ev.getType() == EnumCreatureType.MONSTER) {
 			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
 				if (!world.isDaytime()) {
