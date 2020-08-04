@@ -80,13 +80,13 @@ public class MiscHandler {
 
 	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 5, 0, 1);
 	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 5, 0, 1);
-	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 8, 0, 3);
-	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 8, 0, 3);
+	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 8, 0, 1);
+	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 8, 0, 1);
 	Biome.SpawnListEntry cambionSpawn = new Biome.SpawnListEntry(EntityCambion.class, 1, 0, 1);
 
 	Biome.SpawnListEntry shadeSpawn = new Biome.SpawnListEntry(EntityShadowPerson.class, 1, 0, 1);
-	Biome.SpawnListEntry ghostSpawn = new Biome.SpawnListEntry(EntityGhost.class, 4, 0, 1);
-	Biome.SpawnListEntry dogeSpawn = new Biome.SpawnListEntry(EntityBlackDog.class, 6, 0, 1);
+	Biome.SpawnListEntry ghostSpawn = new Biome.SpawnListEntry(EntityGhost.class, 2, 0, 1);
+	Biome.SpawnListEntry dogeSpawn = new Biome.SpawnListEntry(EntityBlackDog.class, 2, 0, 1);
 
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
@@ -117,6 +117,7 @@ public class MiscHandler {
 				ev.getList().add(wurmSpawn);
 				ev.getList().add(hellhoundSpawn);
 				ev.getList().add(cambionSpawn);
+				ev.getList().add(shadeSpawn);
 			}
 		}
 	}
@@ -124,12 +125,15 @@ public class MiscHandler {
 	@SubscribeEvent
 	public void onStrongholdSpawnsCheck(WorldEvent.PotentialSpawns ev) {
 		WorldServer world = (WorldServer) ev.getWorld();
-
 		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
-				ev.getList().add(shadeSpawn);
-				ev.getList().add(ghostSpawn);
-				ev.getList().add(dogeSpawn);
+			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
+				if (!world.isDaytime()) {
+					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
+						ev.getList().add(shadeSpawn);
+						ev.getList().add(ghostSpawn);
+						ev.getList().add(dogeSpawn);
+					}
+				}
 			}
 		}
 	}
@@ -154,9 +158,13 @@ public class MiscHandler {
 		WorldServer world = (WorldServer) ev.getWorld();
 
 		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", ev.getPos())) {
-				ev.getList().add(shadeSpawn);
-				ev.getList().add(ghostSpawn);
+			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
+				if (!world.isDaytime()) {
+					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", ev.getPos())) {
+						ev.getList().add(shadeSpawn);
+						ev.getList().add(ghostSpawn);
+					}
+				}
 			}
 		}
 	}
