@@ -80,6 +80,72 @@ public class MiscHandler {
 	//Credit due to individuals who helped me toil through my BS (mostly tslat in the MMD discord)
 
 	@SubscribeEvent
+	public static void onCheckLivingSpawn(LivingSpawnEvent.CheckSpawn event) {
+		if (event.getWorld().isRemote
+				|| event.getResult() == Result.DENY
+				|| !(event.getEntity() instanceof ModEntityMob)) {
+			return;
+		}
+		final WorldServer world = (WorldServer) event.getWorld();
+		if (world.provider.getDimensionType() == DimensionType.OVERWORLD
+				&& (event.getEntity() instanceof EntityGhost
+				|| event.getEntity() instanceof EntityBlackDog
+				|| event.getEntity() instanceof EntityShadowPerson)) {
+			// 100% to spawn Ghost & ShadowPerson inside a Mineshaft during the night with no moon
+			// 100% to spawn inside a Stronghold for BlackDog, Ghost & ShadowPerson
+			if (world.getCurrentMoonPhaseFactor() == 0.0
+					&& !world.isDaytime()) {
+				if (!(event.getEntity() instanceof EntityBlackDog)
+						&& world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", event.getEntity().getPosition())) {
+					return;
+				}
+				if (world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", event.getEntity().getPosition())) {
+					return;
+				}
+			}
+			// 5% chance to spawn otherwise
+			if (world.rand.nextInt(100) >= 5) {
+				event.setResult(Result.DENY);
+				return;
+			}
+		}
+		if (world.provider.getDimensionType() == DimensionType.OVERWORLD
+				&& event.getEntity() instanceof EntityCambion) {
+			// 100% to spawn Cambion inside a Village on the night of a full moon
+			if (world.getCurrentMoonPhaseFactor() == 1.0
+					&& !world.isDaytime()
+					&& world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", event.getEntity().getPosition())) {
+				return;
+			}
+			// 1% chance to spawn otherwise
+			if (world.rand.nextInt(100) >= 1) {
+				event.setResult(Result.DENY);
+				return;
+			}
+		}
+		if (world.provider.getDimensionType() == DimensionType.NETHER
+				&& (event.getEntity() instanceof EntityCleaver
+				|| event.getEntity() instanceof EntityBafometyr
+				|| event.getEntity() instanceof EntityFeuerwurm
+				|| event.getEntity() instanceof EntityHellhound
+				|| event.getEntity() instanceof EntityCambion
+				|| event.getEntity() instanceof EntityShadowPerson)) {
+			// 100% to spawn inside a Fortress
+			if (world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", event.getEntity().getPosition())) {
+				return;
+			}
+			// 25% chance to spawn outside
+			if (world.rand.nextInt(100) > 25) {
+				event.setResult(Result.DENY);
+				return;
+			}
+		}
+
+		// deny otherwise (wrong dimension for an entity)
+		event.setResult(Result.DENY);
+	}
+
+	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
 		if (BewitchmentAPI.hasAlchemistGear(event.getUser())) {
 			event.setBoosted(true);
@@ -95,72 +161,6 @@ public class MiscHandler {
 				}
 			}
 		}
-	}
-
-	@SubscribeEvent
-	public static void onCheckLivingSpawn(LivingSpawnEvent.CheckSpawn event) {
-		if ( event.getWorld().isRemote
-		  || event.getResult() == Result.DENY
-		  || !(event.getEntity() instanceof ModEntityMob) ) {
-			return;
-		}
-		final WorldServer world = (WorldServer) event.getWorld();
-		if ( world.provider.getDimensionType() == DimensionType.OVERWORLD
-		  && ( event.getEntity() instanceof EntityGhost
-		    || event.getEntity() instanceof EntityBlackDog
-		    || event.getEntity() instanceof EntityShadowPerson )) {
-			// 100% to spawn Ghost & ShadowPerson inside a Mineshaft during the night with no moon 
-			// 100% to spawn inside a Stronghold for BlackDog, Ghost & ShadowPerson
-			if ( world.getCurrentMoonPhaseFactor() == 0.0
-			  && !world.isDaytime() ) {
-				if ( !(event.getEntity() instanceof EntityBlackDog)
-				  && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", event.getEntity().getPosition()) ) {
-					return;
-				}
-				if (world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", event.getEntity().getPosition())) {
-					return;
-				}
-			}
-			// 5% chance to spawn otherwise
-			if (world.rand.nextInt(100) >= 5) {
-				event.setResult(Result.DENY);
-				return;
-			}
-		}
-		if ( world.provider.getDimensionType() == DimensionType.OVERWORLD
-		  && event.getEntity() instanceof EntityCambion ) {
-			// 100% to spawn Cambion inside a Village on the night of a full moon
-			if ( world.getCurrentMoonPhaseFactor() == 1.0
-			  && !world.isDaytime()
-			  && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", event.getEntity().getPosition()) ) {
-				return;
-			}
-			// 1% chance to spawn otherwise
-			if (world.rand.nextInt(100) >= 1) {
-				event.setResult(Result.DENY);
-				return;
-			}
-		}
-		if ( world.provider.getDimensionType() == DimensionType.NETHER
-		  && ( event.getEntity() instanceof EntityCleaver
-		    || event.getEntity() instanceof EntityBafometyr
-		    || event.getEntity() instanceof EntityFeuerwurm
-		    || event.getEntity() instanceof EntityHellhound
-		    || event.getEntity() instanceof EntityCambion
-		    || event.getEntity() instanceof EntityShadowPerson )) {
-			// 100% to spawn inside a Fortress
-			if (world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", event.getEntity().getPosition())) {
-				return;
-			}
-			// 25% chance to spawn outside
-			if (world.rand.nextInt(100) > 25) {
-				event.setResult(Result.DENY);
-				return;
-			}
-		}
-		
-		// deny otherwise (wrong dimension for an entity)
-		event.setResult(Result.DENY);
 	}
 
 	@SubscribeEvent
