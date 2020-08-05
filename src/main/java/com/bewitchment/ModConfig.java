@@ -227,7 +227,7 @@ public class ModConfig {
 
 			@Config.Comment("The minimum amount of owls to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int owlMin = 1;
+			public int owlMin = 0;
 
 			@Config.Comment("The maximum amount of owls to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -244,7 +244,7 @@ public class ModConfig {
 
 			@Config.Comment("The minimum amount of ravens to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int ravenMin = 1;
+			public int ravenMin = 0;
 
 			@Config.Comment("The maximum amount of ravens to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -261,7 +261,7 @@ public class ModConfig {
 
 			@Config.Comment("The minimum amount of snakes to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int snakeMin = 1;
+			public int snakeMin = 0;
 
 			@Config.Comment("The maximum amount of snakes to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -278,7 +278,7 @@ public class ModConfig {
 
 			@Config.Comment("The minimum amount of toads to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int toadMin = 1;
+			public int toadMin = 0;
 
 			@Config.Comment("The maximum amount of toads to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
@@ -291,15 +291,15 @@ public class ModConfig {
 
 			@Config.Comment("The weight chance for black dogs to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int blackDogWeight = 6;
+			public int blackDogWeight = 3;
 
 			@Config.Comment("The minimum amount of black dogs to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int blackDogMin = 1;
+			public int blackDogMin = 0;
 
 			@Config.Comment("The maximum amount of black dogs to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int blackDogMax = 4;
+			public int blackDogMax = 3;
 		}
 
 
@@ -309,15 +309,15 @@ public class ModConfig {
 
 			@Config.Comment("The weight chance for ghosts to spawn.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int ghostWeight = 6;
+			public int ghostWeight = 3;
 
 			@Config.Comment("The minimum amount of ghosts to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int ghostMin = 1;
+			public int ghostMin = 0;
 
 			@Config.Comment("The maximum amount of ghosts to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int ghostMax = 8;
+			public int ghostMax = 2;
 		}
 
 		public static class Hellhound {
@@ -330,11 +330,11 @@ public class ModConfig {
 
 			@Config.Comment("The minimum amount of hellhounds to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int hellhoundMin = 1;
+			public int hellhoundMin = 0;
 
 			@Config.Comment("The maximum amount of hellhounds to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int hellhoundMax = 4;
+			public int hellhoundMax = 3;
 		}
 
 		public static class Feuerwurm {
@@ -351,7 +351,7 @@ public class ModConfig {
 
 			@Config.Comment("The maximum amount of feuerwurms to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int feuerwurmMax = 4;
+			public int feuerwurmMax = 3;
 		}
 
 		public static class Cleaver {
@@ -402,7 +402,7 @@ public class ModConfig {
 
 			@Config.Comment("The maximum amount of druden to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int drudenMax = 1;
+			public int drudenMax = 3;
 		}
 
 		public static class Werewolf {
@@ -415,7 +415,7 @@ public class ModConfig {
 
 			@Config.Comment("The minimum amount of werewolves to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
-			public int werewolfMin = 1;
+			public int werewolfMin = 0;
 
 			@Config.Comment("The maximum amount of werewolves to spawn at once.")
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
