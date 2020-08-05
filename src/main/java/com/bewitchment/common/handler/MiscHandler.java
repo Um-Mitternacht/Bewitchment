@@ -111,13 +111,15 @@ public class MiscHandler {
 		WorldServer world = (WorldServer) ev.getWorld();
 
 		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (world.provider.getDimensionType() == DimensionType.NETHER && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", ev.getPos())) {
-				ev.getList().add(cleaverSpawn);
-				ev.getList().add(bafometyrSpawn);
-				ev.getList().add(wurmSpawn);
-				ev.getList().add(hellhoundSpawn);
-				ev.getList().add(cambionSpawn);
-				ev.getList().add(shadeSpawn);
+			if (world.rand.nextInt(100) >= 25) {
+				if (world.provider.getDimensionType() == DimensionType.NETHER && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", ev.getPos())) {
+					ev.getList().add(cleaverSpawn);
+					ev.getList().add(bafometyrSpawn);
+					ev.getList().add(wurmSpawn);
+					ev.getList().add(hellhoundSpawn);
+					ev.getList().add(cambionSpawn);
+					ev.getList().add(shadeSpawn);
+				}
 			}
 		}
 	}
@@ -128,10 +130,12 @@ public class MiscHandler {
 		if (ev.getType() == EnumCreatureType.MONSTER) {
 			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
 				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
-						ev.getList().add(shadeSpawn);
-						ev.getList().add(ghostSpawn);
-						ev.getList().add(dogeSpawn);
+					if (world.rand.nextInt(100) >= 25) {
+						if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
+							ev.getList().add(shadeSpawn);
+							ev.getList().add(ghostSpawn);
+							ev.getList().add(dogeSpawn);
+						}
 					}
 				}
 			}
@@ -144,8 +148,10 @@ public class MiscHandler {
 		if (ev.getType() == EnumCreatureType.MONSTER) {
 			if (ev.getWorld().getCurrentMoonPhaseFactor() == 1.0) {
 				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", ev.getPos())) {
-						ev.getList().add(cambionSpawn);
+					if (world.rand.nextInt(100) >= 25) {
+						if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", ev.getPos())) {
+							ev.getList().add(cambionSpawn);
+						}
 					}
 				}
 			}
@@ -158,9 +164,11 @@ public class MiscHandler {
 		if (ev.getType() == EnumCreatureType.MONSTER) {
 			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.50) {
 				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", ev.getPos())) {
-						ev.getList().add(shadeSpawn);
-						ev.getList().add(ghostSpawn);
+					if (world.rand.nextInt(100) >= 25) {
+						if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", ev.getPos())) {
+							ev.getList().add(shadeSpawn);
+							ev.getList().add(ghostSpawn);
+						}
 					}
 				}
 			}
