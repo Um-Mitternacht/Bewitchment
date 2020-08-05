@@ -27,7 +27,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -52,7 +51,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -61,12 +59,14 @@ import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
-import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 
@@ -75,18 +75,9 @@ import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings({"ConstantConditions", "unused"})
+@Mod.EventBusSubscriber(modid = Bewitchment.MODID)
 public class MiscHandler {
 	//Credit due to individuals who helped me toil through my BS (mostly tslat in the MMD discord)
-
-	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 3, 0, 1);
-	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 3, 0, 1);
-	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 5, 0, 1);
-	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 5, 0, 1);
-	Biome.SpawnListEntry cambionSpawn = new Biome.SpawnListEntry(EntityCambion.class, 1, 0, 1);
-
-	Biome.SpawnListEntry shadeSpawn = new Biome.SpawnListEntry(EntityShadowPerson.class, 1, 0, 1);
-	Biome.SpawnListEntry ghostSpawn = new Biome.SpawnListEntry(EntityGhost.class, 2, 0, 1);
-	Biome.SpawnListEntry dogeSpawn = new Biome.SpawnListEntry(EntityBlackDog.class, 2, 0, 1);
 
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
@@ -107,64 +98,69 @@ public class MiscHandler {
 	}
 
 	@SubscribeEvent
-	public void onNetherEntitySpawnsCheck(WorldEvent.PotentialSpawns ev) {
-		WorldServer world = (WorldServer) ev.getWorld();
-
-		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (world.provider.getDimensionType() == DimensionType.NETHER && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", ev.getPos())) {
-				ev.getList().add(cleaverSpawn);
-				ev.getList().add(bafometyrSpawn);
-				ev.getList().add(wurmSpawn);
-				ev.getList().add(hellhoundSpawn);
-				ev.getList().add(cambionSpawn);
-				ev.getList().add(shadeSpawn);
-			}
+	public static void onCheckLivingSpawn(LivingSpawnEvent.CheckSpawn event) {
+		if ( event.getWorld().isRemote
+		  || event.getResult() == Result.DENY
+		  || !(event.getEntity() instanceof ModEntityMob) ) {
+			return;
 		}
-	}
-
-	@SubscribeEvent
-	public void onStrongholdSpawnsCheck(WorldEvent.PotentialSpawns ev) {
-		WorldServer world = (WorldServer) ev.getWorld();
-		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
-				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", ev.getPos())) {
-						ev.getList().add(shadeSpawn);
-						ev.getList().add(ghostSpawn);
-						ev.getList().add(dogeSpawn);
-					}
+		final WorldServer world = (WorldServer) event.getWorld();
+		if ( world.provider.getDimensionType() == DimensionType.OVERWORLD
+		  && ( event.getEntity() instanceof EntityGhost
+		    || event.getEntity() instanceof EntityBlackDog
+		    || event.getEntity() instanceof EntityShadowPerson )) {
+			// 100% to spawn Ghost & ShadowPerson inside a Mineshaft during the night with no moon 
+			// 100% to spawn inside a Stronghold for BlackDog, Ghost & ShadowPerson
+			if ( world.getCurrentMoonPhaseFactor() == 0.0
+			  && !world.isDaytime() ) {
+				if ( !(event.getEntity() instanceof EntityBlackDog)
+				  && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", event.getEntity().getPosition()) ) {
+					return;
+				}
+				if (world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Stronghold", event.getEntity().getPosition())) {
+					return;
 				}
 			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onVillageSpawnsCheck(WorldEvent.PotentialSpawns ev) {
-		WorldServer world = (WorldServer) ev.getWorld();
-		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (ev.getWorld().getCurrentMoonPhaseFactor() == 1.0) {
-				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", ev.getPos())) {
-						ev.getList().add(cambionSpawn);
-					}
-				}
+			// 5% chance to spawn otherwise
+			if (world.rand.nextInt(100) >= 5) {
+				event.setResult(Result.DENY);
+				return;
 			}
 		}
-	}
-
-	@SubscribeEvent
-	public void onMineshaftSpawnsCheck(WorldEvent.PotentialSpawns ev) {
-		WorldServer world = (WorldServer) ev.getWorld();
-		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
-				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", ev.getPos())) {
-						ev.getList().add(shadeSpawn);
-						ev.getList().add(ghostSpawn);
-					}
-				}
+		if ( world.provider.getDimensionType() == DimensionType.OVERWORLD
+		  && event.getEntity() instanceof EntityCambion ) {
+			// 100% to spawn Cambion inside a Village on the night of a full moon
+			if ( world.getCurrentMoonPhaseFactor() == 1.0
+			  && !world.isDaytime()
+			  && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Village", event.getEntity().getPosition()) ) {
+				return;
+			}
+			// 1% chance to spawn otherwise
+			if (world.rand.nextInt(100) >= 1) {
+				event.setResult(Result.DENY);
+				return;
 			}
 		}
+		if ( world.provider.getDimensionType() == DimensionType.NETHER
+		  && ( event.getEntity() instanceof EntityCleaver
+		    || event.getEntity() instanceof EntityBafometyr
+		    || event.getEntity() instanceof EntityFeuerwurm
+		    || event.getEntity() instanceof EntityHellhound
+		    || event.getEntity() instanceof EntityCambion
+		    || event.getEntity() instanceof EntityShadowPerson )) {
+			// 100% to spawn inside a Fortress
+			if (world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Fortress", event.getEntity().getPosition())) {
+				return;
+			}
+			// 25% chance to spawn outside
+			if (world.rand.nextInt(100) > 25) {
+				event.setResult(Result.DENY);
+				return;
+			}
+		}
+		
+		// deny otherwise (wrong dimension for an entity)
+		event.setResult(Result.DENY);
 	}
 
 	@SubscribeEvent
