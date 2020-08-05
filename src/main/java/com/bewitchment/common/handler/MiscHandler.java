@@ -156,16 +156,16 @@ public class MiscHandler {
 	public void onMineshaftSpawnsCheck(WorldEvent.PotentialSpawns ev) {
 		WorldServer world = (WorldServer) ev.getWorld();
 		if (ev.getType() == EnumCreatureType.MONSTER) {
-			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.0) {
+			if (ev.getWorld().getCurrentMoonPhaseFactor() == 0.50) {
 				if (!world.isDaytime()) {
-					if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", ev.getPos())) {
-						ev.getList().add(shadeSpawn);
-						ev.getList().add(ghostSpawn);
+						if (world.provider.getDimensionType() == DimensionType.OVERWORLD && world.getChunkProvider().chunkGenerator.isInsideStructure(world, "Mineshaft", ev.getPos())) {
+							ev.getList().add(shadeSpawn);
+							ev.getList().add(ghostSpawn);
+						}
 					}
 				}
 			}
 		}
-	}
 
 	@SubscribeEvent
 	public void handleSkeletonKey(LockCheckEvent.LockCheckedEvent event) {
