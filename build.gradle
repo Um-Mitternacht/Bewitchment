@@ -21,7 +21,7 @@ apply plugin: 'org.spongepowered.mixin'
 boolean isFat = hasProperty("isFat")
 String buildType = (isFat ? "FAT" : "THIN")
 
-version = "1.12.2-0.0.22.32"
+version = "1.12.2-0.0.22.33"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
