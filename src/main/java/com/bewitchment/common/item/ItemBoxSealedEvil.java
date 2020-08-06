@@ -47,7 +47,7 @@ public class ItemBoxSealedEvil extends Item {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) {
 		Random rand = itemRand;
 		if (!player.isSneaking() && !worldIn.isRemote) {
-			switch (rand.nextInt(24)) {
+			switch (rand.nextInt(26)) {
 				case 0:
 					LootTable table = worldIn.getLootTableManager().getLootTableFromLocation(LootTableList.CHESTS_DESERT_PYRAMID);
 					LootContext ctx = new LootContext.Builder((WorldServer) worldIn).withLuck(player.getLuck()).build();
@@ -94,7 +94,7 @@ public class ItemBoxSealedEvil extends Item {
 					Util.giveItem(player, new ItemStack(Items.SKULL, 1, rand.nextInt(6)));
 					break;
 				case 8:
-					final String[] demons = {"leonard", "baphomet", "lilith", "herne"};
+					final String[] demons = {"leonard", "baphomet", "lilith", "herne", "moloch"};
 					String demon = demons[rand.nextInt(demons.length)];
 					String mat = rand.nextBoolean() ? "nether_brick" : "scorned_brick";
 					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Bewitchment.MODID, mat + "_" + demon + "_statue"));
@@ -194,6 +194,24 @@ public class ItemBoxSealedEvil extends Item {
 					break;
 				case 22:
 					worldIn.addWeatherEffect(new EntityLightningBolt(player.world, player.posX, player.posY, player.posZ, true));
+					break;
+				case 23:
+					int random6 = rand.nextInt(2) + 1;
+					for (int i = 0; i < random6; i++) {
+						ModEntityMob temp = (ModEntityMob) ModEntities.bafometyr.newInstance(worldIn);
+						temp.setAttackTarget(player);
+						temp.setPosition(player.posX + rand.nextGaussian() * 2, player.posY + 0.5, player.posZ + rand.nextGaussian() * 2);
+						worldIn.spawnEntity(temp);
+					}
+					break;
+				case 24:
+					int random7 = rand.nextInt(2) + 1;
+					for (int i = 0; i < random7; i++) {
+						ModEntityMob temp = (ModEntityMob) ModEntities.cleaver.newInstance(worldIn);
+						temp.setAttackTarget(player);
+						temp.setPosition(player.posX + rand.nextGaussian() * 2, player.posY + 0.5, player.posZ + rand.nextGaussian() * 2);
+						worldIn.spawnEntity(temp);
+					}
 					break;
 				default:
 					for (BlockPos pos1 : BlockPos.getAllInBoxMutable(player.getPosition().add(-1, 0, -1), player.getPosition().add(1, 2, 1))) {
