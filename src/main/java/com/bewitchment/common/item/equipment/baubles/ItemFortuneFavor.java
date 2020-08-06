@@ -21,6 +21,7 @@ public class ItemFortuneFavor extends ModItemBauble {
 	public ItemFortuneFavor() {
 		super("fortunes_favor", BaubleType.CHARM);
 		MinecraftForge.EVENT_BUS.register(this);
+		maxStackSize = 1;
 	}
 
 	@SubscribeEvent

@@ -299,6 +299,24 @@ public class TradeHandler {
 		}
 	}
 
+	public static class RandomStatueForDemon implements EntityVillager.ITradeList {
+
+		public RandomStatueForDemon() {
+		}
+
+		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+			ItemStack itemstack = ItemsForDemon.getRandomDemonPrice(random, false);
+			final String[] demons = {"leonard", "baphomet", "lilith", "herne", "moloch"};
+			final String[] variants = {"stone", "gold", "nether_brick", "scorned_brick"};
+			String demon = demons[random.nextInt(demons.length)];
+			String variant = variants[random.nextInt(variants.length)];
+			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_statue"));
+			ItemStack itemstack1 = new ItemStack(ModObjects.stone_leonard_statue);
+			if (item != null) itemstack1 = new ItemStack(item);
+			recipeList.add(new MerchantRecipe(itemstack, itemstack1));
+		}
+	}
+
 	public static class RandomIdolForDemon implements EntityVillager.ITradeList {
 
 		public RandomIdolForDemon() {
@@ -310,8 +328,8 @@ public class TradeHandler {
 			final String[] variants = {"stone", "gold", "nether_brick", "scorned_brick"};
 			String demon = demons[random.nextInt(demons.length)];
 			String variant = variants[random.nextInt(variants.length)];
-			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_statue"));
-			ItemStack itemstack1 = new ItemStack(ModObjects.stone_leonard_statue);
+			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Bewitchment.MODID, variant + "_" + demon + "_idol"));
+			ItemStack itemstack1 = new ItemStack(ModObjects.stone_leonard_idol);
 			if (item != null) itemstack1 = new ItemStack(item);
 			recipeList.add(new MerchantRecipe(itemstack, itemstack1));
 		}

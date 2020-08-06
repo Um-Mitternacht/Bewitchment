@@ -19,6 +19,7 @@ public class ItemNazar extends ModItemBauble {
 	public ItemNazar() {
 		super("nazar", BaubleType.AMULET);
 		MinecraftForge.EVENT_BUS.register(this);
+		maxStackSize = 1;
 	}
 
 	@Override

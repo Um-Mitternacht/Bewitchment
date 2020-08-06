@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 public class ItemHecatesVisage extends ModItemBauble {
 	public ItemHecatesVisage() {
 		super("hecates_visage", BaubleType.HEAD);
+		maxStackSize = 1;
 	}
 
 	@Override

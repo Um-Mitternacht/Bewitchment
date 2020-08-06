@@ -36,6 +36,7 @@ public class ItemGirdleOfTheDryads extends ModItemBauble implements IRenderBaubl
 	public ItemGirdleOfTheDryads() {
 		super("girdle_of_the_dryads", BaubleType.BELT);
 		MinecraftForge.EVENT_BUS.register(this);
+		maxStackSize = 1;
 	}
 
 	public static ItemStack getGirdle(EntityLivingBase living) {

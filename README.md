@@ -1,7 +1,7 @@
 # Bewitchment
 A mod inspired by Witchery
 
-![BewitchmentV](https://img.shields.io/badge/Bewitchment%20version-0.0.22.32-purple.svg?longCache=true&style=flat)
+![BewitchmentV](https://img.shields.io/badge/Bewitchment%20version-0.0.22.33-purple.svg?longCache=true&style=flat)
 [![Build Status](https://travis-ci.org/Um-Mitternacht/Bewitchment.svg?branch=master)](https://travis-ci.org/Um-Mitternacht/Bewitchment)  
 ![Minecraft Version](https://img.shields.io/badge/minecraft_version-1.12.2+-red.svg?longCache=true&style=flat)
 

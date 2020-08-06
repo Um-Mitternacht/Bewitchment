@@ -16,6 +16,7 @@ public class ItemVampiricAmulet extends ModItemBauble {
 	public ItemVampiricAmulet() {
 		super("vampiric_amulet", BaubleType.AMULET);
 		MinecraftForge.EVENT_BUS.register(this);
+		maxStackSize = 1;
 	}
 
 	@SubscribeEvent

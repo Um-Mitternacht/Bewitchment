@@ -13,6 +13,7 @@ import net.minecraft.potion.PotionEffect;
 public class ItemTriskelion extends ModItemBauble {
 	public ItemTriskelion() {
 		super("triskelion", BaubleType.AMULET);
+		maxStackSize = 1;
 	}
 
 	@Override

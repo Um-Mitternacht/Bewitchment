@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 public class ItemTokenOfRemedies extends ModItemBauble {
 	public ItemTokenOfRemedies() {
 		super("token_of_remedies", BaubleType.TRINKET);
+		maxStackSize = 1;
 	}
 
 	@Override

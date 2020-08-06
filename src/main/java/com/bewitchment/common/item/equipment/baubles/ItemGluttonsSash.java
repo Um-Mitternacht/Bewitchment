@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 public class ItemGluttonsSash extends ModItemBauble {
 	public ItemGluttonsSash() {
 		super("gluttons_sash", BaubleType.BELT);
+		maxStackSize = 1;
 	}
 
 	@Override

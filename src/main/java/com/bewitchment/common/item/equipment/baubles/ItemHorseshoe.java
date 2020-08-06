@@ -23,6 +23,7 @@ public class ItemHorseshoe extends ModItemBauble {
 	public ItemHorseshoe() {
 		super("horseshoe", BaubleType.TRINKET);
 		MinecraftForge.EVENT_BUS.register(this);
+		maxStackSize = 1;
 	}
 
 	@Override

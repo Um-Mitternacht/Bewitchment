@@ -19,6 +19,7 @@ public class ItemHellishBauble extends ModItemBauble {
 	public ItemHellishBauble() {
 		super("hellish_bauble", BaubleType.TRINKET);
 		MinecraftForge.EVENT_BUS.register(this);
+		maxStackSize = 1;
 	}
 
 	@Override
