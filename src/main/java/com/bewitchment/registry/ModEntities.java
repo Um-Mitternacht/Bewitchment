@@ -30,7 +30,7 @@ public class ModEntities {
 	public static final EntityEntry juniper_broom = createEntityEntry(EntityJuniperBroom.class, "juniper_broom");
 	public static final EntityEntry dragons_blood_broom = createEntityEntry(EntityDragonsBloodBroom.class, "dragons_blood_broom");
 
-	public static final EntityEntry lizard = createEntityEntry(EntityLizard.class, "lizard", 0x568203, 0x0070bb, EnumCreatureType.AMBIENT, ModConfig.mobSpawns.lizard.lizardWeight, ModConfig.mobSpawns.lizard.lizardMin, ModConfig.mobSpawns.lizard.lizardMax, Arrays.asList(ModConfig.mobSpawns.lizard.lizardBiomes));
+	public static final EntityEntry lizard = createEntityEntry(EntityLizard.class, "lizard", 0x568203, 0x0070bb, EnumCreatureType.CREATURE, ModConfig.mobSpawns.lizard.lizardWeight, ModConfig.mobSpawns.lizard.lizardMin, ModConfig.mobSpawns.lizard.lizardMax, Arrays.asList(ModConfig.mobSpawns.lizard.lizardBiomes));
 	public static final EntityEntry owl = createEntityEntry(EntityOwl.class, "owl", 0xaf813f, 0x6e5127, EnumCreatureType.CREATURE, ModConfig.mobSpawns.owl.owlWeight, ModConfig.mobSpawns.owl.owlMin, ModConfig.mobSpawns.owl.owlMax, Arrays.asList(ModConfig.mobSpawns.owl.owlBiomes));
 	public static final EntityEntry raven = createEntityEntry(EntityRaven.class, "raven", 0x222222, 0x280638, EnumCreatureType.CREATURE, ModConfig.mobSpawns.raven.ravenWeight, ModConfig.mobSpawns.raven.ravenMin, ModConfig.mobSpawns.raven.ravenMax, Arrays.asList(ModConfig.mobSpawns.raven.ravenBiomes));
 	public static final EntityEntry snake = createEntityEntry(EntitySnake.class, "snake", 0xfF9779, 0x696969, EnumCreatureType.CREATURE, ModConfig.mobSpawns.snake.snakeWeight, ModConfig.mobSpawns.snake.snakeMin, ModConfig.mobSpawns.snake.snakeMax, Arrays.asList(ModConfig.mobSpawns.snake.snakeBiomes));
