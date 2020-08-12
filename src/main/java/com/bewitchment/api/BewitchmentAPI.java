@@ -35,7 +35,7 @@ public class BewitchmentAPI {
 	 * A list of pets to be chosen for the meet pet fortune
 	 */
 	public static final List<EntityEntry> VALID_PETS = new ArrayList<>();
-	public static final Set<String> COLD_IRON_WEAKNESS = new HashSet<>(Arrays.asList("EntityPixie", "Hirschgeist", "Pech", "Fairy", "Ghost", "Succubus", "Dullahan", "Pixie", "Incubus", "GaiaBaphomet", "Banshee", "Kikimora", "Dryad", "Satyress", "YukiOnna", "NineTails", "Spriggan", "Valkyrie", "Oni", "Deathword", "Mandragora", "Beholder", "Selkie", "Siren", "Dryad"));
+	public static final Set<String> COLD_IRON_WEAKNESS = new HashSet<>(Arrays.asList("Hirschgeist", "Pech", "Fairy", "Ghost", "Succubus", "Dullahan", "Pixie", "Incubus", "GaiaBaphomet", "Banshee", "Kikimora", "Dryad", "Satyress", "YukiOnna", "NineTails", "Spriggan", "Valkyrie", "Oni", "Deathword", "Mandragora", "Beholder", "Selkie", "Siren", "Dryad"));
 	public static final Set<String> SILVER_WEAKNESS = new HashSet<>(Arrays.asList("Dracula", "TurnedVillager", "Wendigo", "Dhampir", "Werecat", "Mummy", "BoneKnight", "Lich"));
 	/**
 	 * The Demon creature attribute. Used for well, demons.
