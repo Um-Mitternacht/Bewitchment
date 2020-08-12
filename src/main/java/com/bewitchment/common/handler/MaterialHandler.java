@@ -28,18 +28,18 @@ public class MaterialHandler {
 	@SubscribeEvent
 	public void livingUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
-		if (!entity.world.isRemote) {
-			if (BewitchmentAPI.getSilverWeakness(entity) > 1) {
+		if (!entity.world.isRemote && entity.ticksExisted % 20 == 0) {
+			if (BewitchmentAPI.getSilverWeakness(entity) > 1f) {
 				int armor = 0;
 				for (ItemStack stack : entity.getArmorInventoryList())
 					if (SILVER_ARMOR.contains(stack.getItem())) armor++;
-				if (armor > 0 && entity.ticksExisted % 20 == 0) entity.attackEntityFrom(DamageSource.MAGIC, armor);
+				if (armor > 0) entity.attackEntityFrom(DamageSource.MAGIC, armor);
 			}
-			if (BewitchmentAPI.getColdIronWeakness(entity) > 1) {
+			if (BewitchmentAPI.getColdIronWeakness(entity) > 1f) {
 				int armor = 0;
 				for (ItemStack stack : entity.getArmorInventoryList())
 					if (COLD_IRON_ARMOR.contains(stack.getItem())) armor++;
-				if (armor > 0 && entity.ticksExisted % 20 == 0) entity.attackEntityFrom(DamageSource.MAGIC, armor);
+				if (armor > 0) entity.attackEntityFrom(DamageSource.MAGIC, armor);
 			}
 		}
 	}
@@ -52,10 +52,10 @@ public class MaterialHandler {
 			if (source instanceof EntityLivingBase) {
 				{ //silver
 					float weakness = BewitchmentAPI.getSilverWeakness(entity);
-					if (weakness > 1 && SILVER_TOOLS.contains(((EntityLivingBase) source).getHeldItemMainhand().getItem()))
+					if (weakness > 1f && SILVER_TOOLS.contains(((EntityLivingBase) source).getHeldItemMainhand().getItem()))
 						event.setAmount(event.getAmount() * weakness);
 					weakness = BewitchmentAPI.getSilverWeakness((EntityLivingBase) source);
-					if (weakness > 1) {
+					if (weakness > 1f) {
 						int armor = 0;
 						for (ItemStack stack : entity.getArmorInventoryList())
 							if (SILVER_ARMOR.contains(stack.getItem())) armor++;
@@ -67,10 +67,10 @@ public class MaterialHandler {
 				}
 				{ //cold iron
 					float weakness = BewitchmentAPI.getColdIronWeakness(entity);
-					if (weakness > 1 && COLD_IRON_TOOLS.contains(((EntityLivingBase) source).getHeldItemMainhand().getItem()))
+					if (weakness > 1f && COLD_IRON_TOOLS.contains(((EntityLivingBase) source).getHeldItemMainhand().getItem()))
 						event.setAmount(event.getAmount() * weakness);
 					weakness = BewitchmentAPI.getColdIronWeakness((EntityLivingBase) source);
-					if (weakness > 1) {
+					if (weakness > 1f) {
 						int armor = 0;
 						for (ItemStack stack : entity.getArmorInventoryList())
 							if (COLD_IRON_ARMOR.contains(stack.getItem())) armor++;

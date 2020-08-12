@@ -5,6 +5,7 @@ import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.block.BlockCandelabra;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -35,15 +36,18 @@ public class EntityGhost extends ModEntityMob {
 		this.moveHelper = new AIMoveControl(this);
 	}
 
-	private boolean isSaltNearTarget(World world, BlockPos pos) {
-		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-4, -16, -4), pos.add(4, 16, 4))) {
-			if (world.getBlockState(current).getBlock() == ModObjects.salt_barrier) return true;
+	private boolean canApproach(World world, BlockPos pos) {
+		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -8, -8), pos.add(8, 8, 8))) {
+			// if the position is less than 4 away check if it's salt
+			IBlockState state = world.getBlockState(current);
+			if (Math.abs(current.getX() - pos.getX()) < 4 && Math.abs(current.getZ() - pos.getZ()) < 4) {
+				if (state.getBlock() == ModObjects.salt_barrier)
+					return false;
+			}
+			if (state.getBlock() instanceof BlockCandelabra && state.getValue(BlockCandelabra.LIT))
+				return false;
 		}
-		for (BlockPos current : BlockPos.getAllInBoxMutable(pos.add(-8, -16, -8), pos.add(8, 16, 8))) {
-			if (world.getBlockState(current).getBlock() instanceof BlockCandelabra && world.getBlockState(current).getValue(BlockCandelabra.LIT))
-				return true;
-		}
-		return false;
+		return true;
 	}
 
 	private boolean isCharging() {
@@ -62,8 +66,11 @@ public class EntityGhost extends ModEntityMob {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (isSaltNearTarget(world, this.getPosition())) {
-			setAttackTarget(null);
+		// check every second to reduce load
+		if (this.ticksExisted % 20 == 0) {
+			if (!canApproach(world, this.getPosition())) {
+				setAttackTarget(null);
+			}
 		}
 	}
 

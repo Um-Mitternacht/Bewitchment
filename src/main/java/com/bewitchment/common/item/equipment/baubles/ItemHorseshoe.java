@@ -40,7 +40,7 @@ public class ItemHorseshoe extends ModItemBauble {
 
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
-		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) event.getSource().getTrueSource()) > 1) && event.getEntityLiving() instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) event.getEntityLiving(), 20))
+		if (Util.hasBauble(event.getEntityLiving(), this) && (event.getSource().getTrueSource() instanceof EntityLivingBase && BewitchmentAPI.getColdIronWeakness((EntityLivingBase) event.getSource().getTrueSource()) > 1f) && event.getEntityLiving() instanceof EntityPlayer && MagicPower.attemptDrain(null, (EntityPlayer) event.getEntityLiving(), 20))
 			event.setAmount(event.getAmount() * 0.9f);
 	}
 }
