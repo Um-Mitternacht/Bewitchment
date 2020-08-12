@@ -90,12 +90,12 @@ public class MaterialHandler {
 	@SideOnly(Side.CLIENT)
 	public void materialToolTip(ItemTooltipEvent event) {
 		if (SILVER_TOOLS.contains(event.getItemStack().getItem()))
-			event.getToolTip().add(TextFormatting.BLUE + I18n.format("tooltip.bewitchment.silver_tool_description.name"));
+			event.getToolTip().add(TextFormatting.GOLD + I18n.format("tooltip.bewitchment.silver_tool_description.name"));
 		if (SILVER_ARMOR.contains(event.getItemStack().getItem()))
-			event.getToolTip().add(TextFormatting.BLUE + I18n.format("tooltip.bewitchment.silver_armor_description.name"));
+			event.getToolTip().add(TextFormatting.GOLD + I18n.format("tooltip.bewitchment.silver_armor_description.name"));
 		if (COLD_IRON_TOOLS.contains(event.getItemStack().getItem()))
-			event.getToolTip().add(TextFormatting.BLUE + I18n.format("tooltip.bewitchment.cold_iron_tool_description.name"));
+			event.getToolTip().add(TextFormatting.GOLD + I18n.format("tooltip.bewitchment.cold_iron_tool_description.name"));
 		if (COLD_IRON_ARMOR.contains(event.getItemStack().getItem()))
-			event.getToolTip().add(TextFormatting.BLUE + I18n.format("tooltip.bewitchment.cold_iron_armor_description.name"));
+			event.getToolTip().add(TextFormatting.GOLD + I18n.format("tooltip.bewitchment.cold_iron_armor_description.name"));
 	}
 }

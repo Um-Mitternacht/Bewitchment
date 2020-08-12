@@ -41,18 +41,18 @@ import java.util.*;
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable, IWorldNameable {
 	private static final AxisAlignedBB collectionOffset = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
-	private AxisAlignedBB internalZone;
-	private AxisAlignedBB collectionZone;
 	private static final int[] defaultColor = {0, 63, 255};
 	public final FluidTank tank = new FluidTank(null, Fluid.BUCKET_VOLUME);
 	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
 	private final Set<String> heatSources = new HashSet<>(Arrays.asList(ModConfig.misc.heatSources));
-	private NetworkRegistry.TargetPoint target;
 	/**
 	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
 	 */
 	public int mode = 0;
 	public int[] color = {defaultColor[0], defaultColor[1], defaultColor[2]};
+	private AxisAlignedBB internalZone;
+	private AxisAlignedBB collectionZone;
+	private NetworkRegistry.TargetPoint target;
 	private int[] targetColor = {defaultColor[0], defaultColor[1], defaultColor[2]};
 	private int heatTimer = 0, craftingTimer = 0;
 	private boolean hasPower;
@@ -167,7 +167,8 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 	public void update() {
 		if (this.internalZone == null) this.internalZone = new AxisAlignedBB(getPos());
 		if (this.collectionZone == null) this.collectionZone = collectionOffset.offset(getPos());
-		if (this.target == null) this.target = new NetworkRegistry.TargetPoint(this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 16);
+		if (this.target == null)
+			this.target = new NetworkRegistry.TargetPoint(this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 16);
 		if (color.length == 0 || targetColor.length == 0) return;
 		if (mode == 2) tank.drain(Math.min(32, tank.getFluidAmount()), true);
 		if (!world.isRemote) {
