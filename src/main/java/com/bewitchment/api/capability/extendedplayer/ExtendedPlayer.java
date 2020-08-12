@@ -35,7 +35,12 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
     private Fortune fortune;
     private Map<String, Integer> curses = new HashMap<>(); //curse id-days left
     private boolean canRitual = true;
-    private int ritualDisabledTime, fortuneTime, ritualsCast, mobsKilled, pets, peopleKilled;
+    private int ritualDisabledTime;
+    private long fortuneExpiration;
+    private int ritualsCast;
+    private int mobsKilled;
+    private int pets;
+    private int peopleKilled;
 
     public static void syncToClient(EntityPlayer player) {
         if (!player.world.isRemote)
@@ -55,7 +60,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
         tag.setTag("curses", cursesList);
         instance.curses.entrySet().stream().forEach(entry -> this.addNewCouple(entry, cursesList));
 
-        tag.setInteger("fortuneTime", fortuneTime);
+        tag.setLong("fortuneExpiration", fortuneExpiration);
         tag.setInteger("ritualsCast", instance.ritualsCast);
         tag.setInteger("mobsKilled", instance.mobsKilled);
         tag.setInteger("ritualDisabledTime", instance.ritualDisabledTime);
@@ -75,7 +80,7 @@ public class ExtendedPlayer implements ICapabilitySerializable<NBTTagCompound>, 
         instance.curses.clear();
         tag.getTagList("curses", Constants.NBT.TAG_COMPOUND).forEach(s -> this.loadCouple(instance, s));
 
-        instance.fortuneTime = tag.getInteger("fortuneTime");
+        instance.fortuneExpiration = tag.getLong("fortuneExpiration");
         instance.ritualsCast = tag.getInteger("ritualsCast");
         instance.mobsKilled = tag.getInteger("mobsKilled");
         instance.ritualDisabledTime = tag.getInteger("ritualDisabledTime");

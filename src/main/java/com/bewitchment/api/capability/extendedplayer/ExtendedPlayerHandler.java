@@ -46,39 +46,45 @@ public class ExtendedPlayerHandler {
 
     @SubscribeEvent
     public void playerTick(TickEvent.PlayerTickEvent event) {
-        if (!event.player.world.isRemote && event.phase == TickEvent.Phase.END) {
-            ExtendedPlayer cap = event.player.getCapability(ExtendedPlayer.CAPABILITY, null);
-            if (cap.getFortune() != null) {
-                if (event.player.world.getTotalWorldTime() % 20 == 0) cap.setFortuneTime(cap.getFortuneTime() - 1);
-                if (cap.getFortuneTime() == 0) {
-                    if (cap.getFortune().apply(event.player)) cap.setFortune(null);
-                    else
-                        cap.setFortuneTime((event.player.getRNG().nextInt(cap.getFortune().getMaxTime() - cap.getFortune().getMinTime()) + cap.getFortune().getMinTime()));
-                    ExtendedPlayer.syncToClient(event.player);
+        if (event.player.world.isRemote || event.phase != TickEvent.Phase.END) return;
+
+        ExtendedPlayer cap = event.player.getCapability(ExtendedPlayer.CAPABILITY, null);
+
+        if (cap.getFortune() != null) {
+            if (cap.getFortuneExpiration() < System.currentTimeMillis()) {
+                if (cap.getFortune().apply(event.player)) {
+                    cap.setFortune(null);
+                } else {
+                    int timeTil = event.player.getRNG().nextInt(cap.getFortune().getMaxTime() - cap.getFortune().getMinTime()) + cap.getFortune().getMinTime();
+                    long milli = timeTil * 20 * 1000;
+                    cap.setFortuneExpiration(System.currentTimeMillis() + milli);
                 }
-            }
-            if (cap.getCurses() != null) {  //check "curse conditions"
-                List<Curse> curses = cap.getCurses();
-                for (Curse curse : curses) {
-                    if (curse.getCurseCondition() == Curse.CurseCondition.EXIST && event.player.getRNG().nextDouble() < curse.getChance())
-                        curse.doCurse(event, event.player);
-                    if (curse.getCurseCondition() == Curse.CurseCondition.INSTANT) {
-                        curse.doCurse(event, event.player);
-                        cap.removeCurse(curse);
-                    }
-                }
-                if (event.player.world.getWorldTime() % 20 == 0) { //todo also count in sleeping/other time skips
-                    cap.updateCurses();
-                }
-            }
-            if (cap.getRitualDisabledTime() > 0) {
-                cap.setRitualDisabledTime(cap.getRitualDisabledTime() - 1);
-                cap.setCanRitual(false);
-                ExtendedPlayer.syncToClient(event.player);
-            } else {
-                cap.setCanRitual(true);
+
                 ExtendedPlayer.syncToClient(event.player);
             }
+        }
+
+        if (cap.getCurses() != null) {  //check "curse conditions"
+            List<Curse> curses = cap.getCurses();
+            for (Curse curse : curses) {
+                if (curse.getCurseCondition() == Curse.CurseCondition.EXIST && event.player.getRNG().nextDouble() < curse.getChance())
+                    curse.doCurse(event, event.player);
+                if (curse.getCurseCondition() == Curse.CurseCondition.INSTANT) {
+                    curse.doCurse(event, event.player);
+                    cap.removeCurse(curse);
+                }
+            }
+            if (event.player.world.getWorldTime() % 20 == 0) { //todo also count in sleeping/other time skips
+                cap.updateCurses();
+            }
+        }
+        if (cap.getRitualDisabledTime() > 0) {
+            cap.setRitualDisabledTime(cap.getRitualDisabledTime() - 1);
+            cap.setCanRitual(false);
+            ExtendedPlayer.syncToClient(event.player);
+        } else {
+            cap.setCanRitual(true);
+            ExtendedPlayer.syncToClient(event.player);
         }
     }
 
