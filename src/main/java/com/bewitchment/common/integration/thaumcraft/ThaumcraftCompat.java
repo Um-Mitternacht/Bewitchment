@@ -145,10 +145,10 @@ public class ThaumcraftCompat implements IConditionFactory {
 			Entity source = event.getSource().getImmediateSource();
 			if (source instanceof EntityLivingBase) {
 				float weakness = BewitchmentAPI.getColdIronWeakness(entity);
-				if (weakness > 1 && isColdIronGolem((EntityLivingBase) source))
+				if (weakness > 1f && isColdIronGolem((EntityLivingBase) source))
 					event.setAmount(event.getAmount() * weakness * 2);
 				weakness = BewitchmentAPI.getColdIronWeakness((EntityLivingBase) source);
-				if (weakness > 1 && isColdIronGolem(entity)) {
+				if (weakness > 1f && isColdIronGolem(entity)) {
 					event.setAmount(event.getAmount() * 0.4F);
 					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 4);
 				}

@@ -32,6 +32,7 @@ import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -39,10 +40,14 @@ import java.util.*;
 
 @SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements ITickable, IWorldNameable {
-	private static final AxisAlignedBB collectionZone = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
+	private static final AxisAlignedBB collectionOffset = new AxisAlignedBB(0, 0, 0, 1, 0.65, 1);
+	private AxisAlignedBB internalZone;
+	private AxisAlignedBB collectionZone;
 	private static final int[] defaultColor = {0, 63, 255};
 	public final FluidTank tank = new FluidTank(null, Fluid.BUCKET_VOLUME);
 	private final ItemStackHandler inventory = new ItemStackHandler(Byte.MAX_VALUE);
+	private final Set<String> heatSources = new HashSet<>(Arrays.asList(ModConfig.misc.heatSources));
+	private NetworkRegistry.TargetPoint target;
 	/**
 	 * 0 = none, 1 = failed, 2 = draining, 3 = brewing, 4 = teleporting, 5 = crafting
 	 */
@@ -160,6 +165,9 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 
 	@Override
 	public void update() {
+		if (this.internalZone == null) this.internalZone = new AxisAlignedBB(getPos());
+		if (this.collectionZone == null) this.collectionZone = collectionOffset.offset(getPos());
+		if (this.target == null) this.target = new NetworkRegistry.TargetPoint(this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 16);
 		if (color.length == 0 || targetColor.length == 0) return;
 		if (mode == 2) tank.drain(Math.min(32, tank.getFluidAmount()), true);
 		if (!world.isRemote) {
@@ -180,18 +188,18 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 			if (mode == 4) {
 				double height = pos.getY() + getLiquidHeight();
 				if (height > pos.getY() + 0.2) for (int i = 0; i < 6; i++)
-					Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.REDSTONE, getPos().getX() + 0.2 + (world.rand.nextDouble() * 0.6), height, getPos().getZ() + 0.2 + (world.rand.nextDouble() * 0.6), color[0] / 255f, color[1] / 255f, color[2] / 255f), world.provider.getDimension());
+					Bewitchment.network.sendToAllAround(new SpawnParticle(EnumParticleTypes.REDSTONE, getPos().getX() + 0.2 + (world.rand.nextDouble() * 0.6), height, getPos().getZ() + 0.2 + (world.rand.nextDouble() * 0.6), color[0] / 255f, color[1] / 255f, color[2] / 255f), target);
 			}
 			boolean isLava = tank.getFluid() != null && tank.getFluid().getFluid().getTemperature() >= FluidRegistry.LAVA.getTemperature();
 			if (isLava) {
 				if (world.rand.nextInt(100) == 0) {
 					world.playSound(null, getPos(), SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 0.2f + world.rand.nextFloat() * 0.2f, 0.9f + world.rand.nextFloat() * 0.15f);
-					Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.LAVA, getPos().getX() + 0.5, getPos().getY() + 0.5, getPos().getZ() + 0.5), world.provider.getDimension());
+					Bewitchment.network.sendToAllAround(new SpawnParticle(EnumParticleTypes.LAVA, getPos().getX() + 0.5, getPos().getY() + 0.5, getPos().getZ() + 0.5), target);
 				}
 				if (world.rand.nextInt(200) == 0)
 					world.playSound(null, getPos(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2f + world.rand.nextFloat() * 0.2f, 0.9f + world.rand.nextFloat() * 0.15f);
 			}
-			for (EntityLivingBase living : world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos()))) {
+			for (EntityLivingBase living : world.getEntitiesWithinAABB(EntityLivingBase.class, internalZone)) {
 				if (isLava) {
 					living.attackEntityFrom(DamageSource.LAVA, 4);
 					living.setFire(15);
@@ -202,14 +210,14 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 			}
 			if (world.getTotalWorldTime() % 20 == 0) {
 				String transKey = world.getBlockState(pos.down()).getBlock().getTranslationKey();
-				if (tank.getFluid() != null && Arrays.asList(ModConfig.misc.heatSources).contains(transKey) && heatTimer <= 5)
+				if (tank.getFluid() != null && heatSources.contains(transKey) && heatTimer <= 5)
 					heatTimer++;
 				else if (heatTimer > 0) heatTimer--;
 			}
 			if (heatTimer >= 5 && (tank.getFluid() != null && tank.getFluid().getFluid() != FluidRegistry.LAVA)) {
 				double height = pos.getY() + getLiquidHeight();
 				if (height > pos.getY() + 0.2) for (int i = 0; i < 6; i++)
-					Bewitchment.network.sendToDimension(new SpawnBubble(getPos().getX() + 0.2 + (world.rand.nextDouble() * 0.6), height, getPos().getZ() + 0.2 + (world.rand.nextDouble() * 0.6), color[0] / 255f, color[1] / 255f, color[2] / 255f), world.provider.getDimension());
+					Bewitchment.network.sendToAllAround(new SpawnBubble(getPos().getX() + 0.2 + (world.rand.nextDouble() * 0.6), height, getPos().getZ() + 0.2 + (world.rand.nextDouble() * 0.6), color[0] / 255f, color[1] / 255f, color[2] / 255f), target);
 			}
 			if (tank.getFluidAmount() < 1) {
 				mode = 0;
@@ -272,7 +280,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 
 	private void insertNextItem(boolean isLava) {
 		if (!world.isRemote && tank.getFluid() != null) {
-			List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, collectionZone.offset(getPos()));
+			List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, collectionZone);
 			if (!list.isEmpty()) {
 				EntityItem entity = list.get(0);
 				ItemStack stack = entity.getItem().splitStack(1);

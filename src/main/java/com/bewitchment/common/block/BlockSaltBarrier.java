@@ -39,7 +39,7 @@ public class BlockSaltBarrier extends BlockRedstoneWire {
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB box, List<AxisAlignedBB> boxes, Entity entity, boolean wut) {
 		if (entity instanceof EntityLivingBase) {
-			if ((BewitchmentAPI.getSilverWeakness((EntityLivingBase) entity) > 1 && !BewitchmentAPI.isWerewolf((EntityLivingBase) entity)) || BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1)
+			if ((BewitchmentAPI.getSilverWeakness((EntityLivingBase) entity) > 1f && !BewitchmentAPI.isWerewolf((EntityLivingBase) entity)) || BewitchmentAPI.getColdIronWeakness((EntityLivingBase) entity) > 1f)
 				addCollisionBoxToList(pos, box, boxes, WALL);
 		}
 		if (entity instanceof EntitySlime) {

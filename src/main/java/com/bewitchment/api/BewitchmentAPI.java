@@ -50,6 +50,9 @@ public class BewitchmentAPI {
 	public static BiomeDictionary.Type IMMUTABLE;
 	private static BewitchmentAPI INSTANCE;
 
+	public static final Set<String> COLD_IRON_WEAKNESS = new HashSet<>(Arrays.asList("EntityPixie", "EntityHirschgeist", "EntityPech", "EntityFairy", "EntityGhost", "Succubus", "Dullahan"));
+	public static final Set<String> SILVER_WEAKNESS = new HashSet<>(Arrays.asList("Dracula", "TurnedVillager", "Wendigo"));
+
 	/**
 	 * @param entity the entity to check
 	 * @return true if the entity is a witch, false otherwise
@@ -71,7 +74,7 @@ public class BewitchmentAPI {
 	 * @return false always, vampires are not currently in the mod
 	 */
 	public static boolean isVampire(EntityLivingBase entity) {
-		return false;
+		return entity.getClass().getName().contains("Vampire");
 	}
 
 	/**
@@ -79,7 +82,7 @@ public class BewitchmentAPI {
 	 * @return false always, werewolves are not currently in the mod
 	 */
 	public static boolean isWerewolf(EntityLivingBase entity) {
-		return false;
+		return entity.getClass().getName().contains("Werewolf");
 	}
 
 	/**
@@ -210,7 +213,14 @@ public class BewitchmentAPI {
 
 	public static float getSilverWeakness(EntityLivingBase entity) {
 		float fin = 1;
-		if (isVampire(entity) || isWerewolf(entity) || entity.isEntityUndead() || entity.getClass().getName().endsWith("Vampire") || entity.getClass().getName().endsWith("EntityVampireBase") || entity.getClass().getName().endsWith("EntityVampireBaron") || entity.getClass().getName().endsWith("EntityVampireBase") || entity.getClass().getName().endsWith("EntityVampireFactionVillager") || entity.getClass().getName().endsWith("EntityVampire") || entity.getClass().getName().endsWith("EntityBasicVampire") || entity.getClass().getName().endsWith("EntityAdvancedVampire") || entity.getClass().getName().endsWith("EntityDraculaHalloween") || entity.getClass().getName().endsWith("EntityWerewolf") || entity.getClass().getName().endsWith("Werewolf") || entity.getClass().getName().endsWith("EntityTurnedVillager") || entity.getClass().getName().endsWith("EntityWendigo")) {
+		boolean flag = false;
+		for (String name : COLD_IRON_WEAKNESS) {
+			if (entity.getClass().getName().contains(name)) {
+				flag = true;
+				break;
+			}
+		}
+		if (entity.isEntityUndead() || flag || isVampire(entity) || isWerewolf(entity)) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
 		}
@@ -219,7 +229,14 @@ public class BewitchmentAPI {
 
 	public static float getColdIronWeakness(EntityLivingBase entity) {
 		float fin = 1;
-		if (entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex || entity instanceof EntityGhast || entity instanceof EntityEnderman || entity.getClass().getName().endsWith("EntityPixie") || entity.getClass().getName().endsWith("EntityHirschgeist") || entity.getClass().getName().endsWith("EntityPech") || entity.getClass().getName().endsWith("EntityFairy") || entity.getClass().getName().endsWith("EntityGhost") || entity.getClass().getName().contains("Succubus") || entity.getClass().getName().contains("Dullahan")) {
+		boolean flag = false;
+		for (String name : COLD_IRON_WEAKNESS) {
+			if (entity.getClass().getName().contains(name)) {
+				flag = true;
+				break;
+			}
+		}
+		if (flag || entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex || entity instanceof EntityGhast || entity instanceof EntityEnderman) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
 		}

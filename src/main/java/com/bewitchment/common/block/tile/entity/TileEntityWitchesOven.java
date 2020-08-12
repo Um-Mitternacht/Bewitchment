@@ -88,17 +88,28 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			if (burning && burnTime < 1)
+			// set texture to burning if burning
+			if (burning && burnTime < 1) {
 				burning = world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockWitchesOven.LIT, false));
-			if (burnTime > 0) burnTime--;
-			else {
+			}
+			// reduce burn time
+			if (burnTime > 0) {
+				burnTime--;
+			} else {
+				// if no fuel time remaining, start decrementing progress
 				if (progress > 0) {
 					progress -= 2;
 					if (progress < 0) progress = 0;
 				}
 			}
-			if ((recipe == null || !recipe.isValid(inventory_up, inventory_down)) && !isFurnaceRecipe()) progress = 0;
-			else {
+			// if input empty, skip recipe checks
+			if (inventory_up.getStackInSlot(2).isEmpty()) {
+				progress = 0;
+				return;
+			}
+			if ((recipe == null || !recipe.isValid(inventory_up, inventory_down)) && !isFurnaceRecipe()) {
+				progress = 0;
+			} else {
 				if (burnTime < 1) {
 					int time = TileEntityFurnace.getItemBurnTime(inventory_up.getStackInSlot(0));
 					if (time > 0) burnFuel(time, true);
@@ -128,7 +139,7 @@ public class TileEntityWitchesOven extends ModTileEntity implements ITickable, I
 	@Override
 	@Optional.Method(modid = "botania")
 	public boolean canSmelt() {
-		return (recipe != null && recipe.isValid(inventory_up, inventory_down)) || isFurnaceRecipe();
+		return !inventory_up.getStackInSlot(2).isEmpty() && ((recipe != null && recipe.isValid(inventory_up, inventory_down)) || isFurnaceRecipe());
 	}
 
 	@Override

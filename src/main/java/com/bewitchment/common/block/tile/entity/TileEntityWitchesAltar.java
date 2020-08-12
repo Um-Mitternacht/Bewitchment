@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems", "StatementWithEmptyBody"})
+@SuppressWarnings({"ConstantConditions", "WeakerAccess", "NullableProblems"})
 public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	public final MagicPower magicPower = MagicPower.CAPABILITY.getDefaultInstance();
 	private final Map<IBlockState, Integer> map = new HashMap<>();
@@ -96,7 +96,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 
 	@Override
 	public void update() {
-		if (!world.isRemote) {
+		if (!world.isRemote && world.isBlockLoaded(this.pos)) {
 			if (world.getTotalWorldTime() % 100 == 0) {
 				for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos).grow(25))) {
 					for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
@@ -208,9 +208,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 
 	protected boolean isNatural(IBlockState state) {
-		if (Loader.isModLoaded("dynamictrees")) {
-		}
-		return (!(state.getBlock() instanceof BlockGrass)) && (state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD));
+		return ((state.getBlock() instanceof IGrowable || state.getBlock() instanceof IPlantable || state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin || state.getBlock() instanceof BlockLeaves || (state.getBlock() instanceof BlockRotatedPillar && state.getMaterial() == Material.WOOD)) && !(state.getBlock() instanceof BlockGrass));
 	}
 
 	protected boolean isStatue(IBlockState state) {
