@@ -74,10 +74,12 @@ public class ExtendedPlayerHandler {
                     cap.removeCurse(curse);
                 }
             }
+
             if (event.player.world.getWorldTime() % 20 == 0) { //todo also count in sleeping/other time skips
                 cap.updateCurses();
             }
         }
+
         if (cap.getRitualDisabledTime() > 0) {
             cap.setRitualDisabledTime(cap.getRitualDisabledTime() - 1);
             cap.setCanRitual(false);
@@ -138,6 +140,7 @@ public class ExtendedPlayerHandler {
                 capability.setPeopleKilled(capability.getPeopleKilled() + 1);
                 ExtendedPlayer.syncToClient(player);
             }
+            
             //if (event.getEntityLiving() instanceof IEntityOwnable) {
             //	NBTTagCompound nbt = event.getEntityLiving().serializeNBT();
             //	if (event.getEntityLiving().serializeNBT().getString("OwnerUUID") != null) {
@@ -174,37 +177,40 @@ public class ExtendedPlayerHandler {
 
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
-        if (!event.getEntityLiving().world.isRemote) {
-            // damage, when player attacks
-            if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().getTrueSource().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
-                ExtendedPlayer ep = event.getSource().getTrueSource().getCapability(ExtendedPlayer.CAPABILITY, null);
-                if (ep.getCurses() != null) {
-                    for (Curse curse : ep.getCurses()) {
-                        if (curse.getCurseCondition() == Curse.CurseCondition.DAMAGE)
-                            curse.doCurse(event, (EntityPlayer) event.getSource().getTrueSource());
-                    }
-                }
-            }
-            // hurt, when player is hurt by something
-            if (event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
-                ExtendedPlayer ep = event.getEntityLiving().getCapability(ExtendedPlayer.CAPABILITY, null);
-                if (ep.getCurses() != null) {
-                    for (Curse curse : ep.getCurses()) {
-                        if (curse.getCurseCondition() == Curse.CurseCondition.HURT)
-                            curse.doCurse(event, (EntityPlayer) event.getEntityLiving());
-                    }
+        if (event.getEntityLiving().world.isRemote) return;
+        // damage, when player attacks
+        if (event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().getTrueSource().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
+            ExtendedPlayer ep = event.getSource().getTrueSource().getCapability(ExtendedPlayer.CAPABILITY, null);
+            if (ep.getCurses() != null) {
+                for (Curse curse : ep.getCurses()) {
+                    if (curse.getCurseCondition() != Curse.CurseCondition.DAMAGE) continue;
+
+                    curse.doCurse(event, (EntityPlayer) event.getSource().getTrueSource());
                 }
             }
         }
+        // hurt, when player is hurt by something
+        if (event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().hasCapability(ExtendedPlayer.CAPABILITY, null)) {
+            ExtendedPlayer ep = event.getEntityLiving().getCapability(ExtendedPlayer.CAPABILITY, null);
+            if (ep.getCurses() != null) {
+                for (Curse curse : ep.getCurses()) {
+                    if (curse.getCurseCondition() != Curse.CurseCondition.HURT) continue;
+
+                    curse.doCurse(event, (EntityPlayer) event.getEntityLiving());
+                }
+            }
+        }
+
     }
 
     @SubscribeEvent
     public void onMobTamed(AnimalTameEvent event) {
-        if (!event.getEntityLiving().world.isRemote && event.getTamer() instanceof EntityPlayer) {
-            EntityPlayer player = event.getTamer();
-            ExtendedPlayer capability = player.getCapability(ExtendedPlayer.CAPABILITY, null);
-            capability.setPets(capability.getPets() + 1);
-        }
+        if (event.getEntityLiving().world.isRemote || !(event.getTamer() instanceof EntityPlayer)) return;
+
+        EntityPlayer player = event.getTamer();
+        ExtendedPlayer capability = player.getCapability(ExtendedPlayer.CAPABILITY, null);
+        capability.setPets(capability.getPets() + 1);
+
     }
 
     @SubscribeEvent
@@ -213,24 +219,38 @@ public class ExtendedPlayerHandler {
         for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
             ItemStack stack = player.inventory.getStackInSlot(i);
             boolean found = false;
-            if (stack.getItem() instanceof ItemContract && stack.hasTagCompound() && stack.getTagCompound().hasKey("contract") && stack.getTagCompound().hasKey("boundId") && stack.getTagCompound().hasKey("items") && !((ItemContract) stack.getItem()).complete(stack)) {
-                if (stack.getTagCompound().getString("boundId").equals(player.getPersistentID().toString())) {
-                    NBTTagList list = stack.getTagCompound().getTagList("items", Constants.NBT.TAG_COMPOUND);
-                    for (int t = 0; t < list.tagCount(); t++) {
-                        NBTTagCompound tag = list.getCompoundTagAt(t);
-                        if (event.getItem().getItem().getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item")))) {
-                            int complete = tag.getInteger("amountComplete");
-                            int gained = event.getItem().getItem().getCount();
-                            int toShrink = Math.min(tag.getInteger("amountTotal") - complete, gained);
-                            event.getItem().getItem().shrink(toShrink);
-                            tag.setInteger("amountComplete", complete + toShrink);
-                            if (toShrink > 0) found = true;
-                            break;
-                        }
-                    }
-                    if (found) break;
-                }
+
+            if (!(stack.getItem() instanceof ItemContract)) continue;
+
+            if (!stack.hasTagCompound()) continue;
+
+            if (!stack.getTagCompound().hasKey("contract")) continue;
+
+            if (!stack.getTagCompound().hasKey("boundId")) continue;
+
+            if (!stack.getTagCompound().hasKey("items")) continue;
+
+            if (((ItemContract) stack.getItem()).complete(stack)) continue;
+
+            if (!stack.getTagCompound().getString("boundId").equals(player.getPersistentID().toString())) continue;
+
+            NBTTagList list = stack.getTagCompound().getTagList("items", Constants.NBT.TAG_COMPOUND);
+            for (int t = 0; t < list.tagCount(); t++) {
+                NBTTagCompound tag = list.getCompoundTagAt(t);
+                if (event.getItem().getItem().getItem() != ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))))
+                    continue;
+
+                int complete = tag.getInteger("amountComplete");
+                int gained = event.getItem().getItem().getCount();
+                int toShrink = Math.min(tag.getInteger("amountTotal") - complete, gained);
+                event.getItem().getItem().shrink(toShrink);
+                tag.setInteger("amountComplete", complete + toShrink);
+
+                if (toShrink > 0) found = true;
+                break;
             }
+
+            if (found) break;
         }
     }
 }
