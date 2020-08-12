@@ -210,7 +210,7 @@ public class BewitchmentAPI {
 
 	public static float getSilverWeakness(EntityLivingBase entity) {
 		float fin = 1;
-		if (isVampire(entity) || isWerewolf(entity) || entity.isEntityUndead() || entity.getClass().getName().contains("Vampire") || entity.getClass().getName().contains("EntityDraculaHalloween") || entity.getClass().getName().contains("Werewolf") || entity.getClass().getName().contains("EntityTurnedVillager") || entity.getClass().getName().contains("Wendigo")) {
+		if (isVampire(entity) || isWerewolf(entity) || entity.isEntityUndead() || entity.getClass().getName().endsWith("Vampire") || entity.getClass().getName().endsWith("EntityVampireBase") || entity.getClass().getName().endsWith("EntityVampireBaron") || entity.getClass().getName().endsWith("EntityVampireBase") || entity.getClass().getName().endsWith("EntityVampireFactionVillager") || entity.getClass().getName().endsWith("EntityVampire") || entity.getClass().getName().endsWith("EntityBasicVampire") || entity.getClass().getName().endsWith("EntityAdvancedVampire") || entity.getClass().getName().endsWith("EntityDraculaHalloween") || entity.getClass().getName().endsWith("EntityWerewolf") || entity.getClass().getName().endsWith("Werewolf") || entity.getClass().getName().endsWith("EntityTurnedVillager") || entity.getClass().getName().endsWith("EntityWendigo")) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
 		}

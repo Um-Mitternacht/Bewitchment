@@ -6,6 +6,7 @@ import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.item.tool.ItemBoline;
+import com.bewitchment.common.network.PacketChangeBiome;
 import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
