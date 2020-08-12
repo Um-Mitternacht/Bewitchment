@@ -62,8 +62,8 @@ public class SigilCategory implements IRecipeCategory<SigilCategory.Wrapper> {
 		private final ItemStack output;
 
 		public Wrapper(SigilRecipe recipe) {
-			input = recipe.input;
-			output = recipe.output;
+			input = recipe.getInput();
+			output = recipe.getOutput();
 		}
 
 		@Override

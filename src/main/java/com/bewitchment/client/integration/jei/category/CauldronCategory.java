@@ -68,8 +68,8 @@ public class CauldronCategory implements IRecipeCategory<CauldronCategory.Wrappe
 
 		public Wrapper(CauldronRecipe recipe) {
 			input = new ArrayList<>();
-			for (Ingredient ing : recipe.input) input.add(Arrays.asList(ing.getMatchingStacks()));
-			output = recipe.output;
+			for (Ingredient ing : recipe.getInput()) input.add(Arrays.asList(ing.getMatchingStacks()));
+			output = recipe.getOutput();
 		}
 
 		@Override

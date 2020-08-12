@@ -66,8 +66,8 @@ public class SpinningWheelCategory implements IRecipeCategory<SpinningWheelCateg
 		private final List<ItemStack> output;
 
 		public Wrapper(SpinningWheelRecipe recipe) {
-			input = recipe.input;
-			output = recipe.output;
+			input = recipe.getInput();
+			output = recipe.getOutput();
 		}
 
 		@Override

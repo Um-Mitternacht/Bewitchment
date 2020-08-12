@@ -44,40 +44,40 @@ public class CommandFortune extends CommandBase {
 		if (args.length > 1) {
 			if (args[1].equals("get")) {
 				if (args.length == 2) {
-					Fortune fortune = player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune;
-					sender.sendMessage(new TextComponentTranslation("commands.fortune.get", args[0], fortune == null ? "null" : fortune.getRegistryName().toString()));
+					Fortune fortune = player.getCapability(ExtendedPlayer.CAPABILITY, null).getFortune();
+					sender.sendMessage(new TextComponentTranslation("commands.getFortune().get", args[0], fortune == null ? "null" : fortune.getRegistryName().toString()));
 				} else throw new CommandException("commands.generic.syntax");
 			}
 			if (args[1].equals("set")) {
 				if (args.length == 3) {
 					Fortune fortune = GameRegistry.findRegistry(Fortune.class).getValue(new ResourceLocation(args[2]));
-					if (fortune == null) throw new CommandException("commands.fortune.null", args[2]);
+					if (fortune == null) throw new CommandException("commands.getFortune().null", args[2]);
 					else {
-						player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = fortune;
-						sender.sendMessage(new TextComponentTranslation("commands.fortune.set", args[0], args[2]));
+						player.getCapability(ExtendedPlayer.CAPABILITY, null).setFortune(fortune);
+						sender.sendMessage(new TextComponentTranslation("commands.getFortune().set", args[0], args[2]));
 					}
 				} else throw new CommandException("commands.generic.syntax");
 			}
 			if (args[1].equals("remove")) {
 				if (args.length == 2) {
-					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune == null)
-						throw new CommandException("commands.fortune.nofortune", player.getDisplayNameString());
+					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).getFortune() == null)
+						throw new CommandException("commands.getFortune().nofortune", player.getDisplayNameString());
 					else {
-						player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = null;
-						sender.sendMessage(new TextComponentTranslation("commands.fortune.remove", args[0]));
+						player.getCapability(ExtendedPlayer.CAPABILITY, null).setFortune(null);
+						sender.sendMessage(new TextComponentTranslation("commands.getFortune().remove", args[0]));
 					}
 				} else throw new CommandException("commands.generic.syntax");
 			}
 			if (args[1].equals("execute")) {
 				if (args.length == 2) {
-					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune == null)
-						throw new CommandException("commands.fortune.nofortune", player.getDisplayNameString());
+					if (player.getCapability(ExtendedPlayer.CAPABILITY, null).getFortune() == null)
+						throw new CommandException("commands.getFortune().nofortune", player.getDisplayNameString());
 					else {
-						if (player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.apply(player)) {
-							player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune = null;
-							sender.sendMessage(new TextComponentTranslation("commands.fortune.execute", args[0]));
+						if (player.getCapability(ExtendedPlayer.CAPABILITY, null).getFortune().apply(player)) {
+							player.getCapability(ExtendedPlayer.CAPABILITY, null).setFortune(null);
+							sender.sendMessage(new TextComponentTranslation("commands.getFortune().execute", args[0]));
 						} else {
-							sender.sendMessage(new TextComponentTranslation("commands.fortune.execute.fail", args[0]));
+							sender.sendMessage(new TextComponentTranslation("commands.getFortune().execute.fail", args[0]));
 						}
 					}
 				} else throw new CommandException("commands.generic.syntax");

@@ -34,7 +34,7 @@ public class FortuneTreasure extends Fortune {
 	public void onDig(BlockEvent.BreakEvent event) {
 		if (!event.getWorld().isRemote) {
 			ExtendedPlayer cap = event.getPlayer().getCapability(ExtendedPlayer.CAPABILITY, null);
-			if (cap.fortune == this) {
+			if (cap.getFortune() == this) {
 				Block block = event.getState().getBlock();
 				if (block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.SAND || block == Blocks.MYCELIUM || block == Blocks.GRAVEL || block == Blocks.SOUL_SAND) {
 					LootTable table = event.getWorld().getLootTableManager().getLootTableFromLocation(new ResourceLocation(Bewitchment.MODID, "chests/materials"));
@@ -45,7 +45,7 @@ public class FortuneTreasure extends Fortune {
 						entity.setNoPickupDelay();
 						event.getWorld().spawnEntity(entity);
 					}
-					cap.fortune = null;
+					cap.setFortune(null);
 					ExtendedPlayer.syncToClient(event.getPlayer());
 				}
 			}

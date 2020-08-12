@@ -24,7 +24,7 @@ public class TileEntitySigilTable extends ModTileEntity {
 		@Override
 		protected void onContentsChanged(int slot) {
 			recipe = GameRegistry.findRegistry(SigilRecipe.class).getValuesCollection().stream().filter(p -> p.matches(matrix)).findAny().orElse(null);
-			if (recipe != null) output.setStackInSlot(0, new ItemStack(recipe.output.getItem(), 1));
+			if (recipe != null) output.setStackInSlot(0, new ItemStack(recipe.getOutput().getItem(), 1));
 			markDirty();
 		}
 	};

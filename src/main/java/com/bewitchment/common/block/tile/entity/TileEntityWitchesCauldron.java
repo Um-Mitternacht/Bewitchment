@@ -132,7 +132,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 							boolean boosted = false;
 							WitchesCauldronEvent.CreatePotionEvent createPotion = new WitchesCauldronEvent.CreatePotionEvent(this, player, bottles, boosted);
 							if (!MinecraftForge.EVENT_BUS.post(createPotion)) {
-								ItemStack createdPotion = createPotion(createPotion.isBoosted(), createPotion.allowsHigher());
+								ItemStack createdPotion = createPotion(createPotion.isBoosted(), createPotion.isAllowHigher());
 								WitchesCauldronEvent.PotionCreatedEvent potionCreated = new WitchesCauldronEvent.PotionCreatedEvent(this, createPotion.getUser(), createPotion.getBottles(), createdPotion);
 								if (!MinecraftForge.EVENT_BUS.post(potionCreated)) {
 									Util.replaceAndConsumeItem(potionCreated.getUser(), hand, potionCreated.getPotionStack());
@@ -249,7 +249,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 		LinkedHashSet<PotionEffect> effects = new LinkedHashSet<>();
 		for (int i = 0; i < inventory.getSlots(); i++) {
 			for (Brew brew : GameRegistry.findRegistry(Brew.class).getValuesCollection())
-				if (brew.input.apply(inventory.getStackInSlot(i))) effects.add(brew.effect);
+				if (brew.getInput().apply(inventory.getStackInSlot(i))) effects.add(brew.getEffect());
 			if (inventory.getStackInSlot(i).getItem() == Items.REDSTONE) duration++;
 			else if (inventory.getStackInSlot(i).getItem() == Items.GLOWSTONE_DUST) potency++;
 		}
@@ -314,7 +314,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 								if (mode == 5) {
 									CauldronRecipe recipe = GameRegistry.findRegistry(CauldronRecipe.class).getValuesCollection().stream().filter(b -> b.matches(inventory)).findFirst().orElse(null);
 									if (recipe != null) {
-										for (ItemStack stack0 : recipe.output) {
+										for (ItemStack stack0 : recipe.getOutput()) {
 											EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack0.copy());
 											item.setNoGravity(true);
 											item.motionX = 0;
@@ -328,8 +328,8 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 								} else if (mode == 3) {
 									setTargetColor(PotionUtils.getColor(createPotion(false, false)));
 									Brew brew = GameRegistry.findRegistry(Brew.class).getValuesCollection().stream().filter(b -> b.matches(stack)).findFirst().orElse(null);
-									if (brew != null && brew.output != null && (brew.outputPredicate == null || brew.outputPredicate.test(stack))) {
-										EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, brew.output.copy());
+									if (brew != null && brew.getOutput() != null && (brew.getOutputPredicate() == null || brew.getOutputPredicate().test(stack))) {
+										EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, brew.getOutput().copy());
 										item.setNoGravity(true);
 										item.motionX = 0;
 										item.motionY = 0;
@@ -351,7 +351,7 @@ public class TileEntityWitchesCauldron extends TileEntityAltarStorage implements
 
 	private boolean isBrewItem(ItemStack stack) {
 		for (Brew brew : GameRegistry.findRegistry(Brew.class).getValuesCollection())
-			if (brew.input.apply(stack)) return true;
+			if (brew.getInput().apply(stack)) return true;
 		return stack.getItem() == ModObjects.mandrake_root || stack.getItem() == ModObjects.ravens_feather || stack.getItem() == Items.GUNPOWDER || stack.getItem() == ModObjects.owlets_wing || stack.getItem() == Items.REDSTONE || stack.getItem() == Items.GLOWSTONE_DUST;
 	}
 

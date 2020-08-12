@@ -64,7 +64,7 @@ public class IncenseCategory implements IRecipeCategory<IncenseCategory.Wrapper>
 		private final String name;
 
 		public Wrapper(Incense incense) {
-			input = incense.input;
+			input = incense.getInput();
 			name = new TextComponentTranslation("incense." + incense.getRegistryName().toString().replace(":", ".")).getFormattedText();
 		}
 

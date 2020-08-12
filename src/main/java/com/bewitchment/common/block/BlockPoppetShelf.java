@@ -80,9 +80,9 @@ public class BlockPoppetShelf extends ModBlockContainer {
 				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
 			}
 			ExtendedWorld ext = ExtendedWorld.get(world);
-			for (NBTTagCompound poppet : ext.storedPoppetShelves) {
+			for (NBTTagCompound poppet : ext.getStoredPoppetShelves()) {
 				if (poppet.getInteger("dimension") == world.provider.getDimension() && poppet.getLong("position") == pos.toLong()) {
-					ext.storedPoppetShelves.remove(poppet);
+					ext.getStoredPoppetShelves().remove(poppet);
 					ext.markDirty();
 					break;
 				}
@@ -107,7 +107,7 @@ public class BlockPoppetShelf extends ModBlockContainer {
 		poppet.setLong("position", pos.toLong());
 		poppet.setInteger("dimension", placer.dimension);
 		ExtendedWorld ext = ExtendedWorld.get(world);
-		ext.storedPoppetShelves.add(poppet);
+		ext.getStoredPoppetShelves().add(poppet);
 		ext.markDirty();
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}

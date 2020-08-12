@@ -19,10 +19,10 @@ public class ProcessorOven implements IComponentProcessor {
 	@Override
 	public String process(String key) {
 		if (recipe == null) return null;
-		else if (key.equals("input")) return PatchouliAPI.instance.serializeItemStack(recipe.input);
-		else if (key.equals("output")) return PatchouliAPI.instance.serializeItemStack(recipe.output);
-		else if (key.equals("byproduct")) return PatchouliAPI.instance.serializeItemStack(recipe.byproduct);
-		else if (key.equals("name")) return recipe.byproduct.getDisplayName();
+		else if (key.equals("input")) return PatchouliAPI.instance.serializeItemStack(recipe.getInput());
+		else if (key.equals("output")) return PatchouliAPI.instance.serializeItemStack(recipe.getOutput());
+		else if (key.equals("byproduct")) return PatchouliAPI.instance.serializeItemStack(recipe.getByproduct());
+		else if (key.equals("name")) return recipe.getByproduct().getDisplayName();
 		return null;
 	}
 }

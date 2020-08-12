@@ -46,9 +46,9 @@ public class BiomeChangingUtils {
 
 	public static void resetRandomOverriddenBiome(World world) {
 		ExtendedWorld extendedWorld = ExtendedWorld.get(world);
-		BlockPos randomPos = extendedWorld.STORED_OVERRIDE_BIOMES.keySet().toArray(new BlockPos[extendedWorld.STORED_OVERRIDE_BIOMES.size()])[world.rand.nextInt(extendedWorld.STORED_OVERRIDE_BIOMES.size())];
-		BiomeChangingUtils.setBiome(world, extendedWorld.STORED_OVERRIDE_BIOMES.get(randomPos), randomPos);
-		extendedWorld.STORED_OVERRIDE_BIOMES.remove(randomPos);
+		BlockPos randomPos = extendedWorld.getSTORED_OVERRIDE_BIOMES().keySet().toArray(new BlockPos[extendedWorld.getSTORED_OVERRIDE_BIOMES().size()])[world.rand.nextInt(extendedWorld.getSTORED_OVERRIDE_BIOMES().size())];
+		BiomeChangingUtils.setBiome(world, extendedWorld.getSTORED_OVERRIDE_BIOMES().get(randomPos), randomPos);
+		extendedWorld.getSTORED_OVERRIDE_BIOMES().remove(randomPos);
 		extendedWorld.setDirty(true);
 	}
 

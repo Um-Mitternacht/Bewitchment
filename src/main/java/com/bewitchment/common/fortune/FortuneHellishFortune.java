@@ -33,7 +33,7 @@ public class FortuneHellishFortune extends Fortune {
 	public void onDig(BlockEvent.BreakEvent event) {
 		if (!event.getWorld().isRemote) {
 			ExtendedPlayer cap = event.getPlayer().getCapability(ExtendedPlayer.CAPABILITY, null);
-			if (cap.fortune == this) {
+			if (cap.getFortune() == this) {
 				if (event.getPlayer().world.provider.isNether()) {
 					Block block = event.getState().getBlock();
 					if (block == Blocks.SOUL_SAND || block == Blocks.NETHERRACK || block == Blocks.MAGMA || block == Blocks.GRAVEL || block == Blocks.NETHER_BRICK || block == Blocks.QUARTZ_ORE) {
@@ -45,7 +45,7 @@ public class FortuneHellishFortune extends Fortune {
 							entity.setNoPickupDelay();
 							event.getWorld().spawnEntity(entity);
 						}
-						cap.fortune = null;
+						cap.setFortune(null);
 						ExtendedPlayer.syncToClient(event.getPlayer());
 					}
 				}

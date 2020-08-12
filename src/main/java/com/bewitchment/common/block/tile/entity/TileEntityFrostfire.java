@@ -19,7 +19,7 @@ public class TileEntityFrostfire extends ModTileEntity implements ITickable {
 				if (recipe != null) {
 					world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25f, 0);
 					item.getItem().shrink(1);
-					InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), recipe.output.copy());
+					InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), recipe.getOutput().copy());
 				}
 			}
 		}

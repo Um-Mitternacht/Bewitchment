@@ -322,7 +322,7 @@ public class MiscHandler {
 					} else if (strength == 0 && te.incense.getRegistryName().equals(new ResourceLocation(Bewitchment.MODID, "concentration"))) {
 						length = 1200;
 					} else {
-						potions.addAll(te.incense.effects);
+						potions.addAll(te.incense.getEffects());
 					}
 				}
 			}

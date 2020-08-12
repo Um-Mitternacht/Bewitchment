@@ -61,8 +61,8 @@ public class FrostfireCategory implements IRecipeCategory<FrostfireCategory.Wrap
 		private final ItemStack output;
 
 		public Wrapper(FrostfireRecipe recipe) {
-			input = recipe.input;
-			output = recipe.output;
+			input = recipe.getInput();
+			output = recipe.getOutput();
 		}
 
 		@Override

@@ -443,7 +443,7 @@ public class ModRegistries {
 
 			@Override
 			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).uniqueDefeatedBosses.tagCount();
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).getUniqueDefeatedBosses().tagCount();
 			}
 		});
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "illusioner"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/05illusioner.png")) {
@@ -497,12 +497,12 @@ public class ModRegistries {
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "diamonds"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/10diamonds.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune != null;
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).getFortune() != null;
 			}
 
 			@Override
 			public boolean isReversed(EntityPlayer player) {
-				return isCounted(player) && player.getCapability(ExtendedPlayer.CAPABILITY, null).fortune.isNegative;
+				return isCounted(player) && player.getCapability(ExtendedPlayer.CAPABILITY, null).getFortune().isNegative();
 			}
 		});
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "iron_golem"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/11iron_golem.png")) {
@@ -558,7 +558,7 @@ public class ModRegistries {
 
 			@Override
 			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).mobsKilled / 100;
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).getMobsKilled() / 100;
 			}
 		});
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "star"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/17star.png")) {
@@ -581,12 +581,12 @@ public class ModRegistries {
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "sun"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/19sun.png")) {
 			@Override
 			public boolean isCounted(EntityPlayer player) {
-				return !player.getCapability(ExtendedPlayer.CAPABILITY, null).curses.isEmpty();
+				return !player.getCapability(ExtendedPlayer.CAPABILITY, null).getCurses().isEmpty();
 			}
 
 			@Override
 			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).curses.size();
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).getCurses().size();
 			}
 		});
 		event.getRegistry().register(new Tarot(new ResourceLocation(Bewitchment.MODID, "stronghold"), new ResourceLocation(Bewitchment.MODID, "textures/gui/tarot/20stronghold.png")) {
@@ -597,7 +597,7 @@ public class ModRegistries {
 
 			@Override
 			public int getNumber(EntityPlayer player) {
-				return player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast;
+				return player.getCapability(ExtendedPlayer.CAPABILITY, null).getRitualsCast();
 			}
 		});
 	}

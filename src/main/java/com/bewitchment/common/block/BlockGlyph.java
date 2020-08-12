@@ -165,7 +165,7 @@ public class BlockGlyph extends ModBlockContainer {
 					if (living.world.getTileEntity(pos0) instanceof TileEntityGlyph) {
 						TileEntityGlyph tile = (TileEntityGlyph) living.world.getTileEntity(pos0);
 						Ritual ritual = GameRegistry.findRegistry(Ritual.class).getValuesCollection().stream().filter(r -> r.matches(living.world, pos0, tile.getInventories()[0])).findFirst().orElse(null);
-						if (ritual != null && ritual.sacrificePredicate != null && ritual.sacrificePredicate.test(living))
+						if (ritual != null && ritual.getSacrificePredicate() != null && ritual.getSacrificePredicate().test(living))
 							tile.startRitual(player, ritual);
 					}
 				}

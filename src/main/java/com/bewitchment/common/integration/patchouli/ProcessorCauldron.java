@@ -21,11 +21,11 @@ public class ProcessorCauldron implements IComponentProcessor {
 		if (recipe == null) return null;
 		else if (key.startsWith("input")) {
 			int id = Integer.parseInt(key.substring(5));
-			if (recipe.input.size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.input.get(id));
+			if (recipe.getInput().size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.getInput().get(id));
 		} else if (key.startsWith("output")) {
 			int id = Integer.parseInt(key.substring(6));
-			if (recipe.output.size() > id) return PatchouliAPI.instance.serializeItemStack(recipe.output.get(id));
-		} else if (key.equals("name")) return recipe.output.get(0).getDisplayName();
+			if (recipe.getOutput().size() > id) return PatchouliAPI.instance.serializeItemStack(recipe.getOutput().get(id));
+		} else if (key.equals("name")) return recipe.getOutput().get(0).getDisplayName();
 		return null;
 	}
 }

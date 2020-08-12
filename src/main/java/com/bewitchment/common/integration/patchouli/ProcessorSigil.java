@@ -20,9 +20,9 @@ public class ProcessorSigil implements IComponentProcessor {
 		if (recipe == null) return null;
 		else if (key.startsWith("input")) {
 			int id = Integer.parseInt(key.substring(5));
-			if (recipe.input.size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.input.get(id));
-		} else if (key.equals("output")) return PatchouliAPI.instance.serializeItemStack(recipe.output);
-		else if (key.equals("name")) return recipe.output.getDisplayName();
+			if (recipe.getInput().size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.getInput().get(id));
+		} else if (key.equals("output")) return PatchouliAPI.instance.serializeItemStack(recipe.getOutput());
+		else if (key.equals("name")) return recipe.getOutput().getDisplayName();
 		return null;
 	}
 }

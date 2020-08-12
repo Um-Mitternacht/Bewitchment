@@ -130,7 +130,7 @@ public class BlockWitchesAltar extends ModBlockContainer {
 				if (tile != null) {
 					MagicPower cap = tile.getCapability(MagicPower.CAPABILITY, null);
 					if (!world.isRemote)
-						player.sendStatusMessage(new TextComponentTranslation("altar.power_info", cap.amount, cap.maxAmount, tile.gain), true);
+						player.sendStatusMessage(new TextComponentTranslation("altar.power_info", cap.getAmount(), cap.getMaxAmount(), tile.gain), true);
 				}
 			} else {
 				if (face == EnumFacing.UP) {

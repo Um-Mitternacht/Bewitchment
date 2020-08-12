@@ -58,8 +58,8 @@ public class BrewCategory implements IRecipeCategory<BrewCategory.Wrapper> {
 		private final String name;
 
 		public Wrapper(Brew recipe) {
-			input = recipe.input;
-			name = I18n.format(recipe.effect.getEffectName());
+			input = recipe.getInput();
+			name = I18n.format(recipe.getEffect().getEffectName());
 		}
 
 		@Override

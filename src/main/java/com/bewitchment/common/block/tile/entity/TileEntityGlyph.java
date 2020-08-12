@@ -94,7 +94,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					}
 				} else {
 					if (stack.getItem() == ModObjects.waystone && stack.hasTagCompound() && stack.getTagCompound().hasKey("location")) {
-						if (ritual.canBePerformedRemotely) {
+						if (ritual.isCanBePerformedRemotely()) {
 							effectivePos = BlockPos.fromLong(stack.getTagCompound().getLong("location"));
 							effectiveDim = stack.getTagCompound().getInteger("dimension");
 							stack.damageItem(1, player);
@@ -115,25 +115,26 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.END_ROD, pos0.getX() + 0.5, pos0.getY() + 0.5, pos0.getZ() + 0.5), effectiveDim);
 			if (caster != null) {
 				if (world.getTotalWorldTime() % 20 == 0) {
-					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) {
+					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.getRunningPower())) {
 						stopRitual(false);
 						return;
 					} else time++;
 				}
 				ritual.onUpdate(world, pos, effectivePos, caster, inventory);
 			}
-			if (ritual.time >= 0 && time >= ritual.time) stopRitual(true);
+			if (ritual.getTime() >= 0 && time >= ritual.getTime()) stopRitual(true);
 		}
 	}
 
 	public void startRitual(EntityPlayer player, Ritual rit) {
 		if (!player.world.isRemote) {
-			int power = rit.startingPower;
+			int power = rit.getStartingPower();
 			if (Util.hasBauble(player, ModObjects.hecates_visage)) power *= 0.85;
 			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, power)) {
-				if (player.getCapability(ExtendedPlayer.CAPABILITY, null).canRitual) {
+				ExtendedPlayer cap = player.getCapability(ExtendedPlayer.CAPABILITY, null);
+				if (cap.isCanRitual()) {
 					ritual = rit;
-					player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
+					cap.setRitualsCast(cap.getRitualsCast() + 1);
 					ExtendedPlayer.syncToClient(player);
 					casterId = player.getGameProfile().getId();
 					caster = Util.findPlayer(casterId);

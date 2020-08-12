@@ -62,9 +62,9 @@ public class WitchesOvenCategory implements IRecipeCategory<WitchesOvenCategory.
 		private final ItemStack byproduct;
 
 		public Wrapper(OvenRecipe recipe) {
-			input = recipe.input;
-			output = recipe.output;
-			byproduct = recipe.byproduct;
+			input = recipe.getInput();
+			output = recipe.getOutput();
+			byproduct = recipe.getByproduct();
 		}
 
 		@Override

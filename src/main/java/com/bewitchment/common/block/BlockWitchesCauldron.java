@@ -56,9 +56,9 @@ public class BlockWitchesCauldron extends ModBlockContainer {
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		ExtendedWorld ext = ExtendedWorld.get(world);
-		for (NBTTagCompound cauldron : ext.storedCauldrons) {
+		for (NBTTagCompound cauldron : ext.getStoredCauldrons()) {
 			if (cauldron.getInteger("dimension") == world.provider.getDimension() && cauldron.getLong("position") == pos.toLong()) {
-				ext.storedCauldrons.remove(cauldron);
+				ext.getStoredCauldrons().remove(cauldron);
 				ext.markDirty();
 				break;
 			}
@@ -79,7 +79,7 @@ public class BlockWitchesCauldron extends ModBlockContainer {
 		cauldron.setLong("position", pos.toLong());
 		cauldron.setInteger("dimension", placer.dimension);
 		ExtendedWorld ext = ExtendedWorld.get(world);
-		ext.storedCauldrons.add(cauldron);
+		ext.getStoredCauldrons().add(cauldron);
 		ext.markDirty();
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}

@@ -80,12 +80,12 @@ public class RitualCategory implements IRecipeCategory<Wrapper> {
 		private final String name;
 
 		public Wrapper(Ritual ritual, IGuiHelper helper) {
-			circles = ritual.circles;
+			circles = ritual.getCircles();
 			input = new ArrayList<>();
-			for (Ingredient ing : ritual.input) input.add(Arrays.asList(ing.getMatchingStacks()));
-			output = ritual.output;
-			startingPower = ritual.startingPower;
-			runningPower = ritual.runningPower;
+			for (Ingredient ing : ritual.getInput()) input.add(Arrays.asList(ing.getMatchingStacks()));
+			output = ritual.getOutput();
+			startingPower = ritual.getStartingPower();
+			runningPower = ritual.getRunningPower();
 			name = I18n.format("ritual." + ritual.getRegistryName().toString().replace(":", "."));
 			center = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_ritual_0.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
 			small = helper.drawableBuilder(new ResourceLocation(Bewitchment.MODID, "textures/gui/jei_ritual_1.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();

@@ -37,7 +37,7 @@ public class EntityDragonsBloodBroom extends EntityBroom {
 		if (source.getImmediateSource() != null && getControllingPassenger() == null) {
 			setDead();
 			if (!world.isRemote) {
-				ItemStack stack = item.copy();
+				ItemStack stack = getItem().copy();
 				if (sigil != null) {
 					stack.setTagCompound(new NBTTagCompound());
 					stack.getTagCompound().setString("sigil", sigil.getRegistryName().toString());

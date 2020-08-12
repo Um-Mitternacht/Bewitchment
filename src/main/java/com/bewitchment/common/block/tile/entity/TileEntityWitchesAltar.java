@@ -103,10 +103,10 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 						ItemStack stack = player.inventory.getStackInSlot(i);
 						if ((stack.getItem() instanceof ItemGrimoireMagia || stack.getItem() instanceof ItemBastardsGrimoire) && stack.hasTagCompound()) {
 							MagicPower temp = new MagicPower();
-							temp.amount = stack.getTagCompound().getInteger("amount");
-							temp.maxAmount = stack.getTagCompound().getInteger("maxAmount");
+							temp.setAmount(stack.getTagCompound().getInteger("amount"));
+							temp.setMaxAmount(stack.getTagCompound().getInteger("maxAmount"));
 							if (MagicPower.transfer(magicPower, temp, 50, 0.5f)) {
-								stack.getTagCompound().setInteger("amount", temp.amount);
+								stack.getTagCompound().setInteger("amount", temp.getAmount());
 								player.inventory.setInventorySlotContents(i, stack);
 								player.inventory.markDirty();
 								break;
@@ -115,7 +115,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 					}
 				}
 			}
-			if (magicPower.amount > magicPower.maxAmount) magicPower.amount = magicPower.maxAmount;
+			if (magicPower.getAmount() > magicPower.getMaxAmount()) magicPower.setAmount(magicPower.getMaxAmount());
 			if (world.getTotalWorldTime() % 20 == 0) magicPower.fill(gain * 8);
 			scan(ModConfig.misc.altarScansPerTick);
 		}
@@ -148,31 +148,31 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 							ItemStack stack = ((TileEntityPlacedItem) world.getTileEntity(pos0.up())).getInventories()[0].getStackInSlot(0);
 							if (stack.getItem() instanceof ItemGrimoireMagia && stack.hasTagCompound()) {
 								MagicPower temp = new MagicPower();
-								temp.amount = stack.getTagCompound().getInteger("amount");
-								temp.maxAmount = stack.getTagCompound().getInteger("maxAmount");
+								temp.setAmount(stack.getTagCompound().getInteger("amount"));
+								temp.setMaxAmount(stack.getTagCompound().getInteger("maxAmount"));
 								if (MagicPower.transfer(magicPower, temp, 100, 0.25f))
-									stack.getTagCompound().setInteger("amount", temp.amount);
+									stack.getTagCompound().setInteger("amount", temp.getAmount());
 							}
 						}
 						if (!foundStone) {
 							AltarUpgrade upgrade = getAltarUpgrade(world, pos0.up());
 							if (upgrade != null) {
-								AltarUpgrade.Type type = upgrade.type;
+								AltarUpgrade.Type type = upgrade.getType();
 								if (type == AltarUpgrade.Type.CUP && !foundCup) {
-									gain += upgrade.upgrade1;
-									multiplier *= upgrade.upgrade2;
+									gain += upgrade.getUpgrade1();
+									multiplier *= upgrade.getUpgrade2();
 									foundCup = true;
 								}
 								if (type == AltarUpgrade.Type.PENTACLE && !foundPentacle) {
-									gain += upgrade.upgrade1;
+									gain += upgrade.getUpgrade1();
 									foundPentacle = true;
 								}
 								if (type == AltarUpgrade.Type.SWORD && !foundSword) {
-									multiplier *= upgrade.upgrade2;
+									multiplier *= upgrade.getUpgrade2();
 									foundSword = true;
 								}
 								if (type == AltarUpgrade.Type.WAND && !foundWand) {
-									maxPower += 64 * upgrade.upgrade2;
+									maxPower += 64 * upgrade.getUpgrade2();
 									foundWand = true;
 								}
 							}
@@ -185,7 +185,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 					multiplier = 1;
 				}
 				if (gain < 0) gain = 0;
-				magicPower.maxAmount = (int) (maxPower * multiplier);
+				magicPower.setMaxAmount((int) (maxPower * multiplier));
 				maxPower = 0;
 				counter = 0;
 				map.clear();

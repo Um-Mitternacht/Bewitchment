@@ -248,7 +248,7 @@ public class Util {
 			}
 		}
 
-		for (NBTTagCompound poppetShelves : ext.storedPoppetShelves) {
+		for (NBTTagCompound poppetShelves : ext.getStoredPoppetShelves()) {
 			BlockPos pos = BlockPos.fromLong(poppetShelves.getLong("position"));
 			if (world.getTileEntity(pos) instanceof TileEntityPoppetShelf) {
 				TileEntityPoppetShelf te = (TileEntityPoppetShelf) world.getTileEntity(pos);
@@ -281,7 +281,7 @@ public class Util {
 		if (contract.requiresEntities()) itemstack.getTagCompound().setInteger("mobsComplete", 0);
 		if (contract.requiresItems()) {
 			NBTTagList list = new NBTTagList();
-			for (Item item : contract.items) {
+			for (Item item : contract.getItems()) {
 				NBTTagCompound couple = new NBTTagCompound();
 				int amount = 6 + rand.nextInt(6);
 				if (item == Items.WATER_BUCKET) amount = 1;

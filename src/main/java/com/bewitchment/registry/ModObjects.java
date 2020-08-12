@@ -585,8 +585,8 @@ public class ModObjects {
 		public void applyEffects(EntityLivingBase entity) {
 			if (!entity.world.isRemote && entity instanceof EntityPlayer) {
 				ExtendedPlayer ep = entity.getCapability(ExtendedPlayer.CAPABILITY, null);
-				ep.canRitual = false;
-				ep.ritualDisabledTime = 24000;
+				ep.setCanRitual(false);
+				ep.setRitualDisabledTime(24000);
 				ExtendedPlayer.syncToClient((EntityPlayer) entity);
 				((WorldServer) entity.world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, false, entity.posX, entity.posY, entity.posZ, 100, 0.5, 1, 0.5, 0.05);
 			}

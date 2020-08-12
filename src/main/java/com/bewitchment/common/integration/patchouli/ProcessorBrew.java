@@ -20,9 +20,9 @@ public class ProcessorBrew implements IComponentProcessor {
 	@Override
 	public String process(String key) {
 		if (recipe == null) return null;
-		else if (key.equals("input")) return PatchouliAPI.instance.serializeIngredient(recipe.input);
+		else if (key.equals("input")) return PatchouliAPI.instance.serializeIngredient(recipe.getInput());
 		else if (key.equals("name"))
-			return new TextComponentTranslation(recipe.effect.getEffectName()).getUnformattedComponentText();
+			return new TextComponentTranslation(recipe.getEffect().getEffectName()).getUnformattedComponentText();
 		return null;
 	}
 }

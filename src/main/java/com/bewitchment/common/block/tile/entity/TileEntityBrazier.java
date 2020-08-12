@@ -167,7 +167,7 @@ public class TileEntityBrazier extends ModTileEntity implements ITickable {
 		if (this.incense != null) {
 			if (world.getTotalWorldTime() % 20 == 0) {
 				this.litTime++;
-				if (this.litTime > incense.time) stopBurning();
+				if (this.litTime > incense.getTime()) stopBurning();
 			}
 		}
 		if (this.litTime > 168000) stopBurning();

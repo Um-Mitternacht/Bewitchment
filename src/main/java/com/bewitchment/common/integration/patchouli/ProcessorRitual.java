@@ -22,21 +22,21 @@ public class ProcessorRitual implements IComponentProcessor {
 		if (recipe == null) return null;
 		else if (key.startsWith("input")) {
 			int id = Integer.parseInt(key.substring(5));
-			if (recipe.input.size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.input.get(id));
+			if (recipe.getInput().size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.getInput().get(id));
 		} else if (key.startsWith("output")) {
 			int id = Integer.parseInt(key.substring(6));
-			if (recipe.output != null && recipe.output.size() > id)
-				return PatchouliAPI.instance.serializeItemStack(recipe.output.get(id));
+			if (recipe.getOutput() != null && recipe.getOutput().size() > id)
+				return PatchouliAPI.instance.serializeItemStack(recipe.getOutput().get(id));
 		} else if (key.equals("foci")) return "bewitchment:textures/gui/patchouli/circle/foci.png";
 		else if (key.startsWith("circle")) {
 			int id = Integer.parseInt(key.substring(6));
-			if (recipe.circles[id] > -1)
-				return "bewitchment:textures/gui/patchouli/circle/circle" + recipe.circles[id] + id + ".png";
+			if (recipe.getCircles()[id] > -1)
+				return "bewitchment:textures/gui/patchouli/circle/circle" + recipe.getCircles()[id] + id + ".png";
 			else return "bewitchment:textures/gui/patchouli/circle/foci.png";
 		} else if (key.equals("name"))
 			return I18n.format("ritual." + recipe.getRegistryName().toString().replace(":", "."));
-		else if (key.equals("startingCost")) return "Starting Cost: " + recipe.startingPower;
-		else if (key.equals("runningCost")) return "Running Cost: " + recipe.runningPower;
+		else if (key.equals("startingCost")) return "Starting Cost: " + recipe.getStartingPower();
+		else if (key.equals("runningCost")) return "Running Cost: " + recipe.getRunningPower();
 		return null;
 	}
 }

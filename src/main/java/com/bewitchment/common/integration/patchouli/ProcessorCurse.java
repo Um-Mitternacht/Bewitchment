@@ -22,7 +22,7 @@ public class ProcessorCurse implements IComponentProcessor {
 		if (recipe == null) return null;
 		else if (key.startsWith("input")) {
 			int id = Integer.parseInt(key.substring(5));
-			if (recipe.input.size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.input.get(id));
+			if (recipe.getInput().size() > id) return PatchouliAPI.instance.serializeIngredient(recipe.getInput().get(id));
 		} else if (key.equals("name")) {
 			return new TextComponentTranslation("curse." + recipe.getRegistryName().toString().replace(":", ".")).getUnformattedComponentText();
 		}
