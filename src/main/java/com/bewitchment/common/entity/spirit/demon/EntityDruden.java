@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
 
 public class EntityDruden extends ModEntityMob {
 
-	public int attackTimer = 0;
-
 	public EntityDruden(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/druden"));
 		setSize(1.425f, 3.7f);
@@ -57,7 +55,6 @@ public class EntityDruden extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (attackTimer > 0) attackTimer--;
 		if (ticksExisted % 20 == 0 && isInWater()) heal(3);
 		if (ticksExisted % 20 == 0 && isWet()) heal(3);
 		if (this.getHealth() < this.getMaxHealth() && !(ticksExisted % 200 > 5)) {
@@ -94,8 +91,6 @@ public class EntityDruden extends ModEntityMob {
 	public boolean attackEntityAsMob(Entity entity) {
 		boolean flag = super.attackEntityAsMob(entity);
 		if (flag) {
-			attackTimer = 10;
-			world.setEntityState(this, (byte) 4);
 			world.playSound(null, getPosition(), SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.3F, 1);
 			if (entity instanceof EntityLivingBase) {
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModPotions.fear, 500, 0, false, false));
@@ -163,12 +158,6 @@ public class EntityDruden extends ModEntityMob {
 		setCanPickUpLoot(this.rand.nextFloat() < 0.35F * difficulty.getClampedAdditionalDifficulty());
 		setEnchantmentBasedOnDifficulty(difficulty);
 		return super.onInitialSpawn(difficulty, data);
-	}
-
-	@Override
-	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
-		else super.handleStatusUpdate(id);
 	}
 
 	@Override

@@ -21,7 +21,7 @@ apply plugin: 'org.spongepowered.mixin'
 boolean isFat = hasProperty("isFat")
 String buildType = (isFat ? "FAT" : "THIN")
 
-version = "1.12.2-0.0.22.35"
+version = "1.12.2-0.0.22.36"
 group = "com.bewitchment"
 archivesBaseName = "bewitchment"
 
@@ -87,7 +87,7 @@ dependencies {
     deobfProvided "curse.maven:hwyla:2568751"
     deobfProvided "curse.maven:wawla-what-are-we-looking-at:2916368"
     deobfProvided "curse.maven:just-enough-resources-jer:2728585"
-    deobfProvided "curse.maven:coveted-mobs:3020264"
+    deobfProvided "curse.maven:coveted-mobs:3026939"
     deobfProvided "curse.maven:serene-seasons:2799213"
     deobfProvided "curse.maven:tough-as-nails:2710969"
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"

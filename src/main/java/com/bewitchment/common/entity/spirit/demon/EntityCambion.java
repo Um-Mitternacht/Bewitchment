@@ -63,7 +63,7 @@ public class EntityCambion extends ModEntityMob {
 		tasks.addTask(3, new EntityAILookIdle(this));
 		tasks.addTask(3, new EntityAIOpenDoor(this, true));
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
-		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
+		tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, true, false, e -> e instanceof EntityHellhound || e instanceof EntityFeuerwurm || e instanceof EntityGhost || e instanceof EntityBlackDog || e instanceof EntityZombie || e instanceof EntitySkeleton || e instanceof EntitySpider || e instanceof EntityWerewolf));
 	}
@@ -183,10 +183,14 @@ public class EntityCambion extends ModEntityMob {
 			this.applyEnchantments(this, entityIn);
 			attackTimer = 10;
 			int i = this.rand.nextInt(100);
+			int j = this.rand.nextInt(100);
 			world.setEntityState(this, (byte) 4);
 			if (entityIn instanceof EntityLivingBase) {
-				if (i < 10) {
-					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 500, 0, false, false));
+				if (i < 5) {
+					entityIn.setFire(25);
+				}
+				else if (j < 35) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 500, 0, false, true));
 				}
 			}
 		}
