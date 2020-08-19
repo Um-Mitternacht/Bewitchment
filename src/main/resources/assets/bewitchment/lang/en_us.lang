@@ -1457,6 +1457,19 @@ entity.bewitchment.given_name.503=Merihem
 entity.bewitchment.given_name.504=Pytho
 entity.bewitchment.given_name.505=Abaddon
 
+entity.bewitchment.given_name.506=Ornias
+entity.bewitchment.given_name.507=Tephras
+entity.bewitchment.given_name.508=Onoskelis
+entity.bewitchment.given_name.509=Envy
+entity.bewitchment.given_name.510=Rabdos
+entity.bewitchment.given_name.511=Rath
+entity.bewitchment.given_name.512=Tribolaios
+entity.bewitchment.given_name.513=Obizuth
+entity.bewitchment.given_name.514=Enepsigos
+entity.bewitchment.given_name.515=Kunopaston
+entity.bewitchment.given_name.516=Ephippas
+entity.bewitchment.given_name.517=Abizithibod
+
 //Titles
 entity.bewitchment.prefix.0=King
 entity.bewitchment.prefix.1=President
