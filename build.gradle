@@ -78,7 +78,7 @@ dependencies {
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:9.0.1"
     deobfProvided "curse.maven:quark:2889332"
     deobfProvided "curse.maven:autoreglib:2746011"
-    deobfProvided "curse.maven:mowzies-mobs:2976309"
+    deobfProvided "curse.maven:mowzies-mobs:3037370"
     deobfProvided "curse.maven:chisel:2809394"
     deobfProvided "curse.maven:ctm:2809915"
     deobfProvided "curse.maven:consecration:3010339"
