@@ -2,6 +2,7 @@ package com.bewitchment.common.block.plants;
 
 import com.bewitchment.Util;
 import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
+import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.ITileEntityProvider;
@@ -65,7 +66,7 @@ public class BlockSiphoningFlower extends BlockBush implements ITileEntityProvid
 
 	@Override
 	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (world.getTileEntity(pos) instanceof TileEntitySiphoningFlower && entity instanceof EntityLivingBase && entity.isNonBoss()) {
+		if (world.getTileEntity(pos) instanceof TileEntitySiphoningFlower && entity instanceof EntityLivingBase && entity.isNonBoss() && !(entity instanceof EntityDemon) && !(entity.getClass().getName().contains("Dragon"))) {
 			TileEntitySiphoningFlower te = (TileEntitySiphoningFlower) world.getTileEntity(pos);
 			if (te != null && !te.isBound()) {
 				te.boundId = entity.getPersistentID().toString();

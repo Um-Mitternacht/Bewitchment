@@ -188,8 +188,7 @@ public class EntityCambion extends ModEntityMob {
 			if (entityIn instanceof EntityLivingBase) {
 				if (i < 5) {
 					entityIn.setFire(25);
-				}
-				else if (j < 35) {
+				} else if (j < 35) {
 					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 500, 0, false, true));
 				}
 			}
