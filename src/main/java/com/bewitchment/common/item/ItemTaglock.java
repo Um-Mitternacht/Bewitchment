@@ -1,6 +1,7 @@
 package com.bewitchment.common.item;
 
 import com.bewitchment.Util;
+import com.bewitchment.common.entity.spirit.demon.EntityDemon;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.BlockBed;
 import net.minecraft.client.resources.I18n;
@@ -40,7 +41,7 @@ public class ItemTaglock extends Item {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
-		if (!player.world.isRemote && target != null && target.isNonBoss()) {
+		if (!player.world.isRemote && target != null && target.isNonBoss() && !(target instanceof EntityDemon)) {
 			setTags(player, hand, target);
 			return true;
 		}
