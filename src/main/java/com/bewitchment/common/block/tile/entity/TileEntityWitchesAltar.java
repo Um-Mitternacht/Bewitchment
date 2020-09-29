@@ -230,7 +230,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 			int current = map.getOrDefault(state0, 0);
 			//What I don't understand is why this works. According to Moriya this shouldn't work. And yet it just. Works. WTF?
 			if (map.keySet().isEmpty() || current < 4 * map.keySet().size()) {
-				map.put(state0, maxPower += 300);
+				map.put(state0, maxPower += 100);
 				maxPower++;
 			}
 		}
