@@ -4,6 +4,7 @@ import com.bewitchment.ModConfig;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.common.block.BlockGoddessStatue;
 import com.bewitchment.common.block.BlockStatue;
 import com.bewitchment.common.block.BlockWitchesAltar;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
@@ -212,7 +213,7 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 	}
 
 	protected boolean isStatue(IBlockState state) {
-		return (!(state.getBlock() instanceof BlockIdol)) && (state.getBlock() instanceof BlockStatue);
+		return (!(state.getBlock() instanceof BlockIdol)) && (!(state.getBlock() instanceof BlockGoddessStatue)) && (state.getBlock() instanceof BlockStatue);
 	}
 
 	protected void registerToMap(IBlockState state) {
