@@ -225,8 +225,8 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				maxPower++;
 			}
 		}
-		int s = 1;
 		if (isStatue(state)) {
+			int s = 0;
 			IBlockState state0 = convert(state);
 			int current = map.getOrDefault(state0, 0);
 			//What I don't understand is why this works. According to Moriya this shouldn't work. And yet it just. Works. WTF?
