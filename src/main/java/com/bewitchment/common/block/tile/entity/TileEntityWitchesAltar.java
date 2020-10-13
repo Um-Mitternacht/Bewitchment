@@ -225,7 +225,6 @@ public class TileEntityWitchesAltar extends ModTileEntity implements ITickable {
 				maxPower++;
 			}
 		}
-		int s = 1;
 		if (isStatue(state)) {
 			IBlockState state0 = convert(state);
 			int current = map.getOrDefault(state0, 0);
