@@ -25,6 +25,9 @@ public class ModConfig {
 	@Config.Comment("Compat Settings")
 	public static final Compat compat = new Compat();
 
+	@Config.Comment("Modifier Settings")
+	public static final Modifiers modifiers = new Modifiers();
+
 	@Config.Comment("Ael is banned")
 	public static final Maymays memes = new Maymays();
 
@@ -421,6 +424,16 @@ public class ModConfig {
 			@Config.RangeInt(min = 0, max = Byte.MAX_VALUE)
 			public int werewolfMax = 4;
 		}
+	}
+
+	public static class Modifiers {
+		@Config.RequiresMcRestart
+		@Config.Comment("Enable items from other mods to use silver bonuses")
+		public boolean silverBonuses = true;
+
+		@Config.RequiresMcRestart
+		@Config.Comment("Enable items from other mods to use cold iron bonuses")
+		public boolean coldIronBonuses = true;
 	}
 
 	public static class Maymays {

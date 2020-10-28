@@ -138,11 +138,18 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
 
+
 		for (Item item : ForgeRegistries.ITEMS) {
-			if (Util.isRelated(true, item, "silver")) MaterialHandler.SILVER_ARMOR.add(item);
-			if (Util.isRelated(false, item, "silver")) MaterialHandler.SILVER_TOOLS.add(item);
-			if (Util.isRelated(true, item, "cold_iron")) MaterialHandler.COLD_IRON_ARMOR.add(item);
-			if (Util.isRelated(false, item, "cold_iron")) MaterialHandler.COLD_IRON_TOOLS.add(item);
+
+			/**
+			 * fix for issue #660
+			 * https://github.com/Um-Mitternacht/Bewitchment/issues/660
+			 */
+			Util.addBonus(item, "silver", ModConfig.modifiers.silverBonuses,
+					MaterialHandler.SILVER_ARMOR, MaterialHandler.SILVER_TOOLS);
+
+			Util.addBonus(item, "cold_iron", ModConfig.modifiers.coldIronBonuses,
+					MaterialHandler.COLD_IRON_ARMOR, MaterialHandler.COLD_IRON_TOOLS);
 		}
 
 		/*Village*/

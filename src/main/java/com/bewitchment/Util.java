@@ -48,6 +48,18 @@ import java.util.stream.Collectors;
 
 @SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument", "WeakerAccess"})
 public class Util {
+	/**
+	 *
+	 * @param item the item to be checked
+	 * @return true if it's from bewitchment
+	 *
+	 * could be moved into api
+	 */
+	public static boolean isFromBewitchment(Item item) {
+		ResourceLocation resourceLocation = item.getRegistryName();
+		return resourceLocation != null && resourceLocation.getNamespace().equals(Bewitchment.MODID);
+	}
+
 	public static <T extends Block> void registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
 		block.setRegistryName(loc);
@@ -57,12 +69,14 @@ public class Util {
 		block.setHardness(hardness);
 		block.setResistance(resistance);
 		block.setHarvestLevel(tool, level);
+
 		if (mat == Material.CARPET) Blocks.FIRE.setFireInfo(block, 60, 20);
 		if (mat == Material.CLOTH || mat == Material.LEAVES) Blocks.FIRE.setFireInfo(block, 30, 60);
 		if (mat == Material.PLANTS) Blocks.FIRE.setFireInfo(block, 60, 100);
 		if (mat == Material.TNT || mat == Material.VINE) Blocks.FIRE.setFireInfo(block, 15, 100);
 		if (mat == Material.WOOD) Blocks.FIRE.setFireInfo(block, 5, 20);
 		if (mat == Material.ICE) block.setDefaultSlipperiness(0.98f);
+
 		if (!(block instanceof BlockPlacedItem) && !(block instanceof BlockGlyph) && !(block instanceof BlockFrostfire) && !(block instanceof BlockSaltBarrier) && !(block instanceof BlockCrops) && !(block instanceof BlockDoor) && !(block instanceof BlockSlab) && !(block instanceof IFluidBlock) && !(block instanceof BlockHellfire) && !(block instanceof BlockSigil) && !(block instanceof BlockStatue.BlockFiller) && !(block instanceof BlockSpanishMoss && ((BlockSpanishMoss) block).isTerminalPiece())) {
 			Item item = new ItemBlock(block).setRegistryName(loc).setTranslationKey(block.getTranslationKey());
 			if (block instanceof BlockStatue) Bewitchment.proxy.setStatueTEISR(item);
@@ -155,19 +169,38 @@ public class Util {
 		return false;
 	}
 
-	public static boolean isRelated(boolean armor, Item item, String... names) {
+	/**
+	 * @param item the item to be added into a set
+	 * @param material material name that will be matched
+	 * @param config should use items from other mods
+	 * @param armors to be added into if item is armor
+	 * @param tools to be added into if item is a tool
+	 */
+	public static void addBonus(Item item, String material, boolean config, Set<Item> armors, Set<Item> tools) {
+		if (isRelatedTool(item, material)) {
+
+			if (config) addToSet(item, item instanceof ItemArmor ? armors : tools);
+			else if (isFromBewitchment(item)) addToSet(item, item instanceof ItemArmor ? armors : tools);
+		}
+	}
+
+	/**
+	 * {@link Util#addBonus(Item, String, boolean, Set, Set)}
+	 */
+	private static boolean addToSet(Item item, Set<Item> set) {
+		return set.add(item);
+	}
+
+	/**
+	 * Modified to be be compact & not to use boolean
+	 */
+	public static boolean isRelatedTool(Item item, String... names) {
 		for (String name : names) {
-			if (armor) {
-				if (item instanceof ItemArmor && ((ItemArmor) item).getArmorMaterial().name().toLowerCase().contains(name))
-					return true;
-			} else {
-				if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().toLowerCase().contains(name))
-					return true;
-				if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().toLowerCase().contains(name))
-					return true;
-				if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().toLowerCase().contains(name))
-					return true;
-			}
+			name = name.toUpperCase();
+			return  item instanceof ItemArmor ? ((ItemArmor)item).getArmorMaterial().name().contains(name) :
+					item instanceof ItemSword ? ((ItemSword)item).getToolMaterialName().contains(name) :
+					item instanceof ItemTool ? ((ItemTool)item).getToolMaterialName().contains(name) :
+					item instanceof ItemHoe && ((ItemHoe)item).getMaterialName().contains(name);
 		}
 		return false;
 	}

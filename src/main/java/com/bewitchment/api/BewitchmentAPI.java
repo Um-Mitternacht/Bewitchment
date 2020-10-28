@@ -1,6 +1,7 @@
 package com.bewitchment.api;
 
 import com.bewitchment.Bewitchment;
+import com.bewitchment.ModConfig;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.registry.ModObjects;
@@ -219,6 +220,7 @@ public class BewitchmentAPI {
 				break;
 			}
 		}
+
 		if (entity.isEntityUndead() || flag || isVampire(entity) || isWerewolf(entity)) {
 			fin = 1.5f;
 			if (entity instanceof EntityPlayer) fin *= 1.5f;
