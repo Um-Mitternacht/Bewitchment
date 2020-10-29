@@ -1,14 +1,14 @@
 package com.bewitchment.api;
 
 import com.bewitchment.Bewitchment;
-import com.bewitchment.ModConfig;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.registry.AltarUpgrade;
+import com.bewitchment.api.weakness.Weakness;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,8 +36,7 @@ public class BewitchmentAPI {
 	 * A list of pets to be chosen for the meet pet fortune
 	 */
 	public static final List<EntityEntry> VALID_PETS = new ArrayList<>();
-	public static final Set<String> COLD_IRON_WEAKNESS = new HashSet<>(Arrays.asList("Hirschgeist", "Pech", "Fairy", "Ghost", "Succubus", "Dullahan", "Pixie", "Incubus", "GaiaBaphomet", "Banshee", "Kikimora", "Dryad", "Satyress", "YukiOnna", "NineTails", "Spriggan", "Valkyrie", "Oni", "Deathword", "Mandragora", "Beholder", "Selkie", "Siren", "Dryad"));
-	public static final Set<String> SILVER_WEAKNESS = new HashSet<>(Arrays.asList("Dracula", "TurnedVillager", "Wendigo", "Dhampir", "Werecat", "Mummy", "BoneKnight", "Lich"));
+
 	/**
 	 * The Demon creature attribute. Used for well, demons.
 	 */
@@ -52,6 +51,34 @@ public class BewitchmentAPI {
 	public static EnumCreatureAttribute FAE = EnumHelper.addCreatureAttribute("FAE");
 	public static BiomeDictionary.Type IMMUTABLE;
 	private static BewitchmentAPI INSTANCE;
+
+	public static final Weakness
+			COLD_IRON_WEAKNESS = Weakness.create((entity) -> {
+				EnumCreatureAttribute attribute = entity.getCreatureAttribute();
+
+				String[] names = {
+						"Hirschgeist", "Pech", "Fairy", "Ghost",
+						"Succubus", "Dullahan", "Pixie", "Incubus",
+						"GaiaBaphomet", "Banshee", "Kikimora", "Dryad",
+						"Satyress", "YukiOnna", "NineTails", "Spriggan",
+						"Valkyrie", "Oni", "Deathword", "Mandragora",
+						"Beholder", "Selkie", "Siren", "Dryad"
+				};
+				return
+						attribute == DEMON ||
+						attribute == SPIRIT ||
+						attribute == FAE ||
+						Arrays.stream(names).anyMatch((name) -> entity.getClass().getName().contains(name));
+			}, "minecraft:blaze", "minecraft:ghast", "minecraft:vex", "minecraft:enderman"),
+
+			SILVER_WEAKNESS = Weakness.create((entity) -> {
+				String[] names = {
+						"Dracula", "TurnedVillager", "Wendigo", "Dhampir",
+						"Werecat", "Mummy", "BoneKnight", "Lich"
+				};
+				return Arrays.stream(names).anyMatch((name) -> entity.getClass().getName().contains(name));
+			}, "bewitchment:werewolf");
+
 
 	/**
 	 * @param entity the entity to check
@@ -209,38 +236,5 @@ public class BewitchmentAPI {
 		} else {
 			throw new IllegalStateException("Bewitchment API already initialized");
 		}
-	}
-
-	public static float getSilverWeakness(EntityLivingBase entity) {
-		float fin = 1;
-		boolean flag = false;
-		for (String name : COLD_IRON_WEAKNESS) {
-			if (entity.getClass().getName().contains(name)) {
-				flag = true;
-				break;
-			}
-		}
-
-		if (entity.isEntityUndead() || flag || isVampire(entity) || isWerewolf(entity)) {
-			fin = 1.5f;
-			if (entity instanceof EntityPlayer) fin *= 1.5f;
-		}
-		return fin;
-	}
-
-	public static float getColdIronWeakness(EntityLivingBase entity) {
-		float fin = 1;
-		boolean flag = false;
-		for (String name : COLD_IRON_WEAKNESS) {
-			if (entity.getClass().getName().contains(name)) {
-				flag = true;
-				break;
-			}
-		}
-		if (flag || entity.getCreatureAttribute() == DEMON || entity.getCreatureAttribute() == SPIRIT || entity.getCreatureAttribute() == FAE || entity instanceof EntityBlaze || entity instanceof EntityVex || entity instanceof EntityGhast || entity instanceof EntityEnderman) {
-			fin = 1.5f;
-			if (entity instanceof EntityPlayer) fin *= 1.5f;
-		}
-		return fin;
 	}
 }

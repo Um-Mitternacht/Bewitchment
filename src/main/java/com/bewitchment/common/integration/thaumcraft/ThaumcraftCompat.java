@@ -126,10 +126,12 @@ public class ThaumcraftCompat implements IConditionFactory {
 		if (!entity.world.isRemote) {
 			Entity source = event.getSource().getImmediateSource();
 			if (source instanceof EntityLivingBase) {
-				float weakness = BewitchmentAPI.getSilverWeakness(entity);
-				if (weakness > 1 && isSilverGolem((EntityLivingBase) source))
+				EntityLivingBase living = (EntityLivingBase)source;
+
+				float weakness = BewitchmentAPI.SILVER_WEAKNESS.get(entity);
+				if (weakness > 1 && isSilverGolem(living))
 					event.setAmount(event.getAmount() * weakness * 2);
-				weakness = BewitchmentAPI.getSilverWeakness((EntityLivingBase) source);
+				weakness = BewitchmentAPI.SILVER_WEAKNESS.get(living);
 				if (weakness > 1 && isSilverGolem(entity)) {
 					event.setAmount(event.getAmount() * 0.4F);
 					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 4);
@@ -144,10 +146,12 @@ public class ThaumcraftCompat implements IConditionFactory {
 		if (!entity.world.isRemote) {
 			Entity source = event.getSource().getImmediateSource();
 			if (source instanceof EntityLivingBase) {
-				float weakness = BewitchmentAPI.getColdIronWeakness(entity);
-				if (weakness > 1f && isColdIronGolem((EntityLivingBase) source))
+				EntityLivingBase living = (EntityLivingBase)source;
+
+				float weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(entity);
+				if (weakness > 1f && isColdIronGolem(living));
 					event.setAmount(event.getAmount() * weakness * 2);
-				weakness = BewitchmentAPI.getColdIronWeakness((EntityLivingBase) source);
+				weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(living);
 				if (weakness > 1f && isColdIronGolem(entity)) {
 					event.setAmount(event.getAmount() * 0.4F);
 					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 4);

@@ -1,5 +1,6 @@
 package com.bewitchment.common.handler;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
@@ -30,13 +31,13 @@ public class MaterialHandler {
 	public void livingUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
 		if (!entity.world.isRemote && entity.ticksExisted % 20 == 0) {
-			if (BewitchmentAPI.getSilverWeakness(entity) > 1f) {
+			if (BewitchmentAPI.SILVER_WEAKNESS.contains(entity)) {
 				int armor = 0;
 				for (ItemStack stack : entity.getArmorInventoryList())
 					if (SILVER_ARMOR.contains(stack.getItem())) armor++;
 				if (armor > 0) entity.attackEntityFrom(DamageSource.MAGIC, armor);
 			}
-			if (BewitchmentAPI.getColdIronWeakness(entity) > 1f) {
+			if (BewitchmentAPI.COLD_IRON_WEAKNESS.contains(entity)) {
 				int armor = 0;
 				for (ItemStack stack : entity.getArmorInventoryList())
 					if (COLD_IRON_ARMOR.contains(stack.getItem())) armor++;
@@ -56,12 +57,12 @@ public class MaterialHandler {
 				EntityLivingBase livingAtk = (EntityLivingBase)atk;
 
 				{ //silver
-					float weakness = BewitchmentAPI.getSilverWeakness(target);
+					float weakness = BewitchmentAPI.SILVER_WEAKNESS.get(target);
 
 					if (weakness > 1.0F && SILVER_TOOLS.contains(livingAtk.getHeldItemMainhand().getItem()))
 						event.setAmount(event.getAmount() * weakness);
 
-					weakness = BewitchmentAPI.getSilverWeakness(livingAtk);
+					weakness = BewitchmentAPI.SILVER_WEAKNESS.get(livingAtk);
 
 					if (weakness > 1.0F) {
 
@@ -78,12 +79,12 @@ public class MaterialHandler {
 				}
 
 				{ //cold iron
-					float weakness = BewitchmentAPI.getColdIronWeakness(target);
+					float weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(target);
 
 					if (weakness > 1f && COLD_IRON_TOOLS.contains((livingAtk).getHeldItemMainhand().getItem()))
 						event.setAmount(event.getAmount() * weakness);
-					weakness = BewitchmentAPI.getColdIronWeakness(livingAtk);
 
+					weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(livingAtk);
 					if (weakness > 1f) {
 						int armor = 0;
 

@@ -49,7 +49,6 @@ import java.util.stream.Collectors;
 @SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument", "WeakerAccess"})
 public class Util {
 	/**
-	 *
 	 * @param item the item to be checked
 	 * @return true if it's from bewitchment
 	 *

@@ -138,7 +138,6 @@ public class Bewitchment {
 		Bewitchment.network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
 		Bewitchment.network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
 
-
 		for (Item item : ForgeRegistries.ITEMS) {
 
 			/**

@@ -32,8 +32,8 @@ public class EntitySilverArrow extends EntityArrow {
 
 	@Override
 	protected void arrowHit(EntityLivingBase living) {
-		float weakness = isColdIron() ? BewitchmentAPI.getColdIronWeakness(living) : BewitchmentAPI.getSilverWeakness(living);
-		if (weakness > 1f) living.attackEntityFrom(DamageSource.MAGIC, BewitchmentAPI.getSilverWeakness(living));
+		float weakness = isColdIron() ? BewitchmentAPI.COLD_IRON_WEAKNESS.get(living) : BewitchmentAPI.SILVER_WEAKNESS.get(living);
+		if (weakness > 1.0F) living.attackEntityFrom(DamageSource.MAGIC, weakness);
 		super.arrowHit(living);
 	}
 
