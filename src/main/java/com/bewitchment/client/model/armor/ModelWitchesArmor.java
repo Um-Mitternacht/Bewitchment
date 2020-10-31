@@ -279,6 +279,8 @@ public class ModelWitchesArmor extends ModelArmor {
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+		setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
+
 		if (hat) hat1.showModel = slot == EntityEquipmentSlot.HEAD;
 		else hood01.showModel = slot == EntityEquipmentSlot.HEAD;
 		bipedBody.showModel = slot == EntityEquipmentSlot.CHEST;

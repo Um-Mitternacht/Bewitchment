@@ -13,7 +13,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.Set;
 
 /**
@@ -21,27 +21,35 @@ import java.util.Set;
  */
 public class BiomeChangingUtils {
 
+
 	public static void setMultiBiome(World world, Biome biome, BlockPos... poses) {
-		byte id = (byte) Biome.getIdForBiome(biome);
+		int id = Biome.getIdForBiome(biome); // id of the biome to change to
+
 		HashMultimap<ChunkPos, BlockPos> changes = HashMultimap.create();
-		for (BlockPos pos : poses) {
-			changes.put(new ChunkPos(pos), pos);
-		}
-		for (ChunkPos chunkPos : changes.keySet().toArray(new ChunkPos[changes.keySet().size()])) {
+
+		for (BlockPos pos : poses) changes.put(new ChunkPos(pos), pos);
+
+		changes.keys().forEach(chunkPos -> {
+
 			Chunk chunk = world.getChunk(chunkPos.x, chunkPos.z);
-			byte[] biomeArray = chunk.getBiomeArray();
+			byte[] biomes = chunk.getBiomeArray();
+
 			Set<BlockPos> changeSet = changes.get(chunkPos);
-			for (Iterator<BlockPos> iterator = changeSet.iterator(); iterator.hasNext(); ) {
-				BlockPos pos = iterator.next();
+
+			changeSet.forEach(pos -> {
 				int i = pos.getX() & 15;
 				int j = pos.getZ() & 15;
-				if (biomeArray[j << 4 | i] == id) {
-					iterator.remove();
+
+				int value = j << 4 | i;
+
+				if (biomes[value] == id) {
+					changeSet.remove(pos);
 				} else {
-					biomeArray[j << 4 | i] = id;
+					biomes[value] = (byte)id;
 				}
-			}
-		}
+			});
+			chunk.markDirty();
+		});
 	}
 
 	public static void resetRandomOverriddenBiome(World world) {
@@ -51,6 +59,26 @@ public class BiomeChangingUtils {
 		extendedWorld.STORED_OVERRIDE_BIOMES.remove(randomPos);
 		extendedWorld.setDirty(true);
 	}
+
+	//WIP modify if needed. Currently changes every biome in a chunk
+	public static void setBiome(World world, Chunk chunk, BlockPos pos, Biome biome) {
+		int biomeId = Biome.getIdForBiome(biome); // Get the Biome Id.
+
+		/**
+		 * int array will accept byte. issue is casting byte[] to int[]
+		 * could have a if statement JEID is "installed" to use alternative method instead
+		 */
+		if (byte.class.isAssignableFrom(chunk.getBiomeArray().getClass().getComponentType())) {
+			Arrays.fill(chunk.getBiomeArray(), (byte)biomeId);
+		} else {
+			//TODO add
+		}
+
+		//Update changes
+		if (!world.isRemote) chunk.markDirty();
+		else world.markBlockRangeForRenderUpdate(pos.add(-10, 0, -10), pos.add(10, 0, 10));
+	}
+
 
 
 	public static void setBiome(World world, Biome biome, BlockPos pos) {

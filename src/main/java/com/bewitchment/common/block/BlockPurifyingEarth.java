@@ -33,7 +33,7 @@ public class BlockPurifyingEarth extends ModBlock {
 		if (entity instanceof EntityLivingBase) {
 			EntityLivingBase living = (EntityLivingBase) entity;
 			EnumCreatureAttribute att = living.getCreatureAttribute();
-			if ((BewitchmentAPI.getSilverWeakness(living) > 1f && !BewitchmentAPI.isWerewolf(living)) || BewitchmentAPI.getColdIronWeakness(living) > 1f && !living.isBurning())
+			if ((BewitchmentAPI.SILVER_WEAKNESS.contains(living) && !BewitchmentAPI.isWerewolf(living)) || BewitchmentAPI.COLD_IRON_WEAKNESS.contains(living) && !living.isBurning())
 				living.setFire(25);
 		}
 	}
