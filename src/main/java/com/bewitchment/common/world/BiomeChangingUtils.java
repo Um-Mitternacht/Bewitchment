@@ -32,8 +32,6 @@ public class BiomeChangingUtils {
 		changes.keys().forEach(chunkPos -> {
 
 			Chunk chunk = world.getChunk(chunkPos.x, chunkPos.z);
-			chunk.markDirty();
-
 			byte[] biomes = chunk.getBiomeArray();
 
 			Set<BlockPos> changeSet = changes.get(chunkPos);
@@ -50,6 +48,7 @@ public class BiomeChangingUtils {
 					biomes[value] = (byte)id;
 				}
 			});
+			chunk.markDirty();
 		});
 	}
 
