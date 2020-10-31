@@ -34,7 +34,7 @@ public class RitualSowingSalt extends Ritual {
 	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		int radius = 32;
-		int minY = 64;
+		int minY = 60;
 		int maxY = 256;
 		for (int i = 0; i < inventory.getSlots(); i++) {
 			for (double x = -radius; x < radius; x++) {
