@@ -13,7 +13,6 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
-import java.util.Arrays;
 import java.util.Set;
 
 /**
@@ -45,7 +44,7 @@ public class BiomeChangingUtils {
 				if (biomes[value] == id) {
 					changeSet.remove(pos);
 				} else {
-					biomes[value] = (byte)id;
+					biomes[value] = (byte) id;
 				}
 			});
 			chunk.markDirty();
@@ -73,9 +72,8 @@ public class BiomeChangingUtils {
 		int i = pos.getX() & 15;
 		int j = pos.getZ() & 15;
 
-		chunk.getBiomeArray()[j << 4 | i] = (byte)biomeId;
+		chunk.getBiomeArray()[j << 4 | i] = (byte) biomeId;
 	}
-
 
 
 	public static void setBiome(World world, Biome biome, BlockPos pos) {

@@ -28,7 +28,6 @@ import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.*;
-import com.bewitchment.api.weakness.Weakness;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandCurse;
 import com.bewitchment.common.command.CommandFortune;
