@@ -71,16 +71,16 @@ configurations {
 }
 
 dependencies {
-    deobfProvided "mezz.jei:jei_1.12.2:4.15.0.297"
+    deobfProvided "mezz.jei:jei_1.12.2:4.16.1.302"
     deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
-    deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.14"
+    deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.19"
     deobfProvided "vazkii.botania:Botania:r1.10-363.119"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:9.0.1"
-    deobfProvided "curse.maven:quark:2889332"
+    deobfProvided "curse.maven:quark:2924091"
     deobfProvided "curse.maven:autoreglib:2746011"
-    deobfProvided "curse.maven:mowzies-mobs:3037370"
-    deobfProvided "curse.maven:chisel:2809394"
-    deobfProvided "curse.maven:ctm:2809915"
+    deobfProvided "curse.maven:mowzies-mobs:3048685"
+    deobfProvided "curse.maven:chisel:2915375"
+    deobfProvided "curse.maven:ctm:2915363"
     deobfProvided "curse.maven:consecration:3010339"
     deobfProvided "curse.maven:miskatonic-mysteries:2835243"
     deobfProvided "curse.maven:elementaristics:2826887"
@@ -92,7 +92,7 @@ dependencies {
     deobfProvided "curse.maven:tough-as-nails:2710969"
     deobfCompile "net.ilexiconn:llibrary:1.7.9-1.12.2"
     deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2"
-    deobfCompile "vazkii.patchouli:Patchouli:1.0-20.99"
+    deobfCompile "vazkii.patchouli:Patchouli:1.0-21.3"
     implementation 'org.jetbrains:annotations:15.0'
     shade('org.spongepowered:mixin:0.8-SNAPSHOT') {
         transitive = false
