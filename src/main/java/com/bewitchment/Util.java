@@ -177,9 +177,13 @@ public class Util {
 	 */
 	public static void addBonus(Item item, String material, boolean config, Set<Item> armors, Set<Item> tools) {
 		if (isRelatedTool(item, material)) {
+			Set<Item> set = (item instanceof ItemArmor ? armors : tools);
 
-			if (config) addToSet(item, item instanceof ItemArmor ? armors : tools);
-			else if (isFromBewitchment(item)) addToSet(item, item instanceof ItemArmor ? armors : tools);
+			if (config) {
+				addToSet(item, set);
+			} else if (isFromBewitchment(item)) {
+				addToSet(item, set);
+			}
 		}
 	}
 
@@ -190,16 +194,21 @@ public class Util {
 		return set.add(item);
 	}
 
-	/**
-	 * Modified to be be compact & not to use boolean
-	 */
 	public static boolean isRelatedTool(Item item, String... names) {
 		for (String name : names) {
-			name = name.toUpperCase();
-			return  item instanceof ItemArmor ? ((ItemArmor)item).getArmorMaterial().name().contains(name) :
-					item instanceof ItemSword ? ((ItemSword)item).getToolMaterialName().contains(name) :
-					item instanceof ItemTool ? ((ItemTool)item).getToolMaterialName().contains(name) :
-					item instanceof ItemHoe && ((ItemHoe)item).getMaterialName().contains(name);
+
+			if (item instanceof ItemArmor) {
+				return ((ItemArmor)item).getArmorMaterial().name().toLowerCase().contains(name);
+			}
+			if (item instanceof ItemSword) {
+				return ((ItemSword)item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+			}
+			if (item instanceof ItemTool) {
+				return ((ItemTool)item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+			}
+			if (item instanceof ItemHoe) {
+				return ((ItemHoe)item).getMaterialName().toLowerCase().toLowerCase().contains(name);
+			}
 		}
 		return false;
 	}
