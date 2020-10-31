@@ -16,6 +16,7 @@ public class ModelArmor extends ModelBiped {
 
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 		if (entity instanceof EntityArmorStand) {
 			EntityArmorStand entityarmorstand = (EntityArmorStand) entity;
 			this.bipedHead.rotateAngleX = 0.017453292F * entityarmorstand.getHeadRotation().getX();
@@ -40,8 +41,7 @@ public class ModelArmor extends ModelBiped {
 			this.bipedRightLeg.rotateAngleZ = 0.017453292F * entityarmorstand.getRightLegRotation().getZ();
 			this.bipedRightLeg.setRotationPoint(-1.9F, 11.0F, 0.0F);
 			copyModelAngles(this.bipedHead, this.bipedHeadwear);
-		} else
-			super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+		}
 	}
 
 	protected void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
