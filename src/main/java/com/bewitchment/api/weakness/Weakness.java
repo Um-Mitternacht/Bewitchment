@@ -11,6 +11,11 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Predicate;
 
+
+/**
+ * Predicate is here for support of old way of how weakness was handled.
+ * Should not use class names theyre not consistent
+ */
 public class Weakness {
     private final Set<ResourceLocation> cache = Sets.newHashSet();
     private final Predicate<EntityLivingBase> predicate;
