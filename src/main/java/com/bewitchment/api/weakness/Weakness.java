@@ -40,7 +40,7 @@ public class Weakness {
      * <p> To be used by other mods on {@link FMLPreInitializationEvent}</p>
      * <p> Registerer id into weakness</p>
      * @param id ResourceLocation id. e.g "minecraft:vex"
-     * @return Weakness id is being registered to.
+     * @return the Weakness const, id is being registered to.
      */
     public Weakness register(String id) {
         if (!id.isEmpty()) cache.add(new ResourceLocation(id));
@@ -52,13 +52,13 @@ public class Weakness {
      * @return True if entity has a weakness.
      */
     public boolean contains(EntityLivingBase entity) {
-        return entity != null && get(entity) > 1.0F;
+        return get(entity) > 1.0F;
     }
 
     public float get(EntityLivingBase entity) {
         float weakness = 1.0F;
 
-        if (entity != null && cache.contains(EntityList.getKey(entity)) || predicate.test(entity)) {
+        if (entity != null && (cache.contains(EntityList.getKey(entity)) || predicate.test(entity))) {
             weakness = 1.5F;
             if (entity instanceof EntityPlayer) weakness *= 1.5F;
         }

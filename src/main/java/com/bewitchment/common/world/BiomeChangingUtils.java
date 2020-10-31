@@ -68,15 +68,12 @@ public class BiomeChangingUtils {
 		 * int array will accept byte. issue is casting byte[] to int[]
 		 * could have a if statement JEID is "installed" to use alternative method instead
 		 */
-		if (byte.class.isAssignableFrom(chunk.getBiomeArray().getClass().getComponentType())) {
-			Arrays.fill(chunk.getBiomeArray(), (byte)biomeId);
-		} else {
-			//TODO add
-		}
+		//Arrays.fill(chunk.getBiomeArray(), (byte)biomeId);
 
-		//Update changes
-		if (!world.isRemote) chunk.markDirty();
-		else world.markBlockRangeForRenderUpdate(pos.add(-10, 0, -10), pos.add(10, 0, 10));
+		int i = pos.getX() & 15;
+		int j = pos.getZ() & 15;
+
+		chunk.getBiomeArray()[j << 4 | i] = (byte)biomeId;
 	}
 
 
