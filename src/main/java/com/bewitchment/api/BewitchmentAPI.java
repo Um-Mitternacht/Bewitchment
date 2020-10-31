@@ -57,27 +57,27 @@ public class BewitchmentAPI {
 				EnumCreatureAttribute attribute = entity.getCreatureAttribute();
 
 				String[] names = {
-						"Hirschgeist", "Pech", "Fairy", "Ghost",
+						"Hirschgeist", "Fairy",
 						"Succubus", "Dullahan", "Pixie", "Incubus",
 						"GaiaBaphomet", "Banshee", "Kikimora", "Dryad",
 						"Satyress", "YukiOnna", "NineTails", "Spriggan",
 						"Valkyrie", "Oni", "Deathword", "Mandragora",
 						"Beholder", "Selkie", "Siren", "Dryad"
-				};
+				}; //TO REMOVE
 				return
 						attribute == DEMON ||
 						attribute == SPIRIT ||
 						attribute == FAE ||
 						Arrays.stream(names).anyMatch((name) -> entity.getClass().getName().contains(name));
-			}, "minecraft:blaze", "minecraft:ghast", "minecraft:vex", "minecraft:enderman"),
+			}),
 
 			SILVER_WEAKNESS = Weakness.create((entity) -> {
 				String[] names = {
 						"Dracula", "TurnedVillager", "Wendigo", "Dhampir",
 						"Werecat", "Mummy", "BoneKnight", "Lich"
-				};
+				}; //TO REMOVE
 				return Arrays.stream(names).anyMatch((name) -> entity.getClass().getName().contains(name));
-			}, "bewitchment:werewolf");
+			});
 
 
 	/**

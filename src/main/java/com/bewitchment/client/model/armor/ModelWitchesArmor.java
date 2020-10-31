@@ -17,12 +17,6 @@ public class ModelWitchesArmor extends ModelArmor {
 	public static final ModelWitchesArmor HAT = new ModelWitchesArmor(EntityEquipmentSlot.HEAD, true);
 	public static final ModelWitchesArmor COWL = new ModelWitchesArmor(EntityEquipmentSlot.HEAD, false);
 	public static Map<EntityEquipmentSlot, ModelWitchesArmor> INSTANCES = new HashMap<>();
-	public final ModelRenderer bipedRightArm;
-	public final ModelRenderer bipedRightLeg;
-	public final ModelRenderer bipedHead;
-	public final ModelRenderer bipedBody;
-	public final ModelRenderer bipedLeftArm;
-	public final ModelRenderer bipedLeftLeg;
 	public final ModelRenderer sleeveRight;
 	public final ModelRenderer shoulderRight;
 	public final ModelRenderer sleeveDroopRight;
@@ -279,7 +273,8 @@ public class ModelWitchesArmor extends ModelArmor {
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
+        super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+	    setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 
 		if (hat) hat1.showModel = slot == EntityEquipmentSlot.HEAD;
 		else hood01.showModel = slot == EntityEquipmentSlot.HEAD;
@@ -292,11 +287,10 @@ public class ModelWitchesArmor extends ModelArmor {
 		super.bipedHeadwear.isHidden = true;
 
 		super.bipedHead = hat ? hat1 : hood01;
-		super.bipedBody = bipedBody;
-		super.bipedRightArm = bipedRightArm;
-		super.bipedLeftArm = bipedLeftArm;
-		super.bipedRightLeg = bipedRightLeg;
-		super.bipedLeftLeg = bipedLeftLeg;
-		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 	}
+
+    @Override
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+    }
 }

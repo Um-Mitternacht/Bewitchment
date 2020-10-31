@@ -23,10 +23,12 @@ package com.bewitchment;
 //ZIIREV SVIV, YVZIRMT SLHGRORGRVH
 //GSVB DROO YV NVG DRGS DIZGS
 
+import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayerHandler;
 import com.bewitchment.api.capability.magicpower.MagicPower;
 import com.bewitchment.api.message.*;
+import com.bewitchment.api.weakness.Weakness;
 import com.bewitchment.client.handler.ClientHandler;
 import com.bewitchment.common.command.CommandCurse;
 import com.bewitchment.common.command.CommandFortune;
@@ -150,6 +152,27 @@ public class Bewitchment {
 			Util.addBonus(item, "cold_iron", ModConfig.modifiers.coldIronBonuses,
 					MaterialHandler.COLD_IRON_ARMOR, MaterialHandler.COLD_IRON_TOOLS);
 		}
+
+		//Register weaknesses
+		BewitchmentAPI.COLD_IRON_WEAKNESS.register(
+				"minecraft:blaze",
+				"minecraft:ghast",
+				"minecraft:vex",
+				"minecraft:enderman",
+				"thaumcraft:pech",
+				"thaumcraft:wisp",
+				"bewitchment:black_dog",
+				"bewitchment:ghost",
+				"bewitchment:hellhound",
+				"bewitchment:demon",
+				"bewitchment:demoness",
+				"bewitchment:imp"
+		);
+
+		BewitchmentAPI.SILVER_WEAKNESS.register(
+				"bewitchment:werewolf"
+		);
+
 
 		/*Village*/
 		VillagerTradeHandler.INSTANCE.init();
