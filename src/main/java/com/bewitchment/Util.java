@@ -51,7 +51,7 @@ public class Util {
 	/**
 	 * @param item the item to be checked
 	 * @return true if it's from bewitchment
-	 *
+	 * <p>
 	 * could be moved into api
 	 */
 	public static boolean isFromBewitchment(Item item) {
@@ -169,11 +169,11 @@ public class Util {
 	}
 
 	/**
-	 * @param item the item to be added into a set
+	 * @param item     the item to be added into a set
 	 * @param material material name that will be matched
-	 * @param config should use items from other mods
-	 * @param armors to be added into if item is armor
-	 * @param tools to be added into if item is a tool
+	 * @param config   should use items from other mods
+	 * @param armors   to be added into if item is armor
+	 * @param tools    to be added into if item is a tool
 	 */
 	public static void addBonus(Item item, String material, boolean config, Set<Item> armors, Set<Item> tools) {
 		if (isRelatedTool(item, material)) {
@@ -198,16 +198,16 @@ public class Util {
 		for (String name : names) {
 
 			if (item instanceof ItemArmor) {
-				return ((ItemArmor)item).getArmorMaterial().name().toLowerCase().contains(name);
+				return ((ItemArmor) item).getArmorMaterial().name().toLowerCase().contains(name);
 			}
 			if (item instanceof ItemSword) {
-				return ((ItemSword)item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+				return ((ItemSword) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
 			}
 			if (item instanceof ItemTool) {
-				return ((ItemTool)item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+				return ((ItemTool) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
 			}
 			if (item instanceof ItemHoe) {
-				return ((ItemHoe)item).getMaterialName().toLowerCase().toLowerCase().contains(name);
+				return ((ItemHoe) item).getMaterialName().toLowerCase().toLowerCase().contains(name);
 			}
 		}
 		return false;

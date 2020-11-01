@@ -1,7 +1,5 @@
 package com.bewitchment.common.handler;
 
-import com.bewitchment.Bewitchment;
-import com.bewitchment.ModConfig;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.registry.ModEnchantments;
@@ -54,7 +52,7 @@ public class MaterialHandler {
 			Entity atk = event.getSource().getImmediateSource(); //Attacker
 
 			if (atk instanceof EntityLivingBase) {
-				EntityLivingBase livingAtk = (EntityLivingBase)atk;
+				EntityLivingBase livingAtk = (EntityLivingBase) atk;
 
 				{ //silver
 					float weakness = BewitchmentAPI.SILVER_WEAKNESS.get(target);

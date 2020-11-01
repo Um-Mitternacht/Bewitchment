@@ -49,36 +49,34 @@ public class BewitchmentAPI {
 	 * The Fairy creature attribute. This is for future usage ATM.
 	 */
 	public static EnumCreatureAttribute FAE = EnumHelper.addCreatureAttribute("FAE");
-	public static BiomeDictionary.Type IMMUTABLE;
-	private static BewitchmentAPI INSTANCE;
-
 	public static final Weakness
 			COLD_IRON_WEAKNESS = Weakness.create((entity) -> {
-				EnumCreatureAttribute attribute = entity.getCreatureAttribute();
+		EnumCreatureAttribute attribute = entity.getCreatureAttribute();
 
-				String[] names = {
-						"Hirschgeist", "Fairy",
-						"Succubus", "Dullahan", "Pixie", "Incubus",
-						"GaiaBaphomet", "Banshee", "Kikimora", "Dryad",
-						"Satyress", "YukiOnna", "NineTails", "Spriggan",
-						"Valkyrie", "Oni", "Deathword", "Mandragora",
-						"Beholder", "Selkie", "Siren", "Dryad"
-				}; //TO REMOVE
-				return
-						attribute == DEMON ||
+		String[] names = {
+				"Hirschgeist", "Fairy",
+				"Succubus", "Dullahan", "Pixie", "Incubus",
+				"GaiaBaphomet", "Banshee", "Kikimora", "Dryad",
+				"Satyress", "YukiOnna", "NineTails", "Spriggan",
+				"Valkyrie", "Oni", "Deathword", "Mandragora",
+				"Beholder", "Selkie", "Siren", "Dryad"
+		}; //TO REMOVE
+		return
+				attribute == DEMON ||
 						attribute == SPIRIT ||
 						attribute == FAE ||
 						Arrays.stream(names).anyMatch((name) -> entity.getClass().getName().contains(name));
-			}),
+	}),
 
-			SILVER_WEAKNESS = Weakness.create((entity) -> {
-				String[] names = {
-						"Dracula", "TurnedVillager", "Wendigo", "Dhampir",
-						"Werecat", "Mummy", "BoneKnight", "Lich"
-				}; //TO REMOVE
-				return Arrays.stream(names).anyMatch((name) -> entity.getClass().getName().contains(name));
-			});
-
+	SILVER_WEAKNESS = Weakness.create((entity) -> {
+		String[] names = {
+				"Dracula", "TurnedVillager", "Wendigo", "Dhampir",
+				"Werecat", "Mummy", "BoneKnight", "Lich"
+		}; //TO REMOVE
+		return Arrays.stream(names).anyMatch((name) -> entity.getClass().getName().contains(name));
+	});
+	public static BiomeDictionary.Type IMMUTABLE;
+	private static BewitchmentAPI INSTANCE;
 
 	/**
 	 * @param entity the entity to check

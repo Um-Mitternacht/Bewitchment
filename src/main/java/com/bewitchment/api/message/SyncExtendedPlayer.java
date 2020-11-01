@@ -34,8 +34,8 @@ public class SyncExtendedPlayer implements IMessage {
 	public static class Handler implements IMessageHandler<SyncExtendedPlayer, IMessage> {
 		@Override
 		public IMessage onMessage(SyncExtendedPlayer message, MessageContext ctx) {
-			if(message != null && ctx != null){
-				if(message.tag != null){
+			if (message != null && ctx != null) {
+				if (message.tag != null) {
 					if (ctx.side.isClient())
 						Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().player.getCapability(ExtendedPlayer.CAPABILITY, null).deserializeNBT(message.tag));
 				}

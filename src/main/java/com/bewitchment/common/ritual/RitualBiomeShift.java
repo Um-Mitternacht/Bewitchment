@@ -6,7 +6,6 @@ import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.common.item.tool.ItemBoline;
-import com.bewitchment.common.world.BiomeChangingUtils;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,7 +13,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -44,11 +42,12 @@ public class RitualBiomeShift extends Ritual {
 			ItemStack stack = inventory.getStackInSlot(i);
 			if (stack.getItem() instanceof ItemBoline) {
 				id = stack.getTagCompound().getInteger("biome_id");
-				
+
 				//might run thru that only server side, since all client change is done with packets afterwards
 				int radius = 32; //maybe change that depending on some other stuff?
 
-				for (double x = -radius; x < radius; x++) for (double z = -radius; z < radius; z++) {
+				for (double x = -radius; x < radius; x++)
+					for (double z = -radius; z < radius; z++) {
 
 						if (Math.sqrt((x * x) + (z * z)) < radius) {
 							BlockPos pos = effectivePos.add(x, 0, z);
@@ -58,13 +57,13 @@ public class RitualBiomeShift extends Ritual {
 							int k = pos.getX() & 15;
 							int j = pos.getZ() & 15;
 
-							chunk.getBiomeArray()[j << 4 | k] = (byte)id;
+							chunk.getBiomeArray()[j << 4 | k] = (byte) id;
 
 							if (!world.isRemote) chunk.markDirty();
 
 							for (i = 0; i < inventory.getSlots(); i++) inventory.extractItem(i, 1, false);
 						}
-				}
+					}
 
 				//Update changes
 				if (world.isRemote) world.markBlockRangeForRenderUpdate(
