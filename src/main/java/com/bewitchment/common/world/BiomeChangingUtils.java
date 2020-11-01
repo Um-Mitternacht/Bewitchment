@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
+import org.dimdev.jeid.INewChunk;
 
 import java.util.Set;
 
@@ -59,23 +60,29 @@ public class BiomeChangingUtils {
 		extendedWorld.setDirty(true);
 	}
 
-	//WIP modify if needed. Currently changes every biome in a chunk
-	public static void setBiome(World world, Chunk chunk, BlockPos pos, Biome biome) {
-		int biomeId = Biome.getIdForBiome(biome); // Get the Biome Id.
+	public static void setBiome(World world, BlockPos pos, int id) {
+		Chunk chunk = world.getChunk(pos);
 
-		/**
-		 * int array will accept byte. issue is casting byte[] to int[]
-		 * could have a if statement JEID is "installed" to use alternative method instead
-		 */
-		//Arrays.fill(chunk.getBiomeArray(), (byte)biomeId);
+		int x = pos.getX() & 15;
+		int y = pos.getZ() & 15;
+		int i = y << 4 | x;
 
-		int i = pos.getX() & 15;
-		int j = pos.getZ() & 15;
+		if (Bewitchment.JEID && chunk instanceof INewChunk) {
+			((INewChunk)chunk).getIntBiomeArray()[i] = id;
+		} else {
+			chunk.getBiomeArray()[i] = (byte)id;
+		}
 
-		chunk.getBiomeArray()[j << 4 | i] = (byte) biomeId;
+		if (!world.isRemote) chunk.markDirty();
 	}
 
+	public static void refresh(World world, BlockPos start, int radius) {
+		if (world.isRemote) world.markBlockRangeForRenderUpdate(
+				start.add(-radius, -radius, -radius),
+				start.add(radius, radius, radius));
+	}
 
+	@Deprecated
 	public static void setBiome(World world, Biome biome, BlockPos pos) {
 		Chunk chunk = world.getChunk(pos);
 

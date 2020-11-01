@@ -60,9 +60,6 @@ repositories {
     maven {
         url = "http://dvs1.progwml6.com/files/maven"
     }
-    maven {
-        url = "http://minecraft.curseforge.com/api/maven/"
-    }
 }
 
 configurations {
@@ -76,6 +73,7 @@ dependencies {
     deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.19"
     deobfProvided "vazkii.botania:Botania:r1.10-363.119"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:9.0.1"
+    deobfProvided "curse.maven:jeid:2919737"
     deobfProvided "curse.maven:quark:2924091"
     deobfProvided "curse.maven:autoreglib:2746011"
     deobfProvided "curse.maven:mowzies-mobs:3048685"
