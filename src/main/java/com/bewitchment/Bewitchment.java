@@ -84,6 +84,8 @@ public class Bewitchment {
 	public static ServerProxy proxy;
 	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
 
+	public static boolean JEID;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger.info("Remember when I told you how my");
@@ -180,6 +182,8 @@ public class Bewitchment {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.postInit();
+
+		JEID = Loader.isModLoaded("jeid");
 	}
 
 	@EventHandler
