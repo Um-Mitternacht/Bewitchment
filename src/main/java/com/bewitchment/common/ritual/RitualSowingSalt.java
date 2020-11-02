@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -44,7 +45,7 @@ public class RitualSowingSalt extends Ritual {
 							BlockPos pos = effectivePos.add(x, y, z);
 							Block block = world.getBlockState(pos).getBlock();
 
-							BiomeChangingUtils.setBiome(world, pos, Biome.getIdForBiome(getSaltedBiome()));
+							BiomeChangingUtils.setBiomeSync(world, pos, Biome.getIdForBiome(getSaltedBiome()), radius);
 
 							if (block instanceof BlockDirt) {
 								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);
@@ -69,6 +70,5 @@ public class RitualSowingSalt extends Ritual {
 				}
 			}
 		}
-		BiomeChangingUtils.refresh(world, effectivePos, radius);
 	}
 }
