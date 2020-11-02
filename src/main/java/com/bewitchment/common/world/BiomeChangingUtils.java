@@ -2,6 +2,7 @@ package com.bewitchment.common.world;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
+import com.bewitchment.common.network.PacketBiomeUpdate;
 import com.bewitchment.common.network.PacketChangeBiome;
 import com.google.common.collect.HashMultimap;
 import net.minecraft.server.management.PlayerChunkMap;
@@ -12,7 +13,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.dimdev.jeid.INewChunk;
+import thaumcraft.common.lib.network.misc.PacketBiomeChange;
 
 import java.util.Set;
 
@@ -60,26 +63,34 @@ public class BiomeChangingUtils {
 		extendedWorld.setDirty(true);
 	}
 
+	public static void setBiomeSync(World world, BlockPos pos, int id, int updateRadius) {
+		if (!world.isRemote) setBiome(world, pos, id);
+
+		PacketBiomeUpdate packet = new PacketBiomeUpdate(pos, id);
+
+		NetworkRegistry.TargetPoint target = new NetworkRegistry.TargetPoint(
+				world.provider.getDimension(),
+				pos.getX(),
+				pos.getY(),
+				pos.getZ(),
+				updateRadius
+		);
+		Bewitchment.network.sendToAllAround(packet, target);
+	}
+
 	public static void setBiome(World world, BlockPos pos, int id) {
 		Chunk chunk = world.getChunk(pos);
 
 		int x = pos.getX() & 15;
-		int y = pos.getZ() & 15;
-		int i = y << 4 | x;
+		int z = pos.getZ() & 15;
+		int i = z << 4 | x;
 
-		if (Bewitchment.JEID && chunk instanceof INewChunk) {
+		if (Bewitchment.JEID && chunk instanceof INewChunk)
 			((INewChunk)chunk).getIntBiomeArray()[i] = id;
-		} else {
+		else
 			chunk.getBiomeArray()[i] = (byte)id;
-		}
 
-		if (!world.isRemote) chunk.markDirty();
-	}
-
-	public static void refresh(World world, BlockPos start, int radius) {
-		if (world.isRemote) world.markBlockRangeForRenderUpdate(
-				start.add(-radius, -radius, -radius),
-				start.add(radius, radius, radius));
+		chunk.markDirty();
 	}
 
 	@Deprecated

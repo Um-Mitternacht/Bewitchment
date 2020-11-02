@@ -35,6 +35,7 @@ import com.bewitchment.common.handler.*;
 import com.bewitchment.common.integration.Compat;
 import com.bewitchment.common.integration.dynamictrees.DynamicTreesCompat;
 import com.bewitchment.common.integration.thaumcraft.ThaumcraftCompat;
+import com.bewitchment.common.network.PacketBiomeUpdate;
 import com.bewitchment.common.network.PacketChangeBiome;
 import com.bewitchment.common.village.VillagerTradeHandler;
 import com.bewitchment.common.world.gen.ModWorldGen;
@@ -128,18 +129,20 @@ public class Bewitchment {
 		Compat.init();
 
 		int id = -1;
-		Bewitchment.network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SyncBroom.Handler.class, SyncBroom.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
-		Bewitchment.network.registerMessage(TarotMessage.Handler.class, TarotMessage.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SyncDragonsBloodBroom.Handler.class, SyncDragonsBloodBroom.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
-		Bewitchment.network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
-		Bewitchment.network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
+		network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
+		network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
+		network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
+		network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
+		network.registerMessage(SyncBroom.Handler.class, SyncBroom.class, ++id, Side.CLIENT);
+		network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
+		network.registerMessage(TarotMessage.Handler.class, TarotMessage.class, ++id, Side.CLIENT);
+		network.registerMessage(SyncDragonsBloodBroom.Handler.class, SyncDragonsBloodBroom.class, ++id, Side.CLIENT);
+		network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
+		network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.CLIENT);
+		network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
+		network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
+
+		network.registerMessage(PacketBiomeUpdate.Handler.class, PacketBiomeUpdate.class, ++id, Side.CLIENT);
 
 		for (Item item : ForgeRegistries.ITEMS) {
 
