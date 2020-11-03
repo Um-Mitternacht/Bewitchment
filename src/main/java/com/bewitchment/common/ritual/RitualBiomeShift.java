@@ -42,24 +42,22 @@ public class RitualBiomeShift extends Ritual {
 	}
 
 	@Override
-	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onStarted(world, pos, caster, inventory);
+	public boolean isValid(World world, BlockPos altarPos, EntityPlayer caster, ItemStackHandler inventory) {
 
 		for (int i = 0; i < inventory.getSlots(); i++) {
 			ItemStack stack = inventory.getStackInSlot(i);
 
-			if (stack.getItem() instanceof ItemBoline)
+			if (stack.getItem() instanceof ItemBoline) {
 				biome = stack.getTagCompound().getInteger("biome_id");
+				return super.isValid(world, altarPos, caster, inventory) && biome > 0;
+			}
 		}
+
+		return false;
 	}
 
 	@Override
 	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		if (biome <= 0) {
-			canceled = true;
-			return;
-		}
-
 		Random rand = world.rand;
         double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
 

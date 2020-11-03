@@ -123,7 +123,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.END_ROD, pos0.getX() + 0.5, pos0.getY() + 0.5, pos0.getZ() + 0.5), effectiveDim);
 			if (caster != null) {
 				if (world.getTotalWorldTime() % 20 == 0) {
-					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower) && ritual.isCanceled()) {
+					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) {
 						stopRitual(false);
 						return;
 					} else time++;
@@ -136,9 +136,14 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 
 	public void startRitual(EntityPlayer player, Ritual rit) {
 		if (!player.world.isRemote) {
+			TextComponentTranslation failed = new TextComponentTranslation("ritual.cannot_start");
+
 			int power = rit.startingPower;
+
 			if (Util.hasBauble(player, ModObjects.hecates_visage)) power *= 0.85;
+
 			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, power)) {
+
 				if (player.getCapability(ExtendedPlayer.CAPABILITY, null).canRitual) {
 					ritual = rit;
 					player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
@@ -151,7 +156,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					ritual.onStarted(world, pos, player, inventory);
 					player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
 					syncToClient();
-				} else player.sendStatusMessage(new TextComponentTranslation("ritual.cannot_start"), true);
+				} else player.sendStatusMessage(failed, true);
+
 			} else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 		}
 	}

@@ -40,7 +40,6 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public final boolean canBePerformedRemotely;
 
 	protected final NBTTagCompound nbt = new NBTTagCompound();
-	protected boolean canceled = false;
 
 	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, boolean canBePerformedRemotely, int time, int startingPower, int runningPower, int small, int medium, int big) {
 		setRegistryName(name);
@@ -77,11 +76,9 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	}
 
 	public void read() {
-		canceled = nbt.getBoolean("canceled");
 	}
 
 	public void write() {
-		nbt.setBoolean("canceled", canceled);
 	}
 
 	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
@@ -137,9 +134,5 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 			}
 		}
 		return Util.areISListsEqual(input, handler);
-	}
-
-	public boolean isCanceled() {
-		return canceled;
 	}
 }
