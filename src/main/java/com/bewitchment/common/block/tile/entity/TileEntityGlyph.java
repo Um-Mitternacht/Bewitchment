@@ -39,7 +39,11 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		ritual = tag.getString("ritual").isEmpty() ? null : GameRegistry.findRegistry(Ritual.class).getValue(new ResourceLocation(tag.getString("ritual")));
+		if (tag.hasKey("ritual")) {
+			ritual = GameRegistry.findRegistry(Ritual.class).getValue(new ResourceLocation(tag.getString("ritual")));
+			ritual.read();
+		}
+
 		effectivePos = BlockPos.fromLong(tag.getLong("effectivePos"));
 		effectiveDim = tag.getInteger("effectiveDim");
 		casterId = tag.getString("casterId").isEmpty() ? null : UUID.fromString(tag.getString("casterId"));
@@ -49,7 +53,11 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("ritual", ritual == null ? "" : ritual.getRegistryName().toString());
+		if (ritual != null) {
+			ritual.write();
+			tag.setString("ritual", ritual.getRegistryName().toString());
+		}
+
 		tag.setLong("effectivePos", effectivePos == null ? 0 : effectivePos.toLong());
 		tag.setInteger("effectiveDim", effectiveDim);
 		tag.setString("casterId", casterId == null ? "" : casterId.toString());
@@ -128,9 +136,14 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 
 	public void startRitual(EntityPlayer player, Ritual rit) {
 		if (!player.world.isRemote) {
+			TextComponentTranslation failed = new TextComponentTranslation("ritual.cannot_start");
+
 			int power = rit.startingPower;
+
 			if (Util.hasBauble(player, ModObjects.hecates_visage)) power *= 0.85;
+
 			if (MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, player, power)) {
+
 				if (player.getCapability(ExtendedPlayer.CAPABILITY, null).canRitual) {
 					ritual = rit;
 					player.getCapability(ExtendedPlayer.CAPABILITY, null).ritualsCast++;
@@ -143,7 +156,8 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					ritual.onStarted(world, pos, player, inventory);
 					player.sendStatusMessage(new TextComponentTranslation("ritual." + ritual.getRegistryName().toString().replace(":", ".")), true);
 					syncToClient();
-				} else player.sendStatusMessage(new TextComponentTranslation("ritual.cannot_start"), true);
+				} else player.sendStatusMessage(failed, true);
+
 			} else player.sendStatusMessage(new TextComponentTranslation("altar.no_power"), true);
 		}
 	}

@@ -64,8 +64,7 @@ public class BiomeChangingUtils {
 	}
 
 	public static void setBiomeSync(World world, BlockPos pos, int id, int updateRadius) {
-		if (!world.isRemote) setBiome(world, pos, id);
-
+		setBiome(world, pos, id);
 		PacketBiomeUpdate packet = new PacketBiomeUpdate(pos, id);
 
 		NetworkRegistry.TargetPoint target = new NetworkRegistry.TargetPoint(

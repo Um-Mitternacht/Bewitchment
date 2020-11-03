@@ -12,6 +12,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -37,6 +38,8 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 	public final int time, startingPower, runningPower;
 
 	public final boolean canBePerformedRemotely;
+
+	protected final NBTTagCompound nbt = new NBTTagCompound();
 
 	public Ritual(ResourceLocation name, List<Ingredient> input, Predicate<EntityLivingBase> sacrificePredicate, List<ItemStack> output, boolean canBePerformedRemotely, int time, int startingPower, int runningPower, int small, int medium, int big) {
 		setRegistryName(name);
@@ -70,6 +73,12 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual> {
 
 	public boolean isValid(World world, BlockPos altarPos, EntityPlayer caster, ItemStackHandler inventory) {
 		return sacrificePredicate == null;
+	}
+
+	public void read() {
+	}
+
+	public void write() {
 	}
 
 	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
