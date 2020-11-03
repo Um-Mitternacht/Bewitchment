@@ -39,7 +39,11 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		ritual = tag.getString("ritual").isEmpty() ? null : GameRegistry.findRegistry(Ritual.class).getValue(new ResourceLocation(tag.getString("ritual")));
+		if (tag.hasKey("ritual")) {
+			ritual = GameRegistry.findRegistry(Ritual.class).getValue(new ResourceLocation(tag.getString("ritual")));
+			ritual.read();
+		}
+
 		effectivePos = BlockPos.fromLong(tag.getLong("effectivePos"));
 		effectiveDim = tag.getInteger("effectiveDim");
 		casterId = tag.getString("casterId").isEmpty() ? null : UUID.fromString(tag.getString("casterId"));
@@ -49,7 +53,11 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		tag.setString("ritual", ritual == null ? "" : ritual.getRegistryName().toString());
+		if (ritual != null) {
+			ritual.write();
+			tag.setString("ritual", ritual.getRegistryName().toString());
+		}
+
 		tag.setLong("effectivePos", effectivePos == null ? 0 : effectivePos.toLong());
 		tag.setInteger("effectiveDim", effectiveDim);
 		tag.setString("casterId", casterId == null ? "" : casterId.toString());
@@ -115,7 +123,7 @@ public class TileEntityGlyph extends TileEntityAltarStorage implements ITickable
 					Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.END_ROD, pos0.getX() + 0.5, pos0.getY() + 0.5, pos0.getZ() + 0.5), effectiveDim);
 			if (caster != null) {
 				if (world.getTotalWorldTime() % 20 == 0) {
-					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower)) {
+					if (!MagicPower.attemptDrain(altarPos != null ? world.getTileEntity(altarPos) : null, caster, ritual.runningPower) && ritual.isCanceled()) {
 						stopRitual(false);
 						return;
 					} else time++;

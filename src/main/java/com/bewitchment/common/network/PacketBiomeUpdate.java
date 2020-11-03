@@ -46,7 +46,9 @@ public class PacketBiomeUpdate implements IMessage {
 
                 BiomeChangingUtils.setBiome(world, pos, id);
 
-                world.markBlockRangeForRenderUpdate(pos.add(0,0,0), pos.add(0,0,0));
+                int r = 2;
+
+                world.markBlockRangeForRenderUpdate(pos.add(-r, -r, -r), pos.add(r, r, r));
             });
             return packet;
         }
