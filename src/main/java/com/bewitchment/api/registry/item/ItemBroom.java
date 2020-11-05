@@ -1,6 +1,8 @@
 package com.bewitchment.api.registry.item;
 
+import com.bewitchment.Bewitchment;
 import com.bewitchment.ModConfig;
+import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.entity.EntityBroom;
 import com.bewitchment.common.entity.misc.EntityDragonsBloodBroom;
 import com.bewitchment.common.item.ItemSigil;
@@ -37,33 +39,57 @@ public class ItemBroom extends Item {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing face, float hitX, float hitY, float hitZ) {
-		IBlockState state = world.getBlockState(pos);
-		Block block = state.getBlock();
-		if (Arrays.asList(ModConfig.misc.broomSweepables).contains(block.getTranslationKey())) {
-			if (!world.isRemote) {
-				block.dropBlockAsItem(world, pos, state, 0);
-				world.setBlockToAir(pos);
-				player.swingArm(hand);
-				world.playSound(null, pos, ModSounds.BROOM_SWEEP, SoundCategory.BLOCKS, 0.8f, world.rand.nextFloat() * 0.4f + 0.8f);
-			} else
-				world.spawnParticle(EnumParticleTypes.SWEEP_ATTACK, pos.getX() + world.rand.nextDouble(), pos.getY() + 0.1, pos.getZ() + world.rand.nextDouble(), 0, 0, 0);
-			return EnumActionResult.SUCCESS;
-		} else if (entry != null) {
-			if (!world.isRemote) {
+
+		player.swingArm(hand);
+
+		if (!world.isRemote) {
+			IBlockState state = world.getBlockState(pos);
+			Block block = state.getBlock();
+
+			boolean contains = Arrays.asList(ModConfig.misc.broomSweepables).contains(block.getTranslationKey());
+
+			if (entry == null && contains && world.destroyBlock(pos, true)) {
+
+				destroyBlock(player, hand, world, pos);
+
+			} else {
 				EntityBroom entity = (EntityBroom) entry.newInstance(world);
+
 				entity.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
 				entity.rotationYaw = player.rotationYaw;
 				entity.rotationPitch = player.rotationPitch;
+
 				if (this == ModObjects.dragons_blood_broom && player.getHeldItem(hand).hasTagCompound()) {
 					String boundSigil = player.getHeldItem(hand).getTagCompound().getString("sigil");
 					((EntityDragonsBloodBroom) entity).sigil = (ItemSigil) ForgeRegistries.ITEMS.getValue(new ResourceLocation(boundSigil));
 				}
+
 				entity.item = player.getHeldItem(hand).splitStack(1);
 				world.spawnEntity(entity);
+
+				return EnumActionResult.SUCCESS;
 			}
-			return EnumActionResult.SUCCESS;
 		}
+
 		return super.onItemUse(player, world, pos, hand, face, hitX, hitY, hitZ);
+	}
+
+	protected void destroyBlock(EntityPlayer player, EnumHand hand, World world, BlockPos pos) {
+
+
+		world.playSound(null, pos,
+				ModSounds.BROOM_SWEEP,
+				SoundCategory.BLOCKS,
+				0.8f,
+				world.rand.nextFloat() * 0.4f + 0.8f);
+
+		Bewitchment.network.sendToDimension(
+				new SpawnParticle(
+						EnumParticleTypes.SWEEP_ATTACK,
+						pos.getX() + world.rand.nextDouble(),
+						pos.getY() + 0.1,
+						pos.getZ() + world.rand.nextDouble(),
+						0, 0, 0), world.provider.getDimension());
 	}
 
 	@SideOnly(Side.CLIENT)

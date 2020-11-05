@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class RitualGreaterHellmouth extends Ritual {
+
 	public RitualGreaterHellmouth() {
 		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.bottle_of_blood), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), true, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
@@ -45,18 +46,14 @@ public class RitualGreaterHellmouth extends Ritual {
 	@Override
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
+
 		if (!world.isRemote) {
 			for (int i = 0; i < world.rand.nextInt(6) + 1; i++) {
-				EntityLiving entity;
-				int rand = world.rand.nextInt(6);
-				if (rand == 0) entity = new EntityWitherSkeleton(world);
-				else if (rand == 1) entity = new EntityHellhound(world);
-				else if (rand == 2) entity = new EntityBafometyr(world);
-				else if (rand == 3) entity = new EntityCleaver(world);
-				else if (rand == 4) entity = new EntityShadowPerson(world);
-				else entity = new EntityGhast(world);
+				EntityLiving entity = getEntity(world);
+
 				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
 				boolean valid = false;
+
 				for (int j = 0; j < 16; j++) {
 					if (entity.attemptTeleport(effectivePos.getX() + world.rand.nextInt(12) - 6, effectivePos.getY(), effectivePos.getZ() + world.rand.nextInt(12) - 6)) {
 						entity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, world.rand.nextInt(360), 0);
@@ -70,6 +67,24 @@ public class RitualGreaterHellmouth extends Ritual {
 					world.spawnEntity(entity);
 				}
 			}
+		}
+	}
+
+	protected EntityLiving getEntity(World world) {
+
+		switch (world.rand.nextInt(6)) {
+			default:
+				return new EntityGhast(world);
+			case 0:
+				return new EntityWitherSkeleton(world);
+			case 1:
+				return new EntityHellhound(world);
+			case 2:
+				return new EntityBafometyr(world);
+			case 3:
+				return new EntityCleaver(world);
+			case 4:
+				return new EntityShadowPerson(world);
 		}
 	}
 

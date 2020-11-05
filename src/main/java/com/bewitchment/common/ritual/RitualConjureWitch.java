@@ -32,14 +32,12 @@ public class RitualConjureWitch extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
-			EntityWitch entity = new EntityWitch(world);
-			entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
-			entity.setLocationAndAngles(effectivePos.getX(), effectivePos.getY(), effectivePos.getZ(), world.rand.nextInt(360), 0);
-			for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50)))
-				CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
-			world.spawnEntity(entity);
+			EntityWitch witch = new EntityWitch(world);
+
+			Util.summonEntity(world, witch, effectivePos);
+
 			if (world.rand.nextFloat() < 0.1f)
-				entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 6000, 2, false, false));
+				witch.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 6000, 2, false, false));
 		}
 	}
 
