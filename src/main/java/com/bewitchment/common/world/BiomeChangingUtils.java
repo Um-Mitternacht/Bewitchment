@@ -15,7 +15,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.dimdev.jeid.INewChunk;
-import thaumcraft.common.lib.network.misc.PacketBiomeChange;
 
 import java.util.Set;
 
@@ -85,9 +84,9 @@ public class BiomeChangingUtils {
 		int i = z << 4 | x;
 
 		if (Bewitchment.JEID && chunk instanceof INewChunk)
-			((INewChunk)chunk).getIntBiomeArray()[i] = id;
+			((INewChunk) chunk).getIntBiomeArray()[i] = id;
 		else
-			chunk.getBiomeArray()[i] = (byte)id;
+			chunk.getBiomeArray()[i] = (byte) id;
 
 		chunk.markDirty();
 	}

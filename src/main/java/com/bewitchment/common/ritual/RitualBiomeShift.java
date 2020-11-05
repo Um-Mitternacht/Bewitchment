@@ -59,7 +59,7 @@ public class RitualBiomeShift extends Ritual {
 	@Override
 	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		Random rand = world.rand;
-        double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
+		double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
 
 		for (int i = 0; i < 15; i++) {
 			double sx = cx + rand.nextGaussian() * 0.5, sy = cy + rand.nextGaussian() * 0.5, sz = cz + rand.nextGaussian() * 0.5;
@@ -71,13 +71,14 @@ public class RitualBiomeShift extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		int radius = 32;
 
-		for (double x = -radius; x < radius; x++) for (double z = -radius; z < radius; z++) {
+		for (double x = -radius; x < radius; x++)
+			for (double z = -radius; z < radius; z++) {
 
-			if (Math.sqrt((x * x) + (z * z)) < radius) {
-				BlockPos pos = effectivePos.add(x, 0, z);
-				BiomeChangingUtils.setBiomeSync(world, pos, biome, radius);
+				if (Math.sqrt((x * x) + (z * z)) < radius) {
+					BlockPos pos = effectivePos.add(x, 0, z);
+					BiomeChangingUtils.setBiomeSync(world, pos, biome, radius);
+				}
 			}
-		}
 
 		for (int i = 0; i < inventory.getSlots(); i++) inventory.extractItem(i, 1, false);
 	}
