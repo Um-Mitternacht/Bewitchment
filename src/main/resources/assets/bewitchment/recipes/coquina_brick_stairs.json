@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I  ",
+    "II ",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "bewitchment:coquina_bricks"
+    }
+  },
+  "result": {
+    "item": "bewitchment:coquina_brick_stairs",
+    "count": 4
+  }
+}
