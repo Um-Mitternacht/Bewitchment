@@ -140,6 +140,7 @@ public class ModObjects {
 	public static final Block coquina_brick_stairs = new ModBlockStairs("coquina_brick_stairs", coquina_bricks);
 	public static final ModBlockSlab coquina_brick_slab = new ModBlockSlab("coquina_brick_slab", coquina_bricks);
 	public static final Block coquina_brick_wall = new ModBlockWall("coquina_brick_wall", coquina_bricks);
+	public static final Block coquina_brick_fence = new ModBlockFence("coquina_brick_fence", coquina_bricks);
 
 	public static final ModBlockSlab coquina_slab = new ModBlockSlab("coquina_slab", coquina[0]);
 	public static final ModBlockSlab nethersteel_slab = new ModBlockSlab("nethersteel_slab", nethersteel[0]);
