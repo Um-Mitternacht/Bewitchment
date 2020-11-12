@@ -6,10 +6,8 @@ import com.bewitchment.api.message.SpawnParticle;
 import com.bewitchment.api.registry.Ritual;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.registry.ModObjects;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -31,13 +29,11 @@ public class RitualConjureWither extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		super.onFinished(world, altarPos, effectivePos, caster, inventory);
 		if (!world.isRemote) {
-			EntityWither entity = new EntityWither(world);
-			entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
-			entity.setLocationAndAngles(effectivePos.getX(), effectivePos.getY(), effectivePos.getZ(), world.rand.nextInt(360), 0);
-			for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50)))
-				CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
-			world.spawnEntity(entity);
-			entity.ignite();
+			EntityWither wither = new EntityWither(world);
+
+			Util.summonEntity(world, wither, effectivePos);
+
+			wither.ignite();
 		}
 	}
 

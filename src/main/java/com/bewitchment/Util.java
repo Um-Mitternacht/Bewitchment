@@ -14,6 +14,7 @@ import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModRegistries;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -57,6 +58,16 @@ public class Util {
 	public static boolean isFromBewitchment(Item item) {
 		ResourceLocation resourceLocation = item.getRegistryName();
 		return resourceLocation != null && resourceLocation.getNamespace().equals(Bewitchment.MODID);
+	}
+
+	public static <T extends EntityLiving> void summonEntity(World world, T entity, BlockPos pos) {
+		entity.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), world.rand.nextInt(360), 0);
+		entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
+
+		for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50)))
+			CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
+
+		world.spawnEntity(entity);
 	}
 
 	public static <T extends Block> void registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {

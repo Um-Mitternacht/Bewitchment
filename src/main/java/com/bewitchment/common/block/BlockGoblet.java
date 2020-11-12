@@ -35,7 +35,7 @@ public class BlockGoblet extends ModBlock {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return BOX;
+		return BOX.offset(getOffset(state, world, pos));
 	}
 
 	@Override
