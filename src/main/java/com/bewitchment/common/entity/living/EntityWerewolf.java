@@ -153,6 +153,7 @@ public class EntityWerewolf extends ModEntityMob {
 			int j = this.rand.nextInt(125);
 			int k = this.rand.nextInt(125);
 			world.setEntityState(this, (byte) 4);
+			//God is dead
 			if (entityIn instanceof EntityLivingBase) {
 				if (i < 5) {
 					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.disrobing, 1, 1, false, true));
