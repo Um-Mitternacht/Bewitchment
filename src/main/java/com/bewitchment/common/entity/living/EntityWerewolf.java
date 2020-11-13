@@ -3,6 +3,7 @@ package com.bewitchment.common.entity.living;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.common.entity.spirit.demon.EntityCambion;
 import com.bewitchment.common.entity.util.ModEntityMob;
+import com.bewitchment.registry.ModPotions;
 import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -34,6 +36,7 @@ import javax.annotation.Nullable;
  */
 public class EntityWerewolf extends ModEntityMob {
 	private static final DataParameter<Integer> WEREWOLF_TYPE = EntityDataManager.createKey(EntityWerewolf.class, DataSerializers.VARINT);
+	public int attackTimer = 0;
 
 	public EntityWerewolf(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/werewolf"));
@@ -50,6 +53,12 @@ public class EntityWerewolf extends ModEntityMob {
 	protected void entityInit() {
 		super.entityInit();
 		this.dataManager.register(WEREWOLF_TYPE, Integer.valueOf(0));
+	}
+
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 10;
+		else super.handleStatusUpdate(id);
 	}
 
 	@Override
@@ -135,10 +144,21 @@ public class EntityWerewolf extends ModEntityMob {
 	}
 
 	public boolean attackEntityAsMob(Entity entityIn) {
-		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		boolean flag = super.attackEntityAsMob(entityIn);
 
 		if (flag) {
 			this.applyEnchantments(this, entityIn);
+			attackTimer = 10;
+			int i = this.rand.nextInt(125);
+			int j = this.rand.nextInt(125);
+			world.setEntityState(this, (byte) 4);
+			if (entityIn instanceof EntityLivingBase) {
+				if (i < 5) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.disrobing, 1, 1, false, true));
+				} else if (j < 5) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.butterfingers, 1, 1, false, true));
+				}
+			}
 		}
 
 		return flag;
