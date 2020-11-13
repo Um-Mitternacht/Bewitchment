@@ -151,12 +151,15 @@ public class EntityWerewolf extends ModEntityMob {
 			attackTimer = 10;
 			int i = this.rand.nextInt(125);
 			int j = this.rand.nextInt(125);
+			int k = this.rand.nextInt(125);
 			world.setEntityState(this, (byte) 4);
 			if (entityIn instanceof EntityLivingBase) {
 				if (i < 5) {
 					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.disrobing, 1, 1, false, true));
 				} else if (j < 5) {
 					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.butterfingers, 1, 1, false, true));
+				} else if (k < 5) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.fear, 500, 1, false, true));
 				}
 			}
 		}
