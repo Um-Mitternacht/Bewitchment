@@ -131,9 +131,10 @@ public class EntityCambion extends ModEntityMob {
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData data) {
 		data = super.onInitialSpawn(difficulty, data);
 		int i = this.getRandomCambionType();
-		int a = rand.nextInt(4);
-		int b = rand.nextInt(4);
+		int a = rand.nextInt(6);
+		int b = rand.nextInt(8);
 		int c = rand.nextInt(4);
+		int d = rand.nextInt(8);
 
 		if (data instanceof EntityCambion.CambionTypeData) {
 			i = ((EntityCambion.CambionTypeData) data).typeData;
@@ -143,13 +144,19 @@ public class EntityCambion extends ModEntityMob {
 
 		this.setCambionType(i);
 
-		if (a < 2) {
+		if (a == 3) {
 			this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.CHAINMAIL_CHESTPLATE));
-		} else if (a > 2) this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
+		} else if (a < 2) {
+			this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
+		} else if (a > 4) this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
 
-		if (b < 2) {
+		if (b < 4) {
 			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-		} else if (b > 2) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+		} else if (d < 4) {
+			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_AXE));
+		} else if (d > 4) {
+			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
+		} else if (b > 4) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
 
 		if (c < 2) {
 			this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.SHIELD));
