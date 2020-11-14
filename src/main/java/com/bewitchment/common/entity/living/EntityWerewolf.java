@@ -156,10 +156,10 @@ public class EntityWerewolf extends ModEntityMob {
 			//God is dead
 			if (entityIn instanceof EntityLivingBase) {
 				if (i < 5) {
-					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.disrobing, 1, 1, false, true));
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.disrobing, 1, 0, false, false));
 				} else if (j < 5) {
-					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.butterfingers, 1, 1, false, true));
-				} else if (k < 5) {
+					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.butterfingers, 1, 0, false, false));
+				} else if (k < 1) {
 					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(ModPotions.fear, 500, 1, false, true));
 				}
 			}
