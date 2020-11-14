@@ -146,13 +146,13 @@ public class EntityCambion extends ModEntityMob {
 
 		if (a == 3) {
 			this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.CHAINMAIL_CHESTPLATE));
-		} else if (a < 2) {
+		} else if (a < 1) {
 			this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
 		} else if (a > 4) this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
 
-		if (b < 4) {
+		if (b < 2) {
 			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-		} else if (d < 4) {
+		} else if (d < 2) {
 			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_AXE));
 		} else if (d > 4) {
 			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
