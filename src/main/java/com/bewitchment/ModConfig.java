@@ -438,7 +438,7 @@ public class ModConfig {
 
 	public static class Maymays {
 		@Config.RequiresMcRestart
-		@Config.Comment("Decides whether or not the cats and dogs will be enabled.")
+		@Config.Comment("Decides whether or not the cats and dogs fortune will be enabled.")
 		public boolean enableCatsAndDogsFortune = false;
 
 		@Config.RequiresMcRestart
