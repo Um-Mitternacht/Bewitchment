@@ -78,15 +78,15 @@ import java.util.Objects;
 public class MiscHandler {
 	//Credit due to individuals who helped me toil through my BS (mostly tslat in the MMD discord)
 
-	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 3, 0, 1);
-	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 3, 0, 1);
-	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 5, 0, 1);
-	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 5, 0, 1);
+	Biome.SpawnListEntry cleaverSpawn = new Biome.SpawnListEntry(EntityCleaver.class, 2, 0, 1);
+	Biome.SpawnListEntry bafometyrSpawn = new Biome.SpawnListEntry(EntityBafometyr.class, 2, 0, 1);
+	Biome.SpawnListEntry wurmSpawn = new Biome.SpawnListEntry(EntityFeuerwurm.class, 3, 0, 1);
+	Biome.SpawnListEntry hellhoundSpawn = new Biome.SpawnListEntry(EntityHellhound.class, 3, 0, 1);
 	Biome.SpawnListEntry cambionSpawn = new Biome.SpawnListEntry(EntityCambion.class, 1, 0, 1);
 
 	Biome.SpawnListEntry shadeSpawn = new Biome.SpawnListEntry(EntityShadowPerson.class, 1, 0, 1);
-	Biome.SpawnListEntry ghostSpawn = new Biome.SpawnListEntry(EntityGhost.class, 2, 0, 1);
-	Biome.SpawnListEntry dogeSpawn = new Biome.SpawnListEntry(EntityBlackDog.class, 2, 0, 1);
+	Biome.SpawnListEntry ghostSpawn = new Biome.SpawnListEntry(EntityGhost.class, 1, 0, 1);
+	Biome.SpawnListEntry dogeSpawn = new Biome.SpawnListEntry(EntityBlackDog.class, 1, 0, 1);
 
 	@SubscribeEvent
 	public void applyBrewingBuffs(WitchesCauldronEvent.CreatePotionEvent event) {
