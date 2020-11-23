@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
@@ -24,8 +25,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.stats.StatList;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
@@ -37,6 +40,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -67,6 +71,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	}
 
 	public void fall(float distance, float damageMultiplier) {
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEvents.ENTITY_BLAZE_AMBIENT;
 	}
 
 	@Override
