@@ -54,10 +54,14 @@ public class EntityImp extends ModEntityMob {
 		if (ticksExisted % 20 == 0 && isInLava()) heal(4);
 	}
 
-	@Nullable
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_BLAZE_AMBIENT;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_BLAZE_DEATH;
 	}
 
 	@Override

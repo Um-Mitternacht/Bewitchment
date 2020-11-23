@@ -101,7 +101,7 @@ public class EntityFeuerwurm extends ModEntityMob {
 		}
 		return flag;
 	}
-	
+
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_BLAZE_AMBIENT;
