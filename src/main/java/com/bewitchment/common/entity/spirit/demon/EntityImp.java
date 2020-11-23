@@ -11,11 +11,15 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityImp extends ModEntityMob {
@@ -48,6 +52,12 @@ public class EntityImp extends ModEntityMob {
 		super.onLivingUpdate();
 		if (attackTimer > 0) attackTimer--;
 		if (ticksExisted % 20 == 0 && isInLava()) heal(4);
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEvents.ENTITY_BLAZE_AMBIENT;
 	}
 
 	@Override

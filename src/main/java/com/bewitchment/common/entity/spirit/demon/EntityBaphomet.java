@@ -9,6 +9,7 @@ import com.bewitchment.api.registry.Curse;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.registry.ModEntities;
 import com.bewitchment.registry.ModObjects;
+import com.bewitchment.registry.ModSounds;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -238,6 +239,16 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 				world.spawnEntity(entitysmallfireball);
 			}
 		}
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return ModSounds.BAFOMETYR_HURT;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return ModSounds.BAFOMETYR_DEATH;
 	}
 
 	@Override

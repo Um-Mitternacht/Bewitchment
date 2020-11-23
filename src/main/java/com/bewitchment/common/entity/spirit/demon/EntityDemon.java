@@ -79,6 +79,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 		return SoundEvents.ENTITY_BLAZE_AMBIENT;
 	}
 
+	@Nullable
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEvents.ENTITY_ENDERDRAGON_GROWL;
+	}
+
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return BewitchmentAPI.DEMON;
