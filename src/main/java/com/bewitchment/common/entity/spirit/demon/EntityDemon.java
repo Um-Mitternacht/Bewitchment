@@ -72,13 +72,12 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 
 	public void fall(float distance, float damageMultiplier) {
 	}
-	
+
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_BLAZE_AMBIENT;
 	}
-
-	@Nullable
+	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
 		return SoundEvents.ENTITY_ENDERDRAGON_GROWL;
