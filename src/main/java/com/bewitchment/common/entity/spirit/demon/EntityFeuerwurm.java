@@ -101,11 +101,20 @@ public class EntityFeuerwurm extends ModEntityMob {
 		}
 		return flag;
 	}
-
-	@Nullable
+	
 	@Override
 	protected SoundEvent getAmbientSound() {
-		return SoundEvents.ENTITY_ENDERDRAGON_AMBIENT;
+		return SoundEvents.ENTITY_BLAZE_AMBIENT;
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEvents.ENTITY_ENDERDRAGON_GROWL;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_BLAZE_DEATH;
 	}
 
 	@Override
