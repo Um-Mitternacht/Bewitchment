@@ -37,20 +37,21 @@ public class PacketBiomeUpdate implements IMessage {
 	public static class Handler implements IMessageHandler<PacketBiomeUpdate, IMessage> {
 
 		@Override
-		public IMessage onMessage(PacketBiomeUpdate packet, MessageContext context) {
-			Minecraft.getMinecraft().addScheduledTask(() -> {
+		public IMessage onMessage(PacketBiomeUpdate packet, MessageContext ctx) {
+			if (ctx.side.isClient()) {
 				BlockPos pos = packet.pos;
 				int id = packet.biomeId;
 
-				World world = Bewitchment.proxy.getPlayer(context).world;
+				Minecraft.getMinecraft().addScheduledTask(() -> {
+					World world = Bewitchment.proxy.getPlayer(ctx).world;
 
-				BiomeChangingUtils.setBiome(world, pos, id);
+					BiomeChangingUtils.setBiome(world, pos, id);
 
-				int r = 2;
-
-				world.markBlockRangeForRenderUpdate(pos.add(-r, -r, -r), pos.add(r, r, r));
-			});
-			return packet;
+					int r = 2;
+					world.markBlockRangeForRenderUpdate(pos.add(-r, -r, -r), pos.add(r, r, r));
+				});
+			}
+			return null;
 		}
 	}
 }
