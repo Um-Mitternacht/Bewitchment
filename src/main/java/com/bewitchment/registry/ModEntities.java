@@ -40,7 +40,7 @@ public class ModEntities {
 	public static final EntityEntry ghost = createEntityEntry(EntityGhost.class, "ghost", 0x000000, 0x8F9779, EnumCreatureType.MONSTER, ModConfig.mobSpawns.ghost.ghostWeight, ModConfig.mobSpawns.ghost.ghostMin, ModConfig.mobSpawns.ghost.ghostMax, Arrays.asList(ModConfig.mobSpawns.ghost.ghostBiomes));
 
 	public static final EntityEntry hellhound = createEntityEntry(EntityHellhound.class, "hellhound", 0x555555, 0xed2939, EnumCreatureType.MONSTER, ModConfig.mobSpawns.hellhound.hellhoundWeight, ModConfig.mobSpawns.hellhound.hellhoundMin, ModConfig.mobSpawns.hellhound.hellhoundMax, Arrays.asList(ModConfig.mobSpawns.hellhound.hellhoundBiomes));
-	public static final EntityEntry feuerwurm = createEntityEntry(EntityFeuerwurm.class, "feuerwurm", 0x555555, 0xff9966, EnumCreatureType.MONSTER, ModConfig.mobSpawns.feuerwurm.feuerwurmWeight, ModConfig.mobSpawns.feuerwurm.feuerwurmMin, ModConfig.mobSpawns.feuerwurm.feuerwurmMax, Arrays.asList(ModConfig.mobSpawns.feuerwurm.feuerwurmBiomes));
+	public static final EntityEntry feuerwurm = createEntityEntry(EntityFeuerwurm.class, "feuerwurm", 0x7C0902, 0x568203, EnumCreatureType.MONSTER, ModConfig.mobSpawns.feuerwurm.feuerwurmWeight, ModConfig.mobSpawns.feuerwurm.feuerwurmMin, ModConfig.mobSpawns.feuerwurm.feuerwurmMax, Arrays.asList(ModConfig.mobSpawns.feuerwurm.feuerwurmBiomes));
 
 	public static final EntityEntry werewolf = createEntityEntry(EntityWerewolf.class, "werewolf", 0x9F8170, 0x954535, EnumCreatureType.MONSTER, ModConfig.mobSpawns.werewolf.werewolfWeight, ModConfig.mobSpawns.werewolf.werewolfMin, ModConfig.mobSpawns.werewolf.werewolfMax, Arrays.asList(ModConfig.mobSpawns.werewolf.werewolfBiomes));
 
@@ -48,7 +48,7 @@ public class ModEntities {
 
 	public static final EntityEntry demon = createEntityEntry(EntityDemon.class, "demon", 0x555555, 0xed2939);
 	public static final EntityEntry demoness = createEntityEntry(EntityDemoness.class, "demoness", 0x555555, 0xed2939);
-	public static final EntityEntry imp = createEntityEntry(EntityImp.class, "imp", 0x555555, 0xed2939);
+	public static final EntityEntry imp = createEntityEntry(EntityImp.class, "imp", 0x660000, 0x555D50);
 
 	public static final EntityEntry bafometyr = createEntityEntry(EntityBafometyr.class, "bafometyr", 0x5C4033, 0x483C32, EnumCreatureType.MONSTER, ModConfig.mobSpawns.bafometyr.bafometyrWeight, ModConfig.mobSpawns.bafometyr.bafometyrMin, ModConfig.mobSpawns.bafometyr.bafometyrMax, Arrays.asList(ModConfig.mobSpawns.bafometyr.bafometyrBiomes));
 
