@@ -6,6 +6,7 @@ import com.bewitchment.api.capability.extendedworld.ExtendedWorld;
 import com.bewitchment.common.entity.util.IPledgeable;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModPotions;
+import com.bewitchment.registry.ModSounds;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.AbstractIllager;
@@ -84,6 +85,16 @@ public class EntityLeonard extends AbstractGreaterDemon implements IPledgeable {
 			}
 		}
 		return super.processInteract(player, hand);
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return ModSounds.BAFOMETYR_HURT;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return ModSounds.BAFOMETYR_DEATH;
 	}
 
 	@Override

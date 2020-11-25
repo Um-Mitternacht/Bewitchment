@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "bewitchment:coquina_bricks"
+    }
+  },
+  "result": {
+    "item": "bewitchment:coquina_brick_slab",
+    "data": 0,
+    "count": 6
+  }
+}

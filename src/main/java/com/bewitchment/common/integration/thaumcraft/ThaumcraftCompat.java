@@ -407,6 +407,8 @@ public class ThaumcraftCompat implements IConditionFactory {
 
 		event.register.registerObjectTag(new ItemStack(ModObjects.thyrsus), new AspectList().add(SUN, 16).add(Aspect.AVERSION, 16).add(Aspect.PLANT, 16));
 
+		event.register.registerObjectTag(new ItemStack(ModObjects.cleaver_sword), new AspectList().add(DEMON, 16).add(Aspect.AVERSION, 16).add(Aspect.FIRE, 16));
+
 		//Add some of our aspects to existing items in vanilla
 		//Use this sparingly. Please run over any future additions to this part of the file with Sunconure11.
 		//If new aspects must be added to an item from vanilla, try and preserve as much of the original aspects as possible.

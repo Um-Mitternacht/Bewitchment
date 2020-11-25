@@ -69,10 +69,6 @@ public class BlockGoblet extends ModBlock {
 		return filled;
 	}
 
-	public Block.EnumOffsetType getOffsetType() {
-		return Block.EnumOffsetType.XZ;
-	}
-
 	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return false;

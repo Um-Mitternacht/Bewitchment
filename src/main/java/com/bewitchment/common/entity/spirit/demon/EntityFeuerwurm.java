@@ -15,12 +15,11 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityFeuerwurm extends ModEntityMob {
@@ -101,6 +100,21 @@ public class EntityFeuerwurm extends ModEntityMob {
 			}
 		}
 		return flag;
+	}
+
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEvents.ENTITY_BLAZE_AMBIENT;
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEvents.ENTITY_ENDERDRAGON_GROWL;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_BLAZE_DEATH;
 	}
 
 	@Override

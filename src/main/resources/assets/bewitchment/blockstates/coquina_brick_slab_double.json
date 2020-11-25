@@ -3,7 +3,7 @@
   "defaults": {
     "model": "cube_all",
     "textures": {
-      "all": "bewitchment:blocks/coquina"
+      "all": "bewitchment:blocks/coquina_bricks"
     }
   },
   "variants": {
