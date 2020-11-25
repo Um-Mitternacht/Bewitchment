@@ -33,7 +33,7 @@ public class ModConfig {
 
 	public static class Misc {
 		@Config.Comment("The list of blocks that the broom will sweep when right clicked on.")
-		public String[] broomSweepables = {Blocks.REDSTONE_WIRE.getTranslationKey(), "tile.bewitchment.glyph", "tile.bewitchment.salt_barrier"};
+		public String[] broomSweepables = {"tile.redstoneDust", "tile.bewitchment.glyph", "tile.bewitchment.salt_barrier"};
 
 		@Config.Comment("The list of blocks that the witches' cauldron will count as heat sources.")
 		//FIXME: Add nitor from BlocksTC in Thaumcraft as a valid heat source. Note that it's got several color variants.
@@ -428,12 +428,35 @@ public class ModConfig {
 
 	public static class Modifiers {
 		@Config.RequiresMcRestart
-		@Config.Comment("Enable items from other mods to use silver bonuses")
+		@Config.Comment("Enable items from other mods to have silver bonuses")
 		public boolean silverBonuses = true;
 
 		@Config.RequiresMcRestart
-		@Config.Comment("Enable items from other mods to use cold iron bonuses")
+		@Config.Comment("Enable items from other mods to have cold iron bonuses")
 		public boolean coldIronBonuses = true;
+
+		@Config.RequiresMcRestart
+		@Config.Comment("Entities to be affected by silver")
+		public String[] silverWeakness = {
+				"bewitchment:werewolf"
+		};
+
+		@Config.RequiresMcRestart
+		@Config.Comment("Entities to be affected by cold iron")
+		public String[] coldIronWeakness = {
+				"minecraft:blaze",
+				"minecraft:ghast",
+				"minecraft:vex",
+				"minecraft:enderman",
+				"thaumcraft:pech",
+				"thaumcraft:wisp",
+				"bewitchment:black_dog",
+				"bewitchment:ghost",
+				"bewitchment:hellhound",
+				"bewitchment:demon",
+				"bewitchment:demoness",
+				"bewitchment:imp"
+		};
 	}
 
 	public static class Maymays {
