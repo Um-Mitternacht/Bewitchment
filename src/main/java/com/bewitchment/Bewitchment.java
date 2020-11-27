@@ -158,25 +158,8 @@ public class Bewitchment {
 		}
 
 		//Register weaknesses
-		BewitchmentAPI.COLD_IRON_WEAKNESS.register(
-				"minecraft:blaze",
-				"minecraft:ghast",
-				"minecraft:vex",
-				"minecraft:enderman",
-				"thaumcraft:pech",
-				"thaumcraft:wisp",
-				"bewitchment:black_dog",
-				"bewitchment:ghost",
-				"bewitchment:hellhound",
-				"bewitchment:demon",
-				"bewitchment:demoness",
-				"bewitchment:imp"
-		);
-
-		BewitchmentAPI.SILVER_WEAKNESS.register(
-				"bewitchment:werewolf"
-		);
-
+		BewitchmentAPI.SILVER_WEAKNESS.register(ModConfig.modifiers.silverWeakness);
+		BewitchmentAPI.COLD_IRON_WEAKNESS.register(ModConfig.modifiers.coldIronWeakness);
 
 		/*Village*/
 		VillagerTradeHandler.INSTANCE.init();

@@ -76,7 +76,9 @@ public class RitualBiomeShift extends Ritual {
 
 				if (Math.sqrt((x * x) + (z * z)) < radius) {
 					BlockPos pos = effectivePos.add(x, 0, z);
-					BiomeChangingUtils.setBiomeSync(world, pos, biome, radius);
+
+					BiomeChangingUtils.setBiome(world, pos, biome);
+					BiomeChangingUtils.updateBiomeOnClient(world, pos, biome, radius);
 				}
 			}
 

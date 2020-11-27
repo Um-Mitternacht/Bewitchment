@@ -62,20 +62,29 @@ public class BiomeChangingUtils {
 		extendedWorld.setDirty(true);
 	}
 
-	public static void setBiomeSync(World world, BlockPos pos, int id, int updateRadius) {
-		setBiome(world, pos, id);
-		PacketBiomeUpdate packet = new PacketBiomeUpdate(pos, id);
-
-		NetworkRegistry.TargetPoint target = new NetworkRegistry.TargetPoint(
+	/**
+	 * To be called after setting biome on server
+	 * @param world
+	 * @param pos
+	 * @param id
+	 * @param updateRadius
+	 */
+	public static void updateBiomeOnClient(World world, BlockPos pos, int id, int updateRadius) {
+		Bewitchment.network.sendToAllAround(new PacketBiomeUpdate(pos, id), new NetworkRegistry.TargetPoint(
 				world.provider.getDimension(),
 				pos.getX(),
 				pos.getY(),
 				pos.getZ(),
 				updateRadius
-		);
-		Bewitchment.network.sendToAllAround(packet, target);
+		));
 	}
 
+	/**
+	 * Set biome either server side or client side
+	 * @param world
+	 * @param pos
+	 * @param id
+	 */
 	public static void setBiome(World world, BlockPos pos, int id) {
 		Chunk chunk = world.getChunk(pos);
 
@@ -85,8 +94,7 @@ public class BiomeChangingUtils {
 
 		if (Bewitchment.JEID && chunk instanceof INewChunk)
 			((INewChunk) chunk).getIntBiomeArray()[i] = id;
-		else
-			chunk.getBiomeArray()[i] = (byte) id;
+		else chunk.getBiomeArray()[i] = (byte) id;
 
 		chunk.markDirty();
 	}

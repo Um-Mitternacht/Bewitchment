@@ -44,7 +44,9 @@ public class RitualSowingSalt extends Ritual {
 							BlockPos pos = effectivePos.add(x, y, z);
 							Block block = world.getBlockState(pos).getBlock();
 
-							BiomeChangingUtils.setBiomeSync(world, pos, Biome.getIdForBiome(getSaltedBiome()), radius);
+							int b = Biome.getIdForBiome(getSaltedBiome());
+							BiomeChangingUtils.setBiome(world, pos, b);
+							BiomeChangingUtils.updateBiomeOnClient(world, pos, b, radius);
 
 							if (block instanceof BlockDirt) {
 								world.setBlockState(pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.COARSE_DIRT), 3);

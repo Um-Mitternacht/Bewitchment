@@ -8,7 +8,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 
 import javax.annotation.Nonnull;
 
@@ -35,11 +37,16 @@ public class ModBlockCrops extends BlockCrops {
 
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos to, Block block, BlockPos from) {
-		if (!this.canBlockStay(world, to, state)) {
-			this.dropBlockAsItem(world, to, state, 0);
+		if (!canBlockStay(world, to, state)) {
+			dropBlockAsItem(world, to, state, 0);
 			world.removeTileEntity(to);
 			world.setBlockToAir(to);
 		}
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+		return EnumPlantType.Crop;
 	}
 
 	public void setItems(Item seed, Item crop) {
