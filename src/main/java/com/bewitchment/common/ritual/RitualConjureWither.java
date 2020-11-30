@@ -3,7 +3,7 @@ package com.bewitchment.common.ritual;
 import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.message.SpawnParticle;
-import com.bewitchment.api.registry.Ritual;
+import com.bewitchment.api.registry.ritual.RitualConjureEntity;
 import com.bewitchment.common.block.BlockGlyph;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.boss.EntityWither;
@@ -12,29 +12,44 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-public class RitualConjureWither extends Ritual {
+public class RitualConjureWither extends RitualConjureEntity<EntityWither> {
+
 	public RitualConjureWither() {
-		super(new ResourceLocation(Bewitchment.MODID, "conjure_wither"), Arrays.asList(Util.get(ModObjects.athame), Util.get(new ItemStack(Items.SKULL, 1, 1)), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get(Blocks.SOUL_SAND), Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get("cropWormwood"), Util.get(ModObjects.ectoplasm)), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), true, 15, 1332, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+		super(Util.newResource("conjure_wither"), Arrays.asList(
+				Util.get(ModObjects.athame),
+				Util.get(new ItemStack(Items.SKULL, 1, 1)),
+				Util.get(Blocks.SOUL_SAND),
+				Util.get(Blocks.SOUL_SAND),
+				Util.get(Blocks.SOUL_SAND),
+				Util.get(Blocks.SOUL_SAND),
+				Util.get("cropWormwood"),
+				Util.get("cropWormwood"),
+				Util.get("cropWormwood"),
+				Util.get(ModObjects.ectoplasm)),
+				null,
+				Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)),
+				true,
+				15, 1332, 66,
+				BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
 	}
 
 	@Override
-	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, altarPos, effectivePos, caster, inventory);
-		if (!world.isRemote) {
-			EntityWither wither = new EntityWither(world);
+	protected void conjureEntity(@NotNull World world, @NotNull BlockPos pos, @NotNull EntityWither wither) {
+		super.conjureEntity(world, pos, wither);
+		wither.ignite();
+	}
 
-			Util.summonEntity(world, wither, effectivePos);
-
-			wither.ignite();
-		}
+	@Override
+	protected EntityWither createEntity(World world) {
+		return new EntityWither(world);
 	}
 
 	@Override

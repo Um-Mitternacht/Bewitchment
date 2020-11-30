@@ -2,6 +2,7 @@ package com.bewitchment.common.handler;
 
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.misc.Weakness;
 import com.bewitchment.registry.ModEnchantments;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.client.resources.I18n;
@@ -17,6 +18,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -45,60 +47,48 @@ public class MaterialHandler {
 	}
 
 	@SubscribeEvent
-	public void livingHurt(LivingHurtEvent event) {
+	public void livingHurt(@NotNull LivingHurtEvent event) {
 		EntityLivingBase target = event.getEntityLiving();
+		Entity entity = event.getSource().getImmediateSource();
 
 		if (!target.world.isRemote) {
-			Entity atk = event.getSource().getImmediateSource(); //Attacker
-
-			if (atk instanceof EntityLivingBase) {
-				EntityLivingBase livingAtk = (EntityLivingBase) atk;
+			if (entity instanceof EntityLivingBase) {
+				EntityLivingBase attacker = (EntityLivingBase)entity;
 
 				{ //silver
-					float weakness = BewitchmentAPI.SILVER_WEAKNESS.get(target);
-
-					if (weakness > 1.0F && SILVER_TOOLS.contains(livingAtk.getHeldItemMainhand().getItem()))
-						event.setAmount(event.getAmount() * weakness);
-
-					weakness = BewitchmentAPI.SILVER_WEAKNESS.get(livingAtk);
-
-					if (weakness > 1.0F) {
-
-						int armor = 0;
-
-						for (ItemStack stack : target.getArmorInventoryList())
-							if (SILVER_ARMOR.contains(stack.getItem())) armor++;
-
-						if (armor > 0) {
-							event.setAmount(event.getAmount() * (1 - (0.06F * armor)));
-							livingAtk.attackEntityFrom(DamageSource.causeThornsDamage(target), armor);
-						}
-					}
+					float damage = getDamage(event.getAmount(), BewitchmentAPI.SILVER_WEAKNESS, target, attacker, SILVER_TOOLS, SILVER_ARMOR);
+					event.setAmount(damage);
 				}
 
 				{ //cold iron
-					float weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(target);
-
-					if (weakness > 1f && COLD_IRON_TOOLS.contains((livingAtk).getHeldItemMainhand().getItem()))
-						event.setAmount(event.getAmount() * weakness);
-
-					weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(livingAtk);
-					if (weakness > 1f) {
-						int armor = 0;
-
-						for (ItemStack stack : target.getArmorInventoryList())
-							if (COLD_IRON_ARMOR.contains(stack.getItem())) armor++;
-						if (armor > 0) {
-							event.setAmount(event.getAmount() * (1 - (0.06f * armor)));
-							livingAtk.attackEntityFrom(DamageSource.causeThornsDamage(target), armor);
-						}
-					}
+					float damage = getDamage(event.getAmount(), BewitchmentAPI.COLD_IRON_WEAKNESS, target, attacker, COLD_IRON_TOOLS, COLD_IRON_ARMOR);
+					event.setAmount(damage);
 				}
 			}
-
-			//witches
-			ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(event.getEntityLiving(), ModObjects.ARMOR_WITCHES));
+			ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(target, ModObjects.ARMOR_WITCHES));
 		}
+	}
+
+	public static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker, Set<Item> tools, Set<Item> armor) {
+		float amount = weakness.get(target);
+
+		if (amount > 1.0F && tools.contains(attacker.getHeldItemMainhand().getItem()))
+			return initialDamage * amount;
+
+		amount = weakness.get(attacker);
+
+		if (amount > 1.0F) {
+			int a = 0;
+
+			for (ItemStack stack : target.getArmorInventoryList()) if (armor.contains(stack.getItem())) a++;
+
+			if (a > 0) {
+				attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), a);
+				return initialDamage * (1 - (0.06F * a));
+			}
+		}
+
+		return initialDamage;
 	}
 
 	@SubscribeEvent
