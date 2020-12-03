@@ -2,6 +2,7 @@ package com.bewitchment.common.integration.thaumcraft;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
+import com.bewitchment.api.misc.Weakness;
 import com.bewitchment.registry.ModObjects;
 import com.google.gson.JsonObject;
 import net.minecraft.block.Block;
@@ -121,43 +122,42 @@ public class ThaumcraftCompat implements IConditionFactory {
 
 
 	@SubscribeEvent
-	public void handleSilverGolem(LivingHurtEvent event) {
-		EntityLivingBase entity = event.getEntityLiving();
-		if (!entity.world.isRemote) {
-			Entity source = event.getSource().getImmediateSource();
-			if (source instanceof EntityLivingBase) {
-				EntityLivingBase living = (EntityLivingBase) source;
+	public void handleGolems(LivingHurtEvent event) {
+		EntityLivingBase target = event.getEntityLiving();
 
-				float weakness = BewitchmentAPI.SILVER_WEAKNESS.get(entity);
-				if (weakness > 1 && isSilverGolem(living))
-					event.setAmount(event.getAmount() * weakness * 2);
-				weakness = BewitchmentAPI.SILVER_WEAKNESS.get(living);
-				if (weakness > 1 && isSilverGolem(entity)) {
-					event.setAmount(event.getAmount() * 0.4F);
-					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 4);
+		if (!target.world.isRemote) {
+			Entity source = event.getSource().getImmediateSource();
+
+			if (source instanceof EntityLivingBase) {
+				EntityLivingBase attacker = (EntityLivingBase) source;
+
+				{
+					float damage = getDamage(event.getAmount(), BewitchmentAPI.SILVER_WEAKNESS, target, attacker);
+					event.setAmount(damage);
+				}
+
+				{
+					float damage = getDamage(event.getAmount(), BewitchmentAPI.COLD_IRON_WEAKNESS, target, attacker);
+					event.setAmount(damage);
 				}
 			}
 		}
 	}
 
-	@SubscribeEvent
-	public void handleColdIronGolems(LivingHurtEvent event) {
-		EntityLivingBase entity = event.getEntityLiving();
-		if (!entity.world.isRemote) {
-			Entity source = event.getSource().getImmediateSource();
-			if (source instanceof EntityLivingBase) {
-				EntityLivingBase living = (EntityLivingBase) source;
+	private static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker) {
+		float amount = weakness.get(target);
 
-				float weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(entity);
-				if (weakness > 1f && isColdIronGolem(living)) ;
-				event.setAmount(event.getAmount() * weakness * 2);
-				weakness = BewitchmentAPI.COLD_IRON_WEAKNESS.get(living);
-				if (weakness > 1f && isColdIronGolem(entity)) {
-					event.setAmount(event.getAmount() * 0.4F);
-					source.attackEntityFrom(DamageSource.causeThornsDamage(entity), 4);
-				}
-			}
+		if (amount > 1.0F && (isColdIronGolem(attacker) || isSilverGolem(attacker)))
+			return initialDamage * amount * 2;
+
+		amount = weakness.get(attacker);
+
+		if (amount > 1.0F && (isColdIronGolem(target) || isSilverGolem(target))) {
+			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
+			return initialDamage * 0.4F;
 		}
+
+		return initialDamage;
 	}
 
 	@SubscribeEvent

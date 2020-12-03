@@ -11,7 +11,6 @@ import com.bewitchment.registry.ModObjects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
@@ -26,7 +25,20 @@ public class RitualBiomeShift extends Ritual {
 	private int biome;
 
 	public RitualBiomeShift() {
-		super(new ResourceLocation(Bewitchment.MODID, "biome_shift"), Arrays.asList(Util.get("treeSapling"), Util.get("logWood"), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.oak_apple_gall), Util.get(ModObjects.pentacle), Util.get(new ItemStack(ModObjects.oak_spirit)), Util.get(new ItemStack(ModObjects.dimensional_sand)), Util.get(new ItemStack(ModObjects.boline))), null, null, true, 50, 1300, 33, BlockGlyph.ENDER, BlockGlyph.ENDER, BlockGlyph.ENDER);
+		super(Util.newResource("biome_shift"), Arrays.asList(
+				Util.get("treeSapling"),
+				Util.get("logWood"),
+				Util.get(ModObjects.oak_apple_gall),
+				Util.get(ModObjects.oak_apple_gall),
+				Util.get(ModObjects.pentacle),
+				Util.get(new ItemStack(ModObjects.oak_spirit)),
+				Util.get(new ItemStack(ModObjects.dimensional_sand)),
+				Util.get(new ItemStack(ModObjects.boline))),
+				null,
+				null,
+				true,
+				50, 1300, 33,
+				BlockGlyph.ENDER, BlockGlyph.ENDER, BlockGlyph.ENDER);
 	}
 
 	@Override
@@ -43,7 +55,6 @@ public class RitualBiomeShift extends Ritual {
 
 	@Override
 	public boolean isValid(World world, BlockPos altarPos, EntityPlayer caster, ItemStackHandler inventory) {
-
 		for (int i = 0; i < inventory.getSlots(); i++) {
 			ItemStack stack = inventory.getStackInSlot(i);
 
@@ -71,16 +82,12 @@ public class RitualBiomeShift extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		int radius = 32;
 
-		for (double x = -radius; x < radius; x++)
-			for (double z = -radius; z < radius; z++) {
+		for (double x = -radius; x < radius; x++) for (double z = -radius; z < radius; z++) if (Math.sqrt((x * x) + (z * z)) < radius) {
+			BlockPos pos = effectivePos.add(x, 0, z);
 
-				if (Math.sqrt((x * x) + (z * z)) < radius) {
-					BlockPos pos = effectivePos.add(x, 0, z);
-
-					BiomeChangingUtils.setBiome(world, pos, biome);
-					BiomeChangingUtils.updateBiomeOnClient(world, pos, biome, radius);
-				}
-			}
+			BiomeChangingUtils.setBiome(world, pos, biome);
+			BiomeChangingUtils.updateBiomeOnClient(world, pos, biome, radius);
+		}
 
 		for (int i = 0; i < inventory.getSlots(); i++) inventory.extractItem(i, 1, false);
 	}
