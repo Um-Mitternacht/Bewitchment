@@ -30,6 +30,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
@@ -95,7 +96,7 @@ public class ThaumcraftCompat implements IConditionFactory {
 	}
 
 	@SubscribeEvent
-	public void handleDragonsBloodGolems(LivingEvent.LivingUpdateEvent event) {
+	public void handleDragonsBloodGolems(@NotNull LivingEvent.LivingUpdateEvent event) {
 		if (isDragonsBloodGolem(event.getEntityLiving()) && event.getEntityLiving().getRNG().nextInt(20) == 0) {
 			EntityThaumcraftGolem golem = (EntityThaumcraftGolem) event.getEntityLiving();
 			List<EntityMob> mobsNearby = golem.world.getEntitiesWithinAABB(EntityMob.class, golem.getEntityBoundingBox().grow(8));
@@ -110,7 +111,7 @@ public class ThaumcraftCompat implements IConditionFactory {
 	}
 
 	@SubscribeEvent
-	public void handleGolems(LivingHurtEvent event) {
+	public void handleGolems(@NotNull LivingHurtEvent event) {
 		EntityLivingBase target = event.getEntityLiving();
 
 		if (!target.world.isRemote) {
@@ -131,7 +132,7 @@ public class ThaumcraftCompat implements IConditionFactory {
 		}
 	}
 
-	private static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker, boolean predicate0, boolean predicate1) {
+	private static float getDamage(float initialDamage, @NotNull Weakness weakness, EntityLivingBase target, EntityLivingBase attacker, boolean predicate0, boolean predicate1) {
 		float amount = weakness.get(target);
 
 		if (amount > 1.0F && predicate0)
@@ -430,7 +431,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 		ThaumcraftApi.registerEntityTag("bewitchment.leonard", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.ALCHEMY, 45));
 		ThaumcraftApi.registerEntityTag("bewitchment.baphomet", new AspectList().add(Aspect.SOUL, 45).add(DEMON, 45).add(Aspect.FIRE, 45));
 	}
-
 
 	@Override
 	public BooleanSupplier parse(JsonContext context, JsonObject json) {
