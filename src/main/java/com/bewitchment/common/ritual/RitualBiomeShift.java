@@ -82,12 +82,14 @@ public class RitualBiomeShift extends Ritual {
 	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
 		int radius = 32;
 
-		for (double x = -radius; x < radius; x++) for (double z = -radius; z < radius; z++) if (Math.sqrt((x * x) + (z * z)) < radius) {
-			BlockPos pos = effectivePos.add(x, 0, z);
+		for (double x = -radius; x < radius; x++)
+			for (double z = -radius; z < radius; z++)
+				if (Math.sqrt((x * x) + (z * z)) < radius) {
+					BlockPos pos = effectivePos.add(x, 0, z);
 
-			BiomeChangingUtils.setBiome(world, pos, biome);
-			BiomeChangingUtils.updateBiomeOnClient(world, pos, biome, radius);
-		}
+					BiomeChangingUtils.setBiome(world, pos, biome);
+					BiomeChangingUtils.updateBiomeOnClient(world, pos, biome, radius);
+				}
 
 		for (int i = 0; i < inventory.getSlots(); i++) inventory.extractItem(i, 1, false);
 	}

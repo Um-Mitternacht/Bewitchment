@@ -27,6 +27,28 @@ import java.util.Set;
 public class MaterialHandler {
 	public static final Set<Item> SILVER_TOOLS = new HashSet<>(), SILVER_ARMOR = new HashSet<>(), COLD_IRON_TOOLS = new HashSet<>(), COLD_IRON_ARMOR = new HashSet<>();
 
+	public static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker, Set<Item> tools, Set<Item> armor) {
+		float amount = weakness.get(target);
+
+		if (amount > 1.0F && tools.contains(attacker.getHeldItemMainhand().getItem()))
+			return initialDamage * amount;
+
+		amount = weakness.get(attacker);
+
+		if (amount > 1.0F) {
+			int a = 0;
+
+			for (ItemStack stack : target.getArmorInventoryList()) if (armor.contains(stack.getItem())) a++;
+
+			if (a > 0) {
+				attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), a);
+				return initialDamage * (1 - (0.06F * a));
+			}
+		}
+
+		return initialDamage;
+	}
+
 	@SubscribeEvent
 	public void livingUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
@@ -53,7 +75,7 @@ public class MaterialHandler {
 
 		if (!target.world.isRemote) {
 			if (entity instanceof EntityLivingBase) {
-				EntityLivingBase attacker = (EntityLivingBase)entity;
+				EntityLivingBase attacker = (EntityLivingBase) entity;
 
 				{ //silver
 					float damage = getDamage(event.getAmount(), BewitchmentAPI.SILVER_WEAKNESS, target, attacker, SILVER_TOOLS, SILVER_ARMOR);
@@ -68,28 +90,6 @@ public class MaterialHandler {
 				ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(target, ModObjects.ARMOR_WITCHES));
 			}
 		}
-	}
-
-	public static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker, Set<Item> tools, Set<Item> armor) {
-		float amount = weakness.get(target);
-
-		if (amount > 1.0F && tools.contains(attacker.getHeldItemMainhand().getItem()))
-			return initialDamage * amount;
-
-		amount = weakness.get(attacker);
-
-		if (amount > 1.0F) {
-			int a = 0;
-
-			for (ItemStack stack : target.getArmorInventoryList()) if (armor.contains(stack.getItem())) a++;
-
-			if (a > 0) {
-				attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), a);
-				return initialDamage * (1 - (0.06F * a));
-			}
-		}
-
-		return initialDamage;
 	}
 
 	@SubscribeEvent

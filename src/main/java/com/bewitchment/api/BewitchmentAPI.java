@@ -2,8 +2,8 @@ package com.bewitchment.api;
 
 import com.bewitchment.Bewitchment;
 import com.bewitchment.api.capability.extendedplayer.ExtendedPlayer;
-import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.api.misc.Weakness;
+import com.bewitchment.api.registry.AltarUpgrade;
 import com.bewitchment.registry.ModObjects;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.entity.EntityLivingBase;

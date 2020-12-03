@@ -84,6 +84,22 @@ public class ThaumcraftCompat implements IConditionFactory {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
 	}
 
+	private static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker) {
+		float amount = weakness.get(target);
+
+		if (amount > 1.0F && (isColdIronGolem(attacker) || isSilverGolem(attacker)))
+			return initialDamage * amount * 2;
+
+		amount = weakness.get(attacker);
+
+		if (amount > 1.0F && (isColdIronGolem(target) || isSilverGolem(target))) {
+			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
+			return initialDamage * 0.4F;
+		}
+
+		return initialDamage;
+	}
+
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void registerItemsLater(RegistryEvent.Register<Item> event) {
 		try {
@@ -120,7 +136,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 		}
 	}
 
-
 	@SubscribeEvent
 	public void handleGolems(LivingHurtEvent event) {
 		EntityLivingBase target = event.getEntityLiving();
@@ -142,22 +157,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 				}
 			}
 		}
-	}
-
-	private static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker) {
-		float amount = weakness.get(target);
-
-		if (amount > 1.0F && (isColdIronGolem(attacker) || isSilverGolem(attacker)))
-			return initialDamage * amount * 2;
-
-		amount = weakness.get(attacker);
-
-		if (amount > 1.0F && (isColdIronGolem(target) || isSilverGolem(target))) {
-			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
-			return initialDamage * 0.4F;
-		}
-
-		return initialDamage;
 	}
 
 	@SubscribeEvent

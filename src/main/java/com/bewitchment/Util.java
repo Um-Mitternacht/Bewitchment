@@ -162,10 +162,14 @@ public class Util {
 
 	public static boolean isRelatedTool(Item item, String... names) {
 		for (String name : names) {
-			if (item instanceof ItemArmor) return ((ItemArmor) item).getArmorMaterial().name().toLowerCase().contains(name);
-			if (item instanceof ItemSword) return ((ItemSword) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
-			if (item instanceof ItemTool) return ((ItemTool) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
-			if (item instanceof ItemHoe) return ((ItemHoe) item).getMaterialName().toLowerCase().toLowerCase().contains(name);
+			if (item instanceof ItemArmor)
+				return ((ItemArmor) item).getArmorMaterial().name().toLowerCase().contains(name);
+			if (item instanceof ItemSword)
+				return ((ItemSword) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+			if (item instanceof ItemTool)
+				return ((ItemTool) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+			if (item instanceof ItemHoe)
+				return ((ItemHoe) item).getMaterialName().toLowerCase().toLowerCase().contains(name);
 		}
 		return false;
 	}
@@ -308,8 +312,9 @@ public class Util {
 	/** New stuff
 	 */
 
-	/** @param obj Object to check.
-	 *  @return TRUE if object's namespace matches bewitchment's modid.
+	/**
+	 * @param obj Object to check.
+	 * @return TRUE if object's namespace matches bewitchment's modid.
 	 */
 	public static boolean isFromBewitchment(@NotNull IForgeRegistryEntry.Impl<?> obj) {
 		ResourceLocation resourceLocation = obj.getRegistryName();
@@ -317,14 +322,15 @@ public class Util {
 	}
 
 	public static @NotNull ResourceLocation newResource(String path) {
-	    return new ResourceLocation(Bewitchment.MODID, path);
-    }
+		return new ResourceLocation(Bewitchment.MODID, path);
+	}
 
-	/** @param item     the item to be added into a set
-	 *  @param material material name that will be matched
-	 *  @param config   should use items from other mods
-	 *  @param armors   to be added into if item is armor
-	 *  @param tools    to be added into if item is a tool
+	/**
+	 * @param item     the item to be added into a set
+	 * @param material material name that will be matched
+	 * @param config   should use items from other mods
+	 * @param armors   to be added into if item is armor
+	 * @param tools    to be added into if item is a tool
 	 */
 	public static void addBonus(Item item, String material, boolean config, Set<Item> armors, Set<Item> tools) {
 		if (isRelatedTool(item, material) && (config || isFromBewitchment(item)))
