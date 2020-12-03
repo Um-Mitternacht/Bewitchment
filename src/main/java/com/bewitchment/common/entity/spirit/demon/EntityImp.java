@@ -19,8 +19,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityImp extends ModEntityMob {
 

@@ -19,8 +19,6 @@ import net.minecraft.util.*;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityFeuerwurm extends ModEntityMob {
 

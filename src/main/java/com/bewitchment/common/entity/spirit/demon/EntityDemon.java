@@ -40,7 +40,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -77,7 +76,7 @@ public class EntityDemon extends ModEntityMob implements IMerchant {
 	protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_BLAZE_AMBIENT;
 	}
-	
+
 	@Override
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
 		return SoundEvents.ENTITY_ENDERDRAGON_GROWL;

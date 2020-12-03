@@ -85,24 +85,28 @@ public class ThaumcraftCompat implements IConditionFactory {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
 	}
 
+	private static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker) {
+		float amount = weakness.get(target);
+
+		if (amount > 1.0F && (isColdIronGolem(attacker) || isSilverGolem(attacker)))
+			return initialDamage * amount * 2;
+
+		amount = weakness.get(attacker);
+
+		if (amount > 1.0F && (isColdIronGolem(target) || isSilverGolem(target) || isDragonsBloodGolem(target))) {
+			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
+			return initialDamage * 0.4F;
+		}
+
+		return initialDamage;
+	}
+
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void registerItemsLater(RegistryEvent.Register<Item> event) {
 		try {
 			Class.forName("thaumcraft.common.golems.GolemProperties");
 		} catch (Exception ex) {
 			System.out.println("GolemProperties appears to be missing. Please report this issue to the dev of BW, for someone has done something they shouldn't!");
-		}
-	}
-
-	//Todo: Apply slowness to all mobs attacked by this + make mobs flee it's presence.
-	@SubscribeEvent
-	public void handleDragonsBloodGolems(LivingHurtEvent event) {
-		EntityLivingBase entity = event.getEntityLiving();
-		if (!entity.world.isRemote) {
-			Entity source = event.getSource().getImmediateSource();
-			if (source instanceof EntityLivingBase && isDragonsBloodGolem((EntityLivingBase) source)) {
-				entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
-			}
 		}
 	}
 
@@ -121,7 +125,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 		}
 	}
 
-
 	@SubscribeEvent
 	public void handleGolems(LivingHurtEvent event) {
 		EntityLivingBase target = event.getEntityLiving();
@@ -137,28 +140,21 @@ public class ThaumcraftCompat implements IConditionFactory {
 					event.setAmount(damage);
 				}
 
+				if (isDragonsBloodGolem(target)) {
+					attacker.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
+				}
+
+
+				if (isDragonsBloodGolem(attacker)) {
+					target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
+				}
+
 				{
 					float damage = getDamage(event.getAmount(), BewitchmentAPI.COLD_IRON_WEAKNESS, target, attacker);
 					event.setAmount(damage);
 				}
 			}
 		}
-	}
-
-	private static float getDamage(float initialDamage, Weakness weakness, EntityLivingBase target, EntityLivingBase attacker) {
-		float amount = weakness.get(target);
-
-		if (amount > 1.0F && (isColdIronGolem(attacker) || isSilverGolem(attacker)))
-			return initialDamage * amount * 2;
-
-		amount = weakness.get(attacker);
-
-		if (amount > 1.0F && (isColdIronGolem(target) || isSilverGolem(target))) {
-			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
-			return initialDamage * 0.4F;
-		}
-
-		return initialDamage;
 	}
 
 	@SubscribeEvent

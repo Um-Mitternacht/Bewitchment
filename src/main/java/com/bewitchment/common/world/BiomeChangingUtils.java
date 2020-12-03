@@ -64,6 +64,7 @@ public class BiomeChangingUtils {
 
 	/**
 	 * To be called after setting biome on server
+	 *
 	 * @param world
 	 * @param pos
 	 * @param id
@@ -81,6 +82,7 @@ public class BiomeChangingUtils {
 
 	/**
 	 * Set biome either server side or client side
+	 *
 	 * @param world
 	 * @param pos
 	 * @param id
