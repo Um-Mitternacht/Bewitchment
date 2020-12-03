@@ -64,8 +64,9 @@ public class MaterialHandler {
 					float damage = getDamage(event.getAmount(), BewitchmentAPI.COLD_IRON_WEAKNESS, target, attacker, COLD_IRON_TOOLS, COLD_IRON_ARMOR);
 					event.setAmount(damage);
 				}
+
+				ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(target, ModObjects.ARMOR_WITCHES));
 			}
-			ModEnchantments.magic_protection.applyEnchantment(event, Util.getArmorPieces(target, ModObjects.ARMOR_WITCHES));
 		}
 	}
 
