@@ -1,6 +1,5 @@
 package com.bewitchment.common.integration.thaumcraft;
 
-import com.bewitchment.Bewitchment;
 import com.bewitchment.Util;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.api.misc.Weakness;
@@ -86,6 +85,22 @@ public class ThaumcraftCompat implements IConditionFactory {
 		return golem instanceof EntityThaumcraftGolem && ((EntityThaumcraftGolem) golem).getProperties().hasTrait(UNCANNY);
 	}
 
+	private static float getDamage(float initialDamage, @NotNull Weakness weakness, EntityLivingBase target, EntityLivingBase attacker, boolean predicate0, boolean predicate1) {
+		float amount = weakness.get(target);
+
+		if (amount > 1.0F && predicate0)
+			return initialDamage * amount * 2;
+
+		amount = weakness.get(attacker);
+
+		if (amount > 1.0F && predicate1) {
+			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
+			return initialDamage * 0.4F;
+		}
+
+		return initialDamage;
+	}
+
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void registerItemsLater(RegistryEvent.Register<Item> event) {
 		try {
@@ -126,26 +141,12 @@ public class ThaumcraftCompat implements IConditionFactory {
 				damage = getDamage(event.getAmount(), BewitchmentAPI.COLD_IRON_WEAKNESS, target, attacker, isColdIronGolem(attacker), isColdIronGolem(target));
 				event.setAmount(damage);
 
-				if (isDragonsBloodGolem(target)) attacker.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
-				if (isDragonsBloodGolem(attacker)) target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
+				if (isDragonsBloodGolem(target))
+					attacker.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
+				if (isDragonsBloodGolem(attacker))
+					target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
 			}
 		}
-	}
-
-	private static float getDamage(float initialDamage, @NotNull Weakness weakness, EntityLivingBase target, EntityLivingBase attacker, boolean predicate0, boolean predicate1) {
-		float amount = weakness.get(target);
-
-		if (amount > 1.0F && predicate0)
-			return initialDamage * amount * 2;
-
-		amount = weakness.get(attacker);
-
-		if (amount > 1.0F && predicate1) {
-			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
-			return initialDamage * 0.4F;
-		}
-
-		return initialDamage;
 	}
 
 	@SubscribeEvent
