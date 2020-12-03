@@ -1,4 +1,4 @@
-package com.bewitchment.api.weakness;
+package com.bewitchment.api.misc;
 
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityList;
@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Predicate;
-
 
 /**
  * Predicate is here for support of old way of how weakness was handled.

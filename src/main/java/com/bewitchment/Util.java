@@ -14,7 +14,6 @@ import com.bewitchment.common.block.tile.entity.TileEntityPlacedItem;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.registry.ModObjects;
 import com.bewitchment.registry.ModRegistries;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -42,6 +41,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.IForgeRegistryEntry;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -49,26 +50,6 @@ import java.util.stream.Collectors;
 
 @SuppressWarnings({"deprecation", "ArraysAsListWithZeroOrOneArgument", "WeakerAccess"})
 public class Util {
-	/**
-	 * @param item the item to be checked
-	 * @return true if it's from bewitchment
-	 * <p>
-	 * could be moved into api
-	 */
-	public static boolean isFromBewitchment(Item item) {
-		ResourceLocation resourceLocation = item.getRegistryName();
-		return resourceLocation != null && resourceLocation.getNamespace().equals(Bewitchment.MODID);
-	}
-
-	public static <T extends EntityLiving> void summonEntity(World world, T entity, BlockPos pos) {
-		entity.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), world.rand.nextInt(360), 0);
-		entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
-
-		for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50)))
-			CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
-
-		world.spawnEntity(entity);
-	}
 
 	public static <T extends Block> void registerBlock(T block, String name, Material mat, SoundType sound, float hardness, float resistance, String tool, int level, String... oreDictionaryNames) {
 		ResourceLocation loc = new ResourceLocation(Bewitchment.MODID, name);
@@ -179,47 +160,12 @@ public class Util {
 		return false;
 	}
 
-	/**
-	 * @param item     the item to be added into a set
-	 * @param material material name that will be matched
-	 * @param config   should use items from other mods
-	 * @param armors   to be added into if item is armor
-	 * @param tools    to be added into if item is a tool
-	 */
-	public static void addBonus(Item item, String material, boolean config, Set<Item> armors, Set<Item> tools) {
-		if (isRelatedTool(item, material)) {
-			Set<Item> set = (item instanceof ItemArmor ? armors : tools);
-
-			if (config) {
-				addToSet(item, set);
-			} else if (isFromBewitchment(item)) {
-				addToSet(item, set);
-			}
-		}
-	}
-
-	/**
-	 * {@link Util#addBonus(Item, String, boolean, Set, Set)}
-	 */
-	private static boolean addToSet(Item item, Set<Item> set) {
-		return set.add(item);
-	}
-
 	public static boolean isRelatedTool(Item item, String... names) {
 		for (String name : names) {
-
-			if (item instanceof ItemArmor) {
-				return ((ItemArmor) item).getArmorMaterial().name().toLowerCase().contains(name);
-			}
-			if (item instanceof ItemSword) {
-				return ((ItemSword) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
-			}
-			if (item instanceof ItemTool) {
-				return ((ItemTool) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
-			}
-			if (item instanceof ItemHoe) {
-				return ((ItemHoe) item).getMaterialName().toLowerCase().toLowerCase().contains(name);
-			}
+			if (item instanceof ItemArmor) return ((ItemArmor) item).getArmorMaterial().name().toLowerCase().contains(name);
+			if (item instanceof ItemSword) return ((ItemSword) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+			if (item instanceof ItemTool) return ((ItemTool) item).getToolMaterialName().toLowerCase().toLowerCase().contains(name);
+			if (item instanceof ItemHoe) return ((ItemHoe) item).getMaterialName().toLowerCase().toLowerCase().contains(name);
 		}
 		return false;
 	}
@@ -357,5 +303,31 @@ public class Util {
 
 	public static void registerAltarUpgradeOreDict(String ore, AltarUpgrade upgrade) {
 		for (ItemStack stack : OreDictionary.getOres(ore)) registerAltarUpgradeItemStack(stack, upgrade);
+	}
+
+	/** New stuff
+	 */
+
+	/** @param obj Object to check.
+	 *  @return TRUE if object's namespace matches bewitchment's modid.
+	 */
+	public static boolean isFromBewitchment(@NotNull IForgeRegistryEntry.Impl<?> obj) {
+		ResourceLocation resourceLocation = obj.getRegistryName();
+		return resourceLocation != null && resourceLocation.getNamespace().equals(Bewitchment.MODID);
+	}
+
+	public static @NotNull ResourceLocation newResource(String path) {
+	    return new ResourceLocation(Bewitchment.MODID, path);
+    }
+
+	/** @param item     the item to be added into a set
+	 *  @param material material name that will be matched
+	 *  @param config   should use items from other mods
+	 *  @param armors   to be added into if item is armor
+	 *  @param tools    to be added into if item is a tool
+	 */
+	public static void addBonus(Item item, String material, boolean config, Set<Item> armors, Set<Item> tools) {
+		if (isRelatedTool(item, material) && (config || isFromBewitchment(item)))
+			(item instanceof ItemArmor ? armors : tools).add(item);
 	}
 }
