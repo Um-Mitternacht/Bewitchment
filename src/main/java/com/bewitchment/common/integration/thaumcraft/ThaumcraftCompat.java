@@ -92,7 +92,7 @@ public class ThaumcraftCompat implements IConditionFactory {
 
 		amount = weakness.get(attacker);
 
-		if (amount > 1.0F && (isColdIronGolem(target) || isSilverGolem(target))) {
+		if (amount > 1.0F && (isColdIronGolem(target) || isSilverGolem(target) || isDragonsBloodGolem(target))) {
 			attacker.attackEntityFrom(DamageSource.causeThornsDamage(target), 4.0F);
 			return initialDamage * 0.4F;
 		}
@@ -106,18 +106,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 			Class.forName("thaumcraft.common.golems.GolemProperties");
 		} catch (Exception ex) {
 			System.out.println("GolemProperties appears to be missing. Please report this issue to the dev of BW, for someone has done something they shouldn't!");
-		}
-	}
-
-	//Todo: Apply slowness to all mobs attacked by this + make mobs flee it's presence.
-	@SubscribeEvent
-	public void handleDragonsBloodGolems(LivingHurtEvent event) {
-		EntityLivingBase entity = event.getEntityLiving();
-		if (!entity.world.isRemote) {
-			Entity source = event.getSource().getImmediateSource();
-			if (source instanceof EntityLivingBase && isDragonsBloodGolem((EntityLivingBase) source)) {
-				entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
-			}
 		}
 	}
 
@@ -149,6 +137,15 @@ public class ThaumcraftCompat implements IConditionFactory {
 				{
 					float damage = getDamage(event.getAmount(), BewitchmentAPI.SILVER_WEAKNESS, target, attacker);
 					event.setAmount(damage);
+				}
+
+				if (isDragonsBloodGolem(target)) {
+					attacker.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
+				}
+
+
+				if (isDragonsBloodGolem(attacker)) {
+					target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 600, 0));
 				}
 
 				{
