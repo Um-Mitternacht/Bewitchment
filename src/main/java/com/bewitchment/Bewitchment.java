@@ -64,14 +64,14 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY, dependencies = Bewitchment.DEPENDENCIES)
 public class Bewitchment {
-	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.22.48", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
+	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.22.49", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
 	public static final String DEPENDENCIES = "required-after:baubles;required-after:patchouli;after:mowziesmobs;after:covetedmobs;after:elementaristics;after:miskatonicmysteries;after:betteranimalsplus;after:toughasnails;after:consecration;after:quark;after:dynamictrees@[1.12.2-0.9.1e,);after:thaumcraft@[6.1.BETA26,);";
 	public static final Logger logger = LogManager.getLogger(NAME);
 	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
 		@Override
 		public ItemStack createIcon() {
 			setBackgroundImageName("item_search.png");
-			return new ItemStack(ModObjects.stone_witches_altar);
+			return new ItemStack(ModObjects.pentacle);
 		}
 
 		@Override

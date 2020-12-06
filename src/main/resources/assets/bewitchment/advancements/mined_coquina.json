@@ -1,5 +1,6 @@
 {
   "display": {
+	"hidden": true,    
     "icon": {
       "item": "bewitchment:coquina"
     },
