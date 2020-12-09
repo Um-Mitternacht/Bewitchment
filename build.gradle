@@ -10,7 +10,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath 'com.wynprice.cursemaven:CurseMaven:2.1.1'
+        classpath 'com.wynprice.cursemaven:CurseMaven:2.1.5'
         classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
 }
@@ -60,6 +60,9 @@ repositories {
     maven {
         url = "http://dvs1.progwml6.com/files/maven"
     }
+    maven {
+        url "https://www.cursemaven.com"
+    }	
 }
 
 configurations {
