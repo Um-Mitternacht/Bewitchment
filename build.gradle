@@ -4,6 +4,9 @@ buildscript {
         maven { url = "http://files.minecraftforge.net/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven {
+            url "https://www.cursemaven.com"
+        }
+        maven {
             name = 'sponge'
             url = 'https://repo.spongepowered.org/maven'
         }
@@ -62,7 +65,7 @@ repositories {
     }
     maven {
         url "https://www.cursemaven.com"
-    }	
+    }
 }
 
 configurations {
