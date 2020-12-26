@@ -777,7 +777,8 @@ tarot.is_alchemist=%s seeks the magnum opus.
 baphomet.getcontract=You have received %s for 7 days.
 baphomet.lowlevel=Your level is too low
 baphomet.notpledged=You are not pledged to Baphomet!
-baphomet.alreadyhascontract=You already have an active pact
+baphomet.alreadyhascontract=You already have %s
+
 
 #RITUAL
 ritual.null=You have not heard of such rites
