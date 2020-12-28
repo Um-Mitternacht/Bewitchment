@@ -31,6 +31,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,6 +39,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -372,6 +374,26 @@ public class MiscHandler {
 		EntityPlayer player = event.player;
 		if (player instanceof EntityPlayerMP) {
 			ExtendedWorld.get(player.world).syncToClient((EntityPlayerMP) player);
+		}
+	}
+
+	@SubscribeEvent
+	public void customDyeInteract(PlayerInteractEvent.EntityInteract event){
+		if(event.getTarget() instanceof EntitySheep){
+			EntityPlayer player = event.getEntityPlayer();
+			EntitySheep sheep = (EntitySheep) event.getTarget();
+			if(!sheep.getSheared() && (sheep.getFleeceColor() != EnumDyeColor.BLACK || sheep.getFleeceColor() != EnumDyeColor.BROWN)) {
+				if (player.getHeldItem(event.getHand()).getItem() == ModObjects.iron_gall_ink) {
+					if (!player.isCreative())
+						player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);
+					sheep.setFleeceColor(EnumDyeColor.BLACK);
+				}
+				if (player.getHeldItem(event.getHand()).getItem() == ModObjects.catechu_brown) {
+					if (!player.isCreative())
+						player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);
+					sheep.setFleeceColor(EnumDyeColor.BROWN);
+				}
+			}
 		}
 	}
 }
