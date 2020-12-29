@@ -932,6 +932,7 @@ jei.brew=Brew
 jei.incense=Incense
 
 ## DEMON NAMES AND TITLES
+## DO NOT TRANSLATE THE NAMES UNLESS REQUIRED
 # Mainline names
 entity.bewitchment.given_name.0=Bael
 entity.bewitchment.given_name.1=Agares
