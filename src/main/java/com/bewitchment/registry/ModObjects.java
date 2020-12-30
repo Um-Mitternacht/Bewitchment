@@ -534,6 +534,7 @@ public class ModObjects {
 	public static final Item tongue_of_dog = Util.registerItem("tongue_of_dog");
 	//Misc
 	public static final Item catechu_brown = Util.registerItem("catechu_brown", "dye", "dyeBrown");
+	public static final Item ink_cap_dye = Util.registerItem("ink_cap_dye", "dye", "dyeBlue");
 	public static final Item dimensional_sand = Util.registerItem("dimensional_sand");
 	public static final Item ectoplasm = Util.registerItem("ectoplasm");
 	public static final Item flying_ointment = Util.registerItem("flying_ointment");
@@ -543,7 +544,7 @@ public class ModObjects {
 	public static final Item spectral_dust = Util.registerItem("spectral_dust");
 	public static final Item tallow = Util.registerItem("tallow", "materialWax", "materialBeeswax", "materialPressedWax", "itemBeeswax", "wax", "tallow", "clumpWax", "beeswax", "itemWax");
 	public static final Item wood_ash = Util.registerItem("wood_ash");
-	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin", "resinDragonsBlood");
+	public static final Item dragons_blood_resin = Util.registerItem("dragons_blood_resin", "resinDragonsBlood", "resin", "materialResin", "dye", "dyeRed");
 	public static final Item box_of_sealed_evil = new ItemBoxSealedEvil();
 	public static final Item contract = new ItemContract();
 	public static final Item skeleton_key = new ItemSkeletonKey();

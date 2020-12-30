@@ -388,6 +388,16 @@ public class MiscHandler {
 						player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);
 					sheep.setFleeceColor(EnumDyeColor.BLACK);
 				}
+				if (player.getHeldItem(event.getHand()).getItem() == ModObjects.dragons_blood_resin) {
+					if (!player.isCreative())
+						player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);
+					sheep.setFleeceColor(EnumDyeColor.RED);
+				}
+				if (player.getHeldItem(event.getHand()).getItem() == ModObjects.ink_cap_dye) {
+					if (!player.isCreative())
+						player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);
+					sheep.setFleeceColor(EnumDyeColor.BLUE);
+				}
 				if (player.getHeldItem(event.getHand()).getItem() == ModObjects.catechu_brown) {
 					if (!player.isCreative())
 						player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);

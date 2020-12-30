@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class BlockBlueInkCap extends BlockBushSpreading {
 	public BlockBlueInkCap() {
-		super("blue_ink_cap", "dyeBlue");
+		super("blue_ink_cap");
 	}
 
 	@Override

@@ -551,6 +551,7 @@ item.bewitchment.pentacle.name=Pentacle
 item.bewitchment.spectral_dust.name=Spectral Dust
 item.bewitchment.tallow.name=Tallow
 item.bewitchment.wood_ash.name=Wood Ash
+item.bewitchment.ink_cap_dye.name=Blue Ink Cap Extract
 
 item.bewitchment.box_of_sealed_evil.name=Box of Sealed Evil
 tooltip.bewitchment.box_of_sealed_evil=Surprise Mechanics~
