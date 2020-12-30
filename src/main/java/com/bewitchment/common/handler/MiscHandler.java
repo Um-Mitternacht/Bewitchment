@@ -378,11 +378,11 @@ public class MiscHandler {
 	}
 
 	@SubscribeEvent
-	public void customDyeInteract(PlayerInteractEvent.EntityInteract event){
-		if(event.getTarget() instanceof EntitySheep){
+	public void customDyeInteract(PlayerInteractEvent.EntityInteract event) {
+		if (event.getTarget() instanceof EntitySheep) {
 			EntityPlayer player = event.getEntityPlayer();
 			EntitySheep sheep = (EntitySheep) event.getTarget();
-			if(!sheep.getSheared() && (sheep.getFleeceColor() != EnumDyeColor.BLACK || sheep.getFleeceColor() != EnumDyeColor.BROWN)) {
+			if (!sheep.getSheared() && (sheep.getFleeceColor() != EnumDyeColor.BLACK || sheep.getFleeceColor() != EnumDyeColor.BROWN)) {
 				if (player.getHeldItem(event.getHand()).getItem() == ModObjects.iron_gall_ink) {
 					if (!player.isCreative())
 						player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);

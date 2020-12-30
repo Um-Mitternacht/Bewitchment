@@ -161,7 +161,8 @@ public class EntityBaphomet extends AbstractGreaterDemon implements IPledgeable 
 						}
 						world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 5, 1);
 						return true;
-					} else player.sendStatusMessage(new TextComponentTranslation("baphomet.alreadyhascontract", I18n.format(ep.getCurses().stream().filter(c -> c instanceof Contract).findFirst().get().getRegistryName().toString().replace(":", "."))), true);
+					} else
+						player.sendStatusMessage(new TextComponentTranslation("baphomet.alreadyhascontract", I18n.format(ep.getCurses().stream().filter(c -> c instanceof Contract).findFirst().get().getRegistryName().toString().replace(":", "."))), true);
 				} else player.sendStatusMessage(new TextComponentTranslation("baphomet.lowlevel"), true);
 			} else player.sendStatusMessage(new TextComponentTranslation("baphomet.notpledged"), true);
 		}
