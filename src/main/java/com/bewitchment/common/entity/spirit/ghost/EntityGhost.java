@@ -82,7 +82,7 @@ public class EntityGhost extends ModEntityMob {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (!world.isRemote && world.isDaytime() && canDespawn()) setDead();
+		if (!world.isRemote && world.isDaytime() && !world.isRaining() && canDespawn()) setDead();
 	}
 
 
