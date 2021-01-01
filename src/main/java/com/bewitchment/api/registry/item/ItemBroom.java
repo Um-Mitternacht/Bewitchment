@@ -15,7 +15,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -53,9 +52,6 @@ public class ItemBroom extends Item {
 					entity.setPositionAndUpdate(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
 					entity.rotationYaw = player.rotationYaw;
 					entity.rotationPitch = player.rotationPitch;
-
-					MinecraftServer server = world.getMinecraftServer();
-					if (server != null) entity.setCustomNameTag(server.getServerOwner());
 
 					if (this == ModObjects.dragons_blood_broom && player.getHeldItem(hand).hasTagCompound()) {
 						String boundSigil = player.getHeldItem(hand).getTagCompound().getString("sigil");
