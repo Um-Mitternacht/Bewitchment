@@ -17,6 +17,6 @@ public class BlockTorchwood extends BlockBushSpreading {
 
 	@Override
 	public boolean canSustainBush(IBlockState state) {
-		return super.canSustainBush(state) || state.getMaterial() == Material.ROCK || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.SAND;
+		return super.canSustainBush(state) || state.getMaterial() == Material.ROCK || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.SAND || state.getMaterial() == Material.GRASS;
 	}
 }
