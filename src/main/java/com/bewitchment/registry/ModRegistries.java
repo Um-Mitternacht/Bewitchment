@@ -9,7 +9,6 @@ import com.bewitchment.api.registry.*;
 import com.bewitchment.common.block.BlockCandleBase;
 import com.bewitchment.common.block.BlockDragonsBloodLog;
 import com.bewitchment.common.block.BlockStatue;
-import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.common.block.tile.entity.TileEntityDragonsBlood;
 import com.bewitchment.common.block.tile.entity.TileEntityPoppetShelf;
 import com.bewitchment.common.block.tile.entity.TileEntitySiphoningFlower;
@@ -85,10 +84,6 @@ public class ModRegistries {
 			}
 		} catch (Exception ignored) {
 		}
-		Bewitchment.proxy.ignoreProperty(ModObjects.embergrass, BlockBushSpreading.TIMES_SPREAD);
-		Bewitchment.proxy.ignoreProperty(ModObjects.torchwood, BlockBushSpreading.TIMES_SPREAD);
-		Bewitchment.proxy.ignoreProperty(ModObjects.blue_ink_cap, BlockBushSpreading.TIMES_SPREAD);
-		Bewitchment.proxy.ignoreProperty(ModObjects.frostflower, BlockBushSpreading.TIMES_SPREAD);
 		Bewitchment.proxy.ignoreProperty(ModObjects.cypress_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.elder_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
 		Bewitchment.proxy.ignoreProperty(ModObjects.juniper_sapling, BlockSapling.STAGE, BlockSapling.TYPE);
