@@ -2,6 +2,7 @@ package com.bewitchment.common.block.plants;
 
 import com.bewitchment.common.block.plants.util.BlockBushSpreading;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,6 +26,11 @@ public class BlockEmbergrass extends BlockBushSpreading {
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState p_getBoundingBox_1_, IBlockAccess p_getBoundingBox_2_, BlockPos p_getBoundingBox_3_) {
 		return AABB;
+	}
+
+	@Override
+	public boolean canSustainBush(IBlockState state) {
+		return super.canSustainBush(state) || state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND;
 	}
 
 	@Override
