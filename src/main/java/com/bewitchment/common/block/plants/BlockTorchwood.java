@@ -1,6 +1,7 @@
 package com.bewitchment.common.block.plants;
 
 import com.bewitchment.common.block.plants.util.BlockBushSpreading;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 
@@ -11,6 +12,7 @@ public class BlockTorchwood extends BlockBushSpreading {
 	public BlockTorchwood() {
 		super("torchwood");
 		setLightLevel(0.7f);
+		setSoundType(SoundType.WOOD);
 	}
 
 	@Override
