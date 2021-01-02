@@ -26,7 +26,7 @@ public class BlockBushSpreading extends BlockBush implements IGrowable, IPlantab
 
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return true;
+		return false;
 	}
 
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
