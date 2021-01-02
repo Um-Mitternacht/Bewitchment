@@ -30,12 +30,11 @@ public class BlockBushSpreading extends BlockBush implements IGrowable, IPlantab
 	}
 
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return true;
+		return false;
 	}
 
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-
 	}
 
 	@Override
