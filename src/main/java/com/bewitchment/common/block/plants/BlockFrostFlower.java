@@ -27,6 +27,6 @@ public class BlockFrostFlower extends BlockBushSpreading {
 
 	@Override
 	public boolean canSustainBush(IBlockState state) {
-		return super.canSustainBush(state) || state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND;
+		return super.canSustainBush(state) || state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.SNOW || state.getMaterial() == Material.CRAFTED_SNOW;
 	}
 }
