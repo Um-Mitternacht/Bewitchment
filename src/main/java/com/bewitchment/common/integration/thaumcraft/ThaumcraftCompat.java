@@ -318,8 +318,6 @@ public class ThaumcraftCompat implements IConditionFactory {
 		register.registerObjectTag(new ItemStack(ModObjects.juniper_tea), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MAGIC, 3).add(Aspect.WATER, 3).add(Aspect.VOID, 3));
 		register.registerObjectTag(new ItemStack(ModObjects.elderberry_jelly), new AspectList().add(Aspect.PLANT, 3).add(Aspect.MIND, 3).add(Aspect.ALCHEMY, 3));
 
-		register.registerObjectTag(new ItemStack(ModObjects.cleaver_sword), new AspectList().add(DEMON, 6).add(Aspect.AVERSION, 6).add(Aspect.FIRE, 6));
-
 		//Fumes
 		register.registerObjectTag(new ItemStack(ModObjects.demonic_elixir), new AspectList().add(DEMON, 6).add(Aspect.FIRE, 6));
 		register.registerObjectTag(new ItemStack(ModObjects.cleansing_balm), new AspectList().add(Aspect.PROTECT, 6).add(Aspect.AURA, 6));
