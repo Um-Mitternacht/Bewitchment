@@ -28,6 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class EntityBafometyr extends ModEntityMob {
 	public int flameTimer;
+	public int attackTimer = 0;
 
 	public EntityBafometyr(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/bafometyr"));
@@ -48,6 +49,7 @@ public class EntityBafometyr extends ModEntityMob {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		flameTimer = (flameTimer + 1) % 8;
+		if (attackTimer > 0) attackTimer--;
 		if (getAttackTarget() != null) {
 			EntityLivingBase player = getAttackTarget();
 			boolean launchFireball = ticksExisted % 80 > 5;
@@ -60,7 +62,8 @@ public class EntityBafometyr extends ModEntityMob {
 				world.playEvent(null, 1018, new BlockPos((int) this.posX, (int) this.posY, (int) this.posZ), 0);
 				EntitySmallFireball entitysmallfireball = new EntitySmallFireball(world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
 				entitysmallfireball.posY = posY + (double) (height / 2.0F) + 0.5D;
-				this.swingArm(EnumHand.MAIN_HAND);
+				attackTimer = 40;
+				world.setEntityState(this, (byte) 4);
 				world.spawnEntity(entitysmallfireball);
 			}
 		}
@@ -83,11 +86,18 @@ public class EntityBafometyr extends ModEntityMob {
 
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
-		if (entityIn instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityIn;
-			player.setFire(25);
+		if (entityIn instanceof EntityLivingBase) {
+			EntityLivingBase base = (EntityLivingBase) entityIn;
+			this.swingArm(EnumHand.MAIN_HAND);
+			base.setFire(25);
 		}
 		return super.attackEntityAsMob(entityIn);
+	}
+
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 40;
+		else super.handleStatusUpdate(id);
 	}
 
 	@Override

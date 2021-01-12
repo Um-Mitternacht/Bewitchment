@@ -1,5 +1,6 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
+import com.bewitchment.common.entity.spirit.demon.EntityBafometyr;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
@@ -256,6 +257,7 @@ public class ModelBafometyr extends ModelBiped {
 
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netheadYaw, float headPitch, float scaleFactor, Entity entity) {
+		EntityBafometyr bafometyr = (EntityBafometyr) entity;
 		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
 		this.head.rotateAngleY = netheadYaw * 0.017453292F;
 
@@ -354,6 +356,12 @@ public class ModelBafometyr extends ModelBiped {
 			modelrenderer.rotateAngleX = (float) ((double) modelrenderer.rotateAngleX - ((double) f2 * 1.2D + (double) f3));
 			modelrenderer.rotateAngleY += this.body.rotateAngleY * 2.0F;
 			modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
+		}
+
+		int i = bafometyr.attackTimer;
+		if (i > 0) {
+			this.rightArm.rotateAngleZ = 2.15F;
+			this.rightArm.rotateAngleY = 0.75F;
 		}
 
 
