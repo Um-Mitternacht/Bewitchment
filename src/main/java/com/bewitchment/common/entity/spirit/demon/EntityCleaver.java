@@ -156,10 +156,10 @@ public class EntityCleaver extends ModEntityMob {
 		if (flag) {
 			if (getAttackTarget() != null) {
 				this.applyEnchantments(this, entityIn);
-				attackTimer = 10;
 				int i = this.rand.nextInt(100);
-				world.setEntityState(this, (byte) 4);
 				if (entityIn instanceof EntityLivingBase) {
+					attackTimer = 10;
+					world.setEntityState(this, (byte) 4);
 					if (i < 3) {
 						((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 3, false, false));
 						entityIn.motionZ -= 1.5;
