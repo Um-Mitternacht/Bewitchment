@@ -1,5 +1,6 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
+import com.bewitchment.common.entity.spirit.demon.EntityCleaver;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
@@ -268,6 +269,7 @@ public class ModelCleaver extends ModelBiped {
 	@SuppressWarnings("incomplete-switch")
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
 		boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
+		EntityCleaver cleaver = (EntityCleaver) entityIn;
 		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
 
 		if (flag) {
@@ -384,6 +386,11 @@ public class ModelCleaver extends ModelBiped {
 			this.bipedLeftArm.rotateAngleY = 0.1F + this.bipedHead.rotateAngleY;
 			this.bipedRightArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
 			this.bipedLeftArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
+		}
+
+		int i = cleaver.attackTimer;
+		if (i > 0) {
+			this.lowerJaw.rotateAngleX = 0.75f;
 		}
 
 		copyModelAngles(this.bipedHead, this.bipedHeadwear);

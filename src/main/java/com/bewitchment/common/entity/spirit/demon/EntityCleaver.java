@@ -83,6 +83,7 @@ public class EntityCleaver extends ModEntityMob {
 	}
 
 	public void onEntityUpdate() {
+		if (attackTimer > 0) attackTimer--;
 		int i = this.getAir();
 		super.onEntityUpdate();
 
