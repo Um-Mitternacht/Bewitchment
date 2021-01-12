@@ -154,20 +154,21 @@ public class EntityCleaver extends ModEntityMob {
 		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
 		if (flag) {
-			this.applyEnchantments(this, entityIn);
-			attackTimer = 10;
-			int i = this.rand.nextInt(100);
-			world.setEntityState(this, (byte) 4);
-			if (entityIn instanceof EntityLivingBase) {
-				if (i < 3) {
-					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 3, false, false));
-					entityIn.motionZ -= 1.5;
-					if (entityIn instanceof EntityPlayer)
-						((EntityPlayerMP) entityIn).connection.sendPacket(new SPacketEntityVelocity(entityIn));
+			if (getAttackTarget() != null) {
+				this.applyEnchantments(this, entityIn);
+				attackTimer = 10;
+				int i = this.rand.nextInt(100);
+				world.setEntityState(this, (byte) 4);
+				if (entityIn instanceof EntityLivingBase) {
+					if (i < 3) {
+						((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 3, false, false));
+						entityIn.motionZ -= 1.5;
+						if (entityIn instanceof EntityPlayer)
+							((EntityPlayerMP) entityIn).connection.sendPacket(new SPacketEntityVelocity(entityIn));
+					}
 				}
 			}
 		}
-
 		return flag;
 	}
 
