@@ -1,5 +1,6 @@
 package com.bewitchment.client.model.entity.spirit.demon;
 
+import com.bewitchment.common.entity.spirit.demon.EntityHellhound;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -243,6 +244,7 @@ public class ModelHellhound extends ModelBase {
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		float swingModifier = 0.9f;
+		EntityHellhound hellhound = (EntityHellhound) entity;
 		if (entity instanceof EntityLivingBase) {
 			this.leftHindleg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingModifier * limbSwingAmount - 0f;
 			this.rightHindleg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingModifier * limbSwingAmount - 0f;
@@ -252,6 +254,13 @@ public class ModelHellhound extends ModelBase {
 			tail00.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
 			boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
 			this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+
+			lowerJaw.rotateAngleX = 0;
+
+			int i = hellhound.attackTimer;
+			if (i > 0) {
+				lowerJaw.rotateAngleX = 0.55f;
+			}
 
 			if (flag) {
 				this.head.rotateAngleX = -((float) Math.PI / 4F);

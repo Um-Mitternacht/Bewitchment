@@ -4,6 +4,7 @@ import com.bewitchment.Bewitchment;
 import com.bewitchment.api.BewitchmentAPI;
 import com.bewitchment.common.entity.util.ModEntityMob;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -28,6 +29,8 @@ import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class EntityBlackDog extends ModEntityMob {
+	public int attackTimer = 0;
+
 	public EntityBlackDog(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/black_dog"));
 		setSize(1.08f, 1.53f);
@@ -91,6 +94,24 @@ public class EntityBlackDog extends ModEntityMob {
 	}
 
 	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 5;
+		else super.handleStatusUpdate(id);
+	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		boolean flag = super.attackEntityAsMob(entity);
+		if (flag) {
+			if (entity instanceof EntityLivingBase) {
+				attackTimer = 5;
+				world.setEntityState(this, (byte) 4);
+			}
+		}
+		return flag;
+	}
+
+	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		boolean flag = super.attackEntityFrom(source, amount);
 		if (flag) {
@@ -139,6 +160,7 @@ public class EntityBlackDog extends ModEntityMob {
 
 
 	public void onEntityUpdate() {
+		if (attackTimer > 0) attackTimer--;
 		int i = this.getAir();
 		super.onEntityUpdate();
 

@@ -1,5 +1,6 @@
 package com.bewitchment.client.model.entity.spirit.ghost;
 
+import com.bewitchment.common.entity.spirit.ghost.EntityBlackDog;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -123,6 +124,7 @@ public class ModelBlackDog extends ModelBase {
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		float swingModifier = 0.9f;
+		EntityBlackDog blackDog = (EntityBlackDog) entity;
 		if (entity instanceof EntityLivingBase) {
 			this.leftHindleg.rotateAngleX = MathHelper.sin(limbSwing * 0.8665F + (float) Math.PI) * swingModifier * limbSwingAmount - 0f;
 			this.rightHindleg.rotateAngleX = MathHelper.cos(limbSwing * 0.8665F) * swingModifier * limbSwingAmount - 0f;
@@ -132,6 +134,13 @@ public class ModelBlackDog extends ModelBase {
 			tail.rotateAngleY = MathHelper.sin(limbSwing * 0.25f) * 0.65F * limbSwingAmount + 0f;
 			boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
 			this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+
+			lowerJaw.rotateAngleX = 0;
+
+			int i = blackDog.attackTimer;
+			if (i > 0) {
+				lowerJaw.rotateAngleX = 0.45f;
+			}
 
 			if (flag) {
 				this.head.rotateAngleX = -((float) Math.PI / 4F);

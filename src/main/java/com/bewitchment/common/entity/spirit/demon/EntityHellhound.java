@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 
 @SuppressWarnings({"NullableProblems", "ConstantConditions"})
 public class EntityHellhound extends ModEntityMob {
+	public int attackTimer = 0;
+
 	public EntityHellhound(World world) {
 		super(world, new ResourceLocation(Bewitchment.MODID, "entities/hellhound"));
 		setSize(1.0f, 1.25f);
@@ -87,11 +89,19 @@ public class EntityHellhound extends ModEntityMob {
 		boolean flag = super.attackEntityAsMob(entity);
 		if (flag) {
 			if (entity instanceof EntityLivingBase) {
+				attackTimer = 5;
+				world.setEntityState(this, (byte) 4);
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1, false, false));
 				entity.setFire(3);
 			}
 		}
 		return flag;
+	}
+
+	@Override
+	public void handleStatusUpdate(byte id) {
+		if (id == 4) attackTimer = 5;
+		else super.handleStatusUpdate(id);
 	}
 
 	@Override
@@ -117,6 +127,7 @@ public class EntityHellhound extends ModEntityMob {
 		tasks.addTask(1, new EntityAIAttackMelee(this, 0.5, false));
 		tasks.addTask(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 5, 1));
 		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
 		tasks.addTask(3, new EntityAIWander(this, getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * (2 / 3d)));
 		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
@@ -124,6 +135,7 @@ public class EntityHellhound extends ModEntityMob {
 	}
 
 	public void onEntityUpdate() {
+		if (attackTimer > 0) attackTimer--;
 		int i = this.getAir();
 		super.onEntityUpdate();
 

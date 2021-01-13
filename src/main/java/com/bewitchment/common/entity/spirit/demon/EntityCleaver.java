@@ -101,7 +101,7 @@ public class EntityCleaver extends ModEntityMob {
 
 	@Override
 	public void handleStatusUpdate(byte id) {
-		if (id == 4) attackTimer = 10;
+		if (id == 4) attackTimer = 20;
 		else super.handleStatusUpdate(id);
 	}
 
@@ -158,7 +158,7 @@ public class EntityCleaver extends ModEntityMob {
 				this.applyEnchantments(this, entityIn);
 				int i = this.rand.nextInt(100);
 				if (entityIn instanceof EntityLivingBase) {
-					attackTimer = 10;
+					attackTimer = 20;
 					world.setEntityState(this, (byte) 4);
 					if (i < 3) {
 						((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 3, false, false));
