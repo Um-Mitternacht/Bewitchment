@@ -104,6 +104,7 @@ public class EntityCleaver extends ModEntityMob {
 	@Override
 	public void handleStatusUpdate(byte id) {
 		if (id == 4) attackTimer = 20;
+		if (id == 5) attackTimer = 2147483646;
 		else super.handleStatusUpdate(id);
 	}
 
@@ -160,7 +161,7 @@ public class EntityCleaver extends ModEntityMob {
 			this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2000, 0));
 			world.playSound(null, getPosition(), ModSounds.CLEAVER_IDLE, SoundCategory.HOSTILE, 1, 1);
 			attackTimer = 2147483646;
-			world.setEntityState(this, (byte) 4);
+			world.setEntityState(this, (byte) 5);
 		}
 	}
 
