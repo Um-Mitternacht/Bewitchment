@@ -388,6 +388,7 @@ public class ModelCleaver extends ModelBiped {
 			this.bipedLeftArm.rotateAngleX = -((float) Math.PI / 2F) + this.bipedHead.rotateAngleX;
 		}
 
+		this.lowerJaw.rotateAngleX = 0.0F;
 		int i = cleaver.attackTimer;
 		if (i > 0) {
 			this.lowerJaw.rotateAngleX = 0.75f;
