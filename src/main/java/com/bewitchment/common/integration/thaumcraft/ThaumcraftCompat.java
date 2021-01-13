@@ -375,6 +375,9 @@ public class ThaumcraftCompat implements IConditionFactory {
 		register.registerObjectTag(new ItemStack(ModObjects.fortunes_favor), new AspectList().add(Aspect.DESIRE, 16).add(Aspect.EARTH, 16).add(Aspect.MAGIC, 16));
 		register.registerObjectTag(new ItemStack(ModObjects.gluttons_sash), new AspectList().add(Aspect.DESIRE, 16).add(DEMON, 16).add(Aspect.MAGIC, 16));
 
+		register.registerObjectTag(new ItemStack(ModObjects.silver_arrow), new AspectList().add(MOON, 2).add(Aspect.AVERSION, 2).add(Aspect.METAL, 2));
+		register.registerObjectTag(new ItemStack(ModObjects.cold_iron_arrow), new AspectList().add(Aspect.COLD, 2).add(Aspect.AVERSION, 2).add(Aspect.METAL, 2));
+
 		register.registerObjectTag(new ItemStack(ModObjects.skeleton_key), new AspectList().add(Aspect.DESIRE, 16).add(DEMON, 16).add(Aspect.MAGIC, 16));
 
 		register.registerObjectTag(new ItemStack(ModObjects.hecates_visage), new AspectList().add(Aspect.AURA, 16).add(Aspect.FIRE, 16).add(Aspect.MAGIC, 16));
