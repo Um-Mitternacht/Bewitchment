@@ -158,6 +158,8 @@ public class EntityCleaver extends ModEntityMob {
 		if (this.getHealth() / this.getMaxHealth() < 0.35 && !(ticksExisted % 200 > 5)) {
 			this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 1));
 			world.playSound(null, getPosition(), ModSounds.CLEAVER_IDLE, SoundCategory.HOSTILE, 1, 1);
+			attackTimer = 80;
+			world.setEntityState(this, (byte) 4);
 		}
 	}
 
