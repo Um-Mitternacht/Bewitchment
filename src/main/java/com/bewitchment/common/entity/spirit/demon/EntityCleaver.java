@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemShield;
@@ -22,6 +23,7 @@ import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
@@ -148,6 +150,15 @@ public class EntityCleaver extends ModEntityMob {
 	@Override
 	protected SoundEvent getDeathSound() {
 		return ModSounds.CLEAVER_DEATH;
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (this.getHealth() / this.getMaxHealth() < 0.35 && !(ticksExisted % 200 > 5)) {
+			this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 1));
+			world.playSound(null, getPosition(), ModSounds.CLEAVER_IDLE, SoundCategory.HOSTILE, 1, 1);
+		}
 	}
 
 	public boolean attackEntityAsMob(Entity entityIn) {
