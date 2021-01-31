@@ -51,7 +51,7 @@ repositories {
     maven { url "http://maven.tterrag.com" }
     maven { url "https://maven.blamejared.com" }
     maven { url "https://maven.mcmoddev.com/" }
-    maven { url "http://repo.spongepowered.org/maven" }
+    maven { url "https://repo.spongepowered.org/maven" }
     maven {
         name = "buildcraft"
         url = "https://mod-buildcraft.com/maven"
