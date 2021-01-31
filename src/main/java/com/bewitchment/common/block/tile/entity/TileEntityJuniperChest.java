@@ -47,7 +47,7 @@ public class TileEntityJuniperChest extends ModTileEntity implements ITickable {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing face) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, face);
+		return false;
 	}
 
 	@Override
