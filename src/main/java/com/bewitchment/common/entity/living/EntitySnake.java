@@ -5,6 +5,7 @@ import com.bewitchment.Util;
 import com.bewitchment.common.entity.spirit.demon.EntityFeuerwurm;
 import com.bewitchment.common.entity.util.ModEntityTameable;
 import com.bewitchment.registry.ModObjects;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -27,6 +28,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 @SuppressWarnings({"ConstantConditions"})
@@ -72,6 +74,10 @@ public class EntitySnake extends ModEntityTameable {
 			}
 		}
 		return super.processInteract(player, hand);
+	}
+
+	@Override
+	protected void playStepSound(BlockPos pos, Block blockIn) {
 	}
 
 	@Override

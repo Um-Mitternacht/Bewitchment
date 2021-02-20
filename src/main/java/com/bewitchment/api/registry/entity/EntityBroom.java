@@ -167,6 +167,11 @@ public abstract class EntityBroom extends Entity {
 		}
 	}
 
+	@Override
+	public boolean canRiderInteract() {
+		return true;
+	}
+
 	protected abstract float getSpeed();
 
 	protected abstract float getMaxSpeed();
