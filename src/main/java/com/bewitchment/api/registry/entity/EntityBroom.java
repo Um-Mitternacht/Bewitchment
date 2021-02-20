@@ -16,6 +16,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
@@ -142,6 +143,28 @@ public abstract class EntityBroom extends Entity {
 	@Override
 	public boolean canPassengerSteer() {
 		return true;
+	}
+
+	private Vec3d getRiderPosition() {
+		if (!this.getPassengers().isEmpty()) {
+			float distance = 0F;
+
+			double dx = Math.cos((this.rotationYaw + 90) * Math.PI / 180.0D) * distance;
+			double dz = Math.sin((this.rotationYaw + 90) * Math.PI / 180.0D) * distance;
+
+			return new Vec3d(this.posX + dx, this.posY + this.getMountedYOffset() + this.getPassengers().get(0).getYOffset(), this.posZ + dz);
+		} else {
+			return new Vec3d(this.posX, this.posY, this.posZ);
+		}
+	}
+
+	@Override
+	public void updatePassenger(Entity passenger) {
+		if (!this.getPassengers().isEmpty()) {
+			Vec3d riderPos = this.getRiderPosition();
+
+			this.getPassengers().get(0).setPosition(riderPos.x, riderPos.y, riderPos.z);
+		}
 	}
 
 	protected abstract float getSpeed();
