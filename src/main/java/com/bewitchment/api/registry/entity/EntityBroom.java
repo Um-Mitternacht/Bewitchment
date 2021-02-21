@@ -27,6 +27,12 @@ public abstract class EntityBroom extends Entity {
 	private static final Field jumping = ReflectionHelper.findField(EntityLivingBase.class, "isJumping", "field_70703_bu");
 
 	public ItemStack item;
+	private int lerpSteps;
+	private double lerpX;
+	private double lerpY;
+	private double lerpZ;
+	private double lerpYaw;
+	private double lerpPitch;
 	private boolean canFly = true;
 
 	public EntityBroom(World world) {
@@ -41,7 +47,11 @@ public abstract class EntityBroom extends Entity {
 
 	@Override
 	public void onUpdate() {
+		this.prevPosX = this.posX;
+		this.prevPosY = this.posY;
+		this.prevPosZ = this.posZ;
 		super.onUpdate();
+		this.tickLerp();
 		Entity rider = getControllingPassenger();
 		if (rider instanceof EntityPlayer) {
 			rotationYaw = rider.rotationYaw;
@@ -77,6 +87,43 @@ public abstract class EntityBroom extends Entity {
 			if (!world.isRemote && player instanceof EntityPlayerMP && player != getControllingPassenger())
 				Bewitchment.network.sendTo(new SyncBroom(this), (EntityPlayerMP) player);
 		}
+	}
+
+	@Override
+	protected void addPassenger(Entity passenger) {
+		super.addPassenger(passenger);
+		if (this.canPassengerSteer() && this.lerpSteps > 0) {
+			this.lerpSteps = 0;
+			this.posX = this.lerpX;
+			this.posY = this.lerpY;
+			this.posZ = this.lerpZ;
+			this.rotationYaw = (float) this.lerpYaw;
+			this.rotationPitch = (float) this.lerpPitch;
+		}
+	}
+
+	private void tickLerp() {
+		if (this.lerpSteps > 0 && !this.canPassengerSteer()) {
+			double newX = this.posX + ((this.lerpX - this.posX) / (double) this.lerpSteps);
+			double newY = this.posY + ((this.lerpY - this.posY) / (double) this.lerpSteps);
+			double newZ = this.posZ + ((this.lerpZ - this.posZ) / (double) this.lerpSteps);
+			double deltaYaw = MathHelper.wrapDegrees(this.lerpYaw - (double) this.rotationYaw);
+			this.rotationYaw = (float) ((double) this.rotationYaw + (deltaYaw / (double) this.lerpSteps));
+			this.rotationPitch = (float) ((double) this.rotationPitch + ((this.lerpPitch - (double) this.rotationPitch) / (double) this.lerpSteps));
+			this.lerpSteps--;
+			this.setPosition(newX, newY, newZ);
+			this.setRotation(this.rotationYaw, this.rotationPitch);
+		}
+	}
+
+	@Override
+	public void setPositionAndRotationDirect(double x, double y, double z, float yaw, float pitch, int posRotationIncrements, boolean teleport) {
+		this.lerpX = x;
+		this.lerpY = y;
+		this.lerpZ = z;
+		this.lerpYaw = yaw;
+		this.lerpPitch = pitch;
+		this.lerpSteps = 10;
 	}
 
 	@Override
