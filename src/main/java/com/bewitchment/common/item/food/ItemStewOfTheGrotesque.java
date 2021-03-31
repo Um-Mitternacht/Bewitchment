@@ -46,10 +46,10 @@ public class ItemStewOfTheGrotesque extends ItemFood {
 			IPledgeable boss = (IPledgeable) entities.get(0);
 			if (boss instanceof EntityBaphomet && player.getHeldItem(EnumHand.OFF_HAND).getItem() == ModObjects.pentacle) {
 				ExtendedWorld.pledgePlayerToDemon(world, player, boss);
-				world.playSound(player, 0.5, 0.5, 0.5, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.NEUTRAL, 1, 1);
+				player.world.playSound(null, player.getPosition(), SoundEvents.EVOCATION_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 1, 1);
 			} else if (boss instanceof EntityLeonard && player.getHeldItem(EnumHand.OFF_HAND).getItem() == Item.getItemFromBlock(ModObjects.green_candle)) {
 				ExtendedWorld.pledgePlayerToDemon(world, player, boss);
-				world.playSound(player, 0.5, 0.5, 0.5, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.NEUTRAL, 1, 1);
+				player.world.playSound(null, player.getPosition(), SoundEvents.EVOCATION_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 1, 1);
 			}
 		}
 	}
