@@ -12,11 +12,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
@@ -44,8 +46,10 @@ public class ItemStewOfTheGrotesque extends ItemFood {
 			IPledgeable boss = (IPledgeable) entities.get(0);
 			if (boss instanceof EntityBaphomet && player.getHeldItem(EnumHand.OFF_HAND).getItem() == ModObjects.pentacle) {
 				ExtendedWorld.pledgePlayerToDemon(world, player, boss);
+				world.playSound(player, 0.5, 0.5, 0.5, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.NEUTRAL, 1, 1);
 			} else if (boss instanceof EntityLeonard && player.getHeldItem(EnumHand.OFF_HAND).getItem() == Item.getItemFromBlock(ModObjects.green_candle)) {
 				ExtendedWorld.pledgePlayerToDemon(world, player, boss);
+				world.playSound(player, 0.5, 0.5, 0.5, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.NEUTRAL, 1, 1);
 			}
 		}
 	}
