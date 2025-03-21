@@ -151,6 +151,10 @@ public class Util {
 		return stack0.isEmpty() || (OreDictionary.itemMatches(stack0, stack1, true) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
 	}
 
+	public static boolean canMergeNonEmpty(ItemStack stack0, ItemStack stack1) {
+		return (OreDictionary.itemMatches(stack0, stack1, true) && stack0.getCount() + stack1.getCount() <= stack0.getMaxStackSize());
+	}
+
 	public static boolean hasBauble(EntityLivingBase living, IBauble item) {
 		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;

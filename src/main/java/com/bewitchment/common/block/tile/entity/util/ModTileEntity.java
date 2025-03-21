@@ -46,6 +46,22 @@ public abstract class ModTileEntity extends TileEntity {
 		return hasEmpty ? getFirstEmptySlot(handler) : -1;
 	}
 
+	public static int canMerge(ItemStackHandler handler, ItemStack stack) {
+		for (int i = 0; i < handler.getSlots(); i++) {
+			if (Util.canMergeNonEmpty(handler.getStackInSlot(i), stack))
+				return i;
+		}
+		return -1;
+	}
+
+	public static int getEmptySlots(ItemStackHandler handler) {
+		int emptyCount = 0;
+		for (int i = 0; i < handler.getSlots(); i++) {
+			if (handler.getStackInSlot(i).isEmpty()) emptyCount++;
+		}
+		return emptyCount;
+	}
+
 	public static void clear(ItemStackHandler handler) {
 		for (int i = 0; i < handler.getSlots(); i++) handler.setStackInSlot(i, ItemStack.EMPTY);
 	}
