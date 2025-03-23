@@ -42,7 +42,7 @@ public class CurseParanoia extends Curse {
         int i = rand.nextInt(100);
         if (timer > 0) timer--;
         if (i < 10 && timer == 0) {
-            switch (rand.nextInt(35)) {
+            switch (rand.nextInt(45)) {
                 case 0:
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
                     timer = 1150;
@@ -177,6 +177,72 @@ public class CurseParanoia extends Curse {
                     break;
                 case 33:
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PRESSPLATE_CLICK_ON, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 34:
+                    world.playSound(null, pos, ModSounds.CLEAVER_IDLE, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, ModSounds.BAFOMETYR_IDLE, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 35:
+                    world.playSound(null, pos, ModSounds.BROOM_SWEEP, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 36:
+                    world.playSound(null, pos, ModSounds.BROOM_SWEEP, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 37:
+                    world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, ModSounds.BROOM_SWEEP, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 38:
+                    world.playSound(null, pos, ModSounds.OWL_HOOT, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 39:
+                    world.playSound(null, pos, ModSounds.TOAD_IDLE, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 40:
+                    world.playSound(null, pos, ModSounds.RAVEN_CRY, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 41:
+                    world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_GHAST_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 42:
+                    world.playSound(null, pos, SoundEvents.ENTITY_WOLF_GROWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 43:
+                    world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 44:
+                    world.playSound(null, pos, SoundEvents.ENTITY_WOLF_GROWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_BREAK_DOOR_WOOD, SoundCategory.HOSTILE, 1, 1);
                     timer = 1150;
                     break;
                 default:
