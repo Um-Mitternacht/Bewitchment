@@ -78,15 +78,15 @@ configurations {
 }
 
 dependencies {
-    deobfProvided "mezz.jei:jei_1.12.2:4.16.1.302"
+    deobfProvided "mezz.jei:jei_1.12.2:4.16.1.1013"
     deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
-    deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.19"
-    deobfProvided "vazkii.botania:Botania:r1.10-363.119"
+    deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.29"
+    deobfProvided "vazkii.botania:Botania:r1.10-364.4"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:9.0.1"
-    deobfProvided "curse.maven:jeid-296289:2919737"
+    deobfProvided "curse.maven:jeid-296289:3581715"
     deobfProvided "curse.maven:quark-243121:2924091"
     deobfProvided "curse.maven:autoreglib-250363:2746011"
-    deobfProvided "curse.maven:mowzies-mobs-250498:3048685"
+    deobfProvided "curse.maven:mowzies-mobs-250498:5218945"
     deobfProvided "curse.maven:chisel-235279:2915375"
     deobfProvided "curse.maven:ctm-267602:2915363"
     deobfProvided "curse.maven:consecration-284001:3010339"
@@ -94,13 +94,13 @@ dependencies {
     deobfProvided "curse.maven:elementaristics-302668:2826887"
     deobfProvided "curse.maven:hwyla-253449:2568751"
     deobfProvided "curse.maven:wawla-what-are-we-looking-at-224712:2916368"
-    deobfProvided "curse.maven:just-enough-resources-jer-240630:2728585"
+    deobfProvided "curse.maven:just-enough-resources-jer-240630:4440935"
     deobfProvided "curse.maven:coveted-mobs-381672:3026939"
     deobfProvided "curse.maven:serene-seasons-291874:2799213"
     deobfProvided "curse.maven:tough-as-nails-246391:2710969"
-    deobfProvided "curse.maven:llibrary-243298:2504999"
+    deobfProvided "curse.maven:llibrary-243298:3116493"
     deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2"
-    deobfCompile "vazkii.patchouli:Patchouli:1.0-21.3"
+    deobfCompile "vazkii.patchouli:Patchouli:1.0-213.6"
     implementation 'org.jetbrains:annotations:20.1.0'
     shade('org.spongepowered:mixin:0.8') {
         transitive = false
