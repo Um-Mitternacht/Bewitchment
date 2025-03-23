@@ -53,17 +53,8 @@ repositories {
     maven { url "https://mmdmaven.blamejared.com/" }
     maven { url "https://maven.mcmoddev.com/" }
     maven { url "https://repo.spongepowered.org/maven" }
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        forRepositories(fg.repository) // Only add this if you're using ForgeGradle, otherwise remove this line
-        filter {
-            includeGroup "maven.modrinth"
-        }
+    maven {
+        url = "https://api.modrinth.com/maven"
     }
     maven {
         name = "buildcraft"
