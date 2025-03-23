@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         jcenter()
+
         maven { url = "http://files.minecraftforge.net/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven {
@@ -92,7 +93,7 @@ dependencies {
     deobfProvided "curse.maven:consecration-284001:3010339"
     deobfProvided "curse.maven:miskatonic-mysteries-349934:2835243"
     deobfProvided "curse.maven:elementaristics-302668:2826887"
-    deobfProvided ("maven.modrinth:hwyla:1.8.26-B41")
+    deobfProvided("maven.modrinth:hwyla:1.8.26-B41")
     deobfProvided "curse.maven:wawla-what-are-we-looking-at-224712:2916368"
     deobfProvided "curse.maven:just-enough-resources-jer-240630:4440935"
     deobfProvided "curse.maven:coveted-mobs-381672:3026939"
