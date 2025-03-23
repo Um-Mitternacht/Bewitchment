@@ -101,7 +101,7 @@ dependencies {
     deobfProvided "curse.maven:tough-as-nails-246391:2710969"
     deobfProvided "curse.maven:llibrary-243298:3116493"
     deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2"
-    deobfCompile "vazkii.patchouli:Patchouli:1.0-213.6"
+    deobfCompile "vazkii.patchouli:Patchouli:1.0-23.6"
     implementation 'org.jetbrains:annotations:20.1.0'
     shade('org.spongepowered:mixin:0.8') {
         transitive = false
