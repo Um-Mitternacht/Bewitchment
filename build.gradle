@@ -1,6 +1,8 @@
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
+        mavenCentral()
 
         maven { url = "http://files.minecraftforge.net/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
@@ -18,9 +20,16 @@ buildscript {
         classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'com.wynprice.cursemaven'
-apply plugin: 'org.spongepowered.mixin'
+
+plugins {
+    id 'net.minecrell.licenser' version '0.4'
+    id 'org.ajoberstar.grgit' version '3.1.1'
+    id 'de.undercouch.download' version '3.3.0'
+    id 'com.github.ben-manes.versions' version '0.22.0'
+    id 'org.spongepowered.mixin'
+    id 'com.wynprice.cursemaven'
+    id 'net.minecraftforge.gradle.forge'
+}
 
 boolean isFat = hasProperty("isFat")
 String buildType = (isFat ? "FAT" : "THIN")
