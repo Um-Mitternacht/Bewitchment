@@ -15,7 +15,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
         classpath 'com.wynprice.cursemaven:CurseMaven:2.1.5'
         classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
@@ -28,7 +28,7 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.22.0'
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'com.wynprice.cursemaven'
 apply plugin: 'org.spongepowered.mixin'
 
