@@ -112,3 +112,14 @@ refresh_workspace.bat
 *.iws___jb_old___
 *.java___jb_old___
 *.java___jb_tmp___
+.project
+/mdk/.gradle/
+/mdk/.settings/
+/mdk/bin/
+/mdk/build/
+/mdk/crash-reports/
+/mdk/logs/
+/mdk/resourcepacks/
+/mdk/run/
+*.launch
+*.classpath
