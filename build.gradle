@@ -34,7 +34,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2847"
+    version = "1.12.2-14.23.5.2860"
     runDir = "run"
     mappings = "stable_39"
     clientRunArgs += "--username=Bewitchment"
@@ -82,7 +82,7 @@ dependencies {
     deobfProvided "mezz.jei:jei_1.12.2:4.16.1.1013"
     deobfProvided "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
     deobfProvided "dynamictrees:DynamicTrees:1.12.2:0.9.29"
-    deobfProvided "vazkii.botania:Botania:r1.10-364.4"
+    deobfProvided "vazkii.botania:Botania:r1.10-364"
     deobfProvided "betteranimalsplus:betteranimalsplus:1.12.2:9.0.1"
     deobfProvided "curse.maven:jeid-296289:3581715"
     deobfProvided "curse.maven:quark-243121:2924091"
