@@ -50,6 +50,7 @@ repositories {
     maven { url = "https://minecraft.curseforge.com/api/maven" }
     maven { url "http://maven.tterrag.com" }
     maven { url "https://maven.blamejared.com" }
+    maven { url "https://mmdmaven.blamejared.com/" }
     maven { url "https://maven.mcmoddev.com/" }
     maven { url "https://repo.spongepowered.org/maven" }
     maven {
