@@ -42,7 +42,7 @@ public class CurseParanoia extends Curse {
         int i = rand.nextInt(100);
         if (timer > 0) timer--;
         if (i < 10 && timer == 0) {
-            switch (rand.nextInt(45)) {
+            switch (rand.nextInt(60)) {
                 case 0:
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
                     timer = 1150;
@@ -226,6 +226,7 @@ public class CurseParanoia extends Curse {
                     world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_GHAST_AMBIENT, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+                    world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_FLAP, SoundCategory.HOSTILE, 1, 1);
                     timer = 1150;
                     break;
                 case 42:
@@ -243,6 +244,66 @@ public class CurseParanoia extends Curse {
                     world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_BREAK_DOOR_WOOD, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 45:
+                    world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 46:
+                    world.playSound(null, pos, SoundEvents.BLOCK_CLOTH_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 47:
+                    world.playSound(null, pos, SoundEvents.BLOCK_CHEST_CLOSE, SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 48:
+                    world.playSound(null, pos, SoundEvents.BLOCK_FENCE_GATE_CLOSE,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 49:
+                    world.playSound(null, pos, SoundEvents.BLOCK_GRAVEL_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 50:
+                    world.playSound(null, pos, SoundEvents.BLOCK_GRASS_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 51:
+                    world.playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 52:
+                    world.playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 53:
+                    world.playSound(null, pos, SoundEvents.BLOCK_LADDER_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 54:
+                    world.playSound(null, pos, SoundEvents.BLOCK_SAND_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 55:
+                    world.playSound(null, pos, SoundEvents.BLOCK_SLIME_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 56:
+                    world.playSound(null, pos, SoundEvents.BLOCK_SNOW_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 57:
+                    world.playSound(null, pos, SoundEvents.ENTITY_RABBIT_HURT,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 58:
+                    world.playSound(null, pos, SoundEvents.ENTITY_POLAR_BEAR_WARNING,  SoundCategory.HOSTILE, 1, 1);
+                    timer = 1150;
+                    break;
+                case 59:
+                    world.playSound(null, pos, SoundEvents.ENTITY_PLAYER_BURP,  SoundCategory.HOSTILE, 1, 1);
                     timer = 1150;
                     break;
                 default:
