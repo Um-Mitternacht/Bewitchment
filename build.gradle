@@ -53,9 +53,17 @@ repositories {
     maven { url "https://mmdmaven.blamejared.com/" }
     maven { url "https://maven.mcmoddev.com/" }
     maven { url "https://repo.spongepowered.org/maven" }
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        forRepositories(fg.repository) // Only add this if you're using ForgeGradle, otherwise remove this line
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
     maven {
         name = "buildcraft"
@@ -93,7 +101,7 @@ dependencies {
     deobfProvided "curse.maven:consecration-284001:3010339"
     deobfProvided "curse.maven:miskatonic-mysteries-349934:2835243"
     deobfProvided "curse.maven:elementaristics-302668:2826887"
-    deobfProvided "curse.maven:hwyla-253449:2568751"
+    deobfProvided ("maven.modrinth:hwyla:1.8.26-B41")
     deobfProvided "curse.maven:wawla-what-are-we-looking-at-224712:2916368"
     deobfProvided "curse.maven:just-enough-resources-jer-240630:4440935"
     deobfProvided "curse.maven:coveted-mobs-381672:3026939"
