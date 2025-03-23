@@ -12,47 +12,47 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe> {
-    public final List<Ingredient> input;
-    public final List<ItemStack> output;
+	public final List<Ingredient> input;
+	public final List<ItemStack> output;
 
-    public DistilleryRecipe(ResourceLocation name, List<Ingredient> input, List<ItemStack> output) {
-        if (input.size() > 6)
-            throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 6 at most.");
-        setRegistryName(name);
-        this.input = input;
-        this.output = output;
-    }
+	public DistilleryRecipe(ResourceLocation name, List<Ingredient> input, List<ItemStack> output) {
+		if (input.size() > 6)
+			throw new IllegalArgumentException("Input size for " + name.toString() + " is too big, must be 6 at most.");
+		setRegistryName(name);
+		this.input = input;
+		this.output = output;
+	}
 
-    public final boolean matches(ItemStackHandler input) {
-        return Util.areISListsEqual(this.input, input);
-    }
+	public final boolean matches(ItemStackHandler input) {
+		return Util.areISListsEqual(this.input, input);
+	}
 
-    public final boolean isValid(ItemStackHandler output) {
-        int emptySlotsNeeded = 0;
-        for (ItemStack stack : this.output) {
-            int mergeSlot = ModTileEntity.canMerge(output, stack);
-            if (mergeSlot == -1) {
-                emptySlotsNeeded++;
-            }
-        }
-        if (emptySlotsNeeded != 0) {
-            int emptySlotsAvailable = ModTileEntity.getEmptySlots(output);
-            return (emptySlotsNeeded <= emptySlotsAvailable);
-        }
-        return true;
-    }
+	public final boolean isValid(ItemStackHandler output) {
+		int emptySlotsNeeded = 0;
+		for (ItemStack stack : this.output) {
+			int mergeSlot = ModTileEntity.canMerge(output, stack);
+			if (mergeSlot == -1) {
+				emptySlotsNeeded++;
+			}
+		}
+		if (emptySlotsNeeded != 0) {
+			int emptySlotsAvailable = ModTileEntity.getEmptySlots(output);
+			return (emptySlotsNeeded <= emptySlotsAvailable);
+		}
+		return true;
+	}
 
-    public final void giveOutput(ItemStackHandler input, ItemStackHandler output) {
-        for (int i = 0; i < input.getSlots(); i++)
-            input.extractItem(i, 1, false);
+	public final void giveOutput(ItemStackHandler input, ItemStackHandler output) {
+		for (int i = 0; i < input.getSlots(); i++)
+			input.extractItem(i, 1, false);
 
-        for (ItemStack stack : this.output) {
-            int mergeSlot = ModTileEntity.canMerge(output, stack);
-            if (mergeSlot == -1) {
-                output.insertItem(ModTileEntity.getFirstEmptySlot(output), stack.copy(), false);
-            } else {
-                output.insertItem(mergeSlot, stack.copy(), false);
-            }
-        }
-    }
+		for (ItemStack stack : this.output) {
+			int mergeSlot = ModTileEntity.canMerge(output, stack);
+			if (mergeSlot == -1) {
+				output.insertItem(ModTileEntity.getFirstEmptySlot(output), stack.copy(), false);
+			} else {
+				output.insertItem(mergeSlot, stack.copy(), false);
+			}
+		}
+	}
 }
