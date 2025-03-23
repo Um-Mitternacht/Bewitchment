@@ -9,14 +9,14 @@ import net.minecraft.block.state.IBlockState;
  * Created by Joseph on 5/25/2019.
  */
 public class BlockTorchwood extends BlockBushSpreading {
-	public BlockTorchwood() {
-		super("torchwood");
-		setLightLevel(0.7f);
-		setSoundType(SoundType.WOOD);
-	}
+    public BlockTorchwood() {
+        super("torchwood");
+        setLightLevel(0.7f);
+        setSoundType(SoundType.WOOD);
+    }
 
-	@Override
-	public boolean canSustainBush(IBlockState state) {
-		return super.canSustainBush(state) || state.getMaterial() == Material.ROCK || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.SAND || state.getMaterial() == Material.GRASS;
-	}
+    @Override
+    public boolean canSustainBush(IBlockState state) {
+        return super.canSustainBush(state) || state.getMaterial() == Material.ROCK || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.SAND || state.getMaterial() == Material.GRASS;
+    }
 }

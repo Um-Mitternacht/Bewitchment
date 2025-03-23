@@ -19,90 +19,90 @@ import java.util.Random;
 @SuppressWarnings("NullableProblems")
 public class BlockBushSpreading extends BlockBush implements IGrowable, IPlantable {
 
-	protected BlockBushSpreading(String name, String... oreDictionaryName) {
-		super();
-		Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0, oreDictionaryName);
-	}
+    protected BlockBushSpreading(String name, String... oreDictionaryName) {
+        super();
+        Util.registerBlock(this, name, Material.PLANTS, SoundType.PLANT, 0, 0, "shears", 0, oreDictionaryName);
+    }
 
-	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-		return false;
-	}
+    @Override
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+        return false;
+    }
 
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return false;
-	}
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
 
-	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-	}
+    @Override
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+    }
 
-	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		if (rand.nextInt(25) == 0) {
-			int i = 5;
+    @Override
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        if (rand.nextInt(25) == 0) {
+            int i = 5;
 
-			for (BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-4, -1, -4), pos.add(4, 1, 4))) {
-				if (worldIn.getBlockState(blockpos).getBlock() == this) {
-					--i;
+            for (BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-4, -1, -4), pos.add(4, 1, 4))) {
+                if (worldIn.getBlockState(blockpos).getBlock() == this) {
+                    --i;
 
-					if (i <= 0) {
-						return;
-					}
-				}
-			}
+                    if (i <= 0) {
+                        return;
+                    }
+                }
+            }
 
-			BlockPos blockpos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
+            BlockPos blockpos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
 
-			for (int k = 0; k < 4; ++k) {
-				if (worldIn.isAirBlock(blockpos1) && this.canBlockStay(worldIn, blockpos1, this.getDefaultState())) {
-					pos = blockpos1;
-				}
+            for (int k = 0; k < 4; ++k) {
+                if (worldIn.isAirBlock(blockpos1) && this.canBlockStay(worldIn, blockpos1, this.getDefaultState())) {
+                    pos = blockpos1;
+                }
 
-				blockpos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
-			}
+                blockpos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
+            }
 
-			if (worldIn.isAirBlock(blockpos1) && this.canBlockStay(worldIn, blockpos1, this.getDefaultState())) {
-				worldIn.setBlockState(blockpos1, this.getDefaultState(), 2);
-			}
-		}
-	}
+            if (worldIn.isAirBlock(blockpos1) && this.canBlockStay(worldIn, blockpos1, this.getDefaultState())) {
+                worldIn.setBlockState(blockpos1, this.getDefaultState(), 2);
+            }
+        }
+    }
 
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
-		return EnumPlantType.Plains;
-	}
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+        return EnumPlantType.Plains;
+    }
 
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
-		return this.getDefaultState();
-	}
+    @Override
+    public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
+        return this.getDefaultState();
+    }
 
-	protected void checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state) {
-		if (!this.canBlockStay(worldIn, pos, state)) {
-			this.dropBlockAsItem(worldIn, pos, state, 0);
-			worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-		}
-	}
+    protected void checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state) {
+        if (!this.canBlockStay(worldIn, pos, state)) {
+            this.dropBlockAsItem(worldIn, pos, state, 0);
+            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
+        }
+    }
 
-	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
-		this.checkAndDropBlock(worldIn, pos, state);
-	}
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+        super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+        this.checkAndDropBlock(worldIn, pos, state);
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		IBlockState soil = worldIn.getBlockState(pos.down());
-		return super.canPlaceBlockAt(worldIn, pos)
-				&& soil.getBlock().canSustainPlant(soil, worldIn, pos.down(), net.minecraft.util.EnumFacing.UP, this);
-	}
+    @Override
+    public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+        IBlockState soil = worldIn.getBlockState(pos.down());
+        return super.canPlaceBlockAt(worldIn, pos)
+                && soil.getBlock().canSustainPlant(soil, worldIn, pos.down(), net.minecraft.util.EnumFacing.UP, this);
+    }
 
-	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
-		if (state.getBlock() == this) {
-			IBlockState soil = worldIn.getBlockState(pos.down());
-			return soil.getBlock().canSustainPlant(soil, worldIn, pos.down(), net.minecraft.util.EnumFacing.UP, this);
-		}
-		return this.canSustainBush(worldIn.getBlockState(pos.down()));
-	}
+    public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
+        if (state.getBlock() == this) {
+            IBlockState soil = worldIn.getBlockState(pos.down());
+            return soil.getBlock().canSustainPlant(soil, worldIn, pos.down(), net.minecraft.util.EnumFacing.UP, this);
+        }
+        return this.canSustainBush(worldIn.getBlockState(pos.down()));
+    }
 }

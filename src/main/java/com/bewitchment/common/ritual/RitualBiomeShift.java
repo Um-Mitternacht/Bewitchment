@@ -22,75 +22,75 @@ import java.util.Random;
  * Original code by Zabi94, modified by Sunconure11 afterwards, with bits stuck on from Ael.
  */
 public class RitualBiomeShift extends Ritual {
-	private int biome;
+    private int biome;
 
-	public RitualBiomeShift() {
-		super(Util.newResource("biome_shift"), Arrays.asList(
-				Util.get("treeSapling"),
-				Util.get("logWood"),
-				Util.get(ModObjects.oak_apple_gall),
-				Util.get(ModObjects.oak_apple_gall),
-				Util.get(ModObjects.pentacle),
-				Util.get(new ItemStack(ModObjects.oak_spirit)),
-				Util.get(new ItemStack(ModObjects.dimensional_sand)),
-				Util.get(new ItemStack(ModObjects.boline))),
-				null,
-				null,
-				true,
-				50, 1300, 33,
-				BlockGlyph.ENDER, BlockGlyph.ENDER, BlockGlyph.ENDER);
-	}
+    public RitualBiomeShift() {
+        super(Util.newResource("biome_shift"), Arrays.asList(
+                        Util.get("treeSapling"),
+                        Util.get("logWood"),
+                        Util.get(ModObjects.oak_apple_gall),
+                        Util.get(ModObjects.oak_apple_gall),
+                        Util.get(ModObjects.pentacle),
+                        Util.get(new ItemStack(ModObjects.oak_spirit)),
+                        Util.get(new ItemStack(ModObjects.dimensional_sand)),
+                        Util.get(new ItemStack(ModObjects.boline))),
+                null,
+                null,
+                true,
+                50, 1300, 33,
+                BlockGlyph.ENDER, BlockGlyph.ENDER, BlockGlyph.ENDER);
+    }
 
-	@Override
-	public void read() {
-		super.read();
-		biome = nbt.getInteger("biome");
-	}
+    @Override
+    public void read() {
+        super.read();
+        biome = nbt.getInteger("biome");
+    }
 
-	@Override
-	public void write() {
-		super.write();
-		nbt.setInteger("biome", biome);
-	}
+    @Override
+    public void write() {
+        super.write();
+        nbt.setInteger("biome", biome);
+    }
 
-	@Override
-	public boolean isValid(World world, BlockPos altarPos, EntityPlayer caster, ItemStackHandler inventory) {
-		for (int i = 0; i < inventory.getSlots(); i++) {
-			ItemStack stack = inventory.getStackInSlot(i);
+    @Override
+    public boolean isValid(World world, BlockPos altarPos, EntityPlayer caster, ItemStackHandler inventory) {
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            ItemStack stack = inventory.getStackInSlot(i);
 
-			if (stack.getItem() instanceof ItemBoline) {
-				biome = stack.getTagCompound().getInteger("biome_id");
-				return super.isValid(world, altarPos, caster, inventory) && biome > 0;
-			}
-		}
+            if (stack.getItem() instanceof ItemBoline) {
+                biome = stack.getTagCompound().getInteger("biome_id");
+                return super.isValid(world, altarPos, caster, inventory) && biome > 0;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	@Override
-	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		Random rand = world.rand;
-		double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
+    @Override
+    public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        Random rand = world.rand;
+        double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
 
-		for (int i = 0; i < 15; i++) {
-			double sx = cx + rand.nextGaussian() * 0.5, sy = cy + rand.nextGaussian() * 0.5, sz = cz + rand.nextGaussian() * 0.5;
-			Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
-		}
-	}
+        for (int i = 0; i < 15; i++) {
+            double sx = cx + rand.nextGaussian() * 0.5, sy = cy + rand.nextGaussian() * 0.5, sz = cz + rand.nextGaussian() * 0.5;
+            Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
+        }
+    }
 
-	@Override
-	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		int radius = 32;
+    @Override
+    public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        int radius = 32;
 
-		for (double x = -radius; x < radius; x++)
-			for (double z = -radius; z < radius; z++)
-				if (Math.sqrt((x * x) + (z * z)) < radius) {
-					BlockPos pos = effectivePos.add(x, 0, z);
+        for (double x = -radius; x < radius; x++)
+            for (double z = -radius; z < radius; z++)
+                if (Math.sqrt((x * x) + (z * z)) < radius) {
+                    BlockPos pos = effectivePos.add(x, 0, z);
 
-					BiomeChangingUtils.setBiome(world, pos, biome);
-					BiomeChangingUtils.updateBiomeOnClient(world, pos, biome, radius);
-				}
+                    BiomeChangingUtils.setBiome(world, pos, biome);
+                    BiomeChangingUtils.updateBiomeOnClient(world, pos, biome, radius);
+                }
 
-		for (int i = 0; i < inventory.getSlots(); i++) inventory.extractItem(i, 1, false);
-	}
+        for (int i = 0; i < inventory.getSlots(); i++) inventory.extractItem(i, 1, false);
+    }
 }

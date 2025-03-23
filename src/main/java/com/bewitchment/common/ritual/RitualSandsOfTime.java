@@ -14,18 +14,18 @@ import net.minecraftforge.items.ItemStackHandler;
 import java.util.Arrays;
 
 public class RitualSandsOfTime extends Ritual {
-	public RitualSandsOfTime() {
-		super(new ResourceLocation(Bewitchment.MODID, "sands_of_time"), Arrays.asList(Util.get("ingotGold"), Util.get("ingotSilver"), Util.get("sandstone"), Util.get("sand"), Util.get("sand")), null, null, false, -1, 600, 50, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
-	}
+    public RitualSandsOfTime() {
+        super(new ResourceLocation(Bewitchment.MODID, "sands_of_time"), Arrays.asList(Util.get("ingotGold"), Util.get("ingotSilver"), Util.get("sandstone"), Util.get("sand"), Util.get("sand")), null, null, false, -1, 600, 50, BlockGlyph.NORMAL, BlockGlyph.NORMAL, -1);
+    }
 
-	@Override
-	public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onStarted(world, pos, caster, inventory);
-		ModTileEntity.clear(inventory);
-	}
+    @Override
+    public void onStarted(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+        super.onStarted(world, pos, caster, inventory);
+        ModTileEntity.clear(inventory);
+    }
 
-	@Override
-	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		if (!world.isRemote) world.setWorldTime(world.getWorldTime() + 5);
-	}
+    @Override
+    public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        if (!world.isRemote) world.setWorldTime(world.getWorldTime() + 5);
+    }
 }

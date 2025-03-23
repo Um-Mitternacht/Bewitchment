@@ -64,122 +64,122 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(modid = Bewitchment.MODID, name = Bewitchment.NAME, version = Bewitchment.VERSION, guiFactory = Bewitchment.GUI_FACTORY, dependencies = Bewitchment.DEPENDENCIES)
 public class Bewitchment {
-	public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.22.65", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
-	public static final String DEPENDENCIES = "required-after:baubles;required-after:patchouli;after:mowziesmobs;after:covetedmobs;after:elementaristics;after:miskatonicmysteries;after:betteranimalsplus;after:toughasnails;after:consecration;after:quark;after:dynamictrees@[1.12.2-0.9.1e,);after:thaumcraft@[6.1.BETA26,);";
-	public static final Logger logger = LogManager.getLogger(NAME);
-	public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
-		@Override
-		public ItemStack createIcon() {
-			setBackgroundImageName("item_search.png");
-			return new ItemStack(ModObjects.pentacle);
-		}
+    public static final String MODID = "bewitchment", NAME = "Bewitchment", VERSION = "0.22.65", GUI_FACTORY = "com.bewitchment.client.gui.GuiFactory";
+    public static final String DEPENDENCIES = "required-after:baubles;required-after:patchouli;after:mowziesmobs;after:covetedmobs;after:elementaristics;after:miskatonicmysteries;after:betteranimalsplus;after:toughasnails;after:consecration;after:quark;after:dynamictrees@[1.12.2-0.9.1e,);after:thaumcraft@[6.1.BETA26,);";
+    public static final Logger logger = LogManager.getLogger(NAME);
+    public static final CreativeTabs tab = new CreativeTabs(Bewitchment.MODID) {
+        @Override
+        public ItemStack createIcon() {
+            setBackgroundImageName("item_search.png");
+            return new ItemStack(ModObjects.pentacle);
+        }
 
-		@Override
-		public boolean hasSearchBar() {
-			return true;
-		}
-	};
-	@Mod.Instance
-	public static Bewitchment instance;
-	@SidedProxy(serverSide = "com.bewitchment.proxy.ServerProxy", clientSide = "com.bewitchment.proxy.ClientProxy")
-	public static ServerProxy proxy;
-	public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
+        @Override
+        public boolean hasSearchBar() {
+            return true;
+        }
+    };
+    @Mod.Instance
+    public static Bewitchment instance;
+    @SidedProxy(serverSide = "com.bewitchment.proxy.ServerProxy", clientSide = "com.bewitchment.proxy.ClientProxy")
+    public static ServerProxy proxy;
+    public static SimpleNetworkWrapper network = new SimpleNetworkWrapper(MODID);
 
-	public static boolean JEID;
+    public static boolean JEID;
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-		logger.info("Remember when I told you how my");
-		logger.info("Kin is different in some ways?");
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        logger.info("Remember when I told you how my");
+        logger.info("Kin is different in some ways?");
 
-		Bewitchment.proxy.preInit(event);
+        Bewitchment.proxy.preInit(event);
 
-		CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
-		CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
-		MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
+        CapabilityManager.INSTANCE.register(ExtendedPlayer.class, new ExtendedPlayer(), ExtendedPlayer::new);
+        CapabilityManager.INSTANCE.register(MagicPower.class, new MagicPower(), MagicPower::new);
+        MinecraftForge.EVENT_BUS.register(new ExtendedPlayerHandler());
 
-		if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
-		MinecraftForge.EVENT_BUS.register(new MaterialHandler());
-		MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
-		MinecraftForge.EVENT_BUS.register(new MiscHandler());
-		MinecraftForge.EVENT_BUS.register(new PoppetHandler());
-		MinecraftForge.EVENT_BUS.register(new ArmorHandler());
-		MinecraftForge.EVENT_BUS.register(new CurseHandler());
-		MinecraftForge.EVENT_BUS.register(new Compat());
-		if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new ThaumcraftCompat());
-		if (Loader.isModLoaded("dynamictrees")) MinecraftForge.EVENT_BUS.register(new DynamicTreesCompat());
-		GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
+        if (FMLCommonHandler.instance().getSide().isClient()) MinecraftForge.EVENT_BUS.register(new ClientHandler());
+        MinecraftForge.EVENT_BUS.register(new MaterialHandler());
+        MinecraftForge.EVENT_BUS.register(new BlockDropHandler());
+        MinecraftForge.EVENT_BUS.register(new MiscHandler());
+        MinecraftForge.EVENT_BUS.register(new PoppetHandler());
+        MinecraftForge.EVENT_BUS.register(new ArmorHandler());
+        MinecraftForge.EVENT_BUS.register(new CurseHandler());
+        MinecraftForge.EVENT_BUS.register(new Compat());
+        if (Loader.isModLoaded("thaumcraft")) MinecraftForge.EVENT_BUS.register(new ThaumcraftCompat());
+        if (Loader.isModLoaded("dynamictrees")) MinecraftForge.EVENT_BUS.register(new DynamicTreesCompat());
+        GameRegistry.registerWorldGenerator(new ModWorldGen(), 0);
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
-	}
+        NetworkRegistry.INSTANCE.registerGuiHandler(Bewitchment.instance, new GuiHandler());
+    }
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		logger.info("It's a fact, she is exactly that!");
-		logger.info("A harbinger of death from the world of witchcraft,");
-		logger.info("And she's feeding them cakes and her ale to this innocent boy,");
-		logger.info("And her magic brings dismay!");
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+        logger.info("It's a fact, she is exactly that!");
+        logger.info("A harbinger of death from the world of witchcraft,");
+        logger.info("And she's feeding them cakes and her ale to this innocent boy,");
+        logger.info("And her magic brings dismay!");
 
-		logger.info("I hear her in the wind, the bane of our town");
-		logger.info("Come with me, father, I'm to expose a heathen");
+        logger.info("I hear her in the wind, the bane of our town");
+        logger.info("Come with me, father, I'm to expose a heathen");
 
-		proxy.registerRendersInit();
+        proxy.registerRendersInit();
 
-		ModRecipes.init();
-		Compat.init();
+        ModRecipes.init();
+        Compat.init();
 
-		int id = -1;
-		network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
-		network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
-		network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
-		network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
-		network.registerMessage(SyncBroom.Handler.class, SyncBroom.class, ++id, Side.CLIENT);
-		network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
-		network.registerMessage(TarotMessage.Handler.class, TarotMessage.class, ++id, Side.CLIENT);
-		network.registerMessage(SyncDragonsBloodBroom.Handler.class, SyncDragonsBloodBroom.class, ++id, Side.CLIENT);
-		network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
-		network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.CLIENT);
-		network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
-		network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
+        int id = -1;
+        network.registerMessage(SyncExtendedPlayer.Handler.class, SyncExtendedPlayer.class, ++id, Side.CLIENT);
+        network.registerMessage(SpawnParticle.Handler.class, SpawnParticle.class, ++id, Side.CLIENT);
+        network.registerMessage(SpawnBubble.Handler.class, SpawnBubble.class, ++id, Side.CLIENT);
+        network.registerMessage(TeleportPlayerClient.Handler.class, TeleportPlayerClient.class, ++id, Side.CLIENT);
+        network.registerMessage(SyncBroom.Handler.class, SyncBroom.class, ++id, Side.CLIENT);
+        network.registerMessage(CauldronTeleport.Handler.class, CauldronTeleport.class, ++id, Side.SERVER);
+        network.registerMessage(TarotMessage.Handler.class, TarotMessage.class, ++id, Side.CLIENT);
+        network.registerMessage(SyncDragonsBloodBroom.Handler.class, SyncDragonsBloodBroom.class, ++id, Side.CLIENT);
+        network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.SERVER);
+        network.registerMessage(DismountBroomMessage.Handler.class, DismountBroomMessage.class, ++id, Side.CLIENT);
+        network.registerMessage(SyncExtendedWorld.Handler.class, SyncExtendedWorld.class, ++id, Side.CLIENT);
+        network.registerMessage(PacketChangeBiome.Handler.class, PacketChangeBiome.class, ++id, Side.CLIENT);
 
-		network.registerMessage(PacketBiomeUpdate.Handler.class, PacketBiomeUpdate.class, ++id, Side.CLIENT);
+        network.registerMessage(PacketBiomeUpdate.Handler.class, PacketBiomeUpdate.class, ++id, Side.CLIENT);
 
-		for (Item item : ForgeRegistries.ITEMS) {
+        for (Item item : ForgeRegistries.ITEMS) {
 
-			/**
-			 * fix for issue #660
-			 * https://github.com/Um-Mitternacht/Bewitchment/issues/660
-			 */
-			Util.addBonus(item, "silver", ModConfig.modifiers.silverBonuses,
-					MaterialHandler.SILVER_ARMOR, MaterialHandler.SILVER_TOOLS);
+            /**
+             * fix for issue #660
+             * https://github.com/Um-Mitternacht/Bewitchment/issues/660
+             */
+            Util.addBonus(item, "silver", ModConfig.modifiers.silverBonuses,
+                    MaterialHandler.SILVER_ARMOR, MaterialHandler.SILVER_TOOLS);
 
-			Util.addBonus(item, "cold_iron", ModConfig.modifiers.coldIronBonuses,
-					MaterialHandler.COLD_IRON_ARMOR, MaterialHandler.COLD_IRON_TOOLS);
-		}
+            Util.addBonus(item, "cold_iron", ModConfig.modifiers.coldIronBonuses,
+                    MaterialHandler.COLD_IRON_ARMOR, MaterialHandler.COLD_IRON_TOOLS);
+        }
 
-		//Register weaknesses
-		BewitchmentAPI.SILVER_WEAKNESS.register(ModConfig.modifiers.silverWeakness);
-		BewitchmentAPI.COLD_IRON_WEAKNESS.register(ModConfig.modifiers.coldIronWeakness);
+        //Register weaknesses
+        BewitchmentAPI.SILVER_WEAKNESS.register(ModConfig.modifiers.silverWeakness);
+        BewitchmentAPI.COLD_IRON_WEAKNESS.register(ModConfig.modifiers.coldIronWeakness);
 
-		/*Village*/
-		VillagerTradeHandler.INSTANCE.init();
-	}
+        /*Village*/
+        VillagerTradeHandler.INSTANCE.init();
+    }
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		ModRecipes.postInit();
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        ModRecipes.postInit();
 
-		JEID = Loader.isModLoaded("jeid");
-	}
+        JEID = Loader.isModLoaded("jeid");
+    }
 
-	@EventHandler
-	public void serverStarting(FMLServerStartingEvent event) {
-		event.registerServerCommand(new CommandFortune());
-		event.registerServerCommand(new CommandCurse());
-	}
+    @EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {
+        event.registerServerCommand(new CommandFortune());
+        event.registerServerCommand(new CommandCurse());
+    }
 
-	@EventHandler
-	public void serverStarted(FMLServerStartedEvent evt) {
-		FMLCommonHandler.instance().getMinecraftServerInstance().setAllowFlight(true);
-	}
+    @EventHandler
+    public void serverStarted(FMLServerStartedEvent evt) {
+        FMLCommonHandler.instance().getMinecraftServerInstance().setAllowFlight(true);
+    }
 }

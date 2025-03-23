@@ -17,37 +17,37 @@ import net.minecraftforge.common.MinecraftForge;
  */
 
 public class ItemCleaver extends ItemSword {
-	public ItemCleaver() {
-		super(ModObjects.TOOL_HELLISH);
-		Util.registerItem(this, "cleaver_sword");
-		setMaxDamage(333);
-		setMaxStackSize(1);
-		setNoRepair();
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+    public ItemCleaver() {
+        super(ModObjects.TOOL_HELLISH);
+        Util.registerItem(this, "cleaver_sword");
+        setMaxDamage(333);
+        setMaxStackSize(1);
+        setNoRepair();
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return false;
+    }
 
-	@Override
-	public boolean isEnchantable(ItemStack stack) {
-		return false;
-	}
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return false;
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (!target.world.isRemote && (!(target instanceof EntityPlayer) || !(attacker instanceof EntityPlayer))) {
-			int i = itemRand.nextInt(100);
-			if (i < 5) {
-				target.motionY += 0.6;
-				target.addPotionEffect(new PotionEffect(ModPotions.corrosion, 450, 1, false, false));
-				stack.damageItem(9, attacker);
-				if (target instanceof EntityPlayer)
-					((EntityPlayerMP) target).connection.sendPacket(new SPacketEntityVelocity(target));
-			}
-		}
-		return super.hitEntity(stack, target, attacker);
-	}
+    @Override
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+        if (!target.world.isRemote && (!(target instanceof EntityPlayer) || !(attacker instanceof EntityPlayer))) {
+            int i = itemRand.nextInt(100);
+            if (i < 5) {
+                target.motionY += 0.6;
+                target.addPotionEffect(new PotionEffect(ModPotions.corrosion, 450, 1, false, false));
+                stack.damageItem(9, attacker);
+                if (target instanceof EntityPlayer)
+                    ((EntityPlayerMP) target).connection.sendPacket(new SPacketEntityVelocity(target));
+            }
+        }
+        return super.hitEntity(stack, target, attacker);
+    }
 }

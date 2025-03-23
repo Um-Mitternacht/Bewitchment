@@ -6,13 +6,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 
 public class BlockBlueInkCap extends BlockBushSpreading {
-	public BlockBlueInkCap() {
-		super("blue_ink_cap");
-		setSoundType(SoundType.SLIME);
-	}
+    public BlockBlueInkCap() {
+        super("blue_ink_cap");
+        setSoundType(SoundType.SLIME);
+    }
 
-	@Override
-	public boolean canSustainBush(IBlockState state) {
-		return super.canSustainBush(state) || state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND;
-	}
+    @Override
+    public boolean canSustainBush(IBlockState state) {
+        return super.canSustainBush(state) || state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND;
+    }
 }

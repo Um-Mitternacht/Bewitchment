@@ -29,71 +29,71 @@ import java.util.Collections;
 
 public class RitualGreaterHellmouth extends Ritual {
 
-	public RitualGreaterHellmouth() {
-		super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.bottle_of_blood), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), true, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
-	}
+    public RitualGreaterHellmouth() {
+        super(new ResourceLocation(Bewitchment.MODID, "greater_hellmouth"), Arrays.asList(Util.get(ModObjects.athame), Util.get("cropHellebore"), Util.get(ModObjects.bottle_of_blood), Util.get(Items.BLAZE_ROD), Util.get(Items.BLAZE_ROD), Util.get("gunpowder"), Util.get("gunpowder")), null, Collections.singletonList(new ItemStack(ModObjects.athame, 1, 0)), true, 15, 1500, 66, BlockGlyph.NETHER, BlockGlyph.NETHER, BlockGlyph.NETHER);
+    }
 
-	@Override
-	public String getPreconditionMessage() {
-		return "ritual.precondition.no_rain";
-	}
+    @Override
+    public String getPreconditionMessage() {
+        return "ritual.precondition.no_rain";
+    }
 
-	@Override
-	public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
-		return !world.isRaining();
-	}
+    @Override
+    public boolean isValid(World world, BlockPos pos, EntityPlayer caster, ItemStackHandler inventory) {
+        return !world.isRaining();
+    }
 
-	@Override
-	public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		super.onFinished(world, altarPos, effectivePos, caster, inventory);
+    @Override
+    public void onFinished(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        super.onFinished(world, altarPos, effectivePos, caster, inventory);
 
-		if (!world.isRemote) {
-			for (int i = 0; i < world.rand.nextInt(6) + 1; i++) {
-				EntityLiving entity = getEntity(world);
+        if (!world.isRemote) {
+            for (int i = 0; i < world.rand.nextInt(6) + 1; i++) {
+                EntityLiving entity = getEntity(world);
 
-				entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
-				boolean valid = false;
+                entity.onInitialSpawn(world.getDifficultyForLocation(effectivePos), null);
+                boolean valid = false;
 
-				for (int j = 0; j < 16; j++) {
-					if (entity.attemptTeleport(effectivePos.getX() + world.rand.nextInt(12) - 6, effectivePos.getY(), effectivePos.getZ() + world.rand.nextInt(12) - 6)) {
-						entity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, world.rand.nextInt(360), 0);
-						valid = true;
-						break;
-					}
-				}
-				if (valid) {
-					for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50)))
-						CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
-					world.spawnEntity(entity);
-				}
-			}
-		}
-	}
+                for (int j = 0; j < 16; j++) {
+                    if (entity.attemptTeleport(effectivePos.getX() + world.rand.nextInt(12) - 6, effectivePos.getY(), effectivePos.getZ() + world.rand.nextInt(12) - 6)) {
+                        entity.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, world.rand.nextInt(360), 0);
+                        valid = true;
+                        break;
+                    }
+                }
+                if (valid) {
+                    for (EntityPlayerMP player : world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(50)))
+                        CriteriaTriggers.SUMMONED_ENTITY.trigger(player, entity);
+                    world.spawnEntity(entity);
+                }
+            }
+        }
+    }
 
-	protected EntityLiving getEntity(World world) {
+    protected EntityLiving getEntity(World world) {
 
-		switch (world.rand.nextInt(6)) {
-			default:
-				return new EntityGhast(world);
-			case 0:
-				return new EntityWitherSkeleton(world);
-			case 1:
-				return new EntityHellhound(world);
-			case 2:
-				return new EntityBafometyr(world);
-			case 3:
-				return new EntityCleaver(world);
-			case 4:
-				return new EntityShadowPerson(world);
-		}
-	}
+        switch (world.rand.nextInt(6)) {
+            default:
+                return new EntityGhast(world);
+            case 0:
+                return new EntityWitherSkeleton(world);
+            case 1:
+                return new EntityHellhound(world);
+            case 2:
+                return new EntityBafometyr(world);
+            case 3:
+                return new EntityCleaver(world);
+            case 4:
+                return new EntityShadowPerson(world);
+        }
+    }
 
-	@Override
-	public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
-		for (int i = 0; i < 20; i++) {
-			double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
-			double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
-			Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
-		}
-	}
+    @Override
+    public void onUpdate(World world, BlockPos altarPos, BlockPos effectivePos, EntityPlayer caster, ItemStackHandler inventory) {
+        for (int i = 0; i < 20; i++) {
+            double cx = effectivePos.getX() + 0.5, cy = effectivePos.getY() + 0.5, cz = effectivePos.getZ() + 0.5;
+            double sx = cx + world.rand.nextGaussian() * 0.5, sy = cy + world.rand.nextGaussian() * 0.5, sz = cz + world.rand.nextGaussian() * 0.5;
+            Bewitchment.network.sendToDimension(new SpawnParticle(EnumParticleTypes.FLAME, sx, sy, sz, 0.6 * (sx - cx), 0.6 * (sy - cy), 0.6 * (sz - cz)), world.provider.getDimension());
+        }
+    }
 }

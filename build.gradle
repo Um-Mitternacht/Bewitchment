@@ -53,6 +53,10 @@ repositories {
     maven { url "https://maven.mcmoddev.com/" }
     maven { url "https://repo.spongepowered.org/maven" }
     maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {
         name = "buildcraft"
         url = "https://mod-buildcraft.com/maven"
     }

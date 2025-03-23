@@ -24,108 +24,108 @@ import java.util.Set;
 public class BiomeChangingUtils {
 
 
-	public static void setMultiBiome(World world, Biome biome, BlockPos... poses) {
-		int id = Biome.getIdForBiome(biome); // id of the biome to change to
+    public static void setMultiBiome(World world, Biome biome, BlockPos... poses) {
+        int id = Biome.getIdForBiome(biome); // id of the biome to change to
 
-		HashMultimap<ChunkPos, BlockPos> changes = HashMultimap.create();
+        HashMultimap<ChunkPos, BlockPos> changes = HashMultimap.create();
 
-		for (BlockPos pos : poses) changes.put(new ChunkPos(pos), pos);
+        for (BlockPos pos : poses) changes.put(new ChunkPos(pos), pos);
 
-		changes.keys().forEach(chunkPos -> {
+        changes.keys().forEach(chunkPos -> {
 
-			Chunk chunk = world.getChunk(chunkPos.x, chunkPos.z);
-			byte[] biomes = chunk.getBiomeArray();
+            Chunk chunk = world.getChunk(chunkPos.x, chunkPos.z);
+            byte[] biomes = chunk.getBiomeArray();
 
-			Set<BlockPos> changeSet = changes.get(chunkPos);
+            Set<BlockPos> changeSet = changes.get(chunkPos);
 
-			changeSet.forEach(pos -> {
-				int i = pos.getX() & 15;
-				int j = pos.getZ() & 15;
+            changeSet.forEach(pos -> {
+                int i = pos.getX() & 15;
+                int j = pos.getZ() & 15;
 
-				int value = j << 4 | i;
+                int value = j << 4 | i;
 
-				if (biomes[value] == id) {
-					changeSet.remove(pos);
-				} else {
-					biomes[value] = (byte) id;
-				}
-			});
-			chunk.markDirty();
-		});
-	}
+                if (biomes[value] == id) {
+                    changeSet.remove(pos);
+                } else {
+                    biomes[value] = (byte) id;
+                }
+            });
+            chunk.markDirty();
+        });
+    }
 
-	public static void resetRandomOverriddenBiome(World world) {
-		ExtendedWorld extendedWorld = ExtendedWorld.get(world);
-		BlockPos randomPos = extendedWorld.STORED_OVERRIDE_BIOMES.keySet().toArray(new BlockPos[extendedWorld.STORED_OVERRIDE_BIOMES.size()])[world.rand.nextInt(extendedWorld.STORED_OVERRIDE_BIOMES.size())];
-		BiomeChangingUtils.setBiome(world, extendedWorld.STORED_OVERRIDE_BIOMES.get(randomPos), randomPos);
-		extendedWorld.STORED_OVERRIDE_BIOMES.remove(randomPos);
-		extendedWorld.setDirty(true);
-	}
+    public static void resetRandomOverriddenBiome(World world) {
+        ExtendedWorld extendedWorld = ExtendedWorld.get(world);
+        BlockPos randomPos = extendedWorld.STORED_OVERRIDE_BIOMES.keySet().toArray(new BlockPos[extendedWorld.STORED_OVERRIDE_BIOMES.size()])[world.rand.nextInt(extendedWorld.STORED_OVERRIDE_BIOMES.size())];
+        BiomeChangingUtils.setBiome(world, extendedWorld.STORED_OVERRIDE_BIOMES.get(randomPos), randomPos);
+        extendedWorld.STORED_OVERRIDE_BIOMES.remove(randomPos);
+        extendedWorld.setDirty(true);
+    }
 
-	/**
-	 * To be called after setting biome on server
-	 *
-	 * @param world
-	 * @param pos
-	 * @param id
-	 * @param updateRadius
-	 */
-	public static void updateBiomeOnClient(World world, BlockPos pos, int id, int updateRadius) {
-		Bewitchment.network.sendToAllAround(new PacketBiomeUpdate(pos, id), new NetworkRegistry.TargetPoint(
-				world.provider.getDimension(),
-				pos.getX(),
-				pos.getY(),
-				pos.getZ(),
-				updateRadius
-		));
-	}
+    /**
+     * To be called after setting biome on server
+     *
+     * @param world
+     * @param pos
+     * @param id
+     * @param updateRadius
+     */
+    public static void updateBiomeOnClient(World world, BlockPos pos, int id, int updateRadius) {
+        Bewitchment.network.sendToAllAround(new PacketBiomeUpdate(pos, id), new NetworkRegistry.TargetPoint(
+                world.provider.getDimension(),
+                pos.getX(),
+                pos.getY(),
+                pos.getZ(),
+                updateRadius
+        ));
+    }
 
-	/**
-	 * Set biome either server side or client side
-	 *
-	 * @param world
-	 * @param pos
-	 * @param id
-	 */
-	public static void setBiome(World world, BlockPos pos, int id) {
-		Chunk chunk = world.getChunk(pos);
+    /**
+     * Set biome either server side or client side
+     *
+     * @param world
+     * @param pos
+     * @param id
+     */
+    public static void setBiome(World world, BlockPos pos, int id) {
+        Chunk chunk = world.getChunk(pos);
 
-		int x = pos.getX() & 15;
-		int z = pos.getZ() & 15;
-		int i = z << 4 | x;
+        int x = pos.getX() & 15;
+        int z = pos.getZ() & 15;
+        int i = z << 4 | x;
 
-		if (Bewitchment.JEID && chunk instanceof INewChunk)
-			((INewChunk) chunk).getIntBiomeArray()[i] = id;
-		else chunk.getBiomeArray()[i] = (byte) id;
+        if (Bewitchment.JEID && chunk instanceof INewChunk)
+            ((INewChunk) chunk).getIntBiomeArray()[i] = id;
+        else chunk.getBiomeArray()[i] = (byte) id;
 
-		chunk.markDirty();
-	}
+        chunk.markDirty();
+    }
 
-	@Deprecated
-	public static void setBiome(World world, Biome biome, BlockPos pos) {
-		Chunk chunk = world.getChunk(pos);
+    @Deprecated
+    public static void setBiome(World world, Biome biome, BlockPos pos) {
+        Chunk chunk = world.getChunk(pos);
 
-		int i = pos.getX() & 15;
-		int j = pos.getZ() & 15;
+        int i = pos.getX() & 15;
+        int j = pos.getZ() & 15;
 
-		byte id = (byte) Biome.getIdForBiome(biome);
+        byte id = (byte) Biome.getIdForBiome(biome);
 
-		byte b = chunk.getBiomeArray()[j << 4 | i];
+        byte b = chunk.getBiomeArray()[j << 4 | i];
 
-		if (b == id) return;
+        if (b == id) return;
 
-		chunk.getBiomeArray()[j << 4 | i] = id;
-		chunk.markDirty();
+        chunk.getBiomeArray()[j << 4 | i] = id;
+        chunk.markDirty();
 
-		if (world instanceof WorldServer) {
-			PlayerChunkMap playerChunkMap = ((WorldServer) world).getPlayerChunkMap();
-			int chunkX = pos.getX() >> 4;
-			int chunkZ = pos.getZ() >> 4;
+        if (world instanceof WorldServer) {
+            PlayerChunkMap playerChunkMap = ((WorldServer) world).getPlayerChunkMap();
+            int chunkX = pos.getX() >> 4;
+            int chunkZ = pos.getZ() >> 4;
 
-			PlayerChunkMapEntry entry = playerChunkMap.getEntry(chunkX, chunkZ);
-			if (entry != null) {
-				Bewitchment.network.sendToAll(new PacketChangeBiome(biome, pos));
-			}
-		}
-	}
+            PlayerChunkMapEntry entry = playerChunkMap.getEntry(chunkX, chunkZ);
+            if (entry != null) {
+                Bewitchment.network.sendToAll(new PacketChangeBiome(biome, pos));
+            }
+        }
+    }
 }
