@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe> {
     public final List<Ingredient> input;
     public final List<ItemStack> output;
-    private final ArrayList<Integer> outSlots;
 
     public DistilleryRecipe(ResourceLocation name, List<Ingredient> input, List<ItemStack> output) {
         if (input.size() > 6)
@@ -22,7 +21,6 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
         setRegistryName(name);
         this.input = input;
         this.output = output;
-        this.outSlots = new ArrayList<Integer>();
     }
 
     public final boolean matches(ItemStackHandler input) {
@@ -31,14 +29,10 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
 
     public final boolean isValid(ItemStackHandler output) {
         int emptySlotsNeeded = 0;
-        outSlots.clear();
         for (ItemStack stack : this.output) {
             int mergeSlot = ModTileEntity.canMerge(output, stack);
             if (mergeSlot == -1) {
                 emptySlotsNeeded++;
-                outSlots.add(-1);
-            } else {
-                outSlots.add(mergeSlot);
             }
         }
         if (emptySlotsNeeded != 0) {
@@ -51,14 +45,14 @@ public class DistilleryRecipe extends IForgeRegistryEntry.Impl<DistilleryRecipe>
     public final void giveOutput(ItemStackHandler input, ItemStackHandler output) {
         for (int i = 0; i < input.getSlots(); i++)
             input.extractItem(i, 1, false);
-        int j = 0;
-        for (ItemStack stack : this.output) {
 
-            if (outSlots.get(j) == -1)
+        for (ItemStack stack : this.output) {
+            int mergeSlot = ModTileEntity.canMerge(output, stack);
+            if (mergeSlot == -1) {
                 output.insertItem(ModTileEntity.getFirstEmptySlot(output), stack.copy(), false);
-            else
-                output.insertItem(outSlots.get(j), stack.copy(), false);
-            j++;
+            } else {
+                output.insertItem(mergeSlot, stack.copy(), false);
+            }
         }
     }
 }
