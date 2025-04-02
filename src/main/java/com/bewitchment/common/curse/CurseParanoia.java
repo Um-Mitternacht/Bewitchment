@@ -45,138 +45,172 @@ public class CurseParanoia extends Curse {
             switch (rand.nextInt(60)) {
                 case 0:
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_SCREAM, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 1:
                     world.playSound(null, pos, SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 2:
                     world.playSound(null, pos, SoundEvents.ENTITY_WOLF_GROWL, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 3:
                     world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 4:
                     world.playSound(null, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 5:
                     world.playSound(null, pos, SoundEvents.ENTITY_CREEPER_PRIMED, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 6:
                     world.playSound(null, pos, SoundEvents.ENTITY_SPIDER_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 7:
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 8:
                     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_OPEN, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 9:
                     world.playSound(null, pos, SoundEvents.BLOCK_WOODEN_DOOR_OPEN, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 10:
                     world.playSound(null, pos, SoundEvents.ENTITY_PLAYER_HURT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 11:
                     world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 12:
                     world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 13:
                     world.playSound(null, pos, SoundEvents.BLOCK_LAVA_POP, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 14:
                     world.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 15:
                     world.playSound(null, pos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 16:
                     world.playSound(null, pos, SoundEvents.ENTITY_GHAST_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 17:
                     world.playSound(null, pos, SoundEvents.BLOCK_FENCE_GATE_OPEN, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 18:
                     world.playSound(null, pos, SoundEvents.BLOCK_PORTAL_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 19:
                     world.playSound(null, pos, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 20:
                     world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 21:
                     world.playSound(null, pos, SoundEvents.BLOCK_GRASS_STEP, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 22:
                     world.playSound(null, pos, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 23:
                     world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 24:
                     world.playSound(null, pos, ModSounds.CLEAVER_IDLE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 25:
                     world.playSound(null, pos, ModSounds.BAFOMETYR_IDLE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 26:
                     world.playSound(null, pos, SoundEvents.ENTITY_SILVERFISH_HURT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 27:
                     world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 28:
                     world.playSound(null, pos, SoundEvents.ENTITY_EGG_THROW, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 29:
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 30:
                     world.playSound(null, pos, SoundEvents.ENTITY_EVOCATION_ILLAGER_AMBIENT, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 31:
                     world.playSound(null, pos, SoundEvents.AMBIENT_CAVE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 32:
                     world.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 33:
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PRESSPLATE_CLICK_ON, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 34:
@@ -188,35 +222,42 @@ public class CurseParanoia extends Curse {
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_AMBIENT, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 35:
                     world.playSound(null, pos, ModSounds.BROOM_SWEEP, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 36:
                     world.playSound(null, pos, ModSounds.BROOM_SWEEP, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 37:
                     world.playSound(null, pos, ModSounds.CHALK_SCRIBBLE, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, ModSounds.BROOM_SWEEP, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 38:
                     world.playSound(null, pos, ModSounds.OWL_HOOT, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 39:
                     world.playSound(null, pos, ModSounds.TOAD_IDLE, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 40:
                     world.playSound(null, pos, ModSounds.RAVEN_CRY, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 41:
@@ -227,16 +268,19 @@ public class CurseParanoia extends Curse {
                     world.playSound(null, pos, SoundEvents.ENTITY_GHAST_AMBIENT, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_BAT_TAKEOFF, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERDRAGON_FLAP, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 42:
                     world.playSound(null, pos, SoundEvents.ENTITY_WOLF_GROWL, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 43:
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 44:
@@ -244,70 +288,87 @@ public class CurseParanoia extends Curse {
                     world.playSound(null, pos, ModSounds.WEREWOLF_HOWL, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.HOSTILE, 1, 1);
                     world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_BREAK_DOOR_WOOD, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 45:
                     world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 46:
                     world.playSound(null, pos, SoundEvents.BLOCK_CLOTH_BREAK, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 47:
                     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_CLOSE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 48:
                     world.playSound(null, pos, SoundEvents.BLOCK_FENCE_GATE_CLOSE,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 49:
                     world.playSound(null, pos, SoundEvents.BLOCK_GRAVEL_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 50:
                     world.playSound(null, pos, SoundEvents.BLOCK_GRASS_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 51:
                     world.playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 52:
                     world.playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 53:
                     world.playSound(null, pos, SoundEvents.BLOCK_LADDER_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 54:
                     world.playSound(null, pos, SoundEvents.BLOCK_SAND_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 55:
                     world.playSound(null, pos, SoundEvents.BLOCK_SLIME_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 56:
                     world.playSound(null, pos, SoundEvents.BLOCK_SNOW_BREAK,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 57:
                     world.playSound(null, pos, SoundEvents.ENTITY_RABBIT_HURT,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 58:
                     world.playSound(null, pos, SoundEvents.ENTITY_POLAR_BEAR_WARNING,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 case 59:
                     world.playSound(null, pos, SoundEvents.ENTITY_PLAYER_BURP,  SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
                     break;
                 default:
                     world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.HOSTILE, 1, 1);
+                    target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 256, 3));
                     timer = 1150;
             }
         }
