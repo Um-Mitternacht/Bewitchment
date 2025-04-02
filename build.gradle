@@ -15,21 +15,13 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.+'
         classpath 'com.wynprice.cursemaven:CurseMaven:2.1.5'
-        classpath 'org.spongepowered:mixin:0.6.6-SNAPSHOT'
-        classpath 'org.spongepowered:mixingradle:0.4-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
     }
 }
 
-plugins {
-    id 'net.minecrell.licenser' version '0.4'
-    id 'org.ajoberstar.grgit' version '3.1.1'
-    id 'de.undercouch.download' version '3.3.0'
-    id 'com.github.ben-manes.versions' version '0.22.0'
-}
-
-apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.wynprice.cursemaven'
 apply plugin: 'org.spongepowered.mixin'
 
@@ -46,7 +38,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2860"
+    version = "1.12.2-14.23.5.2847"
     runDir = "run"
     mappings = "stable_39"
     clientRunArgs += "--username=Bewitchment"
@@ -58,9 +50,9 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-    maven { url = "http://dvs1.progwml6.com/files/maven" }
+    maven { url = "https://dvs1.progwml6.com/files/maven" }
     maven { url = "https://minecraft.curseforge.com/api/maven" }
-    maven { url "http://maven.tterrag.com" }
+    maven { url "https://maven.tterrag.com" }
     maven { url "https://maven.blamejared.com" }
     maven { url "https://mmdmaven.blamejared.com/" }
     maven { url "https://maven.mcmoddev.com/" }
@@ -74,10 +66,10 @@ repositories {
     }
     maven {
         name = "thiakil"
-        url = "http://maven.thiakil.com"
+        url = "https://maven.thiakil.com"
     }
     maven {
-        url = "http://dvs1.progwml6.com/files/maven"
+        url = "https://dvs1.progwml6.com/files/maven"
     }
     maven {
         url "https://www.cursemaven.com"
